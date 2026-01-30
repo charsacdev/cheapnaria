@@ -190,7 +190,7 @@ nav.scrolled {
 
 /* Off-canvas Trigger */
 .menu-trigger {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     font-size: 1.4rem;
@@ -767,5 +767,34 @@ footer {
     .section-header h2,
     .hero-content h1 {
         word-wrap: break-word;
+    }
+
+    /* Auth Page Mobile Refinements */
+    .auth-container {
+        padding: 2rem 1rem;
+    }
+
+    .auth-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .auth-header h2 {
+        font-size: 1.8rem !important;
+    }
+
+    .auth-header div[style*="width: 70px"] {
+        width: 60px !important;
+        height: 60px !important;
+        font-size: 1.5rem !important;
+    }
+
+    .otp-field {
+        width: 50px !important;
+        height: 60px !important;
+        font-size: 1.5rem !important;
+    }
+
+    .register-grid {
+        grid-template-columns: 1fr !important;
     }
 }

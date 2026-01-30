@@ -97,6 +97,19 @@ h6 {
     h4 {
         font-size: 1.25rem;
     }
+
+    .top-navbar {
+        padding: 0.5rem 1rem !important;
+    }
+
+    .top-navbar h4 {
+        font-size: 1.1rem !important;
+    }
+
+    .menu-toggle {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 .nav-link {
@@ -136,6 +149,28 @@ h6 {
     position: sticky;
     top: 0;
     z-index: 999;
+    min-height: 70px;
+}
+
+.menu-toggle {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #f1f5f9;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    cursor: pointer;
+    padding: 0;
+}
+
+.menu-toggle:hover {
+    background: var(--primary-soft);
+    color: var(--primary-color);
+    transform: translateY(-2px);
 }
 
 /* Global Logo Style - Premium Fintech Mark */
