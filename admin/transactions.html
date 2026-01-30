@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions | CheapNaria</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">5</span></a>
+            <a href="transactions.html" class="nav-link active"><i class="fas fa-exchange-alt"></i> Transactions</a>
+            <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+            <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+            <hr class="my-3 opacity-10">
+            <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">5</span></a>
+                <a href="transactions.html" class="nav-link active"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+                <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+                <hr class="my-3 opacity-10">
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h4 class="m-0 d-none d-md-block">Transactions</h4>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+                <div class="dropdown">
+                    <button class="btn btn-light position-relative" data-bs-toggle="dropdown">
+                        <i class="fas fa-bell"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            style="font-size: 0.6rem;">1</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 300px;">
+                        <h6 class="dropdown-header">Notifications</h6>
+                        <a class="dropdown-item py-3 border-bottom" href="#">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary-subtle text-primary p-2 rounded-circle me-3"><i
+                                        class="fas fa-user-check"></i></div>
+                                <div>
+                                    <p class="mb-0 small fw-bold">New KYC Submission</p>
+                                    <small class="text-muted">John Doe submitted his ID</small>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item text-center small text-primary" href="#">View all</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=10b981&color=fff" alt="Profile"
+                            class="rounded-circle" width="40">
+                        <div class="d-none d-sm-block">
+                            <p class="mb-0 small fw-bold">Admin User</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Super Admin</p>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-user-circle me-2"></i>
+                                Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i
+                                    class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="card p-4 border-0 shadow-sm">
+            <!-- Nav Tabs -->
+            <ul class="nav nav-pills custom-pills mb-4 overflow-auto flex-nowrap pb-2" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                    <button class="nav-link active px-4 py-2 text-nowrap" data-bs-toggle="pill"
+                        data-bs-target="#deposits">Incoming Deposits</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link px-4 py-2 text-nowrap" data-bs-toggle="pill"
+                        data-bs-target="#withdrawals">Payout
+                        Requests</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="pills-tabContent" style="min-height: 400px;">
+                <!-- Deposits Tab -->
+                <div class="tab-pane fade show active" id="deposits">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle" id="depositsTable">
+                            <thead>
+                                <tr>
+                                    <th>CR Account</th>
+                                    <th>User Details</th>
+                                    <th>Tx Type</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="fw-bold text-primary">CR482910</span></td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div>
+                                                <p class="mb-0 small fw-bold">John Doe</p>
+                                                <small class="text-muted">john.doe@example.com</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-warning-subtle text-warning border px-2">Crypto
+                                            (USDT)</span></td>
+                                    <td class="fw-800">₦450,000</td>
+                                    <td><span class="badge-status status-pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm rounded-pill px-4" data-bs-toggle="modal"
+                                            data-bs-target="#depositModalCrypto">Audit</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="fw-bold text-primary">CR482915</span></td>
+                                    <td>
+                                        <div>
+                                            <p class="mb-0 small fw-bold">Sarah Adams</p>
+                                            <small class="text-muted">sarah.a@gmail.com</small>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-info-subtle text-info border px-2">Bank
+                                            Transfer</span></td>
+                                    <td class="fw-800">₦25,000</td>
+                                    <td><span class="badge-status status-pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm rounded-pill px-4" data-bs-toggle="modal"
+                                            data-bs-target="#depositModalBank">Audit</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Withdrawals Tab -->
+                <div class="tab-pane fade" id="withdrawals">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle" id="withdrawalsTable">
+                            <thead>
+                                <tr>
+                                    <th>CR Account</th>
+                                    <th>Applicant</th>
+                                    <th>Method</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="fw-bold text-primary">CR480021</span></td>
+                                    <td><span class="small fw-bold">Michael Kelvin</span></td>
+                                    <td><span class="badge bg-secondary-subtle text-secondary border px-2">Access
+                                            Bank</span></td>
+                                    <td class="fw-800 text-danger">₦1,250,500</td>
+                                    <td><span class="badge-status status-pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm rounded-pill px-4" data-bs-toggle="modal"
+                                            data-bs-target="#withdrawModalBank">Audit
+                                            Payout</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="fw-bold text-primary">CR480025</span></td>
+                                    <td><span class="small fw-bold">Sarah Ali</span></td>
+                                    <td><span class="badge bg-warning-subtle text-warning border px-2">Crypto
+                                            (USDT)</span></td>
+                                    <td class="fw-800 text-danger">₦45,000</td>
+                                    <td><span class="badge-status status-approved">Completed</span></td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm rounded-pill px-4" data-bs-toggle="modal"
+                                            data-bs-target="#withdrawModalCrypto">Audit
+                                            Payout</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="fw-bold text-primary">CR480026</span></td>
+                                    <td><span class="small fw-bold">John D.</span></td>
+                                    <td><span class="badge bg-secondary-subtle text-secondary border px-2">Zenith
+                                            Bank</span></td>
+                                    <td class="fw-800 text-danger">₦150,000</td>
+                                    <td><span class="badge-status status-approved">Completed</span></td>
+                                    <td><button class="btn btn-primary btn-sm rounded-pill px-4" data-bs-toggle="modal"
+                                            data-bs-target="#withdrawModalBank">Audit</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    </div>
+
+    <!-- Deposit Audit Modal (Crypto) -->
+    <div class="modal fade" id="depositModalCrypto" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-bottom p-4">
+                    <h5 class="modal-title fw-bold">Incoming Deposit Audit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <p class="text-muted small mb-1">Target CR Account</p>
+                    <div class="d-flex align-items-center justify-content-center gap-2 mb-4">
+                        <h2 class="fw-800 text-primary mb-0">CR482910</h2>
+                        <button class="btn btn-link p-0 copy-btn" data-value="CR482910"><i
+                                class="far fa-copy text-primary fs-5"></i></button>
+                    </div>
+
+                    <div class="row g-3 text-start mb-4">
+                        <div class="col-12">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-1 d-block">Transaction
+                                Hash</label>
+                            <div class="p-3 bg-light rounded-4 d-flex justify-content-between align-items-center">
+                                <span class="small fw-mono text-break pe-2">0x81da30129f723ea101dc892...3ac99f</span>
+                                <button class="btn btn-link btn-sm p-0 copy-btn"
+                                    data-value="0x81da30129f723ea101dc892...3ac99f"><i
+                                        class="far fa-copy text-primary"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-1 d-block">Payment Gateway
+                                ID</label>
+                            <div class="p-3 bg-light rounded-4 d-flex justify-content-between align-items-center">
+                                <span class="small fw-mono pe-2">PG-USDT-9021</span>
+                                <button class="btn btn-link btn-sm p-0 copy-btn" data-value="PG-USDT-9021"><i
+                                        class="far fa-copy text-primary"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info py-2 rounded-3 border-0 small text-start">
+                        <i class="fas fa-info-circle me-1"></i> Verify asset receipt on your primary wallet before
+                        crediting user.
+                    </div>
+                </div>
+                <div class="modal-footer border-0 p-4 pt-0 gap-2">
+                    <button class="btn btn-outline-danger flex-grow-1 rounded-pill py-2"
+                        data-bs-dismiss="modal">Decline</button>
+                    <button class="btn btn-primary flex-grow-1 rounded-pill py-2 shadow" data-bs-dismiss="modal">Approve
+                        & Credit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deposit Audit Modal (Bank) -->
+    <div class="modal fade" id="depositModalBank" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-bottom p-4">
+                    <h5 class="modal-title fw-bold">Deposit Audit (Bank Transfer)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <div class="mb-4">
+                        <p class="text-muted small mb-1">Target CR Account</p>
+                        <div class="d-flex align-items-center justify-content-center gap-2">
+                            <h2 class="fw-800 text-primary mb-0">CR482915</h2>
+                            <button class="btn btn-link p-0 copy-btn" data-value="CR482915"><i
+                                    class="far fa-copy text-primary fs-5"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 text-start mb-4">
+                        <div class="col-12">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-1 d-block">Payment Gateway
+                                ID</label>
+                            <div class="p-3 bg-light rounded-4 d-flex justify-content-between align-items-center">
+                                <span class="small fw-mono pe-2">PG-BANK-7721</span>
+                                <button class="btn btn-link btn-sm p-0 copy-btn" data-value="PG-BANK-7721"><i
+                                        class="far fa-copy text-primary"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-warning py-2 rounded-3 border-0 small">
+                        <i class="fas fa-exclamation-circle me-1"></i> Copy CR Account number to your banking app to
+                        credit manually if needed.
+                    </div>
+                </div>
+                <div class="modal-footer border-0 p-4 pt-0 gap-2">
+                    <button class="btn btn-outline-danger flex-grow-1 rounded-pill py-2"
+                        data-bs-dismiss="modal">Decline</button>
+                    <button class="btn btn-primary flex-grow-1 rounded-pill py-2 shadow" data-bs-dismiss="modal">Approve
+                        Balance</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payout Audit Modal (Bank) -->
+    <div class="modal fade" id="withdrawModalBank" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-bottom p-4">
+                    <h5 class="modal-title fw-bold">Payout Audit (Bank)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="alert alert-primary py-3 rounded-4 border-0 mb-4 text-center">
+                        <p class="mb-1 smaller fw-bold opacity-75">USER CR ACCOUNT</p>
+                        <div class="d-flex align-items-center justify-content-center gap-2">
+                            <h4 class="mb-0 fw-800">CR480021</h4>
+                            <button class="btn btn-link p-0 copy-btn btn-sm" data-value="CR480021"><i
+                                    class="far fa-copy fs-6"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-4">
+                        <div>
+                            <p class="text-muted smaller mb-1 text-uppercase fw-bold">Destination Bank Account</p>
+                            <div class="p-3 border rounded-4 bg-light bg-opacity-50">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="small fw-bold">Access Bank PLC</span>
+                                    <button class="btn btn-link btn-sm p-0 copy-btn" data-value="Access Bank PLC"><i
+                                            class="far fa-copy"></i></button>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="h4 mb-0 fw-800">0123456789</span>
+                                    <button class="btn btn-link btn-sm p-0 copy-btn" data-value="0123456789"><i
+                                            class="far fa-copy fs-5"></i></button>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="small">MICHAEL KELVIN OKAFOR</span>
+                                    <button class="btn btn-link btn-sm p-0 copy-btn"
+                                        data-value="MICHAEL KELVIN OKAFOR"><i class="far fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <p class="text-muted small mb-1">Approved Payout Amount</p>
+                            <h2 class="fw-800 text-danger">₦1,250,500</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 p-4 pt-0 gap-2">
+                    <button class="btn btn-outline-danger flex-grow-1 rounded-pill py-2"
+                        data-bs-dismiss="modal">Reject</button>
+                    <button class="btn btn-primary flex-grow-1 rounded-pill py-2 shadow" data-bs-dismiss="modal">Mark as
+                        Completed</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payout Audit Modal (Crypto) -->
+    <div class="modal fade" id="withdrawModalCrypto" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-bottom p-4">
+                    <h5 class="modal-title fw-bold">Payout Audit (Crypto)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="alert alert-primary py-3 rounded-4 border-0 mb-4 text-center">
+                        <p class="mb-1 smaller fw-bold opacity-75">USER CR ACCOUNT</p>
+                        <div class="d-flex align-items-center justify-content-center gap-2">
+                            <h4 class="mb-0 fw-800">CR480025</h4>
+                            <button class="btn btn-link p-0 copy-btn btn-sm" data-value="CR480025"><i
+                                    class="far fa-copy fs-6"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="text-center mb-4">
+                        <p class="text-muted small mb-1">Approved Payout Amount</p>
+                        <h2 class="fw-800 text-danger">₦45,000</h2>
+                        <span class="badge bg-warning-subtle text-warning border">USDT (TRC20)</span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="smaller fw-bold text-muted text-uppercase mb-1 d-block">Target Wallet
+                            Address</label>
+                        <div class="bg-light p-3 rounded-4 d-flex justify-content-between align-items-center">
+                            <span class="small fw-mono text-break pe-2">TYo8Xq2F3v8BzP8k9A1zLzLzL</span>
+                            <button class="btn btn-link btn-sm p-0 copy-btn" data-value="TYo8Xq2F3v8BzP8k9A1zLzLzL"><i
+                                    class="far fa-copy text-primary fs-5"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info py-2 rounded-3 border-0 small">
+                        <i class="fas fa-info-circle me-1"></i> Copy wallet address for manual transfer if automated
+                        payout failed.
+                    </div>
+                </div>
+                <div class="modal-footer border-0 p-4 pt-0 gap-2">
+                    <button class="btn btn-outline-danger flex-grow-1 rounded-pill py-2"
+                        data-bs-dismiss="modal">Reject</button>
+                    <button class="btn btn-primary flex-grow-1 rounded-pill py-2 shadow" data-bs-dismiss="modal">Confirm
+                        Paid Manually</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#depositsTable').DataTable({
+                "language": {
+                    "search": "",
+                    "searchPlaceholder": "Search deposits..."
+                },
+                "responsive": true
+            });
+            $('#withdrawalsTable').DataTable({
+                "language": {
+                    "search": "",
+                    "searchPlaceholder": "Search payouts..."
+                },
+                "responsive": true
+            });
+
+            $('.copy-btn').on('click', function () {
+                const val = $(this).data('value');
+                navigator.clipboard.writeText(val);
+                const icon = $(this).find('i');
+                icon.removeClass('far fa-copy').addClass('fas fa-check text-success');
+                setTimeout(() => icon.removeClass('fas fa-check text-success').addClass('far fa-copy text-primary'), 2000);
+            });
+        });
+    </script>
+</body>
+
+</html>

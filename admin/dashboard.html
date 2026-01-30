@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | CheapNaria</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        :root {
+            --primary-color: #10b981;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+
+        @media (max-width: 575.98px) {
+            .chart-container {
+                height: 250px;
+            }
+
+            .top-navbar h4 {
+                font-size: 1.25rem;
+            }
+
+            .card {
+                padding: 1rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link active"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">5</span></a>
+            <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
+            <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+            <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+            <hr class="my-3 opacity-10">
+            <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link active"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">5</span></a>
+                <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+                <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+                <hr class="my-3 opacity-10">
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h4 class="m-0 d-none d-md-block">Overview</h4>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+                <div class="dropdown">
+                    <button class="btn btn-light position-relative" data-bs-toggle="dropdown">
+                        <i class="fas fa-bell"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            style="font-size: 0.6rem;">1</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 300px;">
+                        <h6 class="dropdown-header">Notifications</h6>
+                        <a class="dropdown-item py-3 border-bottom" href="#">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary-subtle text-primary p-2 rounded-circle me-3"><i
+                                        class="fas fa-user-check"></i></div>
+                                <div>
+                                    <p class="mb-0 small fw-bold">New KYC Submission</p>
+                                    <small class="text-muted">John Doe submitted his ID</small>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item text-center small text-primary" href="#">View all</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=10b981&color=fff" alt="Profile"
+                            class="rounded-circle" width="40">
+                        <div class="d-none d-sm-block">
+                            <p class="mb-0 small fw-bold">Admin User</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Super Admin</p>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-user-circle me-2"></i>
+                                Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i
+                                    class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats Grid -->
+        <div class="row g-4 mb-4">
+            <div class="col-12 col-sm-6 col-md-4 col-xl">
+                <div class="card stat-card h-100">
+                    <div class="stat-icon bg-primary-subtle text-primary">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <p class="text-muted mb-1 small">Total Users</p>
+                    <h3 class="mb-0">12,543</h3>
+                    <div class="mt-2">
+                        <span class="text-success small fw-bold"><i class="fas fa-arrow-up"></i> 12%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-xl">
+                <div class="card stat-card h-100">
+                    <div class="stat-icon bg-indigo-subtle text-indigo" style="color: #6366f1; background: #eef2ff;">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <p class="text-muted mb-1 small">Total Volume</p>
+                    <h3 class="mb-0">₦45.2M</h3>
+                    <div class="mt-2">
+                        <span class="text-success small fw-bold"><i class="fas fa-arrow-up"></i> 8%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-xl">
+                <div class="card stat-card h-100">
+                    <div class="stat-icon bg-warning-subtle text-warning">
+                        <i class="fas fa-user-clock"></i>
+                    </div>
+                    <p class="text-muted mb-1 small">Pending KYC</p>
+                    <h3 class="mb-0">24</h3>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-xl">
+                <div class="card stat-card h-100">
+                    <div class="stat-icon bg-info-subtle text-info">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <p class="text-muted mb-1 small">Deposits</p>
+                    <h3 class="mb-0">₦2.4M</h3>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-xl">
+                <div class="card stat-card h-100">
+                    <div class="stat-icon bg-danger-subtle text-danger">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <p class="text-muted mb-1 small">Withdraws</p>
+                    <h3 class="mb-0">₦1.2M</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <!-- Activity Chart -->
+            <div class="col-12 col-xl-8">
+                <div class="card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Transaction Activity</h5>
+                        <select class="form-select form-select-sm" style="width: 120px;">
+                            <option>Last 7 days</option>
+                            <option>Last 30 days</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="activityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <!-- Quick Tasks -->
+            <div class="col-12 col-xl-4">
+                <div class="card p-4 h-100">
+                    <h5 class="mb-4">Quick Actions</h5>
+                    <div class="d-grid gap-3">
+                        <a href="rates.html" class="btn btn-light text-start p-3 rounded-4 border">
+                            <div class="d-flex align-items-center">
+                                <div class="stat-icon bg-primary-subtle text-primary mb-0 me-3"
+                                    style="width: 40px; height: 40px; font-size: 1.1rem;">
+                                    <i class="fas fa-percentage"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="mb-0 fw-bold text-dark small">Update Rates</p>
+                                    <p class="mb-0 text-muted" style="font-size: 0.75rem;">Adjust buy/sell margins</p>
+                                </div>
+                                <i class="fas fa-chevron-right ms-auto opacity-25"></i>
+                            </div>
+                        </a>
+                        <a href="broadcast.html" class="btn btn-light text-start p-3 rounded-4 border">
+                            <div class="d-flex align-items-center">
+                                <div class="stat-icon bg-info-subtle text-info mb-0 me-3"
+                                    style="width: 40px; height: 40px; font-size: 1.1rem;">
+                                    <i class="fas fa-paper-plane"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="mb-0 fw-bold text-dark small">Send Broadcast</p>
+                                    <p class="mb-0 text-muted" style="font-size: 0.75rem;">Notify all users via email
+                                    </p>
+                                </div>
+                                <i class="fas fa-chevron-right ms-auto opacity-25"></i>
+                            </div>
+                        </a>
+                        <a href="kyc.html" class="btn btn-light text-start p-3 rounded-4 border">
+                            <div class="d-flex align-items-center">
+                                <div class="stat-icon bg-warning-subtle text-warning mb-0 me-3"
+                                    style="width: 40px; height: 40px; font-size: 1.1rem;">
+                                    <i class="fas fa-user-shield"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="mb-0 fw-bold text-dark small">Verify KYC</p>
+                                    <p class="mb-0 text-muted" style="font-size: 0.75rem;">Review 5 new documents</p>
+                                </div>
+                                <i class="fas fa-chevron-right ms-auto opacity-25"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="mb-0">Recent Transactions</h5>
+                <a href="transactions.html" class="btn btn-light btn-sm">View All</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0 w-100" id="recentTransactions">
+                    <thead>
+                        <tr>
+                            <th>Ref ID</th>
+                            <th>User</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="fw-bold fw-mono small">CN-94210</span></td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <img src="https://ui-avatars.com/api/?name=JD&background=10b981&color=fff"
+                                        class="rounded-circle" width="28">
+                                    <span>John Doe</span>
+                                </div>
+                            </td>
+                            <td><span class="badge bg-light text-dark border">Buy USDT</span></td>
+                            <td><span class="fw-bold">₦450,000</span></td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><span class="smaller text-muted">2 mins ago</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="fw-bold fw-mono small">CN-94211</span></td>
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <img src="https://ui-avatars.com/api/?name=SA&background=6366f1&color=fff"
+                                        class="rounded-circle" width="28">
+                                    <span>Sarah Adams</span>
+                                </div>
+                            </td>
+                            <td><span class="badge bg-light text-dark border">Withdrawal</span></td>
+                            <td><span class="fw-bold">₦25,000</span></td>
+                            <td><span class="badge-status status-pending">Pending</span></td>
+                            <td><span class="smaller text-muted">15 mins ago</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="../js/admin.js"></script>
+
+    <script>
+        // Activity Chart
+        const ctx = document.getElementById('activityChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Volume (₦)',
+                    data: [1200000, 1900000, 1500000, 2500000, 2200000, 3000000, 2800000],
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#10b981'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { borderDash: [5, 5] },
+                        ticks: {
+                            callback: value => '₦' + (value / 1000000).toFixed(1) + 'M'
+                        }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        $(document).ready(function () {
+            $('#recentTransactions').DataTable({
+                "pageLength": 5,
+                "lengthChange": false,
+                "searching": false,
+                "info": false,
+                "responsive": true, // Restore responsive behavior (collapsing)
+                "autoWidth": false  // Ensure table takes 100% width
+            });
+        });
+    </script>
+</body>
+
+</html>

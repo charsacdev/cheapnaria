@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Detail Audit | CheapNaria</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="users.html" class="nav-link active"><i class="fas fa-users"></i> Users</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">5</span></a>
+            <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
+            <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+            <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+            <hr class="my-3 opacity-10">
+            <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="users.html" class="nav-link active"><i class="fas fa-users"></i> Users</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">5</span></a>
+                <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+                <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+                <hr class="my-3 opacity-10">
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="d-flex align-items-center gap-2 gap-md-3">
+                    <a href="users.html" class="btn btn-light btn-sm rounded-pill"><i class="fas fa-arrow-left"></i></a>
+                    <h4 class="m-0 d-none d-md-block">Audit: Michael Kelvin</h4>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+                <div class="dropdown">
+                    <button class="btn btn-light position-relative" data-bs-toggle="dropdown">
+                        <i class="fas fa-bell"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            style="font-size: 0.6rem;">1</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 300px;">
+                        <h6 class="dropdown-header">Notifications</h6>
+                        <a class="dropdown-item py-3 border-bottom" href="#">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary-subtle text-primary p-2 rounded-circle me-3"><i
+                                        class="fas fa-user-check"></i></div>
+                                <div>
+                                    <p class="mb-0 small fw-bold">New KYC Submission</p>
+                                    <small class="text-muted">John Doe submitted his ID</small>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item text-center small text-primary" href="#">View all</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=10b981&color=fff" alt="Profile"
+                            class="rounded-circle" width="40">
+                        <div class="d-none d-sm-block">
+                            <p class="mb-0 small fw-bold">Admin User</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Super Admin</p>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-user-circle me-2"></i>
+                                Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i
+                                    class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="row g-4">
+            <!-- Profile Information Card -->
+            <div class="col-12 col-xl-4">
+                <div class="card p-4 border-0 shadow-sm">
+                    <div class="text-center mb-4">
+                        <img src="https://ui-avatars.com/api/?name=Michael+Kelvin&background=10b981&color=fff"
+                            class="rounded-circle border border-4 border-white shadow-sm mb-3" width="100">
+                        <h5 class="fw-bold mb-1">Michael Kelvin Okafor</h5>
+                        <span class="badge-status status-approved">Active Account</span>
+                    </div>
+
+                    <div class="d-grid gap-2 mb-4">
+                        <button class="btn btn-outline-danger rounded-pill py-2 fw-bold"><i
+                                class="fas fa-user-slash me-2"></i> Suspend Account</button>
+                    </div>
+
+                    <h6 class="fw-bold mb-3 smaller text-muted text-uppercase letter-spacing-1">Basic Information
+                    </h6>
+                    <div class="mb-3">
+                        <label class="text-muted smaller fw-bold d-block mb-1">Email Address</label>
+                        <p class="fw-bold mb-0">m.kelvin@gmail.com</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="text-muted smaller fw-bold d-block mb-1">Phone Number</label>
+                        <p class="fw-bold mb-0">+234 812 345 6789</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="text-muted smaller fw-bold d-block mb-1">Country</label>
+                        <p class="fw-bold mb-0">Nigeria</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="text-muted smaller fw-bold d-block mb-1">Full Address</label>
+                        <p class="fw-bold mb-0">12, Garki Mall Crescent, Area 11, Garki, Abuja, FCT Nigeria.</p>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <h6 class="fw-bold mb-3 smaller text-muted text-uppercase letter-spacing-1">Security Information
+                    </h6>
+                    <div class="row g-3 g-xl-0">
+                        <div class="col-6 col-xl-12 mb-3">
+                            <label class="text-muted smaller fw-bold d-block mb-1">Recent IP</label>
+                            <p class="small fw-bold mb-0 text-primary">102.89.43.210</p>
+                        </div>
+                        <div class="col-6 col-xl-12 mb-3">
+                            <label class="text-muted smaller fw-bold d-block mb-1">Device</label>
+                            <p class="small fw-bold mb-0 text-truncate">iPhone 15 Pro</p>
+                        </div>
+                        <div class="col-12 col-xl-12 mb-0">
+                            <label class="text-muted smaller fw-bold d-block mb-1">Location</label>
+                            <p class="small fw-bold mb-0">Abuja, FCT (Nigeria)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KYC Docs & Statistics -->
+            <div class="col-12 col-xl-8">
+                <!-- Wallet & Statistics Section -->
+                <div class="card p-4 border-0 shadow-sm mb-4">
+                    <h6 class="fw-bold mb-4 text-primary uppercase letter-spacing-1">Wallet & Statistics</h6>
+                    <div class="row g-3">
+                        <div class="col-6 col-md-4">
+                            <div class="bg-light p-3 rounded-4 h-100">
+                                <p class="text-muted smaller mb-1 text-uppercase fw-bold">Deposit</p>
+                                <p class="fw-bold mb-0 text-success small">₦4.2M</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="bg-light p-3 rounded-4 h-100">
+                                <p class="text-muted smaller mb-1 text-uppercase fw-bold">Withdraw</p>
+                                <p class="fw-bold mb-0 text-danger small">₦1.5M</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="bg-light p-3 rounded-4 h-100">
+                                <p class="text-muted smaller mb-1 text-uppercase fw-bold">Orders</p>
+                                <p class="fw-bold mb-0 text-dark small">142 Total</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KYC Documentation Preview -->
+                <div class="card p-4 border-0 shadow-sm">
+                    <h6 class="fw-bold mb-4 text-primary uppercase letter-spacing-1">Verified Documentation</h6>
+                    <div class="row g-3">
+                        <div class="col-6 col-md-6">
+                            <label class="smaller fw-bold text-muted mb-2">ID Front</label>
+                            <div class="doc-preview-container bg-light d-flex flex-column align-items-center justify-content-center p-3 cursor-pointer"
+                                data-bs-toggle="modal" data-bs-target="#imageModal" style="height: 120px;">
+                                <i class="far fa-image fs-4 text-muted opacity-50 mb-1"></i>
+                                <span class="smaller fw-bold text-muted">Preview</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-6">
+                            <label class="smaller fw-bold text-muted mb-2">ID Back</label>
+                            <div class="doc-preview-container bg-light d-flex flex-column align-items-center justify-content-center p-3 cursor-pointer"
+                                style="height: 120px;">
+                                <i class="far fa-image fs-4 text-muted opacity-50 mb-1"></i>
+                                <span class="smaller fw-bold text-muted">Preview</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-6">
+                            <label class="smaller fw-bold text-muted mb-2">Selfie</label>
+                            <div class="doc-preview-container bg-light d-flex flex-column align-items-center justify-content-center p-3 cursor-pointer"
+                                style="height: 120px;">
+                                <i class="far fa-user-circle fs-4 text-muted opacity-50 mb-1"></i>
+                                <span class="smaller fw-bold text-muted">View</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-6">
+                            <label class="smaller fw-bold text-muted mb-2">Address</label>
+                            <div class="doc-preview-container bg-light d-flex flex-column align-items-center justify-content-center p-3 cursor-pointer"
+                                style="height: 120px;">
+                                <i class="far fa-file-alt fs-4 text-muted opacity-50 mb-1"></i>
+                                <span class="smaller fw-bold text-muted">View bill</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    </div>
+
+    <!-- Image Preview Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow-lg p-2">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold small">Identity Document Audit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <img src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?auto=format&fit=crop&q=80&w=1000"
+                        class="img-fluid rounded-4 shadow" alt="Document">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+
+</html>

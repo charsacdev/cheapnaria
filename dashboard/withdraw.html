@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw Funds | CheapNaria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block">
+        <div class="brand mb-5 px-3">
+            <a href="index.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+            <a href="deposit.html" class="nav-link"><i class="fas fa-wallet"></i> Deposits</a>
+            <a href="withdraw.html" class="nav-link active"><i class="fas fa-money-bill-transfer"></i> Withdrawals</a>
+            <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+            <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="index.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+                <a href="deposit.html" class="nav-link"><i class="fas fa-wallet"></i> Deposits</a>
+                <a href="withdraw.html" class="nav-link active"><i class="fas fa-money-bill-transfer"></i>
+                    Withdrawals</a>
+                <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h4 class="m-0">Withdraw Funds</h4>
+            </div>
+            <div class="balance-badge bg-white shadow-sm px-3 py-2 rounded-pill border d-none">
+                <small class="text-muted d-block" style="font-size: 0.6rem; line-height: 1;">Available Balance</small>
+                <span class="fw-bold text-success">₦4,250,000.00</span>
+            </div>
+        </header>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card p-4">
+                    <h5 class="mb-4">Request Payout</h5>
+
+                    <form id="withdrawForm">
+                        <!-- Step 1: CR & Amount -->
+                        <div id="step1">
+                            <h5 class="mb-4">1. Verify Payout Identity</h5>
+                            <div class="mb-3">
+                                <label class="form-label fw-600">Enter Deriv CR Number</label>
+                                <input type="text" class="form-control" id="targetCr" placeholder="CR1234567">
+                            </div>
+
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-8">
+                                    <label class="form-label fw-600">Withdrawal Amount (USD)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light border-end-0">$</span>
+                                        <input type="number" class="form-control border-start-0" id="withdrawAmount"
+                                            placeholder="Min. 10.00">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-600">Payout Rate</label>
+                                    <div class="bg-primary-subtle text-primary p-2 rounded-3 text-center border border-primary-subtle fw-bold"
+                                        style="font-size: 0.9rem;">
+                                        $1 = ₦1,490
+                                    </div>
+                                </div>
+                                <div id="thresholdNotice" class="col-12 alert alert-warning mt-2 small d-none">
+                                    <i class="fas fa-exclamation-triangle me-1"></i> Amounts over $1,000 may require
+                                    enhanced KYC review.
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm" id="verifyCrBtn">
+                                Verify & Proceed
+                            </button>
+                        </div>
+
+                        <!-- Step 2: Loader (Hidden) -->
+                        <div id="loadingStep" class="text-center py-5 d-none">
+                            <div class="spinner-grow text-primary mb-3" role="status"></div>
+                            <h5>Verifying CR Account...</h5>
+                            <p class="text-muted small">Connecting to Deriv API infrastructure</p>
+                        </div>
+
+                        <!-- Step 3: Payout Method (Hidden) -->
+                        <div id="step2" class="d-none">
+                            <h5 class="mb-3">2. Choose Payout Method</h5>
+
+                            <div class="d-flex flex-column gap-2 mb-4">
+                                <div
+                                    class="alert alert-success d-flex align-items-center justify-content-between small py-2 fw-bold mb-0">
+                                    <span><i class="fas fa-check-circle me-2"></i> CR Verified: <span
+                                            id="verifiedCrLabel">CR1234567</span></span>
+                                    <span class="badge bg-white text-success shadow-sm">Active</span>
+                                </div>
+                                <div
+                                    class="p-3 bg-primary-soft rounded-3 border border-primary-subtle d-flex justify-content-between align-items-center">
+                                    <span class="text-muted small fw-bold text-uppercase">Available Balance</span>
+                                    <span class="h4 mb-0 fw-800 text-primary">$4,250.50</span>
+                                </div>
+                            </div>
+
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <input type="radio" class="btn-check" name="withdrawMethod" id="methodBank"
+                                        value="bank" checked>
+                                    <label class="btn btn-outline-light text-start p-3 w-100 h-100 border text-dark"
+                                        for="methodBank">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-box bg-primary-subtle p-2 rounded-circle me-3">
+                                                <i class="fas fa-university text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <p class="mb-0 fw-bold">Naira Payout</p>
+                                                <small class="text-muted">Local Bank</small>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="radio" class="btn-check" name="withdrawMethod" id="methodCrypto"
+                                        value="crypto">
+                                    <label class="btn btn-outline-light text-start p-3 w-100 h-100 border text-dark"
+                                        for="methodCrypto">
+                                        <div class="d-flex align-items-center">
+                                            <div class="icon-box bg-primary-subtle p-2 rounded-circle me-3">
+                                                <i class="fab fa-ethereum text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <p class="mb-0 fw-bold">Crypto Payout</p>
+                                                <small class="text-muted">USDT / USDC</small>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Bank Choice -->
+                            <div id="bankWithdrawal" class="withdraw-section">
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold">Select Saved Bank</label>
+                                    <select class="form-select mb-2">
+                                        <option selected disabled>Choose beneficiary</option>
+                                        <option>Access Bank - 0123***789</option>
+                                        <option>GTBank - 001***321</option>
+                                    </select>
+                                    <a href="profile.html#payout" class="small text-primary text-decoration-none">+
+                                        Manage payout methods</a>
+                                </div>
+                            </div>
+
+                            <!-- Crypto Choice -->
+                            <div id="cryptoWithdrawal" class="withdraw-section d-none">
+                                <div class="row g-3">
+                                    <div class="col-md-12">
+                                        <label class="form-label small fw-bold">Select Target Asset</label>
+                                        <select class="form-select">
+                                            <option>USDT (TRC20)</option>
+                                            <option>USDC (BEP20)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="form-label small fw-bold">Target Wallet Address</label>
+                                        <input type="text" class="form-control" value="0x892...3ac" readonly>
+                                        <small class="text-muted">Linked address from your profile.</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="summary-box bg-light p-3 rounded-3 my-4">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="text-muted">Fee (1.5%):</span>
+                                    <span class="fw-bold" id="feeDisplay">$0.00</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Settlement Amount:</span>
+                                    <span class="h5 mb-0 text-success fw-bold" id="totalPayoutDisplay">$0.00</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex gap-2">
+                                <button type="button" class="btn btn-light px-4" id="backToStep1">Back</button>
+                                <button type="button" class="btn btn-primary flex-grow-1 py-3 fw-bold"
+                                    data-bs-toggle="modal" data-bs-target="#payoutOtpModal">
+                                    Finalize Withdrawal
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- OTP Modal -->
+    <div class="modal fade" id="payoutOtpModal" tabindex="-1">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-body p-4 text-center">
+                    <h5 class="mb-3">Identity Authorization</h5>
+                    <p class="small text-muted mb-4">Enter the code sent to your email to authorize this withdrawal.</p>
+                    <div class="d-flex gap-2 justify-content-center mb-4" id="otpFields">
+                        <input type="text" class="form-control text-center p-2" maxlength="1"
+                            style="width: 40px; height: 50px;">
+                        <input type="text" class="form-control text-center p-2" maxlength="1"
+                            style="width: 40px; height: 50px;">
+                        <input type="text" class="form-control text-center p-2" maxlength="1"
+                            style="width: 40px; height: 50px;">
+                        <input type="text" class="form-control text-center p-2" maxlength="1"
+                            style="width: 40px; height: 50px;">
+                    </div>
+                    <button class="btn btn-primary w-100 py-3 fw-bold">Confirm Transfer</button>
+                    <button class="btn btn-link btn-sm text-muted mt-2">Resend Code</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Apply green focus styling to form controls
+            $('input.form-control, select.form-select').on('focus', function () {
+                $(this).css('border-color', '#10b981').css('box-shadow', '0 0 0 0.25rem rgba(16, 185, 129, 0.25)');
+            }).on('blur', function () {
+                $(this).css('border-color', '').css('box-shadow', '');
+            });
+
+            $('#verifyCrBtn').click(function () {
+                const cr = $('#targetCr').val();
+                const amount = parseFloat($('#withdrawAmount').val());
+
+                if (!cr) {
+                    alert('Please enter CR number');
+                    return;
+                }
+                if (isNaN(amount) || amount <= 0) {
+                    alert('Please enter a valid withdrawal amount');
+                    return;
+                }
+
+                $('#step1').addClass('d-none');
+                $('#loadingStep').removeClass('d-none');
+
+                setTimeout(() => {
+                    $('#loadingStep').addClass('d-none');
+                    $('#step2').removeClass('d-none').hide().fadeIn();
+                    $('#verifiedCrLabel').text(cr);
+                    // Trigger amount calculation after verification
+                    $('#withdrawAmount').trigger('input');
+                }, 2000);
+            });
+
+            $('#backToStep1').click(function () {
+                $('#step2').addClass('d-none');
+                $('#step1').removeClass('d-none').hide().fadeIn();
+            });
+
+            $('input[name="withdrawMethod"]').change(function () {
+                if (this.value === 'bank') {
+                    $('#bankWithdrawal').removeClass('d-none').hide().fadeIn();
+                    $('#cryptoWithdrawal').addClass('d-none');
+                } else {
+                    $('#bankWithdrawal').addClass('d-none');
+                    $('#cryptoWithdrawal').removeClass('d-none').hide().fadeIn();
+                }
+            });
+
+            $('#withdrawAmount').on('input', function () {
+                const amount = parseFloat($(this).val()) || 0;
+                if (amount >= 1000) {
+                    $('#thresholdNotice').removeClass('d-none');
+                } else {
+                    $('#thresholdNotice').addClass('d-none');
+                }
+                const fee = amount * 0.015;
+                const total = amount - fee;
+                $('#feeDisplay').text('$' + fee.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+                $('#totalPayoutDisplay').text('$' + total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+            });
+
+            $('#otpFields input').on('input', function () {
+                if (this.value.length >= 1) {
+                    $(this).next('input').focus();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

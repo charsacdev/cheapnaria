@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | CheapNaria</title>
+    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="offcanvas-overlay"></div>
+    <div class="offcanvas-menu">
+        <div class="offcanvas-header">
+            <a href="index.html" class="logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+            <i class="fas fa-times close-menu"></i>
+        </div>
+        <div class="offcanvas-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#features">Features</a>
+            <a href="index.html#rates">Rates</a>
+            <hr style="border: none; border-top: 1px solid #f1f5f9; margin: 1rem 0;">
+            <a href="login.html">Sign In</a>
+            <a href="register.html" style="color: var(--primary);">Open Account</a>
+        </div>
+    </div>
+
+    <nav id="navbar" class="scrolled">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="login.html" class="btn btn-primary btn-sm" style="padding: 0.5rem 1.5rem;">Sign In</a>
+            </div>
+            <div class="menu-trigger">
+                <i class="fas fa-bars-staggered"></i>
+            </div>
+        </div>
+    </nav>
+
+    <section style="padding: 160px 0 100px; background: white;">
+        <div class="container" style="max-width: 900px;">
+            <span class="section-tag">Data Sovereignty</span>
+            <h1 style="font-size: 3.5rem; margin-bottom: 2rem; color: var(--secondary);">Privacy Policy.</h1>
+            <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 4rem;">Your privacy is a fundamental
+                right. We protect your financial and personal data using military-grade encryption.</p>
+
+            <div style="line-height: 2; color: var(--text-main);">
+                <h3>1. Data Collection</h3>
+                <p>We collect data necessary to facilitate high-speed funding: Email address, Name, and Deriv CR
+                    numbers. We also collect verification documents as required by international KYC/AML regulations.
+                </p>
+                <br>
+                <h3>2. Information Usage</h3>
+                <p>Your data is used exclusively to facilitate transactions, improve our automated infrastructure, and
+                    comply with legal obligations. We do not sell your data to third-party marketing firms.</p>
+                <br>
+                <h3>3. Security Architecture</h3>
+                <p>All data is encrypted in transit and at rest using AES-256 encryption. Our servers are monitored 24/7
+                    to prevent unauthorized access.</p>
+                <br>
+                <h3>4. Cookies and Tracking</h3>
+                <p>We use session cookies to maintain your authentication status and platform preferences. These are
+                    essential for the security and functionality of the CheapNaria gateway.</p>
+                <br>
+                <h3>5. Your Rights</h3>
+                <p>You have the right to request a copy of your personal data or ask for its deletion from our systems,
+                    subject to legal retention requirements for financial transactions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Black Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-side">
+                    <div class="footer-brand">Cheap<span>Naria</span></div>
+                    <p style="color: #9ca3af; max-width: 320px;">Securing the future of funding for African traders.
+                        Instant, reliable, and transparent.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#rates">Market Rates</a></li>
+                        <li><a href="register.html">Get Started</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Telegram Group</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CheapNaria Infrastructure. All rights reserved.</p>
+                <div style="display: flex; gap: 2rem;">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.menu-trigger, .close-menu, .offcanvas-overlay, .offcanvas-links a').on('click', function () {
+                $('.offcanvas-menu, .offcanvas-overlay').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

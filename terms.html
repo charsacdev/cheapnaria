@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | CheapNaria</title>
+    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="offcanvas-overlay"></div>
+    <div class="offcanvas-menu">
+        <div class="offcanvas-header">
+            <a href="index.html" class="logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+            <i class="fas fa-times close-menu"></i>
+        </div>
+        <div class="offcanvas-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#features">Features</a>
+            <a href="index.html#rates">Rates</a>
+            <hr style="border: none; border-top: 1px solid #f1f5f9; margin: 1rem 0;">
+            <a href="login.html">Sign In</a>
+            <a href="register.html" style="color: var(--primary);">Open Account</a>
+        </div>
+    </div>
+
+    <nav id="navbar" class="scrolled">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="login.html" class="btn btn-primary btn-sm" style="padding: 0.5rem 1.5rem;">Sign In</a>
+            </div>
+            <div class="menu-trigger">
+                <i class="fas fa-bars-staggered"></i>
+            </div>
+        </div>
+    </nav>
+
+    <section style="padding: 160px 0 100px; background: white;">
+        <div class="container" style="max-width: 900px;">
+            <span class="section-tag">Governance Protocols</span>
+            <h1 style="font-size: 3.5rem; margin-bottom: 2rem; color: var(--secondary);">Terms of Service.</h1>
+            <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 4rem;">By using the CheapNaria
+                gateway, you agree to these institutional terms.</p>
+
+            <div style="line-height: 2; color: var(--text-main);">
+                <h3>1. Introduction</h3>
+                <p>Welcome to CheapNaria. These Terms of Service represent a legally binding agreement between you and
+                    CheapNaria. Our platform provides funding and payout infrastructure for Deriv traders.</p>
+                <br>
+                <h3>2. Platform Usage</h3>
+                <p>Users must provide accurate information, including their Deriv CR numbers. CheapNaria is not
+                    responsible for funds sent to incorrect CR numbers provided by the user. Our automated verification
+                    system is designed to minimize these risks, but final responsibility rests with the account holder.
+                </p>
+                <br>
+                <h3>3. Settlement Protocols</h3>
+                <p>Funding and payouts are processed based on admin-defined rates. These rates are dynamic and
+                    influenced by market liquidity. Once a transaction is initiated and confirmed, it cannot be
+                    reversed.</p>
+                <br>
+                <h3>4. Anti-Money Laundering (AML)</h3>
+                <p>We maintain strict AML standards. Any suspicious activity will lead to immediate account suspension
+                    and reporting to relevant financial authorities. We reserve the right to request additional
+                    documentation for high-volume settlements.</p>
+                <br>
+                <h3>5. Limitation of Liability</h3>
+                <p>CheapNaria is an infrastructure provider. We do not provide financial advice. Trading involves
+                    significant risk, and we are not liable for any losses incurred on the Deriv platform.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Black Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-side">
+                    <div class="footer-brand">Cheap<span>Naria</span></div>
+                    <p style="color: #9ca3af; max-width: 320px;">Securing the future of funding for African traders.
+                        Instant, reliable, and transparent.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#rates">Market Rates</a></li>
+                        <li><a href="register.html">Get Started</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Telegram Group</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CheapNaria Infrastructure. All rights reserved.</p>
+                <div style="display: flex; gap: 2rem;">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.menu-trigger, .close-menu, .offcanvas-overlay, .offcanvas-links a').on('click', function () {
+                $('.offcanvas-menu, .offcanvas-overlay').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

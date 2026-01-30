@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | CheapNaria</title>
+    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="auth-container">
+
+    <div class="auth-card animate-up">
+        <div class="auth-header">
+            <a href="index.html" class="logo" style="justify-content: center; margin-bottom: 2rem;">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+            <h2 style="font-size: 2.2rem; color: var(--secondary); letter-spacing: -1px;">Welcome back</h2>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">Access your premium funding dashboard</p>
+        </div>
+
+        <form action="dashboard.html">
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="name@email.com" required>
+            </div>
+            <div class="form-group">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                    <label style="margin: 0;">Password</label>
+                    <a href="forgot-password.html"
+                        style="font-size: 0.85rem; color: var(--primary); font-weight: 700;">Forgot?</a>
+                </div>
+                <input type="password" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary"
+                style="width: 100%; margin-top: 1rem; border-radius: 12px; padding: 1rem;">
+                Sign In <i class="fas fa-arrow-right-to-bracket ms-2"></i>
+            </button>
+        </form>
+
+        <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1.5px solid #f1f5f9; text-align: center;">
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+                New to CheapNaria? <a href="register.html" style="color: var(--primary); font-weight: 700;">Create
+                    Account</a>
+            </p>
+        </div>
+    </div>
+
+</body>
+
+</html>

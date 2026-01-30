@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rates Control | CheapNaria</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">5</span></a>
+            <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
+            <a href="rates.html" class="nav-link active"><i class="fas fa-chart-line"></i> Rates</a>
+            <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+            <hr class="my-3 opacity-10">
+            <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">5</span></a>
+                <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                <a href="rates.html" class="nav-link active"><i class="fas fa-chart-line"></i> Rates</a>
+                <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+                <hr class="my-3 opacity-10">
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h4 class="m-0 d-none d-md-block">Rates Control</h4>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-primary rounded-pill px-4 shadow-sm py-2 d-none d-sm-block"
+                    data-bs-toggle="modal" data-bs-target="#addRateModal">
+                    <i class="fas fa-plus me-2"></i> Add Rate Portfolio
+                </button>
+                <div class="dropdown">
+                    <button class="btn btn-light position-relative" data-bs-toggle="dropdown">
+                        <i class="fas fa-bell"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            style="font-size: 0.6rem;">1</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 300px;">
+                        <h6 class="dropdown-header">Notifications</h6>
+                        <a class="dropdown-item py-3 border-bottom" href="#">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary-subtle text-primary p-2 rounded-circle me-3"><i
+                                        class="fas fa-user-check"></i></div>
+                                <div>
+                                    <p class="mb-0 small fw-bold">New KYC Submission</p>
+                                    <small class="text-muted">John Doe submitted his ID</small>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item text-center small text-primary" href="#">View all</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=10b981&color=fff" alt="Profile"
+                            class="rounded-circle" width="40">
+                        <div class="d-none d-sm-block">
+                            <p class="mb-0 small fw-bold">Admin User</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Super Admin</p>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-user-circle me-2"></i>
+                                Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i
+                                    class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="d-sm-none mb-4">
+            <button class="btn btn-primary rounded-pill px-4 shadow-sm py-2 w-100" data-bs-toggle="modal"
+                data-bs-target="#addRateModal">
+                <i class="fas fa-plus me-2"></i> Add Rate Portfolio
+            </button>
+        </div>
+
+        <div class="row g-4">
+            <!-- Nigeria -->
+            <div class="col-12 col-xl-6">
+                <div class="card p-4 border-0 shadow-sm border-top border-4 border-primary">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h5 class="fw-bold mb-0">🇳🇬 Nigeria (NGN)</h5>
+                        <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save Changes</button>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Buy
+                                Rate</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-0">₦</span>
+                                <input type="number" class="form-control bg-light border-0 fw-bold" value="1450">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Sell
+                                Rate</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-0">₦</span>
+                                <input type="number" class="form-control bg-light border-0 fw-bold" value="1420">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Fiat Buy
+                                Rate</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-0">₦</span>
+                                <input type="number" class="form-control bg-light border-0 fw-bold" value="1410">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Fiat Sell
+                                Rate</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-0">₦</span>
+                                <input type="number" class="form-control bg-light border-0 fw-bold" value="1390">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tanzania -->
+            <div class="col-12 col-xl-6">
+                <div class="card p-4 border-0 shadow-sm border-top border-4 border-info">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h5 class="fw-bold mb-0">🇹🇿 Tanzania (TZS)</h5>
+                        <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save Changes</button>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Buy
+                                Rate</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="2580">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Sell
+                                Rate</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="2520">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Fiat Buy
+                                Rate</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="2500">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Fiat Sell
+                                Rate</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="2450">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ghana -->
+            <div class="col-12 col-xl-6">
+                <div class="card p-4 border-0 shadow-sm border-top border-4 border-warning">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h5 class="fw-bold mb-0">🇬🇭 Ghana (GHS)</h5>
+                        <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save Changes</button>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Buy
+                                Rate</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="12.5">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Sell
+                                Rate</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="12.2">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Fiat Buy
+                                Rate</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="12.1">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Fiat Sell
+                                Rate</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="11.9">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kenya -->
+            <div class="col-12 col-xl-6">
+                <div class="card p-4 border-0 shadow-sm border-top border-4 border-danger">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h5 class="fw-bold mb-0">🇰🇪 Kenya (KES)</h5>
+                        <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save Changes</button>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Buy
+                                Rate</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="160">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Sell
+                                Rate</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="157">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Fiat Buy
+                                Rate</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="158">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Fiat Sell
+                                Rate</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="155">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    </div>
+
+    <!-- Add Rate Portfolio Modal -->
+    <div class="modal fade" id="addRateModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-bottom p-4">
+                    <h5 class="modal-title fw-bold">Add Market Portfolio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="addRateForm">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Select Operating Country</label>
+                            <select class="form-select rounded-3 border-0 bg-light p-3">
+                                <option value="NG">Nigeria (NGN)</option>
+                                <option value="TZ">Tanzania (TZS)</option>
+                                <option value="GH">Ghana (GHS)</option>
+                                <option value="KE">Kenya (KES)</option>
+                                <option value="UG">Uganda (UGX)</option>
+                            </select>
+                        </div>
+                        <hr class="my-4">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <label class="form-label small fw-bold">Crypto Buy Rate</label>
+                                <input type="number" class="form-control bg-light border-0 p-3" placeholder="0.00">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label small fw-bold">Crypto Sell Rate</label>
+                                <input type="number" class="form-control bg-light border-0 p-3" placeholder="0.00">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label small fw-bold">Fiat Buy Rate</label>
+                                <input type="number" class="form-control bg-light border-0 p-3" placeholder="0.00">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label small fw-bold">Fiat Sell Rate</label>
+                                <input type="number" class="form-control bg-light border-0 p-3" placeholder="0.00">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-0 p-4 pt-0">
+                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4 py-2 flex-grow-1"
+                        data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary rounded-pill px-4 py-2 flex-grow-1 shadow"
+                        onclick="alert('Portfolio created!')">Initialize</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+
+</html>

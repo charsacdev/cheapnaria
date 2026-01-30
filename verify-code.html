@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Code | CheapNaria</title>
+    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .otp-wrapper {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0 3rem;
+        }
+
+        .otp-field {
+            width: 65px;
+            height: 75px;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            border-radius: 16px;
+            border: 2px solid #e2e8f0;
+            background: #f8fafc;
+            transition: all 0.3s ease;
+        }
+
+        .otp-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px var(--primary-soft);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+
+<body class="auth-container">
+
+    <div class="auth-card animate-up">
+        <div class="auth-header">
+            <div
+                style="width: 70px; height: 70px; background: var(--primary-soft); color: var(--primary); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 2rem;">
+                <i class="fas fa-envelope-open-text"></i>
+            </div>
+            <h2 style="font-size: 2.2rem; color: var(--secondary); letter-spacing: -1px;">Check your email</h2>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">We've sent a 4-digit code to your inbox</p>
+        </div>
+
+        <form action="dashboard.html">
+            <div class="otp-wrapper">
+                <input type="text" maxlength="1" class="otp-field" pattern="\d*" required>
+                <input type="text" maxlength="1" class="otp-field" pattern="\d*" required>
+                <input type="text" maxlength="1" class="otp-field" pattern="\d*" required>
+                <input type="text" maxlength="1" class="otp-field" pattern="\d*" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary"
+                style="width: 100%; border-radius: 14px; padding: 1.1rem; font-size: 1.1rem;">
+                Verify & Continue <i class="fas fa-shield-check ms-2"></i>
+            </button>
+        </form>
+
+        <div style="margin-top: 3rem; text-align: center;">
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+                Didn't receive the code? <br>
+                <a href="#"
+                    style="color: var(--primary); font-weight: 700; display: inline-block; margin-top: 0.5rem;">Resend
+                    Code (30s)</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.otp-field').on('input', function () {
+                if (this.value.length >= 1) {
+                    $(this).next('.otp-field').focus();
+                }
+            });
+
+            $('.otp-field').on('keydown', function (e) {
+                if (e.key === 'Backspace' && this.value.length === 0) {
+                    $(this).prev('.otp-field').focus();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Funds | CheapNaria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block">
+        <div class="brand mb-5 px-3">
+            <a href="index.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+            <a href="deposit.html" class="nav-link active"><i class="fas fa-wallet"></i> Deposits</a>
+            <a href="withdraw.html" class="nav-link"><i class="fas fa-money-bill-transfer"></i> Withdrawals</a>
+            <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+            <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="index.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+                <a href="deposit.html" class="nav-link active"><i class="fas fa-wallet"></i> Deposits</a>
+                <a href="withdraw.html" class="nav-link"><i class="fas fa-money-bill-transfer"></i> Withdrawals</a>
+                <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h4 class="m-0">Deposit Funds</h4>
+            </div>
+        </header>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card p-4">
+                    <h5 class="mb-4">Fund Your Wallet</h5>
+
+                    <form id="depositForm">
+                        <div class="mb-3">
+                            <label class="form-label fw-600">Enter CR Number</label>
+                            <input type="text" class="form-control" placeholder="CN-XXXX-XXXX">
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-8">
+                                <label class="form-label fw-600">Deposit Amount (USD)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0">$</span>
+                                    <input type="number" class="form-control border-start-0" id="depositAmount"
+                                        placeholder="Min. 5.00">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-600">Local Rate</label>
+                                <div class="bg-primary-subtle text-primary p-2 rounded-3 text-center border border-primary-subtle fw-bold"
+                                    style="font-size: 0.9rem;">
+                                    $1 = ₦1,535
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 text-end">
+                            <small class="text-muted">You will pay: <span class="fw-bold text-dark"
+                                    id="localAmountDisplay">₦0.00</span></small>
+                        </div>
+
+                        <label class="form-label fw-600 mb-3">Select Deposit Method</label>
+                        <div class="row g-3 mb-4">
+                            <div class="col-6">
+                                <div class="method-card text-center p-3 border rounded-3 cursor-pointer active"
+                                    data-method="bank">
+                                    <i class="fas fa-university fs-3 text-primary mb-2"></i>
+                                    <p class="mb-0 fw-bold">Bank Transfer</p>
+                                    <small class="text-muted">Auto-redirect</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="method-card text-center p-3 border rounded-3 cursor-pointer"
+                                    data-method="crypto">
+                                    <i class="fab fa-bitcoin fs-3 text-primary mb-2"></i>
+                                    <p class="mb-0 fw-bold">Web3 Crypto</p>
+                                    <small class="text-muted">Instant Verify</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bank Flow -->
+                        <div id="bankFlow" class="method-flow mb-4">
+                            <div class="alert alert-info py-2 small">
+                                <i class="fas fa-info-circle me-2"></i> You will be redirected to our secure payment
+                                gateway to complete the Naira payment.
+                            </div>
+                        </div>
+
+                        <!-- Crypto Flow -->
+                        <div id="cryptoFlow" class="method-flow mb-4 d-none">
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">Select Asset</label>
+                                <select class="form-select">
+                                    <option value="usdt">USDT (TRC20)</option>
+                                    <option value="busd">BUSD (BEP20)</option>
+                                    <option value="btc">Bitcoin</option>
+                                </select>
+                            </div>
+                            <div class="crypto-address-box bg-light p-3 rounded-3 position-relative border">
+                                <p class="text-muted small mb-2 text-start">Send assets to this address:</p>
+                                <div class="d-flex align-items-center gap-2">
+                                    <code class="flex-grow-1 p-2 bg-white rounded border text-break"
+                                        id="walletAddr">0x71C7656EC7ab88b098defB751B7401B5f6d8976F</code>
+                                    <button type="button" class="btn btn-primary" id="copyBtn"><i
+                                            class="fas fa-copy"></i></button>
+                                </div>
+                                <div id="copyFeedback"
+                                    class="position-absolute top-0 start-50 translate-middle-x badge bg-success d-none"
+                                    style="margin-top: -10px;">Copied!</div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm" id="mainSubmit">
+                            Proceed to Deposit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for Confirmation & Countdown -->
+    <div class="modal fade" id="confirmDepositModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-body p-5 text-center">
+                    <div id="countdownContainer" class="d-none">
+                        <div class="countdown-box mb-3" id="timer">15:00</div>
+                        <h5>Awaiting Confirmation...</h5>
+                        <p class="text-muted small">Please do not close this window. Your deposit will be verified
+                            automatically once detected on the blockchain.</p>
+                        <div class="spinner-border text-primary mt-3" role="status"></div>
+                    </div>
+                    <div id="standardConfirm">
+                        <div class="bg-success-subtle text-success p-3 rounded-circle d-inline-block mb-4">
+                            <i class="fas fa-shield-alt fs-2"></i>
+                        </div>
+                        <h4>Confirm Deposit</h4>
+                        <p class="text-muted">You are about to pay <span class="fw-bold text-dark"
+                                id="modalPayAmount">₦0.00</span> for <span class="fw-bold text-primary"
+                                id="modalUsdAmount">$0.00</span>.</p>
+                        <hr>
+                        <div class="d-flex flex-column gap-2 mt-4">
+                            <button type="button" class="btn btn-primary py-2" id="finalConfirmBtn">Confirm &
+                                Pay</button>
+                            <button type="button" class="btn btn-light py-2" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            const rate = 1535;
+
+            $('#depositAmount').on('input', function () {
+                const usd = parseFloat($(this).val()) || 0;
+                const ngn = usd * rate;
+                $('#localAmountDisplay').text('₦' + ngn.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+            });
+
+            $('.method-card').click(function () {
+                $('.method-card').removeClass('active').css('border-color', '#e2e8f0').css('background', 'transparent');
+                $(this).addClass('active').css('border-color', '#10b981').css('background', '#d1fae5');
+
+                const method = $(this).data('method');
+                $('.method-flow').addClass('d-none');
+                $(`#${method}Flow`).removeClass('d-none');
+            });
+
+            // Copy logic
+            $('#copyBtn').click(function () {
+                const text = $('#walletAddr').text();
+                navigator.clipboard.writeText(text);
+                $('#copyFeedback').removeClass('d-none').hide().fadeIn();
+                setTimeout(() => $('#copyFeedback').fadeOut(() => $(this).addClass('d-none')), 2000);
+            });
+
+            $('#mainSubmit').click(function () {
+                const usd = $('#depositAmount').val();
+                if (!usd) return alert('Please enter an amount');
+
+                const ngn = usd * rate;
+                $('#modalUsdAmount').text('$' + usd);
+                $('#modalPayAmount').text('₦' + ngn.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+
+                const method = $('.method-card.active').data('method');
+                if (method === 'crypto') {
+                    $('#standardConfirm').addClass('d-none');
+                    $('#countdownContainer').removeClass('d-none');
+                    startTimer(900, $('#timer')); // 15 mins
+                } else {
+                    $('#standardConfirm').removeClass('d-none');
+                    $('#countdownContainer').addClass('d-none');
+                }
+
+                var myModal = new bootstrap.Modal(document.getElementById('confirmDepositModal'));
+                myModal.show();
+            });
+
+            function startTimer(duration, display) {
+                var timer = duration, minutes, seconds;
+                var interval = setInterval(function () {
+                    minutes = parseInt(timer / 60, 10);
+                    seconds = parseInt(timer % 60, 10);
+
+                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                    display.text(minutes + ":" + seconds);
+
+                    if (--timer < 0) {
+                        clearInterval(interval);
+                        display.text("EXPIRED");
+                    }
+                }, 1000);
+            }
+        });
+    </script>
+    <style>
+        .method-card.active {
+            border-color: #10b981 !important;
+            background-color: #d1fae5;
+        }
+
+        .cursor-pointer {
+            cursor: pointer;
+        }
+    </style>
+</body>
+
+</html>

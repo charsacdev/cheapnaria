@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction History | CheapNaria</title>
+    <!-- CSS Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block">
+        <div class="brand mb-5 px-3">
+            <a href="index.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+            <a href="deposit.html" class="nav-link"><i class="fas fa-wallet"></i> Deposits</a>
+            <a href="withdraw.html" class="nav-link"><i class="fas fa-money-bill-transfer"></i> Withdrawals</a>
+            <a href="transactions.html" class="nav-link active"><i class="fas fa-history"></i> Transactions</a>
+            <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu (Similar to index.html) -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="index.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+                <a href="deposit.html" class="nav-link"><i class="fas fa-wallet"></i> Deposits</a>
+                <a href="withdraw.html" class="nav-link"><i class="fas fa-money-bill-transfer"></i> Withdrawals</a>
+                <a href="transactions.html" class="nav-link active"><i class="fas fa-history"></i> Transactions</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h4 class="m-0">Transaction History</h4>
+            </div>
+
+            <div class="d-flex gap-2">
+            </div>
+        </header>
+
+        <!-- Filters Section -->
+        <div class="card p-4 mb-4">
+            <div class="row g-3">
+                <div class="col-md-12">
+                    <label class="form-label small fw-bold">Search Transaction</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="fas fa-search"></i></span>
+                        <input type="text" class="form-control border-start-0" id="tableSearch"
+                            placeholder="Transaction ID, Asset or Method...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transactions Table Card -->
+        <div class="card p-4">
+            <div class="table-responsive">
+                <table id="transactionsTable" class="table table-hover w-100">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Method</th>
+                            <th>Asset</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Receipt</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Oct 20, 2023 - 14:30</td>
+                            <td><span class="text-success fw-bold"><i class="fas fa-arrow-down me-1"></i> Deposit</span>
+                            </td>
+                            <td>Bank Transfer</td>
+                            <td class="text-muted">BUSD (BEP20)</td>
+                            <td class="fw-bold">$250.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-light border" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal">
+                                    <i class="fas fa-file-invoice text-primary"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Repeat more rows as needed -->
+                        <tr>
+                            <td>Oct 19, 2023 - 09:12</td>
+                            <td><span class="text-danger"><i class="fas fa-arrow-up me-1"></i> Withdrawal</span></td>
+                            <td>USDT (TRC20)</td>
+                            <td>USDT</td>
+                            <td class="fw-bold">₦150,000.00</td>
+                            <td><span class="badge-status status-pending">Pending Review</span></td>
+                            <td><button class="btn btn-sm btn-light text-primary"><i
+                                        class="fas fa-file-invoice"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>Oct 18, 2023 - 11:15</td>
+                            <td><span class="text-danger"><i class="fas fa-arrow-up me-1"></i> Withdrawal</span></td>
+                            <td>Card payout</td>
+                            <td>NGN</td>
+                            <td class="fw-bold">₦5,000.00</td>
+                            <td><span class="badge-status status-rejected">Rejected</span></td>
+                            <td><button class="btn btn-sm btn-light text-primary"><i
+                                        class="fas fa-file-invoice"></i></button></td>
+                        </tr>
+                        <!-- More rows would go here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Premium Receipt Modal -->
+    <div class="modal fade" id="receiptModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 overflow-hidden">
+                <div class="modal-header bg-primary text-white p-4">
+                    <h5 class="modal-title mb-0">Transaction Receipt</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="p-4 bg-light text-center border-bottom">
+                        <div class="brand-logo justify-content-center mb-3">
+                            <i class="fas fa-bolt-lightning"></i>
+                            <span>Cheap</span>Naria
+                        </div>
+                        <h3 class="mb-1 text-primary fw-bold">$250.00</h3>
+                        <p class="text-muted small mb-0">Successful Deposit</p>
+                    </div>
+
+                    <div class="p-4">
+                        <div class="receipt-details">
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="text-muted small">Transaction ID:</span>
+                                <span class="fw-bold small">TXN-9988221100</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="text-muted small">Date & Time:</span>
+                                <span class="fw-bold small">Oct 20, 2023 - 14:30</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="text-muted small">Target Account:</span>
+                                <span class="fw-bold small">CR1234567</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="text-muted small">Payment Method:</span>
+                                <span class="fw-bold small text-end">Bank Transfer <br><small
+                                        class="text-muted fw-normal">UBA Bank</small></span>
+                            </div>
+                            <hr class="dashed">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-muted small">Exchange Rate applied:</span>
+                                <span class="fw-bold small">$1 = ₦1,535</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted small">Equivalent Paid:</span>
+                                <span class="fw-bold small text-primary">₦383,750.00</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 p-3 bg-success-subtle rounded-3 text-center border border-success-subtle">
+                            <p class="mb-0 text-success small fw-bold">Verified & Settled via CheapNaria Liquidity Rails
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 p-4">
+                    <button class="btn btn-primary w-100 py-3 fw-bold shadow-sm" onclick="window.print()">
+                        <i class="fas fa-download me-2"></i> Download Receipt
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Apply green focus styling to form controls
+            $('input.form-control, select.form-select').on('focus', function () {
+                $(this).css('border-color', '#10b981').css('box-shadow', '0 0 0 0.25rem rgba(16, 185, 129, 0.25)');
+            }).on('blur', function () {
+                $(this).css('border-color', '').css('box-shadow', '');
+            });
+
+            $('#transactionsTable').DataTable({
+                responsive: false, // Force manual scroll (handled by .table-responsive)
+                dom: 'rtip', // Removed search box and buttons from DOM
+                language: {
+                    paginate: {
+                        next: '<i class="fas fa-chevron-right"></i>',
+                        previous: '<i class="fas fa-chevron-left"></i>'
+                    }
+                }
+            });
+
+            // Link custom search box
+            $('#tableSearch').keyup(function () {
+                $('#transactionsTable').DataTable().search($(this).val()).draw();
+            });
+        });
+    </script>
+    <style>
+        .border-dashed {
+            border-style: dashed !important;
+        }
+    </style>
+    </body>
+
+</html>
