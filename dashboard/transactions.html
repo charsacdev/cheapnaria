@@ -25,6 +25,7 @@
 
         <nav class="nav flex-column">
             <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="p2p.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Crypto Transaction</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
             <a href="deposit.html" class="nav-link"><i class="fas fa-wallet"></i> Deposits</a>
             <a href="withdraw.html" class="nav-link"><i class="fas fa-money-bill-transfer"></i> Withdrawals</a>
@@ -50,6 +51,7 @@
         <div class="offcanvas-body">
             <nav class="nav flex-column">
                 <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="p2p.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Crypto Transaction</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
                 <a href="deposit.html" class="nav-link"><i class="fas fa-wallet"></i> Deposits</a>
                 <a href="withdraw.html" class="nav-link"><i class="fas fa-money-bill-transfer"></i> Withdrawals</a>
@@ -94,6 +96,7 @@
                     <thead>
                         <tr>
                             <th>Date</th>
+                            <th>Transaction ID</th>
                             <th>Type</th>
                             <th>Method</th>
                             <th>Asset</th>
@@ -103,12 +106,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- CR: Deposit -->
                         <tr>
                             <td>Oct 20, 2023 - 14:30</td>
-                            <td><span class="text-success fw-bold"><i class="fas fa-arrow-down me-1"></i> Deposit</span>
-                            </td>
+                            <td class="text-secondary small">TXN-9988221100</td>
+                            <td><span class="text-success fw-bold"><i class="fas fa-arrow-down me-1"></i> Deriv
+                                    Deposit</span></td>
                             <td>Bank Transfer</td>
-                            <td class="text-muted">BUSD (BEP20)</td>
+                            <td class="text-muted">UGT (USD)</td>
                             <td class="fw-bold">$250.00</td>
                             <td><span class="badge-status status-approved">Approved</span></td>
                             <td>
@@ -118,28 +123,45 @@
                                 </button>
                             </td>
                         </tr>
-                        <!-- Repeat more rows as needed -->
+                        <!-- CR: Withdrawal -->
                         <tr>
                             <td>Oct 19, 2023 - 09:12</td>
-                            <td><span class="text-danger"><i class="fas fa-arrow-up me-1"></i> Withdrawal</span></td>
-                            <td>USDT (TRC20)</td>
-                            <td>USDT</td>
-                            <td class="fw-bold">₦150,000.00</td>
-                            <td><span class="badge-status status-pending">Pending Review</span></td>
+                            <td class="text-secondary small">TXN-9988221101</td>
+                            <td><span class="text-danger fw-bold"><i class="fas fa-arrow-up me-1"></i> Deriv
+                                    Withdrawal</span></td>
+                            <td>Crypto Payout</td>
+                            <td class="text-muted">USDT (TRC20)</td>
+                            <td class="fw-bold">$105.00</td>
+                            <td><span class="badge-status status-pending">Pending</span></td>
                             <td><button class="btn btn-sm btn-light text-primary"><i
                                         class="fas fa-file-invoice"></i></button></td>
                         </tr>
+                        <!-- P2P: Buy -->
                         <tr>
                             <td>Oct 18, 2023 - 11:15</td>
-                            <td><span class="text-danger"><i class="fas fa-arrow-up me-1"></i> Withdrawal</span></td>
-                            <td>Card payout</td>
-                            <td>NGN</td>
-                            <td class="fw-bold">₦5,000.00</td>
+                            <td class="text-secondary small">P2P-1122334455</td>
+                            <td><span class="text-success fw-bold"><i class="fas fa-plus-circle me-1"></i> Crypto
+                                    Buy</span></td>
+                            <td>Bank Transfer</td>
+                            <td class="text-muted">USDT (BEP20)</td>
+                            <td class="fw-bold">$500.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light text-primary"><i
+                                        class="fas fa-file-invoice"></i></button></td>
+                        </tr>
+                        <!-- P2P: Sell -->
+                        <tr>
+                            <td>Oct 17, 2023 - 14:20</td>
+                            <td class="text-secondary small">P2P-5544332211</td>
+                            <td><span class="text-danger fw-bold"><i class="fas fa-minus-circle me-1"></i> Crypto
+                                    Sell</span></td>
+                            <td>Naira Payout</td>
+                            <td class="text-muted">BTC</td>
+                            <td class="fw-bold">$1,200.00</td>
                             <td><span class="badge-status status-rejected">Rejected</span></td>
                             <td><button class="btn btn-sm btn-light text-primary"><i
                                         class="fas fa-file-invoice"></i></button></td>
                         </tr>
-                        <!-- More rows would go here -->
                     </tbody>
                 </table>
             </div>

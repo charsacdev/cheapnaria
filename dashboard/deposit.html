@@ -25,6 +25,7 @@
 
         <nav class="nav flex-column">
             <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="p2p.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Crypto Transaction</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
             <a href="deposit.html" class="nav-link active"><i class="fas fa-wallet"></i> Deposits</a>
             <a href="withdraw.html" class="nav-link"><i class="fas fa-money-bill-transfer"></i> Withdrawals</a>
@@ -50,6 +51,7 @@
         <div class="offcanvas-body">
             <nav class="nav flex-column">
                 <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="p2p.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Crypto Transaction</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
                 <a href="deposit.html" class="nav-link active"><i class="fas fa-wallet"></i> Deposits</a>
                 <a href="withdraw.html" class="nav-link"><i class="fas fa-money-bill-transfer"></i> Withdrawals</a>
@@ -68,6 +70,10 @@
                 </button>
                 <h4 class="m-0">Deposit Funds</h4>
             </div>
+            <!-- Rate Badge -->
+            <div class="balance-badge bg-white shadow-sm px-3 py-2 rounded-pill border">
+                <span class="fw-bold text-success">$1 = ₦1,535</span>
+            </div>
         </header>
 
         <div class="row justify-content-center">
@@ -76,122 +82,223 @@
                     <h5 class="mb-4">Fund Your Wallet</h5>
 
                     <form id="depositForm">
-                        <div class="mb-3">
-                            <label class="form-label fw-600">Enter CR Number</label>
-                            <input type="text" class="form-control" placeholder="CN-XXXX-XXXX">
-                        </div>
-
-                        <div class="row g-3 mb-3">
-                            <div class="col-md-8">
+                        <!-- Step 1: Verification -->
+                        <div id="step1">
+                            <div class="mb-3">
+                                <label class="form-label fw-600">Enter CR Number</label>
+                                <input type="text" class="form-control" id="crNumber" placeholder="CR1234567">
+                                <div id="verifyingSpinner" class="d-none mt-2 text-primary small">
+                                    <i class="fas fa-spinner fa-spin me-1"></i> Verifying Deriv Account...
+                                </div>
+                            </div>
+                            <div class="mb-4">
                                 <label class="form-label fw-600">Deposit Amount (USD)</label>
                                 <div class="input-group">
                                     <span class="input-group-text bg-light border-end-0">$</span>
                                     <input type="number" class="form-control border-start-0" id="depositAmount"
                                         placeholder="Min. 5.00">
                                 </div>
+                                <small class="text-muted mt-2 d-block">You will pay: <span class="fw-bold text-dark"
+                                        id="localAmountDisplay">₦0.00</span></small>
                             </div>
-                            <div class="col-md-4">
-                                <label class="form-label fw-600">Local Rate</label>
-                                <div class="bg-primary-subtle text-primary p-2 rounded-3 text-center border border-primary-subtle fw-bold"
-                                    style="font-size: 0.9rem;">
-                                    $1 = ₦1,535
+
+                            <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm" id="verifyBtn">
+                                Verify & Proceed
+                            </button>
+                        </div>
+
+                        <!-- Step 2: Loader (Hidden) -->
+                        <div id="loadingStep" class="text-center py-5 d-none">
+                            <div class="spinner-grow text-primary mb-3" role="status"></div>
+                            <h5>Verifying Deriv Account...</h5>
+                            <p class="text-muted small">Connecting to Deriv API infrastructure</p>
+                        </div>
+
+                        <!-- Step 3: Method Selection (Hidden initially) -->
+                        <div id="step2" class="d-none animate-up">
+                            <div
+                                class="alert alert-success d-flex align-items-center justify-content-between small py-2 fw-bold mb-4">
+                                <span><i class="fas fa-check-circle me-2"></i> Verified: JOHN DOE <span
+                                        class="text-muted ms-1">(CR1234567)</span></span>
+                                <span class="badge bg-white text-success shadow-sm">Active</span>
+                            </div>
+
+                            <label class="form-label fw-600 mb-3">Select Payment Method</label>
+                            <div class="row g-3 mb-4">
+                                <div class="col-6">
+                                    <div class="method-card text-center p-3 border rounded-3 cursor-pointer"
+                                        data-method="bank" id="bankMethodBtn">
+                                        <i class="fas fa-university fs-3 text-primary mb-2"></i>
+                                        <p class="mb-0 fw-bold">Naira Bank</p>
+                                        <small class="text-muted">Direct Transfer</small>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="method-card text-center p-3 border rounded-3 cursor-pointer"
+                                        data-method="crypto" id="cryptoMethodBtn">
+                                        <i class="fab fa-bitcoin fs-3 text-primary mb-2"></i>
+                                        <p class="mb-0 fw-bold">Crypto</p>
+                                        <small class="text-muted">Pro & Stablecoins</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="mb-4 text-end">
-                            <small class="text-muted">You will pay: <span class="fw-bold text-dark"
-                                    id="localAmountDisplay">₦0.00</span></small>
-                        </div>
-
-                        <label class="form-label fw-600 mb-3">Select Deposit Method</label>
-                        <div class="row g-3 mb-4">
-                            <div class="col-6">
-                                <div class="method-card text-center p-3 border rounded-3 cursor-pointer active"
-                                    data-method="bank">
-                                    <i class="fas fa-university fs-3 text-primary mb-2"></i>
-                                    <p class="mb-0 fw-bold">Bank Transfer</p>
-                                    <small class="text-muted">Auto-redirect</small>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="method-card text-center p-3 border rounded-3 cursor-pointer"
-                                    data-method="crypto">
-                                    <i class="fab fa-bitcoin fs-3 text-primary mb-2"></i>
-                                    <p class="mb-0 fw-bold">Web3 Crypto</p>
-                                    <small class="text-muted">Instant Verify</small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Bank Flow -->
-                        <div id="bankFlow" class="method-flow mb-4">
-                            <div class="alert alert-info py-2 small">
-                                <i class="fas fa-info-circle me-2"></i> You will be redirected to our secure payment
-                                gateway to complete the Naira payment.
-                            </div>
-                        </div>
-
-                        <!-- Crypto Flow -->
-                        <div id="cryptoFlow" class="method-flow mb-4 d-none">
-                            <div class="mb-3">
-                                <label class="form-label small fw-bold">Select Asset</label>
-                                <select class="form-select">
-                                    <option value="usdt">USDT (TRC20)</option>
-                                    <option value="busd">BUSD (BEP20)</option>
-                                    <option value="btc">Bitcoin</option>
-                                </select>
-                            </div>
-                            <div class="crypto-address-box bg-light p-3 rounded-3 position-relative border">
-                                <p class="text-muted small mb-2 text-start">Send assets to this address:</p>
-                                <div class="d-flex align-items-center gap-2">
-                                    <code class="flex-grow-1 p-2 bg-white rounded border text-break"
-                                        id="walletAddr">0x71C7656EC7ab88b098defB751B7401B5f6d8976F</code>
-                                    <button type="button" class="btn btn-primary" id="copyBtn"><i
-                                            class="fas fa-copy"></i></button>
-                                </div>
-                                <div id="copyFeedback"
-                                    class="position-absolute top-0 start-50 translate-middle-x badge bg-success d-none"
-                                    style="margin-top: -10px;">Copied!</div>
-                            </div>
-                        </div>
-
-                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm" id="mainSubmit">
-                            Proceed to Deposit
-                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Modal for Confirmation & Countdown -->
-    <div class="modal fade" id="confirmDepositModal" tabindex="-1">
+    <!-- Bank Details Modal -->
+    <div class="modal fade" id="bankDetailsModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow">
-                <div class="modal-body p-5 text-center">
-                    <div id="countdownContainer" class="d-none">
-                        <div class="countdown-box mb-3" id="timer">15:00</div>
-                        <h5>Awaiting Confirmation...</h5>
-                        <p class="text-muted small">Please do not close this window. Your deposit will be verified
-                            automatically once detected on the blockchain.</p>
-                        <div class="spinner-border text-primary mt-3" role="status"></div>
-                    </div>
-                    <div id="standardConfirm">
-                        <div class="bg-success-subtle text-success p-3 rounded-circle d-inline-block mb-4">
-                            <i class="fas fa-shield-alt fs-2"></i>
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="fw-bold">Pay with Bank Transfer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <p class="text-muted small mb-4">Transfer exactly <span class="fw-bold text-dark"
+                            id="bankPayAmount">₦0.00</span> to the details below.</p>
+
+                    <div class="bg-light p-3 rounded-3 mb-4 text-start">
+                        <small class="text-muted d-block text-uppercase mb-1">Bank Name</small>
+                        <h6 class="fw-bold mb-3">Wema Bank</h6>
+
+                        <small class="text-muted d-block text-uppercase mb-1">Account Number</small>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="fw-bold mb-0 text-primary" id="bankAccNum">0123456789</h4>
+                            <button class="btn btn-sm btn-outline-primary" onclick="copyText('bankAccNum')"><i
+                                    class="fas fa-copy"></i> Copy</button>
                         </div>
-                        <h4>Confirm Deposit</h4>
-                        <p class="text-muted">You are about to pay <span class="fw-bold text-dark"
-                                id="modalPayAmount">₦0.00</span> for <span class="fw-bold text-primary"
-                                id="modalUsdAmount">$0.00</span>.</p>
-                        <hr>
-                        <div class="d-flex flex-column gap-2 mt-4">
-                            <button type="button" class="btn btn-primary py-2" id="finalConfirmBtn">Confirm &
-                                Pay</button>
-                            <button type="button" class="btn btn-light py-2" data-bs-dismiss="modal">Cancel</button>
+
+                        <small class="text-muted d-block text-uppercase mb-1">Account Name</small>
+                        <h6 class="fw-bold mb-0">CheapNaria Vault</h6>
+                    </div>
+
+                    <div class="alert alert-warning small text-start">
+                        <i class="fas fa-exclamation-triangle me-1"></i> Use your CR Number <b>(CR1234567)</b> as the
+                        narration/remark.
+                    </div>
+
+                    <button class="btn btn-success w-100 py-3 fw-bold shadow-sm" id="bankPaidBtn">
+                        I Have Paid
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crypto Select Modal -->
+    <div class="modal fade" id="cryptoSelectModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="fw-bold">Select Crypto Asset</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-light py-3 text-start d-flex align-items-center gap-3 asset-btn"
+                            data-asset="USDT (TRC20)">
+                            <i class="fab fa-ethereum text-success fs-4"></i>
+                            <div>
+                                <h6 class="mb-0 fw-bold">USDT</h6>
+                                <small class="text-muted">Tron Network (TRC20)</small>
+                            </div>
+                        </button>
+                        <button class="btn btn-light py-3 text-start d-flex align-items-center gap-3 asset-btn"
+                            data-asset="USDT (ERC20)">
+                            <i class="fab fa-ethereum text-primary fs-4"></i>
+                            <div>
+                                <h6 class="mb-0 fw-bold">USDT</h6>
+                                <small class="text-muted">Ethereum Network (ERC20)</small>
+                            </div>
+                        </button>
+                        <button class="btn btn-light py-3 text-start d-flex align-items-center gap-3 asset-btn"
+                            data-asset="USDT (BEP20)">
+                            <i class="fab fa-ethereum text-warning fs-4"></i>
+                            <div>
+                                <h6 class="mb-0 fw-bold">USDT</h6>
+                                <small class="text-muted">BNB Smart Chain (BEP20)</small>
+                            </div>
+                        </button>
+                        <button class="btn btn-light py-3 text-start d-flex align-items-center gap-3 asset-btn"
+                            data-asset="BTC">
+                            <i class="fab fa-bitcoin text-warning fs-4"></i>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Bitcoin</h6>
+                                <small class="text-muted">BTC Network</small>
+                            </div>
+                        </button>
+                        <button class="btn btn-light py-3 text-start d-flex align-items-center gap-3 asset-btn"
+                            data-asset="USDC">
+                            <i class="fas fa-circle-dollar-to-slot text-info fs-4"></i>
+                            <div>
+                                <h6 class="mb-0 fw-bold">USDC</h6>
+                                <small class="text-muted">Solana Network</small>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crypto Pay Modal -->
+    <div class="modal fade" id="cryptoPayModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-0">
+                    <h5 class="fw-bold">Send Payment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 pt-0">
+                    <div class="text-center mb-4">
+                        <small class="text-muted">Send exactly</small>
+                        <h3 class="fw-bold text-primary mb-0" id="cryptoPayAmount">$50.00</h3>
+                        <span class="badge bg-light text-dark border" id="cryptoSelectedAsset">USDT (TRC20)</span>
+                    </div>
+
+                    <div class="crypto-address-box bg-light p-3 rounded-3 position-relative border mb-4">
+                        <p class="text-muted small mb-2 text-start">Wallet Address:</p>
+                        <div class="d-flex align-items-center gap-2">
+                            <code class="flex-grow-1 p-2 bg-white rounded border text-break fw-bold text-dark"
+                                id="walletAddr">0x71C7656EC7ab88b098defB751B7401B5f6d8976F</code>
+                            <button type="button" class="btn btn-primary btn-sm h-100"
+                                onclick="copyText('walletAddr')"><i class="fas fa-copy"></i></button>
                         </div>
                     </div>
+
+                    <div class="alert alert-warning small">
+                        <i class="fas fa-exclamation-triangle me-1"></i> Ensure you are sending on the correct network.
+                        Lost funds cannot be recovered.
+                    </div>
+
+                    <button class="btn btn-success w-100 py-3 fw-bold shadow-sm" id="cryptoPaidBtn">
+                        I Have Paid
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow text-center p-5">
+                <div class="mb-4">
+                    <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center"
+                        style="width: 80px; height: 80px;">
+                        <i class="fas fa-check fs-1"></i>
+                    </div>
+                </div>
+                <h3 class="fw-bold mb-3">Deposit Successful!</h3>
+                <p class="text-muted mb-4">Your funds have been received and credited to your account. You can now
+                    proceed to trade.</p>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary py-3 fw-bold" onclick="location.reload()">Done</button>
+                    <a href="transactions.html" class="btn btn-light py-2">View Receipt</a>
                 </div>
             </div>
         </div>
@@ -201,77 +308,128 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+        // Copy function
+        function copyText(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text);
+            // Could add toast here
+        }
+
         $(document).ready(function () {
             const rate = 1535;
 
+            // --- HASH BASED MODAL PERSISTENCE ---
+            const modalMap = {
+                '#bank-deposit': 'bankDetailsModal',
+                '#crypto-select': 'cryptoSelectModal',
+                '#crypto-pay': 'cryptoPayModal',
+                '#success': 'successModal'
+            };
+
+            // 1. Check Hash on Load
+            const currentHash = window.location.hash;
+            if (modalMap[currentHash]) {
+                const modalId = modalMap[currentHash];
+                const modal = new bootstrap.Modal(document.getElementById(modalId));
+                modal.show();
+            }
+
+            // 2. Update Hash on Modal Show/Hide
+            $('.modal').on('show.bs.modal', function () {
+                const modalId = $(this).attr('id');
+                // Find key by value
+                const hash = Object.keys(modalMap).find(key => modalMap[key] === modalId);
+                if (hash) {
+                    history.pushState(null, null, hash);
+                }
+            });
+
+            $('.modal').on('hide.bs.modal', function () {
+                history.pushState(null, null, ' '); // Clear hash without reload
+            });
+
+
+            // Amount Calc
             $('#depositAmount').on('input', function () {
                 const usd = parseFloat($(this).val()) || 0;
                 const ngn = usd * rate;
                 $('#localAmountDisplay').text('₦' + ngn.toLocaleString(undefined, { minimumFractionDigits: 2 }));
             });
 
-            $('.method-card').click(function () {
-                $('.method-card').removeClass('active').css('border-color', '#e2e8f0').css('background', 'transparent');
-                $(this).addClass('active').css('border-color', '#10b981').css('background', '#d1fae5');
+            // Step 1: Verify Logic
+            $('#verifyBtn').click(function () {
+                const cr = $('#crNumber').val();
+                const amount = $('#depositAmount').val();
 
-                const method = $(this).data('method');
-                $('.method-flow').addClass('d-none');
-                $(`#${method}Flow`).removeClass('d-none');
-            });
-
-            // Copy logic
-            $('#copyBtn').click(function () {
-                const text = $('#walletAddr').text();
-                navigator.clipboard.writeText(text);
-                $('#copyFeedback').removeClass('d-none').hide().fadeIn();
-                setTimeout(() => $('#copyFeedback').fadeOut(() => $(this).addClass('d-none')), 2000);
-            });
-
-            $('#mainSubmit').click(function () {
-                const usd = $('#depositAmount').val();
-                if (!usd) return alert('Please enter an amount');
-
-                const ngn = usd * rate;
-                $('#modalUsdAmount').text('$' + usd);
-                $('#modalPayAmount').text('₦' + ngn.toLocaleString(undefined, { minimumFractionDigits: 2 }));
-
-                const method = $('.method-card.active').data('method');
-                if (method === 'crypto') {
-                    $('#standardConfirm').addClass('d-none');
-                    $('#countdownContainer').removeClass('d-none');
-                    startTimer(900, $('#timer')); // 15 mins
-                } else {
-                    $('#standardConfirm').removeClass('d-none');
-                    $('#countdownContainer').addClass('d-none');
+                if (!cr || !amount) {
+                    alert('Please enter verification details');
+                    return;
                 }
 
-                var myModal = new bootstrap.Modal(document.getElementById('confirmDepositModal'));
-                myModal.show();
+                // const btn = $(this);
+                // btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Verifying...');
+                // $('#verifyingSpinner').removeClass('d-none');
+
+                $('#step1').addClass('d-none');
+                $('#loadingStep').removeClass('d-none');
+
+                // Simulate API call
+                setTimeout(() => {
+                    $('#loadingStep').addClass('d-none');
+                    $('#step2').removeClass('d-none');
+                }, 2000);
             });
 
-            function startTimer(duration, display) {
-                var timer = duration, minutes, seconds;
-                var interval = setInterval(function () {
-                    minutes = parseInt(timer / 60, 10);
-                    seconds = parseInt(timer % 60, 10);
+            // Method: Bank
+            $('#bankMethodBtn').click(function () {
+                const usdAmount = $('#depositAmount').val();
+                const ngnAmount = usdAmount * rate;
 
-                    minutes = minutes < 10 ? "0" + minutes : minutes;
-                    seconds = seconds < 10 ? "0" + seconds : seconds;
+                $('#bankPayAmount').text('₦' + ngnAmount.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                new bootstrap.Modal(document.getElementById('bankDetailsModal')).show();
+            });
 
-                    display.text(minutes + ":" + seconds);
+            // Method: Crypto
+            $('#cryptoMethodBtn').click(function () {
+                new bootstrap.Modal(document.getElementById('cryptoSelectModal')).show();
+            });
 
-                    if (--timer < 0) {
-                        clearInterval(interval);
-                        display.text("EXPIRED");
-                    }
-                }, 1000);
-            }
+            // Asset Selection
+            $('.asset-btn').click(function () {
+                const asset = $(this).data('asset');
+                const usdAmount = $('#depositAmount').val();
+
+                // Close select modal first
+                const selectModalEl = document.getElementById('cryptoSelectModal');
+                const selectModal = bootstrap.Modal.getInstance(selectModalEl);
+                if (selectModal) selectModal.hide();
+
+                $('#cryptoSelectedAsset').text(asset);
+                $('#cryptoPayAmount').text('$' + parseFloat(usdAmount).toFixed(2));
+
+                // Open pay modal
+                setTimeout(() => {
+                    new bootstrap.Modal(document.getElementById('cryptoPayModal')).show();
+                }, 500); // Small delay to allow fade out
+            });
+
+            // Paid Actions
+            $('#bankPaidBtn, #cryptoPaidBtn').click(function () {
+                // Close current modal
+                const visibleModal = bootstrap.Modal.getInstance(document.querySelector('.modal.show'));
+                if (visibleModal) visibleModal.hide();
+
+                // Show Success
+                setTimeout(() => {
+                    new bootstrap.Modal(document.getElementById('successModal')).show();
+                }, 500);
+            });
         });
     </script>
     <style>
-        .method-card.active {
+        .method-card:hover {
             border-color: #10b981 !important;
-            background-color: #d1fae5;
+            background-color: #f0fdf4;
         }
 
         .cursor-pointer {

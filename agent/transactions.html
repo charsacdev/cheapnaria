@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transactions | CheapNaria</title>
+    <title>Transactions | CheapNaria Agent</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
@@ -16,6 +16,15 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Fix for desktop sidebar agent tag */
+        .brand-logo .badge {
+            font-size: 0.6rem !important;
+            vertical-align: middle;
+            display: inline-block;
+            /* Ensure it renders properly */
+        }
+    </style>
 </head>
 
 <body>
@@ -25,21 +34,20 @@
         <div class="brand mb-5 px-3">
             <a href="dashboard.html" class="brand-logo">
                 <i class="fas fa-bolt-lightning"></i>
-                Cheap<span>Naria</span>
+                <div class="d-flex flex-column justify-content-center">
+                    <span class="lh-1">Cheap<span>Naria</span></span>
+                    <span class="badge bg-secondary mt-1 align-self-start"
+                        style="font-size: 0.5rem; letter-spacing: 1px;">AGENT</span>
+                </div>
             </a>
         </div>
 
         <nav class="nav flex-column">
             <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
-            <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
                     class="badge bg-danger rounded-pill ms-auto">5</span></a>
             <a href="transactions.html" class="nav-link active"><i class="fas fa-exchange-alt"></i> Transactions</a>
             <a href="p2p.html" class="nav-link"><i class="fas fa-handshake"></i> Crypto Transactions</a>
-            <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
-            <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
-            <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
-            <hr class="my-3 opacity-10">
             <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
         </nav>
 
@@ -52,24 +60,20 @@
     <!-- Mobile Offcanvas Menu -->
     <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
         <div class="offcanvas-header">
-            <a href="dashboard.html" class="brand-logo">
-                <i class="fas fa-bolt-lightning"></i>
-                Cheap<span>Naria</span>
+            <a href="dashboard.html" class="brand-logo text-decoration-none text-dark">
+                <i class="fas fa-bolt-lightning text-primary"></i>
+                <span class="fw-bold">Cheap<span class="text-primary">Naria</span></span>
+                <span class="badge bg-secondary ms-2 align-middle">AGENT</span>
             </a>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body">
             <nav class="nav flex-column">
                 <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
-                <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
                         class="badge bg-danger rounded-pill ms-auto">5</span></a>
                 <a href="transactions.html" class="nav-link active"><i class="fas fa-exchange-alt"></i> Transactions</a>
                 <a href="p2p.html" class="nav-link"><i class="fas fa-handshake"></i> Crypto Transactions</a>
-                <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
-                <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
-                <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
-                <hr class="my-3 opacity-10">
                 <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
                 <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </nav>
@@ -84,18 +88,17 @@
                 <button class="menu-toggle d-lg-none me-3" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
                     <i class="fas fa-bars-staggered"></i>
                 </button>
-                <h4 class="m-0 d-none d-md-block">Transactions</h4>
+                <h4 class="m-0 fw-bold">Transactions</h4>
             </div>
 
             <div class="d-flex align-items-center gap-3">
-
                 <div class="dropdown">
                     <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
-                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=10b981&color=fff" alt="Profile"
+                        <img src="https://ui-avatars.com/api/?name=James+Bond&background=0dcaf0&color=fff" alt="Profile"
                             class="rounded-circle" width="40">
                         <div class="d-none d-sm-block">
-                            <p class="mb-0 small fw-bold">Admin User</p>
-                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Super Admin</p>
+                            <p class="mb-0 small fw-bold">James Bond</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Support Agent</p>
                         </div>
                     </div>
                     <ul class="dropdown-menu dropdown-menu-end shadow border-0">
@@ -125,7 +128,7 @@
                 <!-- Deposits Tab -->
                 <div class="tab-pane fade show active" id="deposits">
                     <div class="table-responsive">
-                        <table class="table table-hover align-middle" id="depositsTable">
+                        <table class="table table-hover align-middle w-100" id="depositsTable">
                             <thead>
                                 <tr>
                                     <th>CR Account</th>
@@ -187,7 +190,7 @@
                 <!-- Withdrawals Tab -->
                 <div class="tab-pane fade" id="withdrawals">
                     <div class="table-responsive">
-                        <table class="table table-hover align-middle" id="withdrawalsTable">
+                        <table class="table table-hover align-middle w-100" id="withdrawalsTable">
                             <thead>
                                 <tr>
                                     <th>CR Account</th>
@@ -250,7 +253,6 @@
             </div>
         </div>
     </main>
-    </div>
 
     <!-- Deposit Audit Modal (Crypto) -->
     <div class="modal fade" id="depositModalCrypto" tabindex="-1">

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Confirmed P2P | CheapNaria Agent</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Fix for desktop sidebar agent tag */
+        .brand-logo .badge {
+            font-size: 0.6rem !important;
+            vertical-align: middle;
+            display: inline-block;
+            /* Ensure it renders properly */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                <div class="d-flex flex-column justify-content-center">
+                    <span class="lh-1">Cheap<span>Naria</span></span>
+                    <span class="badge bg-secondary mt-1 align-self-start"
+                        style="font-size: 0.5rem; letter-spacing: 1px;">AGENT</span>
+                </div>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">5</span></a>
+            <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
+            <a href="p2p.html" class="nav-link active"><i class="fas fa-handshake"></i> Crypto Transactions</a>
+            <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo text-decoration-none text-dark">
+                <i class="fas fa-bolt-lightning text-primary"></i>
+                <span class="fw-bold">Cheap<span class="text-primary">Naria</span></span>
+                <span class="badge bg-secondary ms-2 align-middle">AGENT</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link active"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">5</span></a>
+                <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                <a href="p2p.html" class="nav-link active"><i class="fas fa-handshake"></i> Crypto Transactions</a>
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="menu-toggle d-lg-none me-3" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars-staggered"></i>
+                </button>
+                <h4 class="m-0 fw-bold">Crypto Transactions</h4>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+                <div class="dropdown">
+                    <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=James+Bond&background=0dcaf0&color=fff" alt="Profile"
+                            class="rounded-circle" width="40">
+                        <div class="d-none d-sm-block">
+                            <p class="mb-0 small fw-bold">James Bond</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Support Agent</p>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-user-circle me-2"></i>
+                                Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i
+                                    class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="card p-4 border-0 shadow-sm">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="mb-0 fw-bold" id="p2pTableTitle">Buy Orders (Users Buying)</h5>
+                <select class="form-select w-auto fw-bold text-secondary border-0 bg-light" id="p2pTypeSelector">
+                    <option value="buy">Buy Orders</option>
+                    <option value="sell">Sell Orders</option>
+                </select>
+            </div>
+
+            <div class="tab-content">
+                <!-- Buy Orders Table -->
+                <div class="tab-pane fade show active" id="buyOrders">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle w-100" id="buyTable">
+                            <thead>
+                                <tr>
+                                    <th>Transaction ID</th>
+                                    <th>Date</th>
+                                    <th>User Details</th>
+                                    <th>USD Value</th>
+                                    <th>Approved By</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="small fw-mono">P2P-829102</span></td>
+                                    <td><span class="text-muted smaller">Oct 24, 2023</span></td>
+                                    <td>
+                                        <div>
+                                            <p class="mb-0 small fw-bold">John Doe</p>
+                                            <small class="text-muted">john.d@example.com</small>
+                                        </div>
+                                    </td>
+                                    <td class="fw-bold">$1,200.00</td>
+                                    <td><span class="badge bg-light text-dark border">Automatic</span></td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm rounded-pill px-4" data-bs-toggle="modal"
+                                            data-bs-target="#p2pBuyModal">View Details</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Sell Orders Table -->
+                <div class="tab-pane fade" id="sellOrders">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle w-100" id="sellTable">
+                            <thead>
+                                <tr>
+                                    <th>Transaction ID</th>
+                                    <th>Date</th>
+                                    <th>User Details</th>
+                                    <th>USD Value</th>
+                                    <th>Approved By</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="small fw-mono">P2P-992101</span></td>
+                                    <td><span class="text-muted smaller">Oct 24, 2023</span></td>
+                                    <td>
+                                        <div>
+                                            <p class="mb-0 small fw-bold">Sarah Smith</p>
+                                            <small class="text-muted">sarah.s@example.com</small>
+                                        </div>
+                                    </td>
+                                    <td class="fw-bold">$500.00</td>
+                                    <td><span class="small fw-bold">Admin User</span></td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm rounded-pill px-4" data-bs-toggle="modal"
+                                            data-bs-target="#p2pSellModal">View Details</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- P2P Buy Modal (Replicated from Admin) -->
+    <div class="modal fade" id="p2pBuyModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-bottom p-4">
+                    <h5 class="modal-title fw-bold">Crypto Buy Order Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row g-4">
+                        <div class="col-12 text-center">
+                            <p class="text-muted small mb-1">User is Buying</p>
+                            <h3 class="fw-800 text-primary">$1,200.00</h3>
+                            <span class="badge bg-light text-dark border">USDT (BEP20)</span>
+                        </div>
+                        <div class="col-12">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-1 d-block">User Wallet
+                                Address</label>
+                            <div class="p-3 bg-light rounded-4 d-flex justify-content-between align-items-center">
+                                <span
+                                    class="small fw-mono text-break pe-2">0x71C7656EC7ab88b098defB751B7401B5f6d8976F</span>
+                                <button class="btn btn-link btn-sm p-0 copy-btn"
+                                    data-value="0x71C7656EC7ab88b098defB751B7401B5f6d8976F"><i
+                                        class="far fa-copy text-primary"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-1 d-block">Approved By</label>
+                            <p class="fw-bold mb-0">System (Automatic)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 p-4 pt-0">
+                    <button class="btn btn-primary w-100 rounded-pill py-2 shadow" data-bs-dismiss="modal">Mark as
+                        Completed</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- P2P Sell Modal (Replicated from Admin) -->
+    <div class="modal fade" id="p2pSellModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-bottom p-4">
+                    <h5 class="modal-title fw-bold">Crypto Sell Order Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row g-4">
+                        <div class="col-12 text-center">
+                            <p class="text-muted small mb-1">User is Selling</p>
+                            <h3 class="fw-800 text-danger">$500.00</h3>
+                            <span class="badge bg-light text-dark border">USDT (TRC20)</span>
+                        </div>
+                        <div class="col-12">
+                            <h6 class="fw-bold mb-3 border-bottom pb-2">User Account Details</h6>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="small text-muted">Bank Name</span>
+                                <span class="small fw-bold">Kuda Microfinance Bank</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="small text-muted">Account Number</span>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="small fw-bold">2003928192</span>
+                                    <button class="btn btn-link btn-sm p-0 copy-btn" data-value="2003928192"><i
+                                            class="far fa-copy"></i></button>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span class="small text-muted">Account Name</span>
+                                <span class="small fw-bold">Sarah Smith</span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-1 d-block">Approved By</label>
+                            <p class="fw-bold mb-0">Admin User</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 p-4 pt-0">
+                    <button class="btn btn-primary w-100 rounded-pill py-2 shadow" data-bs-dismiss="modal">Mark as
+                        Completed</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#buyTable').DataTable({ responsive: true });
+            $('#sellTable').DataTable({ responsive: true });
+
+            $('#p2pTypeSelector').on('change', function () {
+                $('.tab-pane').removeClass('show active');
+                if ($(this).val() === 'buy') {
+                    $('#buyOrders').addClass('show active');
+                    $('#p2pTableTitle').text('Buy Orders (Users Buying)');
+                } else {
+                    $('#sellOrders').addClass('show active');
+                    $('#p2pTableTitle').text('Sell Orders (Users Selling)');
+                }
+            });
+
+            $('.copy-btn').on('click', function () {
+                const val = $(this).data('value');
+                navigator.clipboard.writeText(val);
+                const icon = $(this).find('i');
+                icon.removeClass('far fa-copy').addClass('fas fa-check text-success');
+                setTimeout(() => icon.removeClass('fas fa-check text-success').addClass('far fa-copy text-primary'), 2000);
+            });
+        });
+    </script>
+</body>
+
+</html>

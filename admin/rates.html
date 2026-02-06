@@ -33,8 +33,10 @@
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
                     class="badge bg-danger rounded-pill ms-auto">5</span></a>
             <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
+            <a href="p2p.html" class="nav-link"><i class="fas fa-handshake"></i> P2P Management</a>
             <a href="rates.html" class="nav-link active"><i class="fas fa-chart-line"></i> Rates</a>
             <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+            <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
             <hr class="my-3 opacity-10">
             <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
         </nav>
@@ -61,8 +63,10 @@
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
                         class="badge bg-danger rounded-pill ms-auto">5</span></a>
                 <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                <a href="p2p.html" class="nav-link"><i class="fas fa-handshake"></i> P2P Management</a>
                 <a href="rates.html" class="nav-link active"><i class="fas fa-chart-line"></i> Rates</a>
                 <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+                <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
                 <hr class="my-3 opacity-10">
                 <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
                 <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
@@ -75,8 +79,8 @@
         <!-- Top Navbar -->
         <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
             <div class="d-flex align-items-center">
-                <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
-                    <i class="fas fa-bars"></i>
+                <button class="menu-toggle d-lg-none me-3" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars-staggered"></i>
                 </button>
                 <h4 class="m-0 d-none d-md-block">Rates Control</h4>
             </div>
@@ -86,27 +90,6 @@
                     data-bs-toggle="modal" data-bs-target="#addRateModal">
                     <i class="fas fa-plus me-2"></i> Add Rate Portfolio
                 </button>
-                <div class="dropdown">
-                    <button class="btn btn-light position-relative" data-bs-toggle="dropdown">
-                        <i class="fas fa-bell"></i>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                            style="font-size: 0.6rem;">1</span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 300px;">
-                        <h6 class="dropdown-header">Notifications</h6>
-                        <a class="dropdown-item py-3 border-bottom" href="#">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-primary-subtle text-primary p-2 rounded-circle me-3"><i
-                                        class="fas fa-user-check"></i></div>
-                                <div>
-                                    <p class="mb-0 small fw-bold">New KYC Submission</p>
-                                    <small class="text-muted">John Doe submitted his ID</small>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item text-center small text-primary" href="#">View all</a>
-                    </div>
-                </div>
 
                 <div class="dropdown">
                     <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
@@ -163,7 +146,7 @@
                             </div>
                         </div>
                         <div class="col-6">
-                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Fiat Buy
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Buy
                                 Rate</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-0">₦</span>
@@ -171,12 +154,35 @@
                             </div>
                         </div>
                         <div class="col-6">
-                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Fiat Sell
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Sell
                                 Rate</label>
                             <div class="input-group">
                                 <span class="input-group-text bg-light border-0">₦</span>
                                 <input type="number" class="form-control bg-light border-0 fw-bold" value="1390">
                             </div>
+                        </div>
+                        <div class="col-12">
+                            <hr class="my-0 opacity-10">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Min Buy
+                                ($)</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="10">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Min Sell
+                                ($)</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="10">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Min Buy
+                                ($)</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="5">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Min Sell
+                                ($)</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="5">
                         </div>
                     </div>
                 </div>
@@ -201,14 +207,37 @@
                             <input type="number" class="form-control bg-light border-0 fw-bold" value="2520">
                         </div>
                         <div class="col-6">
-                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Fiat Buy
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Buy
                                 Rate</label>
                             <input type="number" class="form-control bg-light border-0 fw-bold" value="2500">
                         </div>
                         <div class="col-6">
-                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Fiat Sell
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Sell
                                 Rate</label>
                             <input type="number" class="form-control bg-light border-0 fw-bold" value="2450">
+                        </div>
+                        <div class="col-12">
+                            <hr class="my-0 opacity-10">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Min Buy
+                                ($)</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="10">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Min Sell
+                                ($)</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="10">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Min Buy
+                                ($)</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="5">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Min Sell
+                                ($)</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="5">
                         </div>
                     </div>
                 </div>
@@ -233,14 +262,37 @@
                             <input type="number" class="form-control bg-light border-0 fw-bold" value="12.2">
                         </div>
                         <div class="col-6">
-                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Fiat Buy
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Buy
                                 Rate</label>
                             <input type="number" class="form-control bg-light border-0 fw-bold" value="12.1">
                         </div>
                         <div class="col-6">
-                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Fiat Sell
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Sell
                                 Rate</label>
                             <input type="number" class="form-control bg-light border-0 fw-bold" value="11.9">
+                        </div>
+                        <div class="col-12">
+                            <hr class="my-0 opacity-10">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Min Buy
+                                ($)</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="10">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Min Sell
+                                ($)</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="10">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Min Buy
+                                ($)</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="5">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Min Sell
+                                ($)</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="5">
                         </div>
                     </div>
                 </div>
@@ -265,14 +317,37 @@
                             <input type="number" class="form-control bg-light border-0 fw-bold" value="157">
                         </div>
                         <div class="col-6">
-                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Fiat Buy
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Buy
                                 Rate</label>
                             <input type="number" class="form-control bg-light border-0 fw-bold" value="158">
                         </div>
                         <div class="col-6">
-                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Fiat Sell
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Sell
                                 Rate</label>
                             <input type="number" class="form-control bg-light border-0 fw-bold" value="155">
+                        </div>
+                        <div class="col-12">
+                            <hr class="my-0 opacity-10">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Min Buy
+                                ($)</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="10">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Min Sell
+                                ($)</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="10">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Min Buy
+                                ($)</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="5">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Min Sell
+                                ($)</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="5">
                         </div>
                     </div>
                 </div>

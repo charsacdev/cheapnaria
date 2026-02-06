@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Dashboard | CheapNaria</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        :root {
+            --primary-color: #10b981;
+        }
+
+        .stat-card-agent {
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 4px solid transparent;
+        }
+
+        .stat-card-agent:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        .stat-card-agent.deriv {
+            border-left-color: #0dcaf0;
+            background: linear-gradient(to right, #f0fcff, #fff);
+        }
+
+        .stat-card-agent.crypto {
+            border-left-color: #6f42c1;
+            background: linear-gradient(to right, #f8f0ff, #fff);
+        }
+
+        .stat-card-agent.kyc {
+            border-left-color: #ffc107;
+            background: linear-gradient(to right, #fff9e6, #fff);
+        }
+
+        /* Fix for desktop sidebar agent tag */
+        .brand-logo .badge {
+            font-size: 0.6rem !important;
+            vertical-align: middle;
+            display: inline-block;
+            /* Ensure it renders properly */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                <div class="d-flex flex-column justify-content-center">
+                    <span class="lh-1">Cheap<span>Naria</span></span>
+                    <span class="badge bg-secondary mt-1 align-self-start"
+                        style="font-size: 0.5rem; letter-spacing: 1px;">AGENT</span>
+                </div>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link active"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">5</span></a>
+            <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
+            <a href="p2p.html" class="nav-link"><i class="fas fa-handshake"></i> Crypto Transactions</a>
+            <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                <div class="d-flex flex-column justify-content-center">
+                    <span class="lh-1">Cheap<span>Naria</span></span>
+                    <span class="badge bg-secondary mt-1 align-self-start"
+                        style="font-size: 0.5rem; letter-spacing: 1px;">AGENT</span>
+                </div>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link active"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">5</span></a>
+                <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                <a href="p2p.html" class="nav-link"><i class="fas fa-handshake"></i> Crypto Transactions</a>
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="menu-toggle d-lg-none me-3" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars-staggered"></i>
+                </button>
+                <div>
+                    <h4 class="m-0 fw-bold">Dashboard</h4>
+                    <p class="mb-0 text-muted small">Overview of your performance and pending tasks.</p>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+                <div class="dropdown">
+                    <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=James+Bond&background=0dcaf0&color=fff" alt="Profile"
+                            class="rounded-circle" width="40">
+                        <div class="d-none d-sm-block">
+                            <p class="mb-0 small fw-bold">James Bond</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Support Agent</p>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-user-circle me-2"></i>
+                                Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i
+                                    class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats Overview -->
+        <div class="row g-3 mb-4">
+            <!-- Deriv Stats -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card p-4 border-0 shadow-sm stat-card-agent deriv h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="fw-bold text-secondary mb-0">Deriv</h6>
+                        <div class="bg-info-subtle text-info rounded-circle d-flex align-items-center justify-content-center"
+                            style="width: 32px; height: 32px;">
+                            <i class="fas fa-university"></i>
+                        </div>
+                    </div>
+                    <div class="row text-center mt-2">
+                        <div class="col-6 border-end">
+                            <h5 class="fw-bold mb-0">$1,200</h5>
+                            <small class="text-secondary fw-bold text-uppercase"
+                                style="font-size: 0.65rem;">Deposits</small>
+                        </div>
+                        <div class="col-6">
+                            <h5 class="fw-bold mb-0">$850</h5>
+                            <small class="text-secondary fw-bold text-uppercase"
+                                style="font-size: 0.65rem;">Withdrawals</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Crypto Stats -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card p-4 border-0 shadow-sm stat-card-agent crypto h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="fw-bold text-secondary mb-0">Crypto</h6>
+                        <div class="bg-primary-subtle text-primary rounded-circle d-flex align-items-center justify-content-center"
+                            style="width: 32px; height: 32px;">
+                            <i class="fab fa-bitcoin"></i>
+                        </div>
+                    </div>
+                    <div class="row text-center mt-2">
+                        <div class="col-6 border-end">
+                            <h5 class="fw-bold mb-0">$5,200</h5>
+                            <small class="text-secondary fw-bold text-uppercase" style="font-size: 0.65rem;">Buy</small>
+                        </div>
+                        <div class="col-6">
+                            <h5 class="fw-bold mb-0">$1,200</h5>
+                            <small class="text-secondary fw-bold text-uppercase"
+                                style="font-size: 0.65rem;">Sell</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Transaction Stats -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card p-4 border-0 shadow-sm stat-card-agent h-100 border-start-0 border-top border-warning"
+                    style="border-top-width: 4px !important;">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <h6 class="fw-bold text-secondary mb-0">Pending Tx</h6>
+                        <span class="badge bg-warning-subtle text-warning">Action Needed</span>
+                    </div>
+                    <h2 class="fw-800 mb-0 mt-2">18</h2>
+                    <small class="text-muted fw-bold">Transactions Queue</small>
+                </div>
+            </div>
+
+            <!-- Pending P2P Stats -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card p-4 border-0 shadow-sm stat-card-agent h-100 border-start-0 border-top border-danger"
+                    style="border-top-width: 4px !important;">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <h6 class="fw-bold text-secondary mb-0">Pending Crypto</h6>
+                        <span class="badge bg-danger-subtle text-danger">Urgent</span>
+                    </div>
+                    <h2 class="fw-800 mb-0 mt-2">7</h2>
+                    <small class="text-muted fw-bold">Crypto Orders Queue</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity / Work Queue Preview -->
+        <h5 class="fw-bold mb-3">Tasks Pending Action</h5>
+        <div class="card border-0 shadow-sm p-0 overflow-hidden">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" id="tasksTable">
+                    <thead class="bg-light">
+                        <tr>
+                            <th class="ps-4">Time</th>
+                            <th>Type</th>
+                            <th>Details</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="ps-4 text-muted small">5 mins ago</td>
+                            <td><span class="badge bg-info-subtle text-info border px-2">Deriv Deposit</span></td>
+                            <td>CR482910</td>
+                            <td class="fw-bold">$150.00</td>
+                            <td><span class="badge bg-warning text-dark">Pending</span></td>
+                            <td><button class="btn btn-primary btn-sm rounded-pill px-3 shadow-sm">Process</button></td>
+                        </tr>
+                        <tr>
+                            <td class="ps-4 text-muted small">12 mins ago</td>
+                            <td><span class="badge bg-primary-subtle text-primary border px-2">Crypto Review</span></td>
+                            <td>P2P Buy Order</td>
+                            <td class="fw-bold">$1,200</td>
+                            <td><span class="badge bg-warning text-dark">Pending</span></td>
+                            <td><button class="btn btn-primary btn-sm rounded-pill px-3 shadow-sm">Process</button></td>
+                        </tr>
+                        <tr>
+                            <td class="ps-4 text-muted small">28 mins ago</td>
+                            <td><span class="badge bg-info-subtle text-info border px-2">Deriv Withdrawal</span></td>
+                            <td>CR882911</td>
+                            <td class="fw-bold">$45.00</td>
+                            <td><span class="badge bg-warning text-dark">Pending</span></td>
+                            <td><button class="btn btn-primary btn-sm rounded-pill px-3 shadow-sm">Process</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer bg-white text-center border-0 p-3">
+                <a href="queue.html" class="text-decoration-none fw-bold small">View Full Work Queue <i
+                        class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tasksTable').DataTable({
+                "pageLength": 5,
+                "lengthChange": false,
+                "searching": false, // Usually dashboard tables are simple, but user said 'just like other table', which usually means search bar. I'll enable search if it's 'like others'. Admin dashboard has searching false. Admin TRANSACTIONS has searching. User said 'just like other table' which might refer to the full page tables. But this is a 'Recent Tasks' summary. Admin dashboard summary has searching false. I'll stick to admin dashboard style (searching false) but full datatable integration. 
+                // Wait, user said "the agent dashboard the table should be datatable just like other table".
+                // Admin dashboard table has: "pageLength": 5, "lengthChange": false, "searching": false, "info": false. 
+                // So I will replicate THAT.
+                "info": false,
+                "responsive": true
+            });
+        });
+    </script>
+</body>
+
+</html>

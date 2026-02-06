@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | CheapNaria Agent</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Fix for desktop sidebar agent tag */
+        .brand-logo .badge {
+            font-size: 0.6rem !important;
+            vertical-align: middle;
+            display: inline-block;
+            /* Ensure it renders properly */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                <div class="d-flex flex-column justify-content-center">
+                    <span class="lh-1">Cheap<span>Naria</span></span>
+                    <span class="badge bg-secondary mt-1 align-self-start"
+                        style="font-size: 0.5rem; letter-spacing: 1px;">AGENT</span>
+                </div>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">5</span></a>
+            <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
+            <a href="p2p.html" class="nav-link"><i class="fas fa-handshake"></i> Crypto Transactions</a>
+            <a href="settings.html" class="nav-link active"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                <div class="d-flex flex-column justify-content-center">
+                    <span class="lh-1">Cheap<span>Naria</span></span>
+                    <span class="badge bg-secondary mt-1 align-self-start"
+                        style="font-size: 0.5rem; letter-spacing: 1px;">AGENT</span>
+                </div>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">5</span></a>
+                <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                <a href="p2p.html" class="nav-link"><i class="fas fa-handshake"></i> Crypto Transactions</a>
+                <a href="settings.html" class="nav-link active"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="menu-toggle d-lg-none me-3" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars-staggered"></i>
+                </button>
+                <h4 class="m-0 fw-bold">Settings</h4>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+                <div class="dropdown">
+                    <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=James+Bond&background=0dcaf0&color=fff" alt="Profile"
+                            class="rounded-circle" width="40">
+                        <div class="d-none d-sm-block">
+                            <p class="mb-0 small fw-bold">James Bond</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Support Agent</p>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-user-circle me-2"></i>
+                                Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i
+                                    class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="row g-4">
+            <!-- Profile Column -->
+            <div class="col-md-5 col-lg-4">
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+                    <div class="card-body">
+                        <div class="position-relative d-inline-block mb-3">
+                            <img src="https://ui-avatars.com/api/?name=James+Bond&background=0dcaf0&color=fff&size=128"
+                                class="rounded-circle shadow-sm" width="100" height="100">
+                        </div>
+                        <h5 class="fw-bold mb-1">James Bond</h5>
+                        <p class="text-muted small mb-3">Support Agent</p>
+
+                        <div class="d-flex justify-content-center gap-2 mb-3">
+                            <span class="badge bg-secondary-subtle text-secondary border">ID: AGT-9921</span>
+                            <span class="badge bg-success-subtle text-success border">Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forms Column -->
+            <div class="col-md-7 col-lg-8">
+                <!-- Personal Info -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-white border-bottom py-3">
+                        <h6 class="mb-0 fw-bold"><i class="fas fa-user-edit me-2 text-primary"></i>Personal Information
+                        </h6>
+                    </div>
+                    <div class="card-body p-4">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold text-muted">First Name</label>
+                                    <input type="text" class="form-control" value="James" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold text-muted">Last Name</label>
+                                    <input type="text" class="form-control" value="Bond" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold text-muted">Email Address</label>
+                                    <input type="email" class="form-control" value="james.bond@cheapnaria.com" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold text-muted">Phone Number</label>
+                                    <input type="text" class="form-control" value="+234 800 123 4567" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold text-muted">Date Joined</label>
+                                    <input type="text" class="form-control" value="Oct 12, 2023" readonly>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Security -->
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white border-bottom py-3">
+                        <h6 class="mb-0 fw-bold"><i class="fas fa-lock me-2 text-primary"></i>Security</h6>
+                    </div>
+                    <div class="card-body p-4">
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-muted">Current Password</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" placeholder="********">
+                                    <button class="btn btn-outline-secondary" type="button"><i
+                                            class="far fa-eye"></i></button>
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold text-muted">New Password</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" placeholder="New Password">
+                                        <button class="btn btn-outline-secondary" type="button"><i
+                                                class="far fa-eye"></i></button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold text-muted">Confirm Password</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" placeholder="Confirm Password">
+                                        <button class="btn btn-outline-secondary" type="button"><i
+                                                class="far fa-eye"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-end">
+                                <button class="btn btn-primary rounded-pill px-4 shadow-sm">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Password Visibility Toggle
+            $('.input-group button').on('click', function () {
+                const input = $(this).parent().find('input');
+                const icon = $(this).find('i');
+                if (input.attr('type') === 'password') {
+                    input.attr('type', 'text');
+                    icon.removeClass('fa-eye').addClass('fa-eye-slash');
+                } else {
+                    input.attr('type', 'password');
+                    icon.removeClass('fa-eye-slash').addClass('fa-eye');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -36,8 +36,10 @@
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
                     class="badge bg-danger rounded-pill ms-auto">5</span></a>
             <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
+            <a href="p2p.html" class="nav-link"><i class="fas fa-handshake"></i> Crypto Transactions</a>
             <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
             <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+            <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
             <hr class="my-3 opacity-10">
             <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
         </nav>
@@ -64,8 +66,10 @@
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
                         class="badge bg-danger rounded-pill ms-auto">5</span></a>
                 <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                <a href="p2p.html" class="nav-link"><i class="fas fa-handshake"></i> Crypto Transactions</a>
                 <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
                 <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+                <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
                 <hr class="my-3 opacity-10">
                 <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
                 <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
@@ -85,27 +89,6 @@
             </div>
 
             <div class="d-flex align-items-center gap-3">
-                <div class="dropdown">
-                    <button class="btn btn-light position-relative" data-bs-toggle="dropdown">
-                        <i class="fas fa-bell"></i>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                            style="font-size: 0.6rem;">1</span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 300px;">
-                        <h6 class="dropdown-header">Notifications</h6>
-                        <a class="dropdown-item py-3 border-bottom" href="#">
-                            <div class="d-flex align-items-center">
-                                <div class="bg-primary-subtle text-primary p-2 rounded-circle me-3"><i
-                                        class="fas fa-user-check"></i></div>
-                                <div>
-                                    <p class="mb-0 small fw-bold">New KYC Submission</p>
-                                    <small class="text-muted">John Doe submitted his ID</small>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item text-center small text-primary" href="#">View all</a>
-                    </div>
-                </div>
 
                 <div class="dropdown">
                     <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
@@ -177,7 +160,7 @@
                         <tr>
                             <th>User</th>
                             <th>Country</th>
-                            <th>KYC Level</th>
+                            <th>Status</th>
                             <th>Status</th>
                             <th>Date Joined</th>
                             <th>Action</th>
@@ -196,7 +179,7 @@
                                 </div>
                             </td>
                             <td>Nigeria</td>
-                            <td><span class="badge bg-success-subtle text-success border px-2">Level 2</span></td>
+                            <td><span class="badge bg-success-subtle text-success border px-2">Verified</span></td>
                             <td><span class="badge-status status-approved">Active</span></td>
                             <td><span class="smaller text-muted">Jan 12, 2024</span></td>
                             <td>
@@ -216,7 +199,7 @@
                                 </div>
                             </td>
                             <td>Ghana</td>
-                            <td><span class="badge bg-warning-subtle text-warning border px-2">Level 1</span></td>
+                            <td><span class="badge bg-success-subtle text-success border px-2">Verified</span></td>
                             <td><span class="badge-status status-approved">Active</span></td>
                             <td><span class="smaller text-muted">Jan 14, 2024</span></td>
                             <td>
@@ -236,7 +219,7 @@
                                 </div>
                             </td>
                             <td>Nigeria</td>
-                            <td><span class="badge bg-light text-muted border px-2">Unverified</span></td>
+                            <td><span class="badge bg-danger-subtle text-danger border px-2">Unverified</span></td>
                             <td><span class="badge-status status-pending">Pending</span></td>
                             <td><span class="smaller text-muted">Jan 15, 2024</span></td>
                             <td>
@@ -256,7 +239,7 @@
                                 </div>
                             </td>
                             <td>Kenya</td>
-                            <td><span class="badge bg-danger-subtle text-danger border px-2">Suspended</span></td>
+                            <td><span class="badge bg-danger-subtle text-danger border px-2">Unverified</span></td>
                             <td><span class="badge-status status-rejected">Blocked</span></td>
                             <td><span class="smaller text-muted">Dec 28, 2023</span></td>
                             <td>

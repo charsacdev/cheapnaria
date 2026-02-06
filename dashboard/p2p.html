@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto P2P | CheapNaria</title>
+    <!-- CSS Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .p2p-type-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .p2p-type-card.active {
+            border-color: var(--primary-color);
+            background-color: #f0fdf4;
+        }
+
+        .step-indicator {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            background: #e2e8f0;
+            color: #64748b;
+        }
+
+        .step-indicator.active {
+            background: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block">
+        <div class="brand mb-5 px-3">
+            <a href="index.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="p2p.html" class="nav-link active"><i class="fas fa-exchange-alt"></i> Crypto Transaction</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+            <a href="deposit.html" class="nav-link"><i class="fas fa-wallet"></i> Deposits</a>
+            <a href="withdraw.html" class="nav-link"><i class="fas fa-money-bill-transfer"></i> Withdrawals</a>
+            <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+            <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="index.html" class="brand-logo">
+                <i class="fas fa-bolt-lightning"></i>
+                Cheap<span>Naria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="p2p.html" class="nav-link active"><i class="fas fa-exchange-alt"></i> Crypto Transaction</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+                <a href="deposit.html" class="nav-link"><i class="fas fa-wallet"></i> Deposits</a>
+                <a href="withdraw.html" class="nav-link"><i class="fas fa-money-bill-transfer"></i> Withdrawals</a>
+                <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h4 class="m-0">Crypto P2P Trading</h4>
+            </div>
+
+        </header>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+
+                <!-- Main P2P Interface -->
+                <div class="card p-4 shadow-sm border-0">
+
+                    <!-- P2P Type Toggle -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-6">
+                            <div class="p2p-type-card p-3 rounded-3 text-center active" id="buyToggle"
+                                onclick="switchMode('buy')">
+                                <i class="fas fa-arrow-down text-success fs-3 mb-2"></i>
+                                <h5 class="fw-bold mb-0 text-dark">Buy Crypto</h5>
+                                <small class="text-muted">Pay Naira, Get Crypto</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p2p-type-card p-3 rounded-3 text-center" id="sellToggle"
+                                onclick="switchMode('sell')">
+                                <i class="fas fa-arrow-up text-danger fs-3 mb-2"></i>
+                                <h5 class="fw-bold mb-0 text-dark">Sell Crypto</h5>
+                                <small class="text-muted">Send Crypto, Get Naira</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BUY FLOW -->
+                    <div id="buyFlow">
+                        <!-- Step 1: inputs -->
+                        <div id="buyStep1">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Select Asset</label>
+                                <select class="form-select py-3 bg-light border-0">
+                                    <option>USDT </option>
+                                    <option>USDC </option>
+                                    <option>BTC </option>
+                                    <option>ETH </option>
+                                </select>
+                            </div>
+
+                            <div class="alert alert-warning d-flex align-items-start small mb-4">
+                                <i class="fas fa-exclamation-triangle mt-1 me-2"></i>
+                                <div>
+                                    <strong>Important:</strong>
+                                    <p class="mb-0">Crypto purchased will be automatically sent to the Wallet Address
+                                        saved in your <a href="profile.html#payout"
+                                            class="fw-bold text-decoration-none text-dark">Payout Settings</a>.</p>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Amount to Buy ($)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text border-0 bg-light fw-bold">$</span>
+                                    <input type="number" class="form-control py-3 border-0 bg-light" id="buyAmountUsd"
+                                        placeholder="100">
+                                </div>
+                                <div class="d-flex justify-content-between mt-2 px-1">
+                                    <small class="text-muted">Rate: $1 = <span
+                                            class="fw-bold text-success">₦1,550</span></small>
+                                    <small class="text-muted">You Pay: <span class="fw-bold text-dark"
+                                            id="buyPayPreview">₦0.00</span></small>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary w-100 py-3 fw-bold" onclick="nextBuyStep()">Proceed to
+                                Payment</button>
+                        </div>
+
+                        <!-- Step 2: Select Location -->
+                        <div id="buyStep2" class="d-none">
+                            <h5 class="fw-bold mb-3">Where are you paying from?</h5>
+                            <div class="d-grid gap-3 mb-4">
+                                <button
+                                    class="btn btn-outline-light text-dark text-start p-3 border d-flex align-items-center justify-content-between"
+                                    onclick="showPaymentDetails('nigeria')">
+                                    <span class="fw-bold"><i class="fas fa-flag text-success me-2"></i> Nigeria
+                                        Bank</span>
+                                    <i class="fas fa-chevron-right text-muted"></i>
+                                </button>
+                                <button
+                                    class="btn btn-outline-light text-dark text-start p-3 border d-flex align-items-center justify-content-between"
+                                    onclick="showPaymentDetails('global')">
+                                    <span class="fw-bold"><i class="fas fa-globe text-primary me-2"></i> Non-Nigeria
+                                        (Global)</span>
+                                    <i class="fas fa-chevron-right text-muted"></i>
+                                </button>
+                            </div>
+                            <button class="btn btn-light w-100 py-2" onclick="resetBuy()">Back</button>
+                        </div>
+
+                        <!-- Step 3: Payment Details -->
+                        <div id="buyStep3" class="d-none">
+                            <div class="alert alert-info small mb-4">
+                                <i class="fas fa-info-circle me-1"></i> Pay exactly <b id="finalBuyAmount">₦0.00</b> to
+                                the account below.
+                            </div>
+
+                            <div class="bg-light p-4 rounded-4 mb-4" id="paymentDetailsBox">
+                                <!-- Injected via JS -->
+                            </div>
+
+                            <button class="btn btn-success w-100 py-3 fw-bold mb-2" onclick="showSuccess('buy')">I Have
+                                Paid</button>
+                            <button class="btn btn-light w-100" onclick="resetBuy()">Cancel</button>
+                        </div>
+                    </div>
+
+                    <!-- SELL FLOW -->
+                    <div id="sellFlow" class="d-none">
+                        <!-- Step 1: inputs -->
+                        <div id="sellStep1">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Select Asset to Sell</label>
+                                <select class="form-select py-3 bg-light border-0">
+                                    <option>USDT (TRC20)</option>
+                                    <option>USDT (ERC20)</option>
+                                    <option>BTC (Native)</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Amount to Sell ($)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text border-0 bg-light fw-bold">$</span>
+                                    <input type="number" class="form-control py-3 border-0 bg-light" id="sellAmountUsd"
+                                        placeholder="100">
+                                </div>
+                                <div class="d-flex justify-content-between mt-2 px-1">
+                                    <small class="text-muted">Rate: $1 = <span
+                                            class="fw-bold text-success">₦1,530</span></small>
+                                    <small class="text-muted">You Receive: <span class="fw-bold text-dark"
+                                            id="sellReceivePreview">₦0.00</span></small>
+                                </div>
+                            </div>
+                            <button class="btn btn-danger w-100 py-3 fw-bold" onclick="nextSellStep()">Proceed to
+                                Trade</button>
+                        </div>
+
+                        <!-- Step 2: Show Wallet to Pay Into -->
+                        <div id="sellStep2" class="d-none">
+                            <div class="text-center mb-4">
+                                <p class="text-muted small mb-1">Send exactly</p>
+                                <h2 class="fw-bold text-danger mb-0" id="finalSellUsd">$0.00</h2>
+                                <span class="badge bg-light text-dark border">USDT (TRC20)</span>
+                            </div>
+
+                            <div class="bg-light p-3 rounded-3 border position-relative mb-3">
+                                <small class="text-muted d-block mb-1">Company Wallet Address</small>
+                                <div class="d-flex align-items-center">
+                                    <code
+                                        class="fw-bold fs-6 text-dark flex-grow-1 text-break">TMx......jh8921da8</code>
+                                    <button class="btn btn-sm btn-outline-primary ms-2"><i
+                                            class="fas fa-copy"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="text-center mb-4">
+                                <div class="spinner-border spinner-border-sm text-warning me-2" role="status"></div>
+                                <span class="small text-muted fw-bold">Awaiting Transaction... <span
+                                        id="timer">15:00</span></span>
+                            </div>
+
+                            <button class="btn btn-primary w-100 py-3 fw-bold mb-2" onclick="nextSellStep2()">I Have
+                                Sent Assets</button>
+                            <button class="btn btn-light w-100" onclick="resetSell()">Cancel</button>
+                        </div>
+
+                        <!-- Step 3: Choose Payout Method -->
+                        <div id="sellStep3" class="d-none">
+                            <h5 class="fw-bold mb-3">Select Payout Destination</h5>
+
+                            <div class="d-grid gap-3 mb-4">
+                                <!-- Existing Banks from Profile would be mapped here ideally -->
+                                <button class="btn btn-outline-light text-dark text-start p-3 border active-method"
+                                    onclick="selectPayoutMethod(this)">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="bg-primary-subtle text-primary p-2 rounded"><i
+                                                class="fas fa-university"></i></div>
+                                        <div>
+                                            <h6 class="mb-0 fw-bold">Access Bank</h6>
+                                            <small class="text-muted">012****789 • John Doe</small>
+                                        </div>
+                                        <i class="fas fa-check-circle ms-auto text-success"></i>
+                                    </div>
+                                </button>
+
+                                <button class="btn btn-outline-light text-dark text-start p-3 border"
+                                    onclick="selectPayoutMethod(this)">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="bg-success-subtle text-success p-2 rounded"><i
+                                                class="fas fa-globe"></i></div>
+                                        <div>
+                                            <h6 class="mb-0 fw-bold">Mono Agent</h6>
+                                            <small class="text-muted">Global Payout • Verified</small>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <button class="btn btn-success w-100 py-3 fw-bold" onclick="showSuccess('sell')">Confirm
+                                Payout Details</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="p2pSuccessModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg text-center p-5">
+                <div class="mb-3">
+                    <div
+                        class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center p-4">
+                        <i class="fas fa-check fs-1"></i>
+                    </div>
+                </div>
+                <h3 class="fw-bold">Trade Submitted!</h3>
+                <p class="text-muted mb-4">Your transaction has been queued for verification. <br> You will be notified
+                    shortly.</p>
+                <button class="btn btn-light w-100 py-3 fw-bold text-primary"
+                    onclick="window.location.href='transactions.html'">View Transaction Status</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Constants
+        const rates = { buy: 1550, sell: 1530 };
+
+        // Mode Switcher
+        function switchMode(mode) {
+            $('.p2p-type-card').removeClass('active');
+            $('#' + mode + 'Toggle').addClass('active');
+
+            if (mode === 'buy') {
+                $('#buyFlow').removeClass('d-none');
+                $('#sellFlow').addClass('d-none');
+                resetBuy();
+            } else {
+                $('#buyFlow').addClass('d-none');
+                $('#sellFlow').removeClass('d-none');
+                resetSell();
+            }
+        }
+
+        // --- BUY LOGIC ---
+        function resetBuy() {
+            $('#buyStep1').removeClass('d-none');
+            $('#buyStep2, #buyStep3').addClass('d-none');
+        }
+
+        $('#buyAmountUsd').on('input', function () {
+            const usd = $(this).val();
+            $('#buyPayPreview').text('₦' + (usd * rates.buy).toLocaleString());
+        });
+
+        function nextBuyStep() {
+            if (!$('#buyAmountUsd').val()) return alert("Enter amount");
+            $('#buyStep1').addClass('d-none');
+            $('#buyStep2').removeClass('d-none').hide().fadeIn();
+        }
+
+        function showPaymentDetails(region) {
+            $('#buyStep2').addClass('d-none');
+            $('#buyStep3').removeClass('d-none').hide().fadeIn();
+
+            $('#finalBuyAmount').text($('#buyPayPreview').text());
+
+            const container = $('#paymentDetailsBox');
+            if (region === 'nigeria') {
+                container.html(`
+                    <div class="p-4 bg-white rounded-4 border text-center">
+                        <small class="text-uppercase text-muted fw-bold letter-spacing-1">Bank Name</small>
+                        <h4 class="fw-bold text-dark mb-4">Wema Bank</h4>
+                        
+                        <small class="text-uppercase text-muted fw-bold letter-spacing-1">Account Number</small>
+                        <div class="d-flex align-items-center justify-content-center gap-2 mb-4">
+                            <h2 class="fw-bold text-primary mb-0 display-6">0123456789</h2>
+                            <button class="btn btn-outline-primary btn-sm rounded-circle"><i class="fas fa-copy"></i></button>
+                        </div>
+
+                        <small class="text-uppercase text-muted fw-bold letter-spacing-1">Account Name</small>
+                        <h5 class="fw-bold text-dark mb-0">CheapNaria Vault</h5>
+                    </div>
+                `);
+            } else {
+                container.html(`
+                     <div class="p-4 bg-white rounded-4 border text-center">
+                        <small class="text-uppercase text-muted fw-bold letter-spacing-1">Agent Provider</small>
+                        <h4 class="fw-bold text-dark mb-4">Mono Global Agent</h4>
+                        
+                        <small class="text-uppercase text-muted fw-bold letter-spacing-1">Agent Account Number</small>
+                        <div class="d-flex align-items-center justify-content-center gap-2 mb-4">
+                            <h2 class="fw-bold text-primary mb-0 display-6">8899001122</h2>
+                            <button class="btn btn-outline-primary btn-sm rounded-circle"><i class="fas fa-copy"></i></button>
+                        </div>
+
+                        <small class="text-uppercase text-muted fw-bold letter-spacing-1">Reference Code</small>
+                        <h5 class="fw-bold text-danger mb-0">${Math.random().toString(36).substring(7).toUpperCase()}</h5>
+                    </div>
+                `);
+            }
+        }
+
+        // --- SELL LOGIC ---
+        function resetSell() {
+            $('#sellStep1').removeClass('d-none');
+            $('#sellStep2, #sellStep3').addClass('d-none');
+        }
+
+        $('#sellAmountUsd').on('input', function () {
+            const usd = $(this).val();
+            $('#sellReceivePreview').text('₦' + (usd * rates.sell).toLocaleString());
+        });
+
+        function nextSellStep() {
+            if (!$('#sellAmountUsd').val()) return alert("Enter amount");
+            $('#finalSellUsd').text('$' + $('#sellAmountUsd').val());
+            $('#sellStep1').addClass('d-none');
+            $('#sellStep2').removeClass('d-none').hide().fadeIn();
+
+            // Start simple timer
+            let time = 900;
+            const timer = setInterval(() => {
+                time--;
+                // simple calc for mm:ss
+                // ... logic
+            }, 1000);
+        }
+
+        function nextSellStep2() {
+            $('#sellStep2').addClass('d-none');
+            $('#sellStep3').removeClass('d-none').hide().fadeIn();
+        }
+
+        function selectPayoutMethod(el) {
+            $('.active-method').removeClass('active-method border-primary bg-light');
+            $(el).addClass('active-method border-primary bg-light');
+        }
+
+        // --- SHARED ---
+        function showSuccess(type) {
+            new bootstrap.Modal('#p2pSuccessModal').show();
+        }
+
+        $(document).ready(function () {
+            // Check url hash for #sell or #buy (existing simple tab logic)
+            const hash = window.location.hash;
+            if (hash === '#sell') {
+                switchMode('sell');
+            } else if (hash === '#buy') {
+                switchMode('buy');
+            }
+
+            // --- HASH BASED MODAL PERSISTENCE ---
+            const modalMap = {
+                '#p2p-success': 'p2pSuccessModal'
+            };
+
+            if (modalMap[hash]) {
+                const modalId = modalMap[hash];
+                const modal = new bootstrap.Modal(document.getElementById(modalId));
+                modal.show();
+            }
+
+            $('.modal').on('show.bs.modal', function () {
+                const modalId = $(this).attr('id');
+                const h = Object.keys(modalMap).find(key => modalMap[key] === modalId);
+                if (h) history.pushState(null, null, h);
+            });
+
+            $('.modal').on('hide.bs.modal', function () {
+                // If we were on buy/sell tab, revert to that, else clear
+                // Ideally checks if p2p-success was closed, maybe go back to #buy or #sell?
+                // For now, clear to avoid stuck state
+                history.pushState(null, null, ' ');
+            });
+        });
+    </script>
+</body>
+
+</html>
