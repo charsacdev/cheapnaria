@@ -1208,6 +1208,10 @@ nav.scrolled .nav-auth .btn-outline {
     margin-bottom: 3rem;
 }
 
+.auth-header .logo {
+    color: var(--secondary);
+}
+
 /* Black Footer */
 footer {
     background: #000;
