@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
     <title>Transaction History | CheapNaria</title>
     <!-- CSS Dependencies -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,21 +15,26 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
     <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
     <!-- Sidebar for Desktop -->
     <aside class="sidebar d-none d-lg-block">
         <div class="brand mb-5 px-3">
             <a href="index.html" class="brand-logo">
-                <i class="fas fa-bolt-lightning"></i>
-                Cheap<span>Naria</span>
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
             </a>
         </div>
 
         <nav class="nav flex-column">
             <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
-            <a href="p2p.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Crypto Transaction</a>
+            <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
+            <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+            <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> Other Services</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
-            <a href="deposit.html" class="nav-link"><i class="fas fa-wallet"></i> Deposits</a>
-            <a href="withdraw.html" class="nav-link"><i class="fas fa-money-bill-transfer"></i> Withdrawals</a>
             <a href="transactions.html" class="nav-link active"><i class="fas fa-history"></i> Transactions</a>
             <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
         </nav>
@@ -43,18 +49,20 @@
     <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
         <div class="offcanvas-header">
             <a href="index.html" class="brand-logo">
-                <i class="fas fa-bolt-lightning"></i>
-                Cheap<span>Naria</span>
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
             </a>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body">
             <nav class="nav flex-column">
                 <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
-                <a href="p2p.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Crypto Transaction</a>
+                <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
+                <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+                <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> Other Services</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
-                <a href="deposit.html" class="nav-link"><i class="fas fa-wallet"></i> Deposits</a>
-                <a href="withdraw.html" class="nav-link"><i class="fas fa-money-bill-transfer"></i> Withdrawals</a>
                 <a href="transactions.html" class="nav-link active"><i class="fas fa-history"></i> Transactions</a>
                 <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
                 <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
@@ -72,6 +80,9 @@
             </div>
 
             <div class="d-flex gap-2">
+                <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
         </header>
 
@@ -92,75 +103,1052 @@
         <!-- Transactions Table Card -->
         <div class="card p-4">
             <div class="table-responsive">
-                <table id="transactionsTable" class="table table-hover w-100">
+                <table id="transactionsTable" class="table tx-table w-100">
                     <thead>
                         <tr>
+                            <th>Transaction</th>
                             <th>Date</th>
-                            <th>Transaction ID</th>
-                            <th>Type</th>
-                            <th>Method</th>
-                            <th>Asset</th>
                             <th>Amount</th>
                             <th>Status</th>
                             <th>Receipt</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- CR: Deposit -->
+                        <!-- ===================== DEPOSITS (5) ===================== -->
                         <tr>
-                            <td>Oct 20, 2023 - 14:30</td>
-                            <td class="text-secondary small">TXN-9988221100</td>
-                            <td><span class="text-success fw-bold"><i class="fas fa-arrow-down me-1"></i> Deriv
-                                    Deposit</span></td>
-                            <td>Bank Transfer</td>
-                            <td class="text-muted">UGT (USD)</td>
-                            <td class="fw-bold">$250.00</td>
-                            <td><span class="badge-status status-approved">Approved</span></td>
                             <td>
-                                <button class="btn btn-sm btn-light border" data-bs-toggle="modal"
-                                    data-bs-target="#receiptModal">
-                                    <i class="fas fa-file-invoice text-primary"></i>
-                                </button>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-in"><i class="fas fa-arrow-down"></i></div>
+                                    <div class="tx-text">
+                                        <p>Wallet Deposit</p>
+                                        <small>Bank Transfer &middot; DEP-88231</small>
+                                    </div>
+                                </div>
                             </td>
-                        </tr>
-                        <!-- CR: Withdrawal -->
-                        <tr>
-                            <td>Oct 19, 2023 - 09:12</td>
-                            <td class="text-secondary small">TXN-9988221101</td>
-                            <td><span class="text-danger fw-bold"><i class="fas fa-arrow-up me-1"></i> Deriv
-                                    Withdrawal</span></td>
-                            <td>Crypto Payout</td>
-                            <td class="text-muted">USDT (TRC20)</td>
-                            <td class="fw-bold">$105.00</td>
-                            <td><span class="badge-status status-pending">Pending</span></td>
-                            <td><button class="btn btn-sm btn-light text-primary"><i
-                                        class="fas fa-file-invoice"></i></button></td>
-                        </tr>
-                        <!-- P2P: Buy -->
-                        <tr>
-                            <td>Oct 18, 2023 - 11:15</td>
-                            <td class="text-secondary small">P2P-1122334455</td>
-                            <td><span class="text-success fw-bold"><i class="fas fa-plus-circle me-1"></i> Crypto
-                                    Buy</span></td>
-                            <td>Bank Transfer</td>
-                            <td class="text-muted">USDT (BEP20)</td>
-                            <td class="fw-bold">$500.00</td>
+                            <td class="text-muted small">Nov 02, 2024 - 09:12</td>
+                            <td class="fw-bold text-success">+ ₦150,000.00</td>
                             <td><span class="badge-status status-approved">Approved</span></td>
-                            <td><button class="btn btn-sm btn-light text-primary"><i
-                                        class="fas fa-file-invoice"></i></button></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Wallet"
+                                    data-target="CheapNaria NGN Wallet" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
                         </tr>
-                        <!-- P2P: Sell -->
                         <tr>
-                            <td>Oct 17, 2023 - 14:20</td>
-                            <td class="text-secondary small">P2P-5544332211</td>
-                            <td><span class="text-danger fw-bold"><i class="fas fa-minus-circle me-1"></i> Crypto
-                                    Sell</span></td>
-                            <td>Naira Payout</td>
-                            <td class="text-muted">BTC</td>
-                            <td class="fw-bold">$1,200.00</td>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-in"><i class="fas fa-arrow-down"></i></div>
+                                    <div class="tx-text">
+                                        <p>Wallet Deposit</p>
+                                        <small>USDT (TRC20) &middot; DEP-88245</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 29, 2024 - 16:40</td>
+                            <td class="fw-bold text-success">+ ₦710,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Wallet"
+                                    data-target="CheapNaria NGN Wallet" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-in"><i class="fas fa-arrow-down"></i></div>
+                                    <div class="tx-text">
+                                        <p>Wallet Deposit</p>
+                                        <small>Bank Transfer &middot; DEP-88260</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 25, 2024 - 11:05</td>
+                            <td class="fw-bold text-success">+ ₦45,000.00</td>
+                            <td><span class="badge-status status-pending">Pending</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Wallet"
+                                    data-target="CheapNaria NGN Wallet" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-in"><i class="fas fa-arrow-down"></i></div>
+                                    <div class="tx-text">
+                                        <p>Wallet Deposit</p>
+                                        <small>BTC &middot; DEP-88277</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 20, 2024 - 08:50</td>
+                            <td class="fw-bold text-success">+ ₦1,420,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Wallet"
+                                    data-target="CheapNaria NGN Wallet" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-in"><i class="fas fa-arrow-down"></i></div>
+                                    <div class="tx-text">
+                                        <p>Wallet Deposit</p>
+                                        <small>USDC &middot; DEP-88299</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 15, 2024 - 14:22</td>
+                            <td class="fw-bold text-success">+ ₦283,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Wallet"
+                                    data-target="CheapNaria NGN Wallet" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+
+                        <!-- ===================== WITHDRAWALS (5) ===================== -->
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-out"><i class="fas fa-arrow-up"></i></div>
+                                    <div class="tx-text">
+                                        <p>Wallet Withdrawal</p>
+                                        <small>Bank Transfer &middot; WTD-77012</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Nov 01, 2024 - 19:30</td>
+                            <td class="fw-bold text-danger">- ₦80,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Wallet"
+                                    data-target="CheapNaria NGN Wallet" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-out"><i class="fas fa-arrow-up"></i></div>
+                                    <div class="tx-text">
+                                        <p>Wallet Withdrawal</p>
+                                        <small>USDT (TRC20) &middot; WTD-77034</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 28, 2024 - 12:15</td>
+                            <td class="fw-bold text-danger">- ₦350,500.00</td>
+                            <td><span class="badge-status status-pending">Pending</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Wallet"
+                                    data-target="CheapNaria NGN Wallet" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-out"><i class="fas fa-arrow-up"></i></div>
+                                    <div class="tx-text">
+                                        <p>Wallet Withdrawal</p>
+                                        <small>Bank Transfer &middot; WTD-77056</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 22, 2024 - 17:05</td>
+                            <td class="fw-bold text-danger">- ₦120,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Wallet"
+                                    data-target="CheapNaria NGN Wallet" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-out"><i class="fas fa-arrow-up"></i></div>
+                                    <div class="tx-text">
+                                        <p>Wallet Withdrawal</p>
+                                        <small>ETH &middot; WTD-77078</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 18, 2024 - 09:40</td>
+                            <td class="fw-bold text-danger">- ₦560,000.00</td>
                             <td><span class="badge-status status-rejected">Rejected</span></td>
-                            <td><button class="btn btn-sm btn-light text-primary"><i
-                                        class="fas fa-file-invoice"></i></button></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Wallet"
+                                    data-target="CheapNaria NGN Wallet" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-out"><i class="fas fa-arrow-up"></i></div>
+                                    <div class="tx-text">
+                                        <p>Wallet Withdrawal</p>
+                                        <small>Bank Transfer &middot; WTD-77091</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 12, 2024 - 21:10</td>
+                            <td class="fw-bold text-danger">- ₦25,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Wallet"
+                                    data-target="CheapNaria NGN Wallet" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+
+                        <!-- ===================== DERIV DEPOSITS (5) ===================== -->
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-deriv"><i class="fas fa-arrow-down"></i></div>
+                                    <div class="tx-text">
+                                        <p>Deriv Deposit</p>
+                                        <small>Bank Transfer &middot; DRV-90211</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Nov 03, 2024 - 07:55</td>
+                            <td class="fw-bold text-success">+ $250.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Deriv CR Account"
+                                    data-target="CR1234567" data-rate="$1 = ₦1,535"
+                                    data-equiv-label="Equivalent Paid" data-equiv="₦383,750.00"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-deriv"><i class="fas fa-arrow-down"></i></div>
+                                    <div class="tx-text">
+                                        <p>Deriv Deposit</p>
+                                        <small>USDT (TRC20) &middot; DRV-90233</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 30, 2024 - 13:20</td>
+                            <td class="fw-bold text-success">+ $500.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Deriv CR Account"
+                                    data-target="CR1234567" data-rate="$1 = ₦1,535"
+                                    data-equiv-label="Equivalent Paid" data-equiv="₦767,500.00"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-deriv"><i class="fas fa-arrow-down"></i></div>
+                                    <div class="tx-text">
+                                        <p>Deriv Deposit</p>
+                                        <small>Bank Transfer &middot; DRV-90248</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 24, 2024 - 10:10</td>
+                            <td class="fw-bold text-success">+ $100.00</td>
+                            <td><span class="badge-status status-pending">Pending</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Deriv CR Account"
+                                    data-target="CR1234567" data-rate="$1 = ₦1,535"
+                                    data-equiv-label="Equivalent Paid" data-equiv="₦153,500.00"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-deriv"><i class="fas fa-arrow-down"></i></div>
+                                    <div class="tx-text">
+                                        <p>Deriv Deposit</p>
+                                        <small>USDC &middot; DRV-90265</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 19, 2024 - 18:45</td>
+                            <td class="fw-bold text-success">+ $1,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Deriv CR Account"
+                                    data-target="CR1234567" data-rate="$1 = ₦1,535"
+                                    data-equiv-label="Equivalent Paid" data-equiv="₦1,535,000.00"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-deriv"><i class="fas fa-arrow-down"></i></div>
+                                    <div class="tx-text">
+                                        <p>Deriv Deposit</p>
+                                        <small>Bank Transfer &middot; DRV-90280</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 14, 2024 - 06:30</td>
+                            <td class="fw-bold text-success">+ $75.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Deriv CR Account"
+                                    data-target="CR1234567" data-rate="$1 = ₦1,535"
+                                    data-equiv-label="Equivalent Paid" data-equiv="₦115,125.00"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+
+                        <!-- ===================== DERIV WITHDRAWALS (5) ===================== -->
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-deriv"><i class="fas fa-arrow-up"></i></div>
+                                    <div class="tx-text">
+                                        <p>Deriv Withdrawal</p>
+                                        <small>Bank Payout &middot; DRW-61122</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Nov 02, 2024 - 15:00</td>
+                            <td class="fw-bold text-danger">- $105.00</td>
+                            <td><span class="badge-status status-pending">Pending</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Deriv CR Account"
+                                    data-target="CR1234567" data-rate="$1 = ₦1,490"
+                                    data-equiv-label="Equivalent Settled" data-equiv="₦156,450.00"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-deriv"><i class="fas fa-arrow-up"></i></div>
+                                    <div class="tx-text">
+                                        <p>Deriv Withdrawal</p>
+                                        <small>Crypto Payout (USDT) &middot; DRW-61140</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 27, 2024 - 20:35</td>
+                            <td class="fw-bold text-danger">- $320.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Deriv CR Account"
+                                    data-target="CR1234567" data-rate="$1 = ₦1,490"
+                                    data-equiv-label="Equivalent Settled" data-equiv="₦476,800.00"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-deriv"><i class="fas fa-arrow-up"></i></div>
+                                    <div class="tx-text">
+                                        <p>Deriv Withdrawal</p>
+                                        <small>Bank Payout &middot; DRW-61158</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 21, 2024 - 09:15</td>
+                            <td class="fw-bold text-danger">- $45.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Deriv CR Account"
+                                    data-target="CR1234567" data-rate="$1 = ₦1,490"
+                                    data-equiv-label="Equivalent Settled" data-equiv="₦67,050.00"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-deriv"><i class="fas fa-arrow-up"></i></div>
+                                    <div class="tx-text">
+                                        <p>Deriv Withdrawal</p>
+                                        <small>Crypto Payout (BTC) &middot; DRW-61175</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 16, 2024 - 12:50</td>
+                            <td class="fw-bold text-danger">- $890.00</td>
+                            <td><span class="badge-status status-rejected">Rejected</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Deriv CR Account"
+                                    data-target="CR1234567" data-rate="$1 = ₦1,490"
+                                    data-equiv-label="Equivalent Settled" data-equiv="₦1,326,100.00"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-deriv"><i class="fas fa-arrow-up"></i></div>
+                                    <div class="tx-text">
+                                        <p>Deriv Withdrawal</p>
+                                        <small>Bank Payout &middot; DRW-61190</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 11, 2024 - 17:25</td>
+                            <td class="fw-bold text-danger">- $60.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Deriv CR Account"
+                                    data-target="CR1234567" data-rate="$1 = ₦1,490"
+                                    data-equiv-label="Equivalent Settled" data-equiv="₦89,400.00"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+
+                        <!-- ===================== TRANSFERS (5) ===================== -->
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-transfer"><i class="fas fa-paper-plane"></i></div>
+                                    <div class="tx-text">
+                                        <p>Transfer to @johntrader</p>
+                                        <small>Internal &middot; TRF-33201</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Nov 03, 2024 - 08:15</td>
+                            <td class="fw-bold text-danger">- ₦25,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Recipient"
+                                    data-target="@johntrader" data-rate="" data-equiv-label="" data-equiv=""><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-in"><i class="fas fa-inbox"></i></div>
+                                    <div class="tx-text">
+                                        <p>Transfer from @blessingfx</p>
+                                        <small>Internal &middot; TRF-33218</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 31, 2024 - 14:50</td>
+                            <td class="fw-bold text-success">+ ₦60,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Sender"
+                                    data-target="@blessingfx" data-rate="" data-equiv-label="" data-equiv=""><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-transfer"><i class="fas fa-paper-plane"></i></div>
+                                    <div class="tx-text">
+                                        <p>Transfer to @mercy24</p>
+                                        <small>Internal &middot; TRF-33235</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 26, 2024 - 11:30</td>
+                            <td class="fw-bold text-danger">- ₦15,500.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Recipient"
+                                    data-target="@mercy24" data-rate="" data-equiv-label="" data-equiv=""><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-in"><i class="fas fa-inbox"></i></div>
+                                    <div class="tx-text">
+                                        <p>Transfer from @tunde2000</p>
+                                        <small>Internal &middot; TRF-33250</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 23, 2024 - 19:05</td>
+                            <td class="fw-bold text-success">+ ₦12,000.00</td>
+                            <td><span class="badge-status status-pending">Pending</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Sender"
+                                    data-target="@tunde2000" data-rate="" data-equiv-label="" data-equiv=""><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-transfer"><i class="fas fa-paper-plane"></i></div>
+                                    <div class="tx-text">
+                                        <p>Transfer to @johntrader</p>
+                                        <small>Internal &middot; TRF-33267</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 17, 2024 - 09:45</td>
+                            <td class="fw-bold text-danger">- ₦8,750.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Recipient"
+                                    data-target="@johntrader" data-rate="" data-equiv-label="" data-equiv=""><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+
+                        <!-- ===================== PAY CHINA SUPPLIER (5) ===================== -->
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-supplier"><i class="fas fa-ship"></i></div>
+                                    <div class="tx-text">
+                                        <p>Pay Guangzhou Textiles Co.</p>
+                                        <small>&yen;10,000.00 CNY &middot; SUP-40122</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Nov 01, 2024 - 10:20</td>
+                            <td class="fw-bold text-danger">- ₦2,085,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Supplier"
+                                    data-target="Guangzhou Textiles Co." data-rate="¥1 = ₦208.50"
+                                    data-equiv-label="Amount Paid (CNY)" data-equiv="¥10,000.00"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-supplier"><i class="fas fa-ship"></i></div>
+                                    <div class="tx-text">
+                                        <p>Pay Shenzhen Electronics Ltd</p>
+                                        <small>&yen;2,000.00 CNY &middot; SUP-40145</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 29, 2024 - 16:00</td>
+                            <td class="fw-bold text-danger">- ₦417,000.00</td>
+                            <td><span class="badge-status status-pending">Pending</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Supplier"
+                                    data-target="Shenzhen Electronics Ltd" data-rate="¥1 = ₦208.50"
+                                    data-equiv-label="Amount Paid (CNY)" data-equiv="¥2,000.00"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-supplier"><i class="fas fa-ship"></i></div>
+                                    <div class="tx-text">
+                                        <p>Pay Yiwu Trading Group</p>
+                                        <small>&yen;5,000.00 CNY &middot; SUP-40162</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 24, 2024 - 08:40</td>
+                            <td class="fw-bold text-danger">- ₦1,042,500.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Supplier"
+                                    data-target="Yiwu Trading Group" data-rate="¥1 = ₦208.50"
+                                    data-equiv-label="Amount Paid (CNY)" data-equiv="¥5,000.00"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-supplier"><i class="fas fa-ship"></i></div>
+                                    <div class="tx-text">
+                                        <p>Pay Foshan Furniture Co.</p>
+                                        <small>&yen;3,000.00 CNY &middot; SUP-40180</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 18, 2024 - 13:15</td>
+                            <td class="fw-bold text-danger">- ₦625,500.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Supplier"
+                                    data-target="Foshan Furniture Co." data-rate="¥1 = ₦208.50"
+                                    data-equiv-label="Amount Paid (CNY)" data-equiv="¥3,000.00"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-supplier"><i class="fas fa-ship"></i></div>
+                                    <div class="tx-text">
+                                        <p>Pay Ningbo Import Export</p>
+                                        <small>&yen;1,000.00 CNY &middot; SUP-40199</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 13, 2024 - 07:50</td>
+                            <td class="fw-bold text-danger">- ₦208,500.00</td>
+                            <td><span class="badge-status status-rejected">Rejected</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Supplier"
+                                    data-target="Ningbo Import Export" data-rate="¥1 = ₦208.50"
+                                    data-equiv-label="Amount Paid (CNY)" data-equiv="¥1,000.00"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+
+                        <!-- ===================== SEND ABROAD (5) ===================== -->
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-abroad"><i class="fas fa-earth-africa"></i></div>
+                                    <div class="tx-text">
+                                        <p>Send to Ghana &#127468;&#127469;</p>
+                                        <small>Mobile Money &middot; ABR-52011</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Nov 02, 2024 - 12:30</td>
+                            <td class="fw-bold text-danger">- ₦50,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Destination"
+                                    data-target="Ghana &middot; Mobile Money" data-rate="₦1 = 0.0090 GHS"
+                                    data-equiv-label="Recipient Receives" data-equiv="450.00 GHS"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-abroad"><i class="fas fa-earth-africa"></i></div>
+                                    <div class="tx-text">
+                                        <p>Send to Kenya &#127472;&#127466;</p>
+                                        <small>Mobile Money &middot; ABR-52029</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 28, 2024 - 18:10</td>
+                            <td class="fw-bold text-danger">- ₦75,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Destination"
+                                    data-target="Kenya &middot; Mobile Money" data-rate="₦1 = 0.0850 KES"
+                                    data-equiv-label="Recipient Receives" data-equiv="6,375.00 KES"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-abroad"><i class="fas fa-earth-africa"></i></div>
+                                    <div class="tx-text">
+                                        <p>Send to Tanzania &#127481;&#127487;</p>
+                                        <small>Bank Transfer &middot; ABR-52044</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 25, 2024 - 09:55</td>
+                            <td class="fw-bold text-danger">- ₦100,000.00</td>
+                            <td><span class="badge-status status-pending">Pending</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Destination"
+                                    data-target="Tanzania &middot; Bank Transfer" data-rate="₦1 = 1.6800 TZS"
+                                    data-equiv-label="Recipient Receives" data-equiv="168,000.00 TZS"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-abroad"><i class="fas fa-earth-africa"></i></div>
+                                    <div class="tx-text">
+                                        <p>Send to Uganda &#127482;&#127468;</p>
+                                        <small>Mobile Money &middot; ABR-52061</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 20, 2024 - 15:40</td>
+                            <td class="fw-bold text-danger">- ₦40,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Destination"
+                                    data-target="Uganda &middot; Mobile Money" data-rate="₦1 = 2.4500 UGX"
+                                    data-equiv-label="Recipient Receives" data-equiv="98,000.00 UGX"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-abroad"><i class="fas fa-earth-africa"></i></div>
+                                    <div class="tx-text">
+                                        <p>Send to Ghana &#127468;&#127469;</p>
+                                        <small>Bank Transfer &middot; ABR-52078</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 15, 2024 - 11:20</td>
+                            <td class="fw-bold text-danger">- ₦30,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Destination"
+                                    data-target="Ghana &middot; Bank Transfer" data-rate="₦1 = 0.0090 GHS"
+                                    data-equiv-label="Recipient Receives" data-equiv="270.00 GHS"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <!-- ===================== BETTING (5) ===================== -->
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-betting"><i class="fas fa-futbol"></i></div>
+                                    <div class="tx-text">
+                                        <p>Betting Top-up</p>
+                                        <small>Bet9ja &middot; BET-71023</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Nov 03, 2024 - 19:15</td>
+                            <td class="fw-bold text-danger">- ₦5,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Betting ID"
+                                    data-target="5583920" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-betting"><i class="fas fa-futbol"></i></div>
+                                    <div class="tx-text">
+                                        <p>Betting Top-up</p>
+                                        <small>SportyBet &middot; BET-71045</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 30, 2024 - 14:05</td>
+                            <td class="fw-bold text-danger">- ₦2,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Betting ID"
+                                    data-target="7729104" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-betting"><i class="fas fa-futbol"></i></div>
+                                    <div class="tx-text">
+                                        <p>Betting Top-up</p>
+                                        <small>1xBet &middot; BET-71068</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 26, 2024 - 20:40</td>
+                            <td class="fw-bold text-danger">- ₦10,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Betting ID"
+                                    data-target="3391085" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-betting"><i class="fas fa-futbol"></i></div>
+                                    <div class="tx-text">
+                                        <p>Betting Top-up</p>
+                                        <small>BetKing &middot; BET-71090</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 22, 2024 - 08:50</td>
+                            <td class="fw-bold text-danger">- ₦3,500.00</td>
+                            <td><span class="badge-status status-rejected">Rejected</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Betting ID"
+                                    data-target="6650218" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-betting"><i class="fas fa-futbol"></i></div>
+                                    <div class="tx-text">
+                                        <p>Betting Top-up</p>
+                                        <small>NairaBet &middot; BET-71112</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 18, 2024 - 17:25</td>
+                            <td class="fw-bold text-danger">- ₦1,500.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Betting ID"
+                                    data-target="8814473" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <!-- ===================== AIRTIME (5) ===================== -->
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-utility"><i class="fas fa-mobile-screen"></i></div>
+                                    <div class="tx-text">
+                                        <p>Airtime Purchase</p>
+                                        <small>MTN &middot; AIR-91020</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Nov 04, 2024 - 10:12</td>
+                            <td class="fw-bold text-danger">- ₦1,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Phone Number"
+                                    data-target="0803 123 4567" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-utility"><i class="fas fa-mobile-screen"></i></div>
+                                    <div class="tx-text">
+                                        <p>Airtime Purchase</p>
+                                        <small>Airtel &middot; AIR-91035</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 31, 2024 - 07:48</td>
+                            <td class="fw-bold text-danger">- ₦500.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Phone Number"
+                                    data-target="0812 345 6789" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-utility"><i class="fas fa-mobile-screen"></i></div>
+                                    <div class="tx-text">
+                                        <p>Airtime Purchase</p>
+                                        <small>Glo &middot; AIR-91050</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 27, 2024 - 21:33</td>
+                            <td class="fw-bold text-danger">- ₦2,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Phone Number"
+                                    data-target="0805 987 6543" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-utility"><i class="fas fa-mobile-screen"></i></div>
+                                    <div class="tx-text">
+                                        <p>Airtime Purchase</p>
+                                        <small>9mobile &middot; AIR-91065</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 23, 2024 - 12:58</td>
+                            <td class="fw-bold text-danger">- ₦200.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Phone Number"
+                                    data-target="0817 222 3344" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-utility"><i class="fas fa-mobile-screen"></i></div>
+                                    <div class="tx-text">
+                                        <p>Airtime Purchase</p>
+                                        <small>MTN &middot; AIR-91080</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 19, 2024 - 06:20</td>
+                            <td class="fw-bold text-danger">- ₦1,000.00</td>
+                            <td><span class="badge-status status-rejected">Rejected</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Phone Number"
+                                    data-target="0803 123 4567" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <!-- ===================== DATA (5) ===================== -->
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-utility"><i class="fas fa-wifi"></i></div>
+                                    <div class="tx-text">
+                                        <p>Data Bundle Purchase</p>
+                                        <small>MTN &middot; DAT-61011</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Nov 05, 2024 - 08:05</td>
+                            <td class="fw-bold text-danger">- ₦2,500.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Phone Number"
+                                    data-target="0803 123 4567" data-rate="" data-equiv-label="Plan"
+                                    data-equiv="5GB - 30 Days"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-utility"><i class="fas fa-wifi"></i></div>
+                                    <div class="tx-text">
+                                        <p>Data Bundle Purchase</p>
+                                        <small>Airtel &middot; DAT-61023</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Nov 01, 2024 - 15:42</td>
+                            <td class="fw-bold text-danger">- ₦1,100.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Phone Number"
+                                    data-target="0812 345 6789" data-rate="" data-equiv-label="Plan"
+                                    data-equiv="2GB - 30 Days"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-utility"><i class="fas fa-wifi"></i></div>
+                                    <div class="tx-text">
+                                        <p>Data Bundle Purchase</p>
+                                        <small>Glo &middot; DAT-61035</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 28, 2024 - 11:30</td>
+                            <td class="fw-bold text-danger">- ₦1,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Phone Number"
+                                    data-target="0805 987 6543" data-rate="" data-equiv-label="Plan"
+                                    data-equiv="2.9GB - 30 Days"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-utility"><i class="fas fa-wifi"></i></div>
+                                    <div class="tx-text">
+                                        <p>Data Bundle Purchase</p>
+                                        <small>9mobile &middot; DAT-61047</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 24, 2024 - 18:17</td>
+                            <td class="fw-bold text-danger">- ₦2,500.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Phone Number"
+                                    data-target="0817 222 3344" data-rate="" data-equiv-label="Plan"
+                                    data-equiv="4.5GB - 30 Days"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-utility"><i class="fas fa-wifi"></i></div>
+                                    <div class="tx-text">
+                                        <p>Data Bundle Purchase</p>
+                                        <small>MTN &middot; DAT-61059</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 20, 2024 - 09:55</td>
+                            <td class="fw-bold text-danger">- ₦4,500.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Phone Number"
+                                    data-target="0803 123 4567" data-rate="" data-equiv-label="Plan"
+                                    data-equiv="10GB - 30 Days"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <!-- ===================== ELECTRICITY (5) ===================== -->
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-utility"><i class="fas fa-bolt"></i></div>
+                                    <div class="tx-text">
+                                        <p>Electricity Payment</p>
+                                        <small>Ikeja Electric &middot; ELE-40012</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Nov 02, 2024 - 13:20</td>
+                            <td class="fw-bold text-danger">- ₦10,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Meter Number"
+                                    data-target="04123456789" data-rate="" data-equiv-label="Token"
+                                    data-equiv="1234-5678-9012-3456"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-utility"><i class="fas fa-bolt"></i></div>
+                                    <div class="tx-text">
+                                        <p>Electricity Payment</p>
+                                        <small>Eko Electricity (EKEDC) &middot; ELE-40024</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 29, 2024 - 16:05</td>
+                            <td class="fw-bold text-danger">- ₦15,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Meter Number"
+                                    data-target="05234567890" data-rate="" data-equiv-label="Token"
+                                    data-equiv="2345-6789-0123-4567"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-utility"><i class="fas fa-bolt"></i></div>
+                                    <div class="tx-text">
+                                        <p>Electricity Payment</p>
+                                        <small>Abuja Electricity (AEDC) &middot; ELE-40036</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 25, 2024 - 10:40</td>
+                            <td class="fw-bold text-danger">- ₦8,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Meter Number"
+                                    data-target="06345678901" data-rate="" data-equiv-label="Token"
+                                    data-equiv="3456-7890-1234-5678"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-utility"><i class="fas fa-bolt"></i></div>
+                                    <div class="tx-text">
+                                        <p>Electricity Payment</p>
+                                        <small>Kano Electricity (KEDCO) &middot; ELE-40048</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 21, 2024 - 19:12</td>
+                            <td class="fw-bold text-danger">- ₦5,000.00</td>
+                            <td><span class="badge-status status-rejected">Rejected</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Meter Number"
+                                    data-target="07456789012" data-rate="" data-equiv-label=""
+                                    data-equiv=""><i class="fas fa-file-invoice text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-utility"><i class="fas fa-bolt"></i></div>
+                                    <div class="tx-text">
+                                        <p>Electricity Payment</p>
+                                        <small>Port Harcourt Electricity (PHED) &middot; ELE-40060</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Oct 17, 2024 - 07:35</td>
+                            <td class="fw-bold text-danger">- ₦12,000.00</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td><button class="btn btn-sm btn-light border receipt-btn" data-bs-toggle="modal"
+                                    data-bs-target="#receiptModal" data-target-label="Meter Number"
+                                    data-target="08567890123" data-rate="" data-equiv-label="Token"
+                                    data-equiv="4567-8901-2345-6789"><i
+                                        class="fas fa-file-invoice text-primary"></i></button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -179,46 +1167,60 @@
                 <div class="modal-body p-0">
                     <div class="p-4 bg-light text-center border-bottom">
                         <div class="brand-logo justify-content-center mb-3">
-                            <i class="fas fa-bolt-lightning"></i>
-                            <span>Cheap</span>Naria
+                            <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                            <span>CheapNaria</span>
                         </div>
-                        <h3 class="mb-1 text-primary fw-bold">$250.00</h3>
-                        <p class="text-muted small mb-0">Successful Deposit</p>
+                        <h3 class="mb-1 text-primary fw-bold" id="receiptAmount">₦0.00</h3>
+                        <p class="text-muted small mb-0" id="receiptSubtitle">Transaction</p>
                     </div>
 
                     <div class="p-4">
                         <div class="receipt-details">
                             <div class="d-flex justify-content-between mb-3">
                                 <span class="text-muted small">Transaction ID:</span>
-                                <span class="fw-bold small">TXN-9988221100</span>
+                                <span class="fw-bold small" id="receiptId">-</span>
                             </div>
                             <div class="d-flex justify-content-between mb-3">
                                 <span class="text-muted small">Date & Time:</span>
-                                <span class="fw-bold small">Oct 20, 2023 - 14:30</span>
+                                <span class="fw-bold small" id="receiptDate">-</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3" id="receiptTargetRow">
+                                <span class="text-muted small" id="receiptTargetLabel">Target Account:</span>
+                                <span class="fw-bold small text-end" id="receiptTarget">-</span>
                             </div>
                             <div class="d-flex justify-content-between mb-3">
-                                <span class="text-muted small">Target Account:</span>
-                                <span class="fw-bold small">CR1234567</span>
+                                <span class="text-muted small">Details:</span>
+                                <span class="fw-bold small text-end" id="receiptMethod">-</span>
                             </div>
-                            <div class="d-flex justify-content-between mb-3">
-                                <span class="text-muted small">Payment Method:</span>
-                                <span class="fw-bold small text-end">Bank Transfer <br><small
-                                        class="text-muted fw-normal">UBA Bank</small></span>
+                            <hr class="dashed" id="receiptRateDivider">
+                            <div class="d-flex justify-content-between mb-2" id="receiptRateRow">
+                                <span class="text-muted small">Exchange Rate Applied:</span>
+                                <span class="fw-bold small" id="receiptRate">-</span>
                             </div>
-                            <hr class="dashed">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span class="text-muted small">Exchange Rate applied:</span>
-                                <span class="fw-bold small">$1 = ₦1,535</span>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <span class="text-muted small">Equivalent Paid:</span>
-                                <span class="fw-bold small text-primary">₦383,750.00</span>
+                            <div class="d-flex justify-content-between" id="receiptEquivRow">
+                                <span class="text-muted small" id="receiptEquivLabel">Equivalent Paid:</span>
+                                <span class="fw-bold small text-primary" id="receiptEquiv">-</span>
                             </div>
                         </div>
 
-                        <div class="mt-4 p-3 bg-success-subtle rounded-3 text-center border border-success-subtle">
-                            <p class="mb-0 text-success small fw-bold">Verified & Settled via CheapNaria Liquidity Rails
-                            </p>
+                        <div class="mt-4 p-3 rounded-3 text-center border" id="receiptStatusBanner">
+                            <p class="mb-0 small fw-bold" id="receiptStatusText">Verified &amp; Settled via CheapNaria
+                                Liquidity Rails</p>
+                        </div>
+
+                        <div class="mt-4 d-none" id="receiptProofBox">
+                            <p class="text-muted small fw-bold mb-2">Proof of Payment</p>
+                            <a href="#" target="_blank" class="receipt-preview-card text-decoration-none"
+                                id="receiptProofLink">
+                                <img src="" alt="Payment receipt" class="d-none" id="receiptProofImg">
+                                <div class="rpc-icon d-none" id="receiptProofIcon"><i
+                                        class="fas fa-file-invoice"></i></div>
+                                <div class="rpc-text">
+                                    <p id="receiptProofName">-</p>
+                                    <small id="receiptProofMeta">Uploaded by staff</small>
+                                </div>
+                                <i class="fas fa-external-link-alt text-muted"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -240,6 +1242,7 @@
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+    <script src="../js/theme.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -264,6 +1267,98 @@
             // Link custom search box
             $('#tableSearch').keyup(function () {
                 $('#transactionsTable').DataTable().search($(this).val()).draw();
+            });
+
+            // Populate the receipt modal based on the row that triggered it
+            $('#receiptModal').on('show.bs.modal', function (event) {
+                const btn = event.relatedTarget;
+                if (!btn) return;
+
+                const row = $(btn).closest('tr');
+                const title = row.find('.tx-text p').text().trim();
+                const subtitleFull = row.find('.tx-text small').text().trim();
+                const lastSep = subtitleFull.lastIndexOf('·');
+                const method = lastSep > -1 ? subtitleFull.substring(0, lastSep).trim() : subtitleFull;
+                const refId = lastSep > -1 ? subtitleFull.substring(lastSep + 1).trim() : '';
+                const date = row.find('td.text-muted.small').text().trim();
+                const amountRaw = row.find('td.fw-bold').first().text().trim();
+                const amountAbs = amountRaw.replace(/^[+-]\s*/, '');
+                const statusBadge = row.find('.badge-status');
+                const statusText = statusBadge.text().trim();
+                const isApproved = statusBadge.hasClass('status-approved');
+                const isPending = statusBadge.hasClass('status-pending');
+
+                $('#receiptAmount').text(amountAbs);
+                $('#receiptSubtitle').text(statusText + ' ' + title);
+                $('#receiptId').text(refId || '-');
+                $('#receiptDate').text(date);
+                $('#receiptMethod').text(method || '-');
+
+                const targetLabel = $(btn).data('target-label');
+                const target = $(btn).data('target');
+                if (target) {
+                    $('#receiptTargetLabel').text(targetLabel + ':');
+                    $('#receiptTarget').text(target);
+                    $('#receiptTargetRow').removeClass('d-none');
+                } else {
+                    $('#receiptTargetRow').addClass('d-none');
+                }
+
+                const rate = $(btn).data('rate');
+                const equivLabel = $(btn).data('equiv-label');
+                const equiv = $(btn).data('equiv');
+
+                $('#receiptRate').text(rate || '-');
+                $('#receiptRateRow').toggleClass('d-none', !rate);
+
+                $('#receiptEquivLabel').text((equivLabel || 'Equivalent') + ':');
+                $('#receiptEquiv').text(equiv || '-');
+                $('#receiptEquivRow').toggleClass('d-none', !equiv);
+
+                $('#receiptRateDivider').toggleClass('d-none', !rate && !equiv);
+
+                const banner = $('#receiptStatusBanner');
+                const bannerText = $('#receiptStatusText');
+                banner.removeClass('bg-success-subtle border-success-subtle bg-warning-subtle border-warning-subtle bg-danger-subtle border-danger-subtle');
+                bannerText.removeClass('text-success text-warning text-danger');
+
+                if (isApproved) {
+                    banner.addClass('bg-success-subtle border-success-subtle');
+                    bannerText.addClass('text-success').text('Verified & Settled via CheapNaria Liquidity Rails');
+                } else if (isPending) {
+                    banner.addClass('bg-warning-subtle border-warning-subtle');
+                    bannerText.addClass('text-warning').text('Awaiting confirmation — usually completes within a few minutes');
+                } else {
+                    banner.addClass('bg-danger-subtle border-danger-subtle');
+                    bannerText.addClass('text-danger').text('This transaction was declined and reversed');
+                }
+
+                // Show staff-uploaded proof of payment, if one has been attached (Pay Supplier / Send Abroad)
+                const receiptRaw = refId ? localStorage.getItem('cn-receipt-' + refId) : null;
+                if (receiptRaw) {
+                    try {
+                        const receipt = JSON.parse(receiptRaw);
+                        const isImage = /^data:image\//.test(receipt.dataUrl || '');
+
+                        $('#receiptProofLink').attr('href', receipt.dataUrl || '#');
+                        $('#receiptProofName').text(receipt.fileName || 'Payment receipt');
+                        $('#receiptProofMeta').text('Uploaded by ' + (receipt.approvedBy || 'staff') + ' on ' + (receipt.approvedAt || ''));
+
+                        if (isImage) {
+                            $('#receiptProofImg').attr('src', receipt.dataUrl).removeClass('d-none');
+                            $('#receiptProofIcon').addClass('d-none');
+                        } else {
+                            $('#receiptProofImg').addClass('d-none');
+                            $('#receiptProofIcon').removeClass('d-none');
+                        }
+
+                        $('#receiptProofBox').removeClass('d-none');
+                    } catch (e) {
+                        $('#receiptProofBox').addClass('d-none');
+                    }
+                } else {
+                    $('#receiptProofBox').addClass('d-none');
+                }
             });
         });
     </script>

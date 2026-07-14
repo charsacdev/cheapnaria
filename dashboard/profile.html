@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
     <title>Profile Settings | CheapNaria</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -18,17 +19,19 @@
     <aside class="sidebar d-none d-lg-block">
         <div class="brand mb-5 px-3">
             <a href="index.html" class="brand-logo">
-                <i class="fas fa-bolt-lightning"></i>
-                Cheap<span>Naria</span>
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
             </a>
         </div>
 
         <nav class="nav flex-column">
             <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
-            <a href="p2p.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Crypto Transaction</a>
+            <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
+            <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+            <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> Other Services</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
-            <a href="deposit.html" class="nav-link"><i class="fas fa-wallet"></i> Deposits</a>
-            <a href="withdraw.html" class="nav-link"><i class="fas fa-money-bill-transfer"></i> Withdrawals</a>
             <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
             <a href="profile.html" class="nav-link active"><i class="fas fa-user-cog"></i> Profile Settings</a>
         </nav>
@@ -43,18 +46,20 @@
     <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
         <div class="offcanvas-header">
             <a href="index.html" class="brand-logo">
-                <i class="fas fa-bolt-lightning"></i>
-                Cheap<span>Naria</span>
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
             </a>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body">
             <nav class="nav flex-column">
                 <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
-                <a href="p2p.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Crypto Transaction</a>
+                <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
+                <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+                <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> Other Services</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
-                <a href="deposit.html" class="nav-link"><i class="fas fa-wallet"></i> Deposits</a>
-                <a href="withdraw.html" class="nav-link"><i class="fas fa-money-bill-transfer"></i> Withdrawals</a>
                 <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
                 <a href="profile.html" class="nav-link active"><i class="fas fa-user-cog"></i> Profile Settings</a>
                 <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
@@ -70,7 +75,9 @@
                 </button>
                 <h4 class="m-0">Profile & Settings</h4>
             </div>
-
+            <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
         </header>
         <!-- Sticky Header for Profile -->
         <div class="sticky-header mb-4">
@@ -125,7 +132,7 @@
                             <h5 class="fw-bold mb-4">Personal Information</h5>
                             <div class="d-flex align-items-center gap-4 mb-5 p-3 bg-light rounded-4">
                                 <div class="position-relative">
-                                    <img src="https://i.pravatar.cc/150?u=john" alt="Profile"
+                                    <img src="../images/avatar-john.jpg" alt="Profile"
                                         class="rounded-circle border border-4 border-white shadow-sm" width="100">
                                     <label for="avatarUpload"
                                         class="position-absolute bottom-0 end-0 bg-primary text-white p-2 rounded-circle cursor-pointer shadow-sm">
@@ -137,6 +144,19 @@
                                     <h4 class="mb-1">John Doe</h4>
                                     <p class="text-muted small mb-2"><i
                                             class="fas fa-envelope me-2"></i>john.doe@example.com</p>
+                                    <div class="d-flex align-items-center gap-2 mb-2 flex-wrap">
+                                        <span class="badge bg-white border text-dark px-3 py-2 rounded-pill fw-bold">
+                                            <i class="fas fa-at me-1 text-primary"></i><span
+                                                id="usernameValue">johndoe_cn</span>
+                                        </span>
+                                        <button type="button" class="btn btn-sm btn-light border rounded-circle"
+                                            style="width:32px;height:32px;" onclick="copyText('usernameValue', this)"
+                                            aria-label="Copy username">
+                                            <i class="fas fa-copy"></i>
+                                        </button>
+                                        <small class="copied-toast text-success fw-bold d-none"><i
+                                                class="fas fa-check-circle me-1"></i> Username copied</small>
+                                    </div>
                                     <span class="badge bg-success-subtle text-success px-3 py-2">
                                         <i class="fas fa-check-circle me-1"></i> KYC Verified
                                     </span>
@@ -214,6 +234,21 @@
                                     <button class="btn btn-primary px-5 py-2">Update Security</button>
                                 </div>
                             </form>
+                        </div>
+
+                        <div class="card border-0 shadow-sm p-4 mb-4">
+                            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3">
+                                <div>
+                                    <h5 class="fw-bold mb-1"><i class="fas fa-key text-primary me-2"></i>Transaction PIN
+                                    </h5>
+                                    <p class="text-muted small mb-0">Used to confirm withdrawals and transfers. Last
+                                        changed 3 months ago.</p>
+                                </div>
+                                <button type="button" class="btn btn-outline-primary rounded-pill px-4 flex-shrink-0"
+                                    data-bs-toggle="modal" data-bs-target="#changePinModal">
+                                    Change PIN
+                                </button>
+                            </div>
                         </div>
 
                         <div class="card border-0 shadow-sm p-4 text-white"
@@ -373,9 +408,130 @@
         </div>
     </div>
 
+    <!-- Change Transaction PIN Modal -->
+    <div class="modal fade" id="changePinModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="fw-bold"><i class="fas fa-key text-primary me-2"></i>Change Transaction PIN</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+
+                    <!-- Step 1: Choose new PIN -->
+                    <div id="pinStep1">
+                        <p class="text-muted small mb-4">Choose a new 4-digit PIN. You'll use this to confirm
+                            withdrawals and transfers.</p>
+
+                        <label class="form-label fw-600 small">New PIN</label>
+                        <div class="d-flex gap-2 justify-content-center mb-3 pin-digit-group" data-group="new">
+                            <input type="password" inputmode="numeric" maxlength="1"
+                                class="form-control text-center fw-bold fs-4 pin-digit"
+                                style="width:55px;height:60px;">
+                            <input type="password" inputmode="numeric" maxlength="1"
+                                class="form-control text-center fw-bold fs-4 pin-digit"
+                                style="width:55px;height:60px;">
+                            <input type="password" inputmode="numeric" maxlength="1"
+                                class="form-control text-center fw-bold fs-4 pin-digit"
+                                style="width:55px;height:60px;">
+                            <input type="password" inputmode="numeric" maxlength="1"
+                                class="form-control text-center fw-bold fs-4 pin-digit"
+                                style="width:55px;height:60px;">
+                        </div>
+
+                        <label class="form-label fw-600 small">Confirm New PIN</label>
+                        <div class="d-flex gap-2 justify-content-center mb-2 pin-digit-group" data-group="confirm">
+                            <input type="password" inputmode="numeric" maxlength="1"
+                                class="form-control text-center fw-bold fs-4 pin-digit"
+                                style="width:55px;height:60px;">
+                            <input type="password" inputmode="numeric" maxlength="1"
+                                class="form-control text-center fw-bold fs-4 pin-digit"
+                                style="width:55px;height:60px;">
+                            <input type="password" inputmode="numeric" maxlength="1"
+                                class="form-control text-center fw-bold fs-4 pin-digit"
+                                style="width:55px;height:60px;">
+                            <input type="password" inputmode="numeric" maxlength="1"
+                                class="form-control text-center fw-bold fs-4 pin-digit"
+                                style="width:55px;height:60px;">
+                        </div>
+                        <p id="pinMismatchError" class="text-danger small mb-4 d-none">PINs do not match. Please try
+                            again.</p>
+
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold mt-3" id="sendPinCodeBtn">Send
+                            Verification Code</button>
+                    </div>
+
+                    <!-- Step 2: Email verification -->
+                    <div id="pinStep2" class="d-none">
+                        <div class="text-center mb-4">
+                            <div class="mx-auto mb-3 d-flex align-items-center justify-content-center"
+                                style="width:60px;height:60px;background:var(--primary-light);color:var(--primary-dark);border-radius:16px;font-size:1.5rem;">
+                                <i class="fas fa-envelope-open-text"></i>
+                            </div>
+                            <h6 class="fw-bold mb-1">Check your email</h6>
+                            <p class="text-muted small mb-0">We've sent a 4-digit code to <strong>j***@example.com</strong>
+                                to confirm this change.</p>
+                        </div>
+                        <div class="d-flex gap-2 justify-content-center mb-4" id="pinOtpFields">
+                            <input type="text" inputmode="numeric" maxlength="1"
+                                class="form-control text-center fw-bold fs-4 pin-otp-digit"
+                                style="width:55px;height:60px;">
+                            <input type="text" inputmode="numeric" maxlength="1"
+                                class="form-control text-center fw-bold fs-4 pin-otp-digit"
+                                style="width:55px;height:60px;">
+                            <input type="text" inputmode="numeric" maxlength="1"
+                                class="form-control text-center fw-bold fs-4 pin-otp-digit"
+                                style="width:55px;height:60px;">
+                            <input type="text" inputmode="numeric" maxlength="1"
+                                class="form-control text-center fw-bold fs-4 pin-otp-digit"
+                                style="width:55px;height:60px;">
+                        </div>
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold" id="verifyPinBtn">Verify
+                            &amp; Save PIN</button>
+                        <button type="button" class="btn btn-link btn-sm text-muted w-100 mt-2"
+                            id="resendPinCodeBtn">Resend Code</button>
+                    </div>
+
+                    <!-- Step 3: Success -->
+                    <div id="pinStep3" class="d-none text-center py-3">
+                        <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                            style="width:70px;height:70px;">
+                            <i class="fas fa-check fs-2"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">PIN Updated!</h5>
+                        <p class="text-muted small mb-4">Your transaction PIN has been changed successfully.</p>
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold" data-bs-dismiss="modal">Done</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/theme.js"></script>
     <script>
+        function copyText(elementId, btn) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text);
+
+            if (!btn) return;
+            const icon = btn.querySelector('i');
+            if (icon) {
+                const originalClass = icon.className;
+                icon.className = 'fas fa-check text-success';
+                setTimeout(() => { icon.className = originalClass; }, 1500);
+            }
+            const container = btn.closest('.card') || document;
+            const toast = container.querySelector('.copied-toast');
+            if (toast) {
+                toast.classList.remove('d-none');
+                clearTimeout(toast._hideTimer);
+                toast._hideTimer = setTimeout(() => toast.classList.add('d-none'), 1800);
+            }
+        }
+
         $(document).ready(function () {
             // Check for hash in URL and activate corresponding tab OR modal
             const hash = window.location.hash;
@@ -424,6 +580,67 @@
             const modal = new bootstrap.Modal(document.getElementById(modalId));
             modal.show();
         }
+
+        // --- Change Transaction PIN flow ---
+        $('.pin-digit, .pin-otp-digit').on('input', function () {
+            const group = $(this).closest('.pin-digit-group, #pinOtpFields');
+            if (this.value.length >= 1) {
+                $(this).next('input').trigger('focus');
+            }
+        });
+
+        $('.pin-digit, .pin-otp-digit').on('keydown', function (e) {
+            if (e.key === 'Backspace' && this.value.length === 0) {
+                $(this).prev('input').trigger('focus');
+            }
+        });
+
+        function getGroupValue(selector) {
+            let val = '';
+            $(selector).each(function () { val += $(this).val(); });
+            return val;
+        }
+
+        $('#sendPinCodeBtn').click(function () {
+            $('#pinMismatchError').addClass('d-none');
+
+            const newPin = getGroupValue('[data-group="new"] .pin-digit');
+            const confirmPin = getGroupValue('[data-group="confirm"] .pin-digit');
+
+            if (newPin.length < 4 || confirmPin.length < 4) {
+                alert('Please fill in both 4-digit PIN fields');
+                return;
+            }
+            if (newPin !== confirmPin) {
+                $('#pinMismatchError').removeClass('d-none');
+                return;
+            }
+
+            $('#pinStep1').addClass('d-none');
+            $('#pinStep2').removeClass('d-none').hide().fadeIn(200);
+        });
+
+        $('#verifyPinBtn').click(function () {
+            const code = getGroupValue('.pin-otp-digit');
+            if (code.length < 4) {
+                alert('Please enter the 4-digit code sent to your email');
+                return;
+            }
+            $('#pinStep2').addClass('d-none');
+            $('#pinStep3').removeClass('d-none').hide().fadeIn(200);
+        });
+
+        $('#resendPinCodeBtn').click(function () {
+            $('.pin-otp-digit').val('');
+            $('.pin-otp-digit').first().trigger('focus');
+        });
+
+        $('#changePinModal').on('hidden.bs.modal', function () {
+            $('.pin-digit, .pin-otp-digit').val('');
+            $('#pinMismatchError').addClass('d-none');
+            $('#pinStep1').removeClass('d-none');
+            $('#pinStep2, #pinStep3').addClass('d-none');
+        });
     </script>
     <style>
         .nav-tabs .nav-link.active {

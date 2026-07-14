@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
+    <title>Withdraw from Deriv | CheapNaria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block">
+        <div class="brand mb-5 px-3">
+            <a href="index.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
+            <a href="index.html#deriv" class="nav-link active"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+            <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> Other Services</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+            <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+            <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="index.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
+                <a href="index.html#deriv" class="nav-link active"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+                <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> Other Services</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+                <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="index.html" class="btn btn-light btn-sm rounded-pill me-2"><i
+                        class="fas fa-arrow-left"></i></a>
+                <h4 class="m-0">Withdraw from Deriv</h4>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div id="dynamicHeaderBadge"
+                    class="balance-badge bg-white shadow-sm px-3 py-2 rounded-pill border d-none">
+                    <span class="fw-bold text-success" id="realtimeBalanceDisplay">$4,250.00</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card p-4">
+                    <h5 class="mb-4">Request Payout from Deriv</h5>
+
+                    <form id="withdrawForm">
+                        <!-- Step 1: CR & Amount -->
+                        <div id="step1">
+                            <h5 class="mb-4">1. Verify Payout Identity</h5>
+                            <div class="mb-3">
+                                <label class="form-label fw-600">Enter Deriv CR Number</label>
+                                <input type="text" class="form-control" id="targetCr" placeholder="CR1234567">
+                            </div>
+
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-8">
+                                    <label class="form-label fw-600">Withdrawal Amount (USD)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light border-end-0">$</span>
+                                        <input type="number" class="form-control border-start-0" id="withdrawAmount"
+                                            placeholder="Min. 10.00">
+                                    </div>
+                                    <div class="mt-2 text-start">
+                                        <small class="text-muted">You will receive: <span class="fw-bold text-success"
+                                                id="receivePreview">₦0.00</span></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-600">Payout Rate</label>
+                                    <div class="bg-primary-subtle text-primary p-2 rounded-3 text-center border border-primary-subtle fw-bold"
+                                        style="font-size: 0.9rem;">
+                                        $1 = ₦1,490
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm" id="verifyCrBtn">
+                                Verify &amp; Proceed
+                            </button>
+                        </div>
+
+                        <!-- Step 2: Loader (Hidden) -->
+                        <div id="loadingStep" class="text-center py-5 d-none">
+                            <div class="spinner-grow text-primary mb-3" role="status"></div>
+                            <h5>Verifying CR Account...</h5>
+                            <p class="text-muted small">Connecting to Deriv API infrastructure</p>
+                        </div>
+
+                        <!-- Step 3: Payout Method (Hidden) -->
+                        <div id="step2" class="d-none">
+                            <h5 class="mb-3">2. Choose Payout Destination</h5>
+
+                            <div class="d-flex flex-column gap-2 mb-4">
+                                <div
+                                    class="alert alert-success d-flex align-items-center justify-content-between small py-2 fw-bold mb-0">
+                                    <span><i class="fas fa-check-circle me-2"></i> Verified: John Doe <span
+                                            class="text-muted ms-1" id="verifiedCrLabel">CR1234567</span></span>
+                                    <span class="badge bg-white text-success shadow-sm">Active</span>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-3 mb-4">
+                                <div class="select-method-card active" data-method="bank" id="methodBankCard">
+                                    <div class="smc-icon"><i class="fas fa-university"></i></div>
+                                    <div class="smc-text">
+                                        <p>NGN Wallet</p>
+                                        <small class="text-muted">Credit your CheapNaria balance</small>
+                                    </div>
+                                </div>
+                                <div class="select-method-card" data-method="crypto" id="methodCryptoCard">
+                                    <div class="smc-icon"><i class="fab fa-ethereum"></i></div>
+                                    <div class="smc-text">
+                                        <p>Crypto Payout</p>
+                                        <small class="text-muted">USDT / USDC</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Crypto Choice -->
+                            <div id="cryptoWithdrawal" class="withdraw-section d-none mb-4">
+                                <div class="row g-3">
+                                    <div class="col-md-12">
+                                        <label class="form-label small fw-bold">Select Target Asset</label>
+                                        <select class="form-select">
+                                            <option>USDT (TRC20)</option>
+                                            <option>USDT (ERC20)</option>
+                                            <option>USDT (BEP20)</option>
+                                            <option>USDC (Solana)</option>
+                                            <option>Bitcoin (BTC)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="form-label small fw-bold">Target Wallet Address</label>
+                                        <input type="text" class="form-control" placeholder="Paste wallet address here">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="summary-rows mb-4">
+                                <div class="summary-row">
+                                    <span class="sr-label">Fee (1.5%)</span>
+                                    <span class="sr-value" id="feeDisplay">$0.00</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="sr-label">Settlement Amount</span>
+                                    <span class="sr-value text-success h5 mb-0" id="totalPayoutDisplay">$0.00</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex gap-2">
+                                <button type="button" class="btn btn-light px-4" id="backToStep1">Back</button>
+                                <button type="button" class="btn btn-primary flex-grow-1 py-3 fw-bold"
+                                    id="finalPayoutBtn" data-bs-toggle="modal" data-bs-target="#payoutOtpModal">
+                                    Confirm Payout
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- OTP Modal -->
+    <div class="modal fade" id="payoutOtpModal" tabindex="-1">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-body p-4 text-center">
+                    <h5 class="mb-3">Identity Authorization</h5>
+                    <p class="small text-muted mb-4">Enter the code sent to your email to authorize this withdrawal.</p>
+                    <div class="d-flex gap-2 justify-content-center mb-4" id="otpFields">
+                        <input type="text" class="form-control text-center p-2" maxlength="1"
+                            style="width: 40px; height: 50px;">
+                        <input type="text" class="form-control text-center p-2" maxlength="1"
+                            style="width: 40px; height: 50px;">
+                        <input type="text" class="form-control text-center p-2" maxlength="1"
+                            style="width: 40px; height: 50px;">
+                        <input type="text" class="form-control text-center p-2" maxlength="1"
+                            style="width: 40px; height: 50px;">
+                    </div>
+                    <button class="btn btn-primary w-100 py-3 fw-bold" id="otpConfirmBtn">Confirm Transfer</button>
+                    <button class="btn btn-link btn-sm text-muted mt-2">Resend Code</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow text-center p-5">
+                <div class="mb-4">
+                    <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center"
+                        style="width: 80px; height: 80px;">
+                        <i class="fas fa-check fs-1"></i>
+                    </div>
+                </div>
+                <h3 class="fw-bold mb-3">Payout Requested!</h3>
+                <p class="text-muted mb-4">Your Deriv withdrawal has been submitted and is being processed.</p>
+                <div class="d-grid gap-2">
+                    <a href="index.html" class="btn btn-primary py-3 fw-bold">Back to Dashboard</a>
+                    <a href="transactions.html" class="btn btn-light py-2">View Receipt</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        $(document).ready(function () {
+            const payoutRate = 1490;
+
+            $('#withdrawAmount').on('input', function () {
+                const usd = parseFloat($(this).val()) || 0;
+                const ngn = usd * payoutRate;
+                $('#receivePreview').text('₦' + ngn.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+            });
+
+            $('#verifyCrBtn').click(function () {
+                const cr = $('#targetCr').val();
+                const amount = parseFloat($('#withdrawAmount').val());
+
+                if (!cr || !amount) {
+                    alert('Please enter valid details');
+                    return;
+                }
+
+                $('#step1').addClass('d-none');
+                $('#loadingStep').removeClass('d-none');
+
+                setTimeout(() => {
+                    $('#loadingStep').addClass('d-none');
+                    $('#step2').removeClass('d-none').hide().fadeIn();
+                    $('#verifiedCrLabel').text(cr);
+                    $('#dynamicHeaderBadge').removeClass('d-none');
+                    updateSummary(amount);
+                }, 2000);
+            });
+
+            $('#backToStep1').click(function () {
+                $('#step2').addClass('d-none');
+                $('#step1').removeClass('d-none').hide().fadeIn();
+            });
+
+            $('#methodBankCard, #methodCryptoCard').click(function () {
+                $('.select-method-card').removeClass('active');
+                $(this).addClass('active');
+                const isCrypto = $(this).attr('id') === 'methodCryptoCard';
+                if (isCrypto) {
+                    $('#cryptoWithdrawal').removeClass('d-none').hide().fadeIn();
+                    $('#finalPayoutBtn').text('Confirm Crypto Payout');
+                } else {
+                    $('#cryptoWithdrawal').addClass('d-none');
+                    $('#finalPayoutBtn').text('Confirm Payout');
+                }
+            });
+
+            function updateSummary(amount) {
+                const fee = amount * 0.015;
+                const total = amount - fee;
+                $('#feeDisplay').text('$' + fee.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#totalPayoutDisplay').text('$' + total.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+            }
+
+            $('#otpFields input').on('input', function () {
+                if (this.value.length >= 1) {
+                    $(this).next('input').focus();
+                }
+            });
+
+            $('#otpConfirmBtn').click(function () {
+                const otpModal = bootstrap.Modal.getInstance(document.getElementById('payoutOtpModal'));
+                if (otpModal) otpModal.hide();
+                setTimeout(() => {
+                    new bootstrap.Modal(document.getElementById('successModal')).show();
+                }, 400);
+            });
+        });
+    </script>
+</body>
+
+</html>

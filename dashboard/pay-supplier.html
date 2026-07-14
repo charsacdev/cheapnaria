@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
+    <title>Pay China Supplier | CheapNaria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block">
+        <div class="brand mb-5 px-3">
+            <a href="index.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
+            <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+            <a href="services.html" class="nav-link active"><i class="fas fa-layer-group"></i> Other Services</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+            <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+            <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="index.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
+                <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+                <a href="services.html" class="nav-link active"><i class="fas fa-layer-group"></i> Other Services</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+                <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="services.html" class="btn btn-light btn-sm rounded-pill me-2"><i
+                        class="fas fa-arrow-left"></i></a>
+                <h4 class="m-0" id="pageTitle">Pay China Supplier</h4>
+            </div>
+            <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card p-4">
+
+                    <!-- STEP 1: Supplier + Amount -->
+                    <div id="formStep">
+                        <h5 class="mb-1">Pay Your Supplier in China</h5>
+                        <p class="text-muted small mb-4">Settle invoices in CNY directly from your NGN wallet.</p>
+
+                        <div class="balance-hint">
+                            <span><i class="fas fa-wallet me-1"></i> Available Balance</span>
+                            <strong>₦245,680.00</strong>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-600">Supplier Name</label>
+                            <input type="text" class="form-control" id="supplierName"
+                                placeholder="e.g Guangzhou Textiles Co.">
+                        </div>
+
+                        <h6 class="fw-bold mb-3 mt-4">Supplier Bank Details (China)</h6>
+                        <div class="mb-3">
+                            <label class="form-label fw-600">Bank Name</label>
+                            <input type="text" class="form-control" id="supplierBankName"
+                                placeholder="e.g Bank of China">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-600">Account Number</label>
+                            <input type="text" class="form-control" id="supplierAccountNumber"
+                                placeholder="Supplier's bank account number">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-600">Account Name</label>
+                            <input type="text" class="form-control" id="supplierAccountName"
+                                placeholder="Name on the supplier's bank account">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-600">Amount (CNY)</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0">¥</span>
+                                <input type="number" class="form-control border-start-0" id="cnyAmount"
+                                    placeholder="e.g 5000">
+                            </div>
+                        </div>
+
+                        <div class="alert alert-light border small d-flex justify-content-between mb-4">
+                            <span class="text-muted">Rate: ¥1 = ₦208.50</span>
+                            <span class="fw-bold text-success">You Pay: <span id="cnyPayPreview">₦0.00</span></span>
+                        </div>
+
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm"
+                            id="continueSupplierBtn">Continue</button>
+                    </div>
+
+                    <!-- STEP 2: Payment Details -->
+                    <div id="paymentStep" class="d-none">
+                        <h5 class="mb-4">Complete Your Payment</h5>
+
+                        <div class="summary-rows mb-4">
+                            <div class="summary-row">
+                                <span class="sr-label">Supplier</span>
+                                <span class="sr-value" id="sumSupplierName">—</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="sr-label">Amount (CNY)</span>
+                                <span class="sr-value" id="sumCnyAmount">¥0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="sr-label">Rate Applied</span>
+                                <span class="sr-value">¥1 = ₦208.50</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="sr-label">Total to Pay (NGN)</span>
+                                <span class="sr-value text-success h5 mb-0" id="sumNgnAmount">₦0.00</span>
+                            </div>
+                        </div>
+
+                        <p class="text-muted small mb-2">Funds will be settled to this supplier account in China:</p>
+                        <div class="summary-rows mb-4">
+                            <div class="summary-row">
+                                <span class="sr-label">Bank Name</span>
+                                <span class="sr-value" id="sumSupplierBankName">—</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="sr-label">Account Number</span>
+                                <span class="sr-value" id="sumSupplierAccountNumber">—</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="sr-label">Account Name</span>
+                                <span class="sr-value" id="sumSupplierAccountName">—</span>
+                            </div>
+                        </div>
+
+                        <p class="text-muted small mb-2">Transfer the exact amount above to the account below:</p>
+                        <div class="summary-rows mb-4">
+                            <div class="summary-row">
+                                <span class="sr-label">Bank Name</span>
+                                <span class="sr-value">Wema Bank</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="sr-label">Account Number</span>
+                                <span class="sr-value">0123456789 <button type="button"
+                                        class="btn btn-link btn-sm p-0 ms-1" onclick="copyText('supAccNum', this)"><i
+                                            class="fas fa-copy"></i></button><span id="supAccNum"
+                                        class="d-none">0123456789</span></span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="sr-label">Account Name</span>
+                                <span class="sr-value">CheapNaria Vault</span>
+                            </div>
+                        </div>
+                        <small class="copied-toast text-success fw-bold d-none mb-3 d-block"><i
+                                class="fas fa-check-circle me-1"></i> Account number copied</small>
+
+                        <div class="alert alert-warning small">
+                            <i class="fas fa-exclamation-triangle me-1"></i> Use your Supplier Reference <b
+                                id="refCode">SUP-0000</b> as the transfer narration.
+                        </div>
+
+                        <button type="button" class="btn btn-success w-100 py-3 fw-bold shadow-sm mb-2"
+                            id="supplierPaidBtn">I Have Sent the Payment</button>
+                        <button type="button" class="btn btn-light w-100 py-2" id="cancelSupplierBtn">Cancel</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow text-center p-5">
+                <div class="mb-4">
+                    <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center"
+                        style="width: 80px; height: 80px;">
+                        <i class="fas fa-check fs-1"></i>
+                    </div>
+                </div>
+                <h3 class="fw-bold mb-3">Payment Submitted!</h3>
+                <p class="text-muted mb-4">We're confirming your transfer. Your supplier will be paid in CNY once
+                    verified.</p>
+                <div class="d-grid gap-2">
+                    <a href="services.html" class="btn btn-primary py-3 fw-bold">Back to Services</a>
+                    <a href="transactions.html" class="btn btn-light py-2">View Receipt</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        function copyText(elementId, btn) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text);
+
+            if (!btn) return;
+            const icon = btn.querySelector('i');
+            if (icon) {
+                const originalClass = icon.className;
+                icon.className = 'fas fa-check text-success';
+                setTimeout(() => { icon.className = originalClass; }, 1500);
+            }
+            const container = btn.closest('.card') || document;
+            const toast = container.querySelector('.copied-toast');
+            if (toast) {
+                toast.classList.remove('d-none');
+                clearTimeout(toast._hideTimer);
+                toast._hideTimer = setTimeout(() => toast.classList.add('d-none'), 1800);
+            }
+        }
+
+        $(document).ready(function () {
+            const rate = 208.50;
+
+            $('#cnyAmount').on('input', function () {
+                const cny = parseFloat($(this).val()) || 0;
+                const ngn = cny * rate;
+                $('#cnyPayPreview').text('₦' + ngn.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+            });
+
+            $('#continueSupplierBtn').click(function () {
+                const name = $('#supplierName').val();
+                const bankName = $('#supplierBankName').val();
+                const accountNumber = $('#supplierAccountNumber').val();
+                const accountName = $('#supplierAccountName').val();
+                const cny = parseFloat($('#cnyAmount').val());
+
+                if (!name || !bankName || !accountNumber || !accountName || !cny || cny <= 0) {
+                    alert('Please fill in the supplier name, bank details and amount');
+                    return;
+                }
+
+                const ngn = cny * rate;
+                const ref = 'SUP-' + Math.floor(1000 + Math.random() * 9000);
+
+                $('#sumSupplierName').text(name);
+                $('#sumCnyAmount').text('¥' + cny.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#sumNgnAmount').text('₦' + ngn.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#sumSupplierBankName').text(bankName);
+                $('#sumSupplierAccountNumber').text(accountNumber);
+                $('#sumSupplierAccountName').text(accountName);
+                $('#refCode').text(ref);
+
+                $('#formStep').addClass('d-none');
+                $('#paymentStep').removeClass('d-none').hide().fadeIn(200);
+                $('#pageTitle').text('Complete Payment');
+            });
+
+            $('#cancelSupplierBtn').click(function () {
+                $('#paymentStep').addClass('d-none');
+                $('#formStep').removeClass('d-none').hide().fadeIn(200);
+                $('#pageTitle').text('Pay China Supplier');
+            });
+
+            $('#supplierPaidBtn').click(function () {
+                new bootstrap.Modal(document.getElementById('successModal')).show();
+            });
+        });
+    </script>
+</body>
+
+</html>

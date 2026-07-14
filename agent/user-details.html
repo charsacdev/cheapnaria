@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
+    <title>User Profile | CheapNaria Agent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .brand-logo .badge {
+            font-size: 0.6rem !important;
+            vertical-align: middle;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <div class="d-flex flex-column justify-content-center">
+                    <span class="lh-1"><span>CheapNaria</span></span>
+                    <span class="badge bg-secondary mt-1 align-self-start"
+                        style="font-size: 0.5rem; letter-spacing: 1px;">AGENT</span>
+                </div>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="users.html" class="nav-link active"><i class="fas fa-users"></i> Users</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">13</span></a>
+            <a href="deposit-withdrawal.html" class="nav-link"><i class="fas fa-right-left"></i> Deposit /
+                Withdrawal</a>
+            <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+            <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+            <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+            <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+            <hr class="my-3 opacity-10">
+            <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <div class="d-flex flex-column justify-content-center">
+                    <span class="lh-1"><span>CheapNaria</span></span>
+                    <span class="badge bg-secondary mt-1 align-self-start"
+                        style="font-size: 0.5rem; letter-spacing: 1px;">AGENT</span>
+                </div>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="users.html" class="nav-link active"><i class="fas fa-users"></i> Users</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">13</span></a>
+                <a href="deposit-withdrawal.html" class="nav-link"><i class="fas fa-right-left"></i> Deposit /
+                    Withdrawal</a>
+                <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+                <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+                <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+                <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+                <hr class="my-3 opacity-10">
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="menu-toggle d-lg-none me-3" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars-staggered"></i>
+                </button>
+                <a href="users.html" class="btn btn-light btn-sm rounded-pill me-2"><i
+                        class="fas fa-arrow-left"></i></a>
+                <h4 class="m-0 fw-bold">User Profile</h4>
+            </div>
+            <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <div class="row g-4">
+            <!-- Profile Card -->
+            <div class="col-12 col-xl-4">
+                <div class="card p-4 border-0 shadow-sm">
+                    <div class="text-center mb-4">
+                        <img id="pUserAvatar" src="" class="rounded-circle border border-4 border-white shadow-sm mb-3"
+                            width="100">
+                        <h5 class="fw-bold mb-1" id="pUserName">-</h5>
+                        <span class="badge-status status-approved" id="pUserStatus">Active Account</span>
+                    </div>
+
+                    <div class="alert alert-light border small mb-4">
+                        <i class="fas fa-shield-halved text-primary me-1"></i> Agent view &mdash; account actions
+                        (blocking, KYC document access) are restricted to Admin.
+                    </div>
+
+                    <h6 class="fw-bold mb-3 smaller text-muted text-uppercase letter-spacing-1">Basic Information</h6>
+                    <div class="mb-3">
+                        <label class="text-muted smaller fw-bold d-block mb-1">Email Address</label>
+                        <p class="fw-bold mb-0" id="pUserEmail">-</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="text-muted smaller fw-bold d-block mb-1">Country</label>
+                        <p class="fw-bold mb-0" id="pUserCountry">-</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="text-muted smaller fw-bold d-block mb-1">KYC Status</label>
+                        <p class="fw-bold mb-0" id="pUserKyc">-</p>
+                    </div>
+                    <div class="mb-0">
+                        <label class="text-muted smaller fw-bold d-block mb-1">Date Joined</label>
+                        <p class="fw-bold mb-0" id="pUserJoined">-</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Summary + Transactions -->
+            <div class="col-12 col-xl-8">
+                <div class="card p-4 border-0 shadow-sm mb-4">
+                    <h6 class="fw-bold mb-4 text-primary uppercase letter-spacing-1">Activity Summary</h6>
+                    <div class="row g-3">
+                        <div class="col-6 col-md-3">
+                            <div class="bg-light p-3 rounded-4 h-100 text-center">
+                                <p class="text-muted smaller mb-1 text-uppercase fw-bold">Deposits</p>
+                                <p class="fw-bold mb-0 text-success h5" id="statDeposits">0</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="bg-light p-3 rounded-4 h-100 text-center">
+                                <p class="text-muted smaller mb-1 text-uppercase fw-bold">Withdrawals</p>
+                                <p class="fw-bold mb-0 text-danger h5" id="statWithdrawals">0</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="bg-light p-3 rounded-4 h-100 text-center">
+                                <p class="text-muted smaller mb-1 text-uppercase fw-bold">Deriv Funding</p>
+                                <p class="fw-bold mb-0 h5" id="statDerivFunding">0</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="bg-light p-3 rounded-4 h-100 text-center">
+                                <p class="text-muted smaller mb-1 text-uppercase fw-bold">Deriv Withdrawal</p>
+                                <p class="fw-bold mb-0 h5" id="statDerivWithdrawal">0</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="bg-light p-3 rounded-4 h-100 text-center">
+                                <p class="text-muted smaller mb-1 text-uppercase fw-bold">Cross Border</p>
+                                <p class="fw-bold mb-0 h5" id="statAbroad">0</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="bg-light p-3 rounded-4 h-100 text-center">
+                                <p class="text-muted smaller mb-1 text-uppercase fw-bold">Suppliers</p>
+                                <p class="fw-bold mb-0 h5" id="statSuppliers">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card p-4 border-0 shadow-sm">
+                    <h6 class="fw-bold mb-4 text-primary uppercase letter-spacing-1">All Transactions</h6>
+                    <div class="table-responsive">
+                        <table class="table tx-table w-100" id="userTxTable">
+                            <thead>
+                                <tr>
+                                    <th>Transaction</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/mock-data.js"></script>
+    <script>
+        $(document).ready(function () {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id') || CN_DATA.USERS[0].id;
+            const user = CN_DATA.USERS.find(function (u) { return u.id === id; }) || CN_DATA.USERS[0];
+
+            $('#pUserAvatar').attr('src', 'https://ui-avatars.com/api/?name=' + encodeURIComponent(user.name) + '&background=' + user.avatarBg + '&color=fff&size=128');
+            $('#pUserName').text(user.name);
+            $('#pUserEmail').text(user.email);
+            $('#pUserCountry').text(user.country);
+            $('#pUserKyc').text(user.kyc === 'verified' ? 'Verified' : 'Unverified');
+            $('#pUserJoined').text(user.joined);
+
+            const statusEl = $('#pUserStatus');
+            if (user.status === 'active') {
+                statusEl.removeClass('status-rejected').addClass('status-approved').text('Active Account');
+            } else {
+                statusEl.removeClass('status-approved').addClass('status-rejected').text('Blocked Account');
+            }
+
+            const deposits = CN_DATA.DEPOSIT_RECORDS.filter(function (r) { return r.user.id === user.id; });
+            const withdrawals = CN_DATA.WITHDRAWAL_RECORDS.filter(function (r) { return r.user.id === user.id; });
+            const derivFunding = CN_DATA.DERIV_FUNDING_RECORDS.filter(function (r) { return r.user.id === user.id; });
+            const derivWithdrawal = CN_DATA.DERIV_WITHDRAWAL_RECORDS.filter(function (r) { return r.user.id === user.id; });
+
+            $('#statDeposits').text(deposits.length);
+            $('#statWithdrawals').text(withdrawals.length);
+            $('#statDerivFunding').text(derivFunding.length);
+            $('#statDerivWithdrawal').text(derivWithdrawal.length);
+            $('#statAbroad').text(0);
+            $('#statSuppliers').text(0);
+
+            const tbody = $('#userTxTable tbody');
+            function addRows(records, category, icon, iconClass, sign, currency, amountKey) {
+                records.forEach(function (r) {
+                    tbody.append(
+                        '<tr>' +
+                        '<td><div class="tx-row"><div class="tx-type-icon ' + iconClass + '"><i class="fas ' + icon + '"></i></div>' +
+                        '<div class="tx-text"><p>' + category + '</p><small>' + r.ref + '</small></div></div></td>' +
+                        '<td class="text-muted small">' + r.date + '</td>' +
+                        '<td class="fw-bold ' + (sign === '+' ? 'text-success' : 'text-danger') + '">' + sign + ' ' + currency + Number(r[amountKey]).toLocaleString() + '</td>' +
+                        '<td><span class="badge-status status-' + r.status + '">' + r.status.charAt(0).toUpperCase() + r.status.slice(1) + '</span></td>' +
+                        '</tr>'
+                    );
+                });
+            }
+            addRows(deposits, 'Deposit', 'fa-arrow-down', 'tx-in', '+', '₦', 'amountNgn');
+            addRows(withdrawals, 'Withdrawal', 'fa-arrow-up', 'tx-out', '-', '₦', 'amountNgn');
+            addRows(derivFunding, 'Deriv Funding', 'fa-arrow-down', 'tx-deriv', '+', '$', 'amountUsd');
+            addRows(derivWithdrawal, 'Deriv Withdrawal', 'fa-arrow-up', 'tx-deriv', '-', '$', 'amountUsd');
+
+            if (tbody.children().length === 0) {
+                tbody.append('<tr><td colspan="4" class="text-center text-muted py-4">No transactions found for this user.</td></tr>');
+            }
+
+            $('#userTxTable').DataTable({ pageLength: 10, responsive: true });
+        });
+    </script>
+</body>
+
+</html>

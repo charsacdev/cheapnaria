@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
+    <title>Deposit / Withdrawal | CheapNaria</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">13</span></a>
+            <a href="deposit-withdrawal.html" class="nav-link active"><i class="fas fa-right-left"></i> Deposit /
+                Withdrawal</a>
+            <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+            <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+            <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+            <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+            <a href="rates.html" class="nav-link"><i class="fas fa-percent"></i> Rates</a>
+            <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
+            <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+            <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
+            <hr class="my-3 opacity-10">
+            <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">13</span></a>
+                <a href="deposit-withdrawal.html" class="nav-link active"><i class="fas fa-right-left"></i> Deposit /
+                    Withdrawal</a>
+                <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+                <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+                <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+                <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+                <a href="rates.html" class="nav-link"><i class="fas fa-percent"></i> Rates</a>
+                <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
+                <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+                <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
+                <hr class="my-3 opacity-10">
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="menu-toggle d-lg-none me-3" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars-staggered"></i>
+                </button>
+                <h4 class="m-0 d-none d-md-block">Deposit / Withdrawal</h4>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="dropdown">
+                    <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=10b981&color=fff" alt="Profile"
+                            class="rounded-circle" width="40">
+                        <div class="d-none d-sm-block">
+                            <p class="mb-0 small fw-bold">Admin User</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Super Admin</p>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-user-circle me-2"></i>
+                                Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i
+                                    class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="card p-4 border-0 shadow-sm">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="mb-0 fw-bold" id="tableTitle">Deposits</h5>
+                <select class="form-select w-auto fw-bold text-secondary border-0 bg-light" id="typeSelector">
+                    <option value="deposits">Deposits</option>
+                    <option value="withdrawals">Withdrawals</option>
+                </select>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="deposits">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle w-100" id="depositTable">
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>User</th>
+                                    <th>Method</th>
+                                    <th>Amount (NGN)</th>
+                                    <th>USD Equiv.</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="withdrawals">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle w-100" id="withdrawalTable">
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>User</th>
+                                    <th>Method</th>
+                                    <th>Amount (NGN)</th>
+                                    <th>USD Equiv.</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Review Modal (shared for deposit + withdrawal) -->
+    <div class="modal fade" id="reviewModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-bottom p-4">
+                    <h5 class="modal-title fw-bold" id="modTitle">Transaction Review</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="text-center mb-4">
+                        <p class="text-muted small mb-1" id="modUserLine">-</p>
+                        <h3 class="fw-800 mb-0" id="modAmount">₦0.00</h3>
+                        <span class="badge bg-light text-dark border" id="modMethodBadge">-</span>
+                    </div>
+
+                    <div class="row g-3 text-start mb-4">
+                        <div class="col-12">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-1 d-block" id="modDetailLabel">Detail</label>
+                            <div class="p-3 bg-light rounded-4 d-flex justify-content-between align-items-center">
+                                <span class="small fw-mono text-break pe-2" id="modDetailValue">-</span>
+                                <button class="btn btn-link btn-sm p-0 copy-btn" id="modCopyBtn"><i
+                                        class="far fa-copy text-primary"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-1 d-block">USD Equivalent</label>
+                            <p class="fw-bold mb-0" id="modUsd">-</p>
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-1 d-block">Date</label>
+                            <p class="fw-bold mb-0" id="modDate">-</p>
+                        </div>
+                    </div>
+
+                    <div id="modResolvedAlert" class="alert small mb-0 d-none"></div>
+                </div>
+                <div class="modal-footer border-0 p-4 pt-0 gap-2" id="modActionFooter">
+                    <button class="btn btn-outline-danger flex-grow-1 rounded-pill py-2" id="modRejectBtn">Decline</button>
+                    <button class="btn btn-primary flex-grow-1 rounded-pill py-2 shadow" id="modApproveBtn">Approve
+                        &amp; Complete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/mock-data.js"></script>
+    <script>
+        $(document).ready(function () {
+            function actionBtn(record, type, idx) {
+                return record.status === 'pending'
+                    ? '<button class="btn btn-primary btn-sm rounded-pill px-4 review-btn" data-bs-toggle="modal" data-bs-target="#reviewModal" data-type="' + type + '" data-idx="' + idx + '">Review</button>'
+                    : '<button class="btn btn-light btn-sm rounded-pill px-4 border review-btn" data-bs-toggle="modal" data-bs-target="#reviewModal" data-type="' + type + '" data-idx="' + idx + '">View</button>';
+            }
+
+            const depTbody = $('#depositTable tbody');
+            CN_DATA.DEPOSIT_RECORDS.forEach(function (r, i) {
+                depTbody.append(
+                    '<tr><td><span class="fw-bold text-primary">' + r.ref + '</span></td>' +
+                    '<td><p class="mb-0 small fw-bold">' + r.user.name + '</p><small class="text-muted">' + r.user.email + '</small></td>' +
+                    '<td><span class="badge bg-light text-dark border px-2">' + r.method + '</span></td>' +
+                    '<td class="fw-800">₦' + r.amountNgn.toLocaleString() + '</td>' +
+                    '<td class="text-muted small">$' + r.usdEquiv + '</td>' +
+                    '<td class="small text-muted">' + r.date + '</td>' +
+                    '<td><span class="badge-status status-' + r.status + '">' + r.status.charAt(0).toUpperCase() + r.status.slice(1) + '</span></td>' +
+                    '<td>' + actionBtn(r, 'deposit', i) + '</td></tr>'
+                );
+            });
+
+            const wdTbody = $('#withdrawalTable tbody');
+            CN_DATA.WITHDRAWAL_RECORDS.forEach(function (r, i) {
+                wdTbody.append(
+                    '<tr><td><span class="fw-bold text-primary">' + r.ref + '</span></td>' +
+                    '<td><p class="mb-0 small fw-bold">' + r.user.name + '</p><small class="text-muted">' + r.user.email + '</small></td>' +
+                    '<td><span class="badge bg-light text-dark border px-2">' + r.method + '</span></td>' +
+                    '<td class="fw-800 text-danger">₦' + r.amountNgn.toLocaleString() + '</td>' +
+                    '<td class="text-muted small">$' + r.usdEquiv + '</td>' +
+                    '<td class="small text-muted">' + r.date + '</td>' +
+                    '<td><span class="badge-status status-' + r.status + '">' + r.status.charAt(0).toUpperCase() + r.status.slice(1) + '</span></td>' +
+                    '<td>' + actionBtn(r, 'withdrawal', i) + '</td></tr>'
+                );
+            });
+
+            $('#depositTable').DataTable({ responsive: true, pageLength: 10 });
+            $('#withdrawalTable').DataTable({ responsive: true, pageLength: 10 });
+
+            $('#typeSelector').on('change', function () {
+                $('.tab-pane').removeClass('show active');
+                $('#' + $(this).val()).addClass('show active');
+                $('#tableTitle').text($(this).val() === 'deposits' ? 'Deposits' : 'Withdrawals');
+            });
+
+            let currentRecord = null;
+
+            $(document).on('click', '.review-btn', function () {
+                const type = $(this).data('type');
+                const idx = $(this).data('idx');
+                const r = type === 'deposit' ? CN_DATA.DEPOSIT_RECORDS[idx] : CN_DATA.WITHDRAWAL_RECORDS[idx];
+                currentRecord = { type: type, ref: r.ref, record: r };
+
+                $('#modTitle').text((type === 'deposit' ? 'Deposit' : 'Withdrawal') + ' Review — ' + r.ref);
+                $('#modUserLine').text(r.user.name + ' · ' + r.user.email);
+                $('#modAmount').text('₦' + r.amountNgn.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#modMethodBadge').text(r.method);
+                $('#modUsd').text('$' + r.usdEquiv);
+                $('#modDate').text(r.date);
+
+                if (r.isCrypto) {
+                    $('#modDetailLabel').text('Transaction Hash');
+                    $('#modDetailValue').text(r.txHash);
+                } else {
+                    $('#modDetailLabel').text('Payment Reference');
+                    $('#modDetailValue').text(r.bankRef || (r.bankName + ' · ' + r.accountNumber));
+                }
+
+                if (r.status === 'pending') {
+                    $('#modActionFooter').removeClass('d-none');
+                    $('#modResolvedAlert').addClass('d-none');
+                } else {
+                    $('#modActionFooter').addClass('d-none');
+                    const alertBox = $('#modResolvedAlert').removeClass('d-none alert-success alert-danger');
+                    if (r.status === 'approved') {
+                        alertBox.addClass('alert-success').html('<i class="fas fa-check-circle me-1"></i> This transaction has already been approved.');
+                    } else {
+                        alertBox.addClass('alert-danger').html('<i class="fas fa-times-circle me-1"></i> This transaction was declined.');
+                    }
+                }
+            });
+
+            $('#modCopyBtn').on('click', function () {
+                navigator.clipboard.writeText($('#modDetailValue').text());
+                const icon = $(this).find('i');
+                icon.removeClass('far fa-copy').addClass('fas fa-check text-success');
+                setTimeout(function () { icon.removeClass('fas fa-check text-success').addClass('far fa-copy'); }, 1500);
+            });
+
+            $('#modApproveBtn').on('click', function () {
+                bootstrap.Modal.getInstance(document.getElementById('reviewModal')).hide();
+                alert((currentRecord.type === 'deposit' ? 'Deposit' : 'Withdrawal') + ' ' + currentRecord.ref + ' approved.');
+            });
+            $('#modRejectBtn').on('click', function () {
+                bootstrap.Modal.getInstance(document.getElementById('reviewModal')).hide();
+                alert((currentRecord.type === 'deposit' ? 'Deposit' : 'Withdrawal') + ' ' + currentRecord.ref + ' declined.');
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
     <title>Dashboard | CheapNaria</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -25,17 +26,19 @@
     <aside class="sidebar d-none d-lg-block">
         <div class="brand mb-5 px-3">
             <a href="index.html" class="brand-logo">
-                <i class="fas fa-bolt-lightning"></i>
-                Cheap<span>Naria</span>
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
             </a>
         </div>
 
         <nav class="nav flex-column">
             <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Dashboard</a>
-            <a href="p2p.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Crypto Transaction</a>
+            <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
+            <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+            <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> Other Services</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
-            <a href="deposit.html" class="nav-link"><i class="fas fa-wallet"></i> Deposits</a>
-            <a href="withdraw.html" class="nav-link"><i class="fas fa-money-bill-transfer"></i> Withdrawals</a>
             <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
             <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
         </nav>
@@ -50,18 +53,20 @@
     <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
         <div class="offcanvas-header">
             <a href="index.html" class="brand-logo">
-                <i class="fas fa-bolt-lightning"></i>
-                Cheap<span>Naria</span>
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
             </a>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body">
             <nav class="nav flex-column">
                 <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Dashboard</a>
-                <a href="p2p.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Crypto Transaction</a>
+                <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
+                <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+                <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> Other Services</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
-                <a href="deposit.html" class="nav-link"><i class="fas fa-wallet"></i> Deposits</a>
-                <a href="withdraw.html" class="nav-link"><i class="fas fa-money-bill-transfer"></i> Withdrawals</a>
                 <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
                 <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
                 <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
@@ -76,14 +81,23 @@
                 <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
                     <i class="fas fa-bars"></i>
                 </button>
-                <h4 class="m-0 d-none d-md-block">Welcome back, John 👋</h4>
+                <h4 class="m-0 d-none d-md-block">Hello, Chukwudi 👋</h4>
             </div>
 
             <div class="d-flex align-items-center gap-3">
+                <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <button class="btn btn-light position-relative rounded-circle" style="width:44px;height:44px;">
+                    <i class="fas fa-bell"></i>
+                    <span
+                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">2</span>
+                </button>
 
                 <div class="dropdown">
                     <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
-                        <img src="https://i.pravatar.cc/150?u=john" alt="Profile" class="rounded-circle" width="40">
+                        <img src="../images/avatar-john.jpg" alt="Profile" class="rounded-circle" width="40">
                         <div class="d-none d-sm-block">
                             <p class="mb-0 small fw-bold">John Doe</p>
                             <p class="mb-0 text-muted" style="font-size: 0.7rem;">Verified User</p>
@@ -104,104 +118,226 @@
             </div>
         </header>
 
-        <!-- Stats Section -->
-        <div class="row g-4 mb-4">
-            <div class="col-12 col-sm-6 col-xl-3">
-                <div class="card stat-card h-100">
-                    <div class="stat-icon bg-warning-subtle text-warning">
-                        <i class="fas fa-spinner"></i>
+        <div class="row g-4">
+            <!-- Balance Card + Quick Actions -->
+            <div class="col-12 col-xl-7">
+                <div class="balance-card mb-4">
+                    <div class="balance-card-header">
+                        <span><i class="fas fa-wallet me-1"></i> CheapNaria NGN Wallet</span>
+                        <div class="balance-eye-toggle" id="balanceEyeToggle">
+                            <i class="fas fa-eye" id="balanceEyeIcon"></i>
+                        </div>
                     </div>
-                    <p class="text-muted mb-1 small">Pending Deposits</p>
-                    <h3 class="mb-0">2 <span class="fs-6 fw-normal text-muted">/ ₦45,000</span></h3>
+                    <div class="balance-amount" id="balanceAmount" data-value="245680.00">₦245,680.00</div>
+                    <div class="balance-label">Available Balance <i class="fas fa-circle-check"
+                            style="color:#a7f3d0;"></i></div>
+
+                    <div class="quick-actions-row">
+                        <a href="deposit.html" class="quick-action-btn">
+                            <div class="qa-icon qa-green"><i class="fas fa-arrow-down"></i></div>
+                            <span>Deposit</span>
+                        </a>
+                        <a href="withdraw.html" class="quick-action-btn">
+                            <div class="qa-icon qa-red"><i class="fas fa-arrow-up"></i></div>
+                            <span>Withdraw</span>
+                        </a>
+                        <a href="transfer.html" class="quick-action-btn">
+                            <div class="qa-icon qa-amber"><i class="fas fa-exchange-alt"></i></div>
+                            <span>Transfer</span>
+                        </a>
+                        <button type="button" class="quick-action-btn" data-bs-toggle="modal"
+                            data-bs-target="#derivModal">
+                            <div class="qa-icon qa-purple"><i class="fas fa-chart-line"></i></div>
+                            <span>Deriv</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Deriv Promo Card -->
+                <div class="card p-4 d-flex flex-row align-items-center justify-content-between gap-3">
+                    <div>
+                        <h6 class="fw-bold mb-1">Fund your Deriv account in minutes</h6>
+                        <p class="text-muted small mb-0">Use your CheapNaria wallet to fund or withdraw from Deriv
+                            instantly.</p>
+                    </div>
+                    <button type="button" class="btn btn-primary rounded-pill px-4 flex-shrink-0"
+                        data-bs-toggle="modal" data-bs-target="#derivModal">Get Started</button>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-xl-3">
-                <div class="card stat-card h-100">
-                    <div class="stat-icon bg-info-subtle text-info">
-                        <i class="fas fa-clock"></i>
+
+            <!-- Wallet Quick Menu -->
+            <div class="col-12 col-xl-5">
+                <div class="card p-4 h-100">
+                    <h5 class="mb-3">Quick Menu</h5>
+                    <div class="wallet-menu-list">
+                        <a href="deposit.html" class="wallet-menu-item">
+                            <div class="wmi-icon"><i class="fas fa-arrow-down"></i></div>
+                            <div class="wmi-text">
+                                <p>Deposit</p>
+                                <small>Top up your wallet</small>
+                            </div>
+                            <i class="fas fa-chevron-right wmi-chevron"></i>
+                        </a>
+                        <a href="withdraw.html" class="wallet-menu-item">
+                            <div class="wmi-icon"><i class="fas fa-arrow-up"></i></div>
+                            <div class="wmi-text">
+                                <p>Withdraw</p>
+                                <small>Withdraw via bank or USD</small>
+                            </div>
+                            <i class="fas fa-chevron-right wmi-chevron"></i>
+                        </a>
+                        <a href="transfer.html" class="wallet-menu-item">
+                            <div class="wmi-icon"><i class="fas fa-paper-plane"></i></div>
+                            <div class="wmi-text">
+                                <p>Transfer</p>
+                                <small>Send to a CheapNaria user</small>
+                            </div>
+                            <i class="fas fa-chevron-right wmi-chevron"></i>
+                        </a>
+                        <button type="button" class="wallet-menu-item border-0 bg-transparent w-100 text-start"
+                            data-bs-toggle="modal" data-bs-target="#derivModal">
+                            <div class="wmi-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="wmi-text">
+                                <p>Deriv Funding</p>
+                                <small>Fund or withdraw from Deriv</small>
+                            </div>
+                            <i class="fas fa-chevron-right wmi-chevron"></i>
+                        </button>
+                        <a href="services.html" class="wallet-menu-item">
+                            <div class="wmi-icon"><i class="fas fa-layer-group"></i></div>
+                            <div class="wmi-text">
+                                <p>Other Services</p>
+                                <small>Suppliers, abroad transfers, bills &amp; betting</small>
+                            </div>
+                            <i class="fas fa-chevron-right wmi-chevron"></i>
+                        </a>
+                        <a href="profile.html#payout" class="wallet-menu-item">
+                            <div class="wmi-icon"><i class="fas fa-university"></i></div>
+                            <div class="wmi-text">
+                                <p>Bank Accounts</p>
+                                <small>Manage your bank details</small>
+                            </div>
+                            <i class="fas fa-chevron-right wmi-chevron"></i>
+                        </a>
+                        <a href="transactions.html" class="wallet-menu-item">
+                            <div class="wmi-icon"><i class="fas fa-clock-rotate-left"></i></div>
+                            <div class="wmi-text">
+                                <p>Transaction History</p>
+                                <small>View all your transactions</small>
+                            </div>
+                            <i class="fas fa-chevron-right wmi-chevron"></i>
+                        </a>
+                        <a href="deposit.html#rates" class="wallet-menu-item">
+                            <div class="wmi-icon"><i class="fas fa-percent"></i></div>
+                            <div class="wmi-text">
+                                <p>Rate &amp; Fees</p>
+                                <small>View current rates and fees</small>
+                            </div>
+                            <i class="fas fa-chevron-right wmi-chevron"></i>
+                        </a>
                     </div>
-                    <p class="text-muted mb-1 small">Pending Withdrawals</p>
-                    <h3 class="mb-0">1 <span class="fs-6 fw-normal text-muted">/ ₦150,000</span></h3>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-xl-3">
-                <div class="card stat-card h-100">
-                    <div class="stat-icon bg-success-subtle text-success">
-                        <i class="fas fa-arrow-down"></i>
-                    </div>
-                    <p class="text-muted mb-1 small">Total Deposits</p>
-                    <h3 class="mb-0">₦2,450,000</h3>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-xl-3">
-                <div class="card stat-card h-100">
-                    <div class="stat-icon bg-danger-subtle text-danger">
-                        <i class="fas fa-arrow-up"></i>
-                    </div>
-                    <p class="text-muted mb-1 small">Total Withdrawals</p>
-                    <h3 class="mb-0">₦1,200,000</h3>
                 </div>
             </div>
         </div>
 
         <!-- Recent Transactions Table -->
-        <div class="card p-4">
+        <div class="card p-4 mt-4">
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <h5 class="mb-0">Recent Transactions</h5>
                 <a href="transactions.html" class="btn btn-sm btn-light">View All</a>
             </div>
             <div class="table-responsive">
-                <table id="recentTransactions" class="table table-hover w-100">
+                <table id="recentTransactions" class="table tx-table w-100">
                     <thead>
                         <tr>
+                            <th>Transaction</th>
                             <th>Date</th>
-                            <th>Transaction ID</th>
-                            <th>Type</th>
-                            <th>Method</th>
-                            <th>Asset</th>
                             <th>Amount</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- CR: Deposit -->
                         <tr>
-                            <td>Oct 20, 2023 - 14:30</td>
-                            <td class="text-secondary small">TXN-9988221100</td>
-                            <td><span class="text-success fw-bold"><i class="fas fa-arrow-down me-1"></i> Deriv
-                                    Deposit</span></td>
-                            <td>Bank Transfer</td>
-                            <td class="text-muted">UGT (USD)</td>
-                            <td class="fw-bold">$250.00</td>
-                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-in"><i class="fas fa-arrow-down"></i></div>
+                                    <div class="tx-text">
+                                        <p>Deriv Deposit</p>
+                                        <small>Bank Transfer &middot; TXN-9988221100</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Today, 10:45 AM</td>
+                            <td class="fw-bold text-success">+ ₦40,500.00</td>
+                            <td><span class="badge-status status-approved">Successful</span></td>
                         </tr>
-                        <!-- CR: Withdrawal -->
                         <tr>
-                            <td>Oct 19, 2023 - 09:12</td>
-                            <td class="text-secondary small">TXN-9988221101</td>
-                            <td><span class="text-danger fw-bold"><i class="fas fa-arrow-up me-1"></i> Deriv
-                                    Withdrawal</span></td>
-                            <td>Crypto Payout</td>
-                            <td class="text-muted">USDT (TRC20)</td>
-                            <td class="fw-bold">$105.00</td>
-                            <td><span class="badge-status status-pending">Pending</span></td>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-transfer"><i class="fas fa-paper-plane"></i></div>
+                                    <div class="tx-text">
+                                        <p>Transfer to John Trader</p>
+                                        <small>Internal &middot; TXN-9988221101</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Today, 09:30 AM</td>
+                            <td class="fw-bold text-danger">- ₦25,000.00</td>
+                            <td><span class="badge-status status-approved">Successful</span></td>
                         </tr>
-                        <!-- P2P: Buy -->
                         <tr>
-                            <td>Oct 18, 2023 - 11:15</td>
-                            <td class="text-secondary small">P2P-1122334455</td>
-                            <td><span class="text-success fw-bold"><i class="fas fa-plus-circle me-1"></i> Crypto
-                                    Buy</span></td>
-                            <td>Bank Transfer</td>
-                            <td class="text-muted">USDT (BEP20)</td>
-                            <td class="fw-bold">$500.00</td>
-                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td>
+                                <div class="tx-row">
+                                    <div class="tx-type-icon tx-out"><i class="fas fa-arrow-up"></i></div>
+                                    <div class="tx-text">
+                                        <p>Withdrawal to Bank</p>
+                                        <small>Bank Transfer &middot; TXN-9988221102</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted small">Yesterday, 08:15 PM</td>
+                            <td class="fw-bold text-danger">- ₦80,000.00</td>
+                            <td><span class="badge-status status-approved">Successful</span></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </main>
+
+    <!-- Deriv Funding Modal -->
+    <div class="modal fade" id="derivModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="fw-bold">Deriv Funding</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="text-muted small mb-4">Choose whether you want to fund or withdraw from your Deriv CR
+                        account.</p>
+                    <div class="d-grid gap-3">
+                        <a href="deriv-deposit.html" class="select-method-card text-decoration-none">
+                            <div class="smc-icon"><i class="fas fa-arrow-down"></i></div>
+                            <div class="smc-text">
+                                <p>Fund Deriv Account</p>
+                                <small class="text-muted">Deposit into your CR account</small>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="deriv-withdraw.html" class="select-method-card text-decoration-none">
+                            <div class="smc-icon"><i class="fas fa-arrow-up"></i></div>
+                            <div class="smc-text">
+                                <p>Withdraw from Deriv</p>
+                                <small class="text-muted">Payout from your CR account</small>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- jQuery, Popper, Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -212,6 +348,7 @@
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+    <script src="../js/theme.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -226,6 +363,27 @@
                     }
                 }
             });
+
+            // Balance show/hide toggle
+            let balanceVisible = true;
+            const rawValue = parseFloat($('#balanceAmount').data('value'));
+            const formatted = '₦' + rawValue.toLocaleString(undefined, { minimumFractionDigits: 2 });
+
+            $('#balanceEyeToggle').on('click', function () {
+                balanceVisible = !balanceVisible;
+                if (balanceVisible) {
+                    $('#balanceAmount').text(formatted);
+                    $('#balanceEyeIcon').removeClass('fa-eye-slash').addClass('fa-eye');
+                } else {
+                    $('#balanceAmount').text('₦ • • • • • •');
+                    $('#balanceEyeIcon').removeClass('fa-eye').addClass('fa-eye-slash');
+                }
+            });
+
+            // Open Deriv modal directly if arriving via #deriv hash
+            if (window.location.hash === '#deriv') {
+                new bootstrap.Modal(document.getElementById('derivModal')).show();
+            }
         });
     </script>
 </body>

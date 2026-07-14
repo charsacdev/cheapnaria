@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
+    <title>Send to CheapNaria User | CheapNaria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block">
+        <div class="brand mb-5 px-3">
+            <a href="index.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="transfer.html" class="nav-link active"><i class="fas fa-exchange-alt"></i> Transfer</a>
+            <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+            <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> Other Services</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+            <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+            <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="index.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="transfer.html" class="nav-link active"><i class="fas fa-exchange-alt"></i> Transfer</a>
+                <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+                <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> Other Services</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+                <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <button type="button" class="btn btn-light btn-sm rounded-pill me-2 d-none" id="backBtn"><i
+                        class="fas fa-arrow-left"></i></button>
+                <h4 class="m-0" id="pageTitle">Send to CheapNaria User</h4>
+            </div>
+            <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card p-4">
+
+                    <!-- STEP 1: Search User -->
+                    <div id="searchStep">
+                        <h5 class="mb-1">Who are you sending to?</h5>
+                        <p class="text-muted small mb-4">Send money instantly to any CheapNaria user.</p>
+
+                        <div class="input-group mb-4">
+                            <span class="input-group-text bg-light border-end-0"><i class="fas fa-search"></i></span>
+                            <input type="text" class="form-control border-start-0" id="userSearchInput"
+                                placeholder="Username or name">
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <h6 class="fw-bold mb-0">Recent Users</h6>
+                        </div>
+                        <div id="recentUsersList">
+                            <div class="user-search-item" data-name="John Trader" data-username="@johntrader">
+                                <img src="../images/avatar-johntrader.jpg" alt="John Trader">
+                                <div class="usi-text">
+                                    <p>@johntrader</p>
+                                    <small>John Trader</small>
+                                </div>
+                                <i class="fas fa-chevron-right text-muted ms-auto"></i>
+                            </div>
+                            <div class="user-search-item" data-name="Blessing O." data-username="@blessingfx">
+                                <img src="../images/avatar-blessingfx.jpg" alt="Blessing O.">
+                                <div class="usi-text">
+                                    <p>@blessingfx</p>
+                                    <small>Blessing O.</small>
+                                </div>
+                                <i class="fas fa-chevron-right text-muted ms-auto"></i>
+                            </div>
+                            <div class="user-search-item" data-name="Mercy E." data-username="@mercy24">
+                                <img src="../images/avatar-mercy24.jpg" alt="Mercy E.">
+                                <div class="usi-text">
+                                    <p>@mercy24</p>
+                                    <small>Mercy E.</small>
+                                </div>
+                                <i class="fas fa-chevron-right text-muted ms-auto"></i>
+                            </div>
+                            <div class="user-search-item" data-name="Tunde A." data-username="@tunde2000">
+                                <img src="../images/avatar-tunde2000.jpg" alt="Tunde A.">
+                                <div class="usi-text">
+                                    <p>@tunde2000</p>
+                                    <small>Tunde A.</small>
+                                </div>
+                                <i class="fas fa-chevron-right text-muted ms-auto"></i>
+                            </div>
+                        </div>
+                        <p id="noUserFound" class="text-muted small text-center py-4 d-none">No user found with that
+                            username or name.</p>
+                    </div>
+
+                    <!-- STEP 2: Amount -->
+                    <div id="amountStep" class="d-none">
+                        <div class="d-flex align-items-center gap-3 mb-4 p-3 bg-light rounded-4">
+                            <img id="recipientAvatar" src="" width="48" height="48" class="rounded-circle">
+                            <div>
+                                <p class="mb-0 fw-bold" id="recipientUsername">@johntrader</p>
+                                <small class="text-muted" id="recipientName">John Trader</small>
+                            </div>
+                        </div>
+
+                        <label class="form-label fw-600">Amount (NGN)</label>
+                        <div class="input-group mb-2">
+                            <span class="input-group-text bg-light">₦</span>
+                            <input type="number" class="form-control fs-4 fw-bold" id="transferAmount"
+                                placeholder="0.00">
+                        </div>
+                        <small class="text-muted d-block mb-4">Available Balance: <span
+                                class="fw-bold text-dark">₦245,680.00</span></small>
+
+                        <label class="form-label fw-600">Note (optional)</label>
+                        <input type="text" class="form-control mb-4" id="transferNote" placeholder="What's this for?">
+
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm"
+                            id="continueToConfirm">Continue</button>
+                    </div>
+
+                    <!-- STEP 3: Confirm -->
+                    <div id="confirmStep" class="d-none">
+                        <h5 class="mb-4 text-center">Confirm Transfer</h5>
+                        <div class="text-center mb-4">
+                            <img id="confirmAvatar" src="" width="64" height="64" class="rounded-circle mb-2">
+                            <h4 class="fw-bold mb-0" id="confirmAmount">₦0.00</h4>
+                            <p class="text-muted small mb-0">to <span id="confirmUsername">@johntrader</span></p>
+                        </div>
+
+                        <div class="summary-rows mb-4">
+                            <div class="summary-row">
+                                <span class="sr-label">Recipient</span>
+                                <span class="sr-value" id="confirmName">John Trader</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="sr-label">Amount</span>
+                                <span class="sr-value" id="confirmAmountRow">₦0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="sr-label">Fee</span>
+                                <span class="sr-value text-success">Free</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="sr-label">Note</span>
+                                <span class="sr-value" id="confirmNote">—</span>
+                            </div>
+                        </div>
+
+                        <label class="form-label fw-600 text-center w-100">Enter PIN to confirm</label>
+                        <div class="pin-dots-wrapper">
+                            <div class="pin-dot" data-i="0"></div>
+                            <div class="pin-dot" data-i="1"></div>
+                            <div class="pin-dot" data-i="2"></div>
+                            <div class="pin-dot" data-i="3"></div>
+                            <input type="password" inputmode="numeric" maxlength="4" class="pin-hidden-input"
+                                id="pinInput">
+                        </div>
+
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm"
+                            id="confirmTransferBtn">Send Money</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow text-center p-5">
+                <div class="mb-4">
+                    <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center"
+                        style="width: 80px; height: 80px;">
+                        <i class="fas fa-check fs-1"></i>
+                    </div>
+                </div>
+                <h3 class="fw-bold mb-2">Transfer Successful!</h3>
+                <p class="text-muted mb-4"><span id="successAmountText">₦0.00</span> was sent to <span
+                        id="successUserText">@johntrader</span> instantly.</p>
+                <div class="d-grid gap-2">
+                    <a href="index.html" class="btn btn-primary py-3 fw-bold">Back to Dashboard</a>
+                    <a href="transactions.html" class="btn btn-light py-2">View Receipt</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        $(document).ready(function () {
+            const steps = ['#searchStep', '#amountStep', '#confirmStep'];
+            let recipient = null;
+
+            function showStep(id, title, showBack) {
+                steps.forEach(s => $(s).addClass('d-none'));
+                $(id).removeClass('d-none').hide().fadeIn(200);
+                $('#pageTitle').text(title);
+                $('#backBtn').toggleClass('d-none', !showBack);
+            }
+
+            $('#backBtn').click(function () {
+                if (!$('#amountStep').hasClass('d-none')) {
+                    showStep('#searchStep', 'Send to CheapNaria User', false);
+                } else if (!$('#confirmStep').hasClass('d-none')) {
+                    showStep('#amountStep', 'Send Money', true);
+                }
+            });
+
+            // Search filter
+            $('#userSearchInput').on('input', function () {
+                const q = $(this).val().toLowerCase();
+                let visible = 0;
+                $('.user-search-item').each(function () {
+                    const name = $(this).data('name').toLowerCase();
+                    const username = $(this).data('username').toLowerCase();
+                    const match = name.includes(q) || username.includes(q);
+                    $(this).toggle(match);
+                    if (match) visible++;
+                });
+                $('#noUserFound').toggleClass('d-none', visible !== 0);
+            });
+
+            // Select user
+            $('.user-search-item').click(function () {
+                recipient = {
+                    name: $(this).data('name'),
+                    username: $(this).data('username'),
+                    avatar: $(this).find('img').attr('src')
+                };
+                $('#recipientAvatar').attr('src', recipient.avatar);
+                $('#recipientUsername').text(recipient.username);
+                $('#recipientName').text(recipient.name);
+                $('#transferAmount').val('');
+                $('#transferNote').val('');
+                showStep('#amountStep', 'Send Money', true);
+            });
+
+            $('#continueToConfirm').click(function () {
+                const amt = parseFloat($('#transferAmount').val());
+                if (!amt || amt <= 0) { alert('Please enter an amount'); return; }
+                if (amt > 245680) { alert('Insufficient balance'); return; }
+
+                const note = $('#transferNote').val() || '—';
+                const formatted = '₦' + amt.toLocaleString(undefined, { minimumFractionDigits: 2 });
+
+                $('#confirmAvatar').attr('src', recipient.avatar);
+                $('#confirmAmount').text(formatted);
+                $('#confirmUsername').text(recipient.username);
+                $('#confirmName').text(recipient.name);
+                $('#confirmAmountRow').text(formatted);
+                $('#confirmNote').text(note);
+
+                showStep('#confirmStep', 'Confirm Transfer', true);
+            });
+
+            // PIN dots
+            $('.pin-dots-wrapper').click(function () {
+                $('#pinInput').trigger('focus');
+            });
+            $('#pinInput').on('input', function () {
+                const val = $(this).val().replace(/\D/g, '').slice(0, 4);
+                $(this).val(val);
+                $('.pin-dot').each(function (i) {
+                    $(this).toggleClass('filled', i < val.length);
+                });
+            });
+
+            $('#confirmTransferBtn').click(function () {
+                if ($('#pinInput').val().length < 4) { alert('Please enter your 4-digit PIN'); return; }
+
+                $('#successAmountText').text($('#confirmAmount').text());
+                $('#successUserText').text(recipient.username);
+                new bootstrap.Modal(document.getElementById('successModal')).show();
+            });
+        });
+    </script>
+</body>
+
+</html>

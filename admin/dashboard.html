@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
     <title>Admin Dashboard | CheapNaria</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
@@ -50,8 +51,8 @@
     <aside class="sidebar d-none d-lg-block" id="adminSidebar">
         <div class="brand mb-5 px-3">
             <a href="dashboard.html" class="brand-logo">
-                <i class="fas fa-bolt-lightning"></i>
-                Cheap<span>Naria</span>
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
             </a>
         </div>
 
@@ -59,10 +60,15 @@
             <a href="dashboard.html" class="nav-link active"><i class="fas fa-th-large"></i> Dashboard</a>
             <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
-                    class="badge bg-danger rounded-pill ms-auto">5</span></a>
-            <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
-            <a href="p2p.html" class="nav-link"><i class="fas fa-handshake"></i> Crypto Transactions</a>
+                    class="badge bg-danger rounded-pill ms-auto">13</span></a>
+            <a href="deposit-withdrawal.html" class="nav-link"><i class="fas fa-right-left"></i> Deposit /
+                Withdrawal</a>
+            <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+            <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+            <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+            <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
             <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+            <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
             <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
             <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
             <hr class="my-3 opacity-10">
@@ -79,8 +85,8 @@
     <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
         <div class="offcanvas-header">
             <a href="dashboard.html" class="brand-logo">
-                <i class="fas fa-bolt-lightning"></i>
-                Cheap<span>Naria</span>
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
             </a>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
@@ -89,10 +95,15 @@
                 <a href="dashboard.html" class="nav-link active"><i class="fas fa-th-large"></i> Dashboard</a>
                 <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
-                        class="badge bg-danger rounded-pill ms-auto">5</span></a>
-                <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
-                <a href="p2p.html" class="nav-link"><i class="fas fa-handshake"></i> Crypto Transactions</a>
+                        class="badge bg-danger rounded-pill ms-auto">13</span></a>
+                <a href="deposit-withdrawal.html" class="nav-link"><i class="fas fa-right-left"></i> Deposit /
+                    Withdrawal</a>
+                <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+                <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+                <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+                <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
                 <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+                <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
                 <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
                 <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
                 <hr class="my-3 opacity-10">
@@ -114,6 +125,10 @@
             </div>
 
             <div class="d-flex align-items-center gap-3">
+
+                <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
 
                 <div class="dropdown">
                     <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
@@ -137,57 +152,60 @@
             </div>
         </header>
 
-        <!-- Stats Grid -->
+        <!-- Stats Grid: counts only, no amounts -->
         <div class="row g-4 mb-4">
-            <div class="col-12 col-sm-6 col-md-4 col-xl">
+            <div class="col-6 col-md-4 col-xl-2">
                 <div class="card stat-card h-100">
                     <div class="stat-icon bg-primary-subtle text-primary">
                         <i class="fas fa-users"></i>
                     </div>
                     <p class="text-muted mb-1 small">Total Users</p>
                     <h3 class="mb-0">12,543</h3>
-                    <div class="mt-2">
-                        <span class="text-success small fw-bold"><i class="fas fa-arrow-up"></i> 12%</span>
-                    </div>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-md-4 col-xl">
-                <div class="card stat-card h-100">
-                    <div class="stat-icon bg-indigo-subtle text-indigo" style="color: #6366f1; background: #eef2ff;">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <p class="text-muted mb-1 small">Total Volume</p>
-                    <h3 class="mb-0">₦45.2M</h3>
-                    <div class="mt-2">
-                        <span class="text-success small fw-bold"><i class="fas fa-arrow-up"></i> 8%</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-4 col-xl">
+            <div class="col-6 col-md-4 col-xl-2">
                 <div class="card stat-card h-100">
                     <div class="stat-icon bg-warning-subtle text-warning">
                         <i class="fas fa-user-clock"></i>
                     </div>
                     <p class="text-muted mb-1 small">Pending KYC</p>
-                    <h3 class="mb-0">24</h3>
+                    <h3 class="mb-0">13</h3>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-md-6 col-xl">
+            <div class="col-6 col-md-4 col-xl-2">
+                <div class="card stat-card h-100">
+                    <div class="stat-icon bg-secondary-subtle text-secondary">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <p class="text-muted mb-1 small">Deriv Transactions</p>
+                    <h3 class="mb-0" id="statDeriv">0</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-xl-2">
                 <div class="card stat-card h-100">
                     <div class="stat-icon bg-info-subtle text-info">
-                        <i class="fas fa-arrow-down"></i>
+                        <i class="fas fa-right-left"></i>
                     </div>
-                    <p class="text-muted mb-1 small">Deposits</p>
-                    <h3 class="mb-0">₦2.4M</h3>
+                    <p class="text-muted mb-1 small">Crypto Transactions</p>
+                    <h3 class="mb-0" id="statCrypto">0</h3>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-md-6 col-xl">
+            <div class="col-6 col-md-4 col-xl-2">
+                <div class="card stat-card h-100">
+                    <div class="stat-icon bg-success-subtle text-success">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <p class="text-muted mb-1 small">Supplier Payments</p>
+                    <h3 class="mb-0">5</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-xl-2">
                 <div class="card stat-card h-100">
                     <div class="stat-icon bg-danger-subtle text-danger">
-                        <i class="fas fa-arrow-up"></i>
+                        <i class="fas fa-earth-africa"></i>
                     </div>
-                    <p class="text-muted mb-1 small">Withdraws</p>
-                    <h3 class="mb-0">₦1.2M</h3>
+                    <p class="text-muted mb-1 small">Cross Border</p>
+                    <h3 class="mb-0">5</h3>
                 </div>
             </div>
         </div>
@@ -248,7 +266,33 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <p class="mb-0 fw-bold text-dark small">Verify KYC</p>
-                                    <p class="mb-0 text-muted" style="font-size: 0.75rem;">Review 5 new documents</p>
+                                    <p class="mb-0 text-muted" style="font-size: 0.75rem;">Review 13 new documents</p>
+                                </div>
+                                <i class="fas fa-chevron-right ms-auto opacity-25"></i>
+                            </div>
+                        </a>
+                        <a href="pay-supplier.html" class="btn btn-light text-start p-3 rounded-4 border">
+                            <div class="d-flex align-items-center">
+                                <div class="stat-icon bg-secondary-subtle text-secondary mb-0 me-3"
+                                    style="width: 40px; height: 40px; font-size: 1.1rem;">
+                                    <i class="fas fa-ship"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="mb-0 fw-bold text-dark small">Pay Supplier Requests</p>
+                                    <p class="mb-0 text-muted" style="font-size: 0.75rem;">1 request pending review</p>
+                                </div>
+                                <i class="fas fa-chevron-right ms-auto opacity-25"></i>
+                            </div>
+                        </a>
+                        <a href="send-abroad.html" class="btn btn-light text-start p-3 rounded-4 border">
+                            <div class="d-flex align-items-center">
+                                <div class="stat-icon bg-success-subtle text-success mb-0 me-3"
+                                    style="width: 40px; height: 40px; font-size: 1.1rem;">
+                                    <i class="fas fa-earth-africa"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="mb-0 fw-bold text-dark small">Send Abroad Requests</p>
+                                    <p class="mb-0 text-muted" style="font-size: 0.75rem;">1 payout pending review</p>
                                 </div>
                                 <i class="fas fa-chevron-right ms-auto opacity-25"></i>
                             </div>
@@ -260,55 +304,25 @@
 
         <div class="card p-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h5 class="mb-0">Recent Transactions</h5>
-                <a href="transactions.html" class="btn btn-light btn-sm">View All</a>
+                <h5 class="mb-0">Last 10 Transactions</h5>
+                <a href="deriv-funding.html" class="btn btn-light btn-sm">View All</a>
             </div>
             <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0 w-100" id="recentTransactions">
+                <table class="table tx-table mb-0 w-100" id="recentTransactions">
                     <thead>
                         <tr>
-                            <th>Ref ID</th>
+                            <th>Transaction</th>
                             <th>User</th>
-                            <th>Type</th>
+                            <th>Date</th>
                             <th>Amount</th>
                             <th>Status</th>
-                            <th>Date</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="fw-bold fw-mono small">CN-94210</span></td>
-                            <td>
-                                <div class="d-flex align-items-center gap-2">
-                                    <img src="https://ui-avatars.com/api/?name=JD&background=10b981&color=fff"
-                                        class="rounded-circle" width="28">
-                                    <span>John Doe</span>
-                                </div>
-                            </td>
-                            <td><span class="badge bg-light text-dark border">Buy USDT</span></td>
-                            <td><span class="fw-bold">₦450,000</span></td>
-                            <td><span class="badge-status status-approved">Approved</span></td>
-                            <td><span class="smaller text-muted">2 mins ago</span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="fw-bold fw-mono small">CN-94211</span></td>
-                            <td>
-                                <div class="d-flex align-items-center gap-2">
-                                    <img src="https://ui-avatars.com/api/?name=SA&background=6366f1&color=fff"
-                                        class="rounded-circle" width="28">
-                                    <span>Sarah Adams</span>
-                                </div>
-                            </td>
-                            <td><span class="badge bg-light text-dark border">Withdrawal</span></td>
-                            <td><span class="fw-bold">₦25,000</span></td>
-                            <td><span class="badge-status status-pending">Pending</span></td>
-                            <td><span class="smaller text-muted">15 mins ago</span></td>
-                        </tr>
-                    </tbody>
+                    <tbody></tbody>
                 </table>
             </div>
+        </div>
     </main>
-    </div>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -317,6 +331,8 @@
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script src="../js/admin.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/mock-data.js"></script>
 
     <script>
         // Activity Chart
@@ -356,13 +372,31 @@
         });
 
         $(document).ready(function () {
+            $('#statDeriv').text(CN_DATA.DERIV_FUNDING_RECORDS.length + CN_DATA.DERIV_WITHDRAWAL_RECORDS.length);
+            $('#statCrypto').text(CN_DATA.DEPOSIT_RECORDS.length + CN_DATA.WITHDRAWAL_RECORDS.length);
+
+            const rows = CN_DATA.recentTransactions(10);
+            const tbody = $('#recentTransactions tbody');
+            rows.forEach(function (r) {
+                tbody.append(
+                    '<tr>' +
+                    '<td><div class="tx-row"><div class="tx-type-icon ' + r.iconClass + '"><i class="fas ' + r.icon + '"></i></div>' +
+                    '<div class="tx-text"><p>' + r.category + '</p><small>' + r.ref + '</small></div></div></td>' +
+                    '<td><span class="small fw-bold">' + r.user.name + '</span></td>' +
+                    '<td class="text-muted small">' + r.date + '</td>' +
+                    '<td class="fw-bold ' + (r.sign === '+' ? 'text-success' : 'text-danger') + '">' + r.sign + ' ' + r.currency + Number(r.amount).toLocaleString() + '</td>' +
+                    '<td><span class="badge-status status-' + r.status + '">' + r.status.charAt(0).toUpperCase() + r.status.slice(1) + '</span></td>' +
+                    '</tr>'
+                );
+            });
+
             $('#recentTransactions').DataTable({
-                "pageLength": 5,
+                "pageLength": 10,
                 "lengthChange": false,
                 "searching": false,
                 "info": false,
-                "responsive": true, // Restore responsive behavior (collapsing)
-                "autoWidth": false  // Ensure table takes 100% width
+                "responsive": true,
+                "autoWidth": false
             });
         });
     </script>

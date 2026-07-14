@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
+    <title>Send to Other African Countries | CheapNaria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block">
+        <div class="brand mb-5 px-3">
+            <a href="index.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
+            <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+            <a href="services.html" class="nav-link active"><i class="fas fa-layer-group"></i> Other Services</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+            <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+            <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="index.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
+                <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+                <a href="services.html" class="nav-link active"><i class="fas fa-layer-group"></i> Other Services</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+                <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <button type="button" class="btn btn-light btn-sm rounded-pill me-2 d-none" id="backBtn"><i
+                        class="fas fa-arrow-left"></i></button>
+                <h4 class="m-0" id="pageTitle">Send to Other African Countries</h4>
+            </div>
+            <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card p-4">
+
+                    <!-- STEP 1: Method -->
+                    <div id="methodStep">
+                        <h5 class="mb-1">How should the recipient receive funds?</h5>
+                        <p class="text-muted small mb-4">Choose a payout method for this transfer.</p>
+                        <div class="d-grid gap-3">
+                            <div class="select-method-card" id="chooseMomo">
+                                <div class="smc-icon"><i class="fas fa-mobile-screen-button"></i></div>
+                                <div class="smc-text">
+                                    <p>Mobile Money</p>
+                                    <small class="text-muted">MTN MoMo, Airtel Money, M-Pesa &amp; more</small>
+                                </div>
+                            </div>
+                            <div class="select-method-card" id="chooseBankAbroad">
+                                <div class="smc-icon"><i class="fas fa-university"></i></div>
+                                <div class="smc-text">
+                                    <p>Bank Transfer</p>
+                                    <small class="text-muted">Direct to a local bank account</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Country -->
+                    <div id="countryStep" class="d-none">
+                        <h5 class="mb-1">Select Destination Country</h5>
+                        <p class="text-muted small mb-3">Today's live send rates from Nigeria.</p>
+                        <div class="d-grid gap-1">
+                            <div class="country-rate-item" data-country="Ghana" data-currency="GHS" data-flag="🇬🇭"
+                                data-rate="0.0090">
+                                <span class="cri-flag">🇬🇭</span>
+                                <div class="cri-text">
+                                    <p>Ghana</p>
+                                    <small>Ghanaian Cedi (GHS)</small>
+                                </div>
+                                <span class="cri-rate">₦1 = 0.0090 GHS</span>
+                            </div>
+                            <div class="country-rate-item" data-country="Kenya" data-currency="KES" data-flag="🇰🇪"
+                                data-rate="0.0850">
+                                <span class="cri-flag">🇰🇪</span>
+                                <div class="cri-text">
+                                    <p>Kenya</p>
+                                    <small>Kenyan Shilling (KES)</small>
+                                </div>
+                                <span class="cri-rate">₦1 = 0.0850 KES</span>
+                            </div>
+                            <div class="country-rate-item" data-country="Tanzania" data-currency="TZS" data-flag="🇹🇿"
+                                data-rate="1.6800">
+                                <span class="cri-flag">🇹🇿</span>
+                                <div class="cri-text">
+                                    <p>Tanzania</p>
+                                    <small>Tanzanian Shilling (TZS)</small>
+                                </div>
+                                <span class="cri-rate">₦1 = 1.6800 TZS</span>
+                            </div>
+                            <div class="country-rate-item" data-country="Uganda" data-currency="UGX" data-flag="🇺🇬"
+                                data-rate="2.4500">
+                                <span class="cri-flag">🇺🇬</span>
+                                <div class="cri-text">
+                                    <p>Uganda</p>
+                                    <small>Ugandan Shilling (UGX)</small>
+                                </div>
+                                <span class="cri-rate">₦1 = 2.4500 UGX</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Recipient + Amount -->
+                    <div id="detailsStep" class="d-none">
+                        <h5 class="mb-1">Recipient Details</h5>
+                        <p class="text-muted small mb-3">Sending to <span class="fw-bold" id="destCountryLabel">—</span>
+                            via <span class="fw-bold" id="destMethodLabel">—</span></p>
+
+                        <div class="balance-hint">
+                            <span><i class="fas fa-wallet me-1"></i> Available Balance</span>
+                            <strong>₦245,680.00</strong>
+                        </div>
+
+                        <!-- Mobile Money fields -->
+                        <div id="momoFields" class="d-none">
+                            <div class="mb-3">
+                                <label class="form-label fw-600">Mobile Money Provider</label>
+                                <select class="form-select" id="momoProvider">
+                                    <option>MTN MoMo</option>
+                                    <option>Airtel Money</option>
+                                    <option>M-Pesa</option>
+                                    <option>Vodafone Cash</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-600">Mobile Money Number</label>
+                                <input type="text" class="form-control" id="momoNumber" placeholder="e.g 0551234567">
+                            </div>
+                        </div>
+
+                        <!-- Bank fields -->
+                        <div id="bankAbroadFields" class="d-none">
+                            <div class="mb-3">
+                                <label class="form-label fw-600">Bank Name</label>
+                                <input type="text" class="form-control" id="abroadBankName"
+                                    placeholder="e.g Ghana Commercial Bank">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-600">Account Number</label>
+                                <input type="text" class="form-control" id="abroadAccountNumber"
+                                    placeholder="Recipient account number">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-600">Recipient Name</label>
+                            <input type="text" class="form-control" id="recipientFullName" placeholder="Full name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-600">Amount to Send (NGN)</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light">₦</span>
+                                <input type="number" class="form-control" id="sendNgnAmount" placeholder="e.g 50000">
+                            </div>
+                            <small class="text-muted d-block mt-2">Recipient gets: <span class="fw-bold text-success"
+                                    id="recipientGetsPreview">0.00</span></small>
+                        </div>
+
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm"
+                            id="continueAbroadReview">Continue</button>
+                    </div>
+
+                    <!-- STEP 4: Review + PIN -->
+                    <div id="reviewStep" class="d-none">
+                        <h5 class="mb-4">Review &amp; Confirm</h5>
+
+                        <div class="summary-rows mb-4">
+                            <div class="summary-row">
+                                <span class="sr-label">Recipient</span>
+                                <span class="sr-value" id="revRecipient">—</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="sr-label">Destination</span>
+                                <span class="sr-value" id="revDestination">—</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="sr-label">Method</span>
+                                <span class="sr-value" id="revMethod">—</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="sr-label">Amount Sent (NGN)</span>
+                                <span class="sr-value" id="revSentNgn">₦0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="sr-label">Recipient Receives</span>
+                                <span class="sr-value text-success h5 mb-0" id="revReceives">0.00</span>
+                            </div>
+                        </div>
+
+                        <label class="form-label fw-600 text-center w-100">Enter PIN to confirm</label>
+                        <div class="pin-dots-wrapper">
+                            <div class="pin-dot" data-i="0"></div>
+                            <div class="pin-dot" data-i="1"></div>
+                            <div class="pin-dot" data-i="2"></div>
+                            <div class="pin-dot" data-i="3"></div>
+                            <input type="password" inputmode="numeric" maxlength="4" class="pin-hidden-input"
+                                id="pinInput">
+                        </div>
+
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm"
+                            id="confirmAbroadBtn">Confirm &amp; Send</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow text-center p-5">
+                <div class="mb-4">
+                    <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center"
+                        style="width: 80px; height: 80px;">
+                        <i class="fas fa-check fs-1"></i>
+                    </div>
+                </div>
+                <h3 class="fw-bold mb-3">Transfer Sent!</h3>
+                <p class="text-muted mb-4">Your payout is on its way. The recipient will be notified once it lands.</p>
+                <div class="d-grid gap-2">
+                    <a href="services.html" class="btn btn-primary py-3 fw-bold">Back to Services</a>
+                    <a href="transactions.html" class="btn btn-light py-2">View Receipt</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        $(document).ready(function () {
+            let method = null;
+            let country = null;
+            const steps = ['#methodStep', '#countryStep', '#detailsStep', '#reviewStep'];
+
+            function showStep(id, title, showBack) {
+                steps.forEach(s => $(s).addClass('d-none'));
+                $(id).removeClass('d-none').hide().fadeIn(200);
+                $('#pageTitle').text(title);
+                $('#backBtn').toggleClass('d-none', !showBack);
+            }
+
+            $('#backBtn').click(function () {
+                if (!$('#countryStep').hasClass('d-none')) {
+                    showStep('#methodStep', 'Send to Other African Countries', false);
+                } else if (!$('#detailsStep').hasClass('d-none')) {
+                    showStep('#countryStep', 'Select Country', true);
+                } else if (!$('#reviewStep').hasClass('d-none')) {
+                    showStep('#detailsStep', 'Recipient Details', true);
+                }
+            });
+
+            $('#chooseMomo').click(function () {
+                method = 'Mobile Money';
+                showStep('#countryStep', 'Select Country', true);
+            });
+            $('#chooseBankAbroad').click(function () {
+                method = 'Bank Transfer';
+                showStep('#countryStep', 'Select Country', true);
+            });
+
+            $('.country-rate-item').click(function () {
+                country = {
+                    name: $(this).data('country'),
+                    currency: $(this).data('currency'),
+                    flag: $(this).data('flag'),
+                    rate: parseFloat($(this).data('rate'))
+                };
+
+                $('#destCountryLabel').text(country.flag + ' ' + country.name);
+                $('#destMethodLabel').text(method);
+
+                if (method === 'Mobile Money') {
+                    $('#momoFields').removeClass('d-none');
+                    $('#bankAbroadFields').addClass('d-none');
+                } else {
+                    $('#bankAbroadFields').removeClass('d-none');
+                    $('#momoFields').addClass('d-none');
+                }
+
+                $('#sendNgnAmount').val('');
+                $('#recipientGetsPreview').text('0.00 ' + country.currency);
+
+                showStep('#detailsStep', 'Recipient Details', true);
+            });
+
+            $('#sendNgnAmount').on('input', function () {
+                const ngn = parseFloat($(this).val()) || 0;
+                const local = country ? ngn * country.rate : 0;
+                $('#recipientGetsPreview').text(local.toLocaleString(undefined, { minimumFractionDigits: 2 }) + ' ' + (country ? country.currency : ''));
+            });
+
+            $('#continueAbroadReview').click(function () {
+                const name = $('#recipientFullName').val();
+                const ngn = parseFloat($('#sendNgnAmount').val());
+
+                if (!name) { alert('Please enter the recipient name'); return; }
+                if (!ngn || ngn <= 0) { alert('Please enter an amount'); return; }
+
+                if (method === 'Mobile Money' && !$('#momoNumber').val()) {
+                    alert('Please enter the mobile money number');
+                    return;
+                }
+                if (method === 'Bank Transfer' && (!$('#abroadBankName').val() || !$('#abroadAccountNumber').val())) {
+                    alert('Please enter the bank name and account number');
+                    return;
+                }
+
+                const local = ngn * country.rate;
+
+                $('#revRecipient').text(name);
+                $('#revDestination').text(country.flag + ' ' + country.name);
+                $('#revMethod').text(method === 'Mobile Money' ? (method + ' — ' + $('#momoProvider').val() + ' (' + $('#momoNumber').val() + ')') : (method + ' — ' + $('#abroadBankName').val()));
+                $('#revSentNgn').text('₦' + ngn.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#revReceives').text(local.toLocaleString(undefined, { minimumFractionDigits: 2 }) + ' ' + country.currency);
+
+                showStep('#reviewStep', 'Review & Confirm', true);
+            });
+
+            // PIN dots
+            $('.pin-dots-wrapper').click(function () {
+                $('#pinInput').trigger('focus');
+            });
+            $('#pinInput').on('input', function () {
+                const val = $(this).val().replace(/\D/g, '').slice(0, 4);
+                $(this).val(val);
+                $('.pin-dot').each(function (i) {
+                    $(this).toggleClass('filled', i < val.length);
+                });
+            });
+
+            $('#confirmAbroadBtn').click(function () {
+                if ($('#pinInput').val().length < 4) { alert('Please enter your 4-digit PIN'); return; }
+                new bootstrap.Modal(document.getElementById('successModal')).show();
+            });
+        });
+    </script>
+</body>
+
+</html>

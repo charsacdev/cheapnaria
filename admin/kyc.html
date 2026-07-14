@@ -4,17 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
     <title>KYC Management | CheapNaria</title>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- DataTables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -24,8 +20,8 @@
     <aside class="sidebar d-none d-lg-block" id="adminSidebar">
         <div class="brand mb-5 px-3">
             <a href="dashboard.html" class="brand-logo">
-                <i class="fas fa-bolt-lightning"></i>
-                Cheap<span>Naria</span>
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
             </a>
         </div>
 
@@ -33,10 +29,15 @@
             <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
             <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
             <a href="kyc.html" class="nav-link active"><i class="fas fa-user-shield"></i> KYC Management <span
-                    class="badge bg-danger rounded-pill ms-auto">5</span></a>
-            <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
-            <a href="p2p.html" class="nav-link"><i class="fas fa-handshake"></i> Crypto Transactions</a>
-            <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+                    class="badge bg-danger rounded-pill ms-auto">13</span></a>
+            <a href="deposit-withdrawal.html" class="nav-link"><i class="fas fa-right-left"></i> Deposit /
+                Withdrawal</a>
+            <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+            <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+            <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+            <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+            <a href="rates.html" class="nav-link"><i class="fas fa-percent"></i> Rates</a>
+            <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
             <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
             <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
             <hr class="my-3 opacity-10">
@@ -53,8 +54,8 @@
     <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
         <div class="offcanvas-header">
             <a href="dashboard.html" class="brand-logo">
-                <i class="fas fa-bolt-lightning"></i>
-                Cheap<span>Naria</span>
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
             </a>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
@@ -63,10 +64,15 @@
                 <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
                 <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
                 <a href="kyc.html" class="nav-link active"><i class="fas fa-user-shield"></i> KYC Management <span
-                        class="badge bg-danger rounded-pill ms-auto">5</span></a>
-                <a href="transactions.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transactions</a>
-                <a href="p2p.html" class="nav-link"><i class="fas fa-handshake"></i> Crypto Transactions</a>
-                <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+                        class="badge bg-danger rounded-pill ms-auto">13</span></a>
+                <a href="deposit-withdrawal.html" class="nav-link"><i class="fas fa-right-left"></i> Deposit /
+                    Withdrawal</a>
+                <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+                <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+                <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+                <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+                <a href="rates.html" class="nav-link"><i class="fas fa-percent"></i> Rates</a>
+                <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
                 <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
                 <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
                 <hr class="my-3 opacity-10">
@@ -78,7 +84,6 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Top Navbar -->
         <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
             <div class="d-flex align-items-center">
                 <button class="menu-toggle d-lg-none me-3" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
@@ -86,9 +91,10 @@
                 </button>
                 <h4 class="m-0 d-none d-md-block">Compliance Desk</h4>
             </div>
-
             <div class="d-flex align-items-center gap-3">
-
+                <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
                 <div class="dropdown">
                     <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
                         <img src="https://ui-avatars.com/api/?name=Admin+User&background=10b981&color=fff" alt="Profile"
@@ -119,7 +125,7 @@
                         <i class="fas fa-file-shield"></i>
                     </div>
                     <p class="text-muted smaller mb-1 fw-bold text-uppercase">Total</p>
-                    <h4 class="fw-800 mb-0">1,240</h4>
+                    <h4 class="fw-800 mb-0">50</h4>
                 </div>
             </div>
             <div class="col-6 col-lg-3">
@@ -128,7 +134,7 @@
                         <i class="fas fa-clock-rotate-left"></i>
                     </div>
                     <p class="text-warning smaller mb-1 fw-bold text-uppercase">Pending</p>
-                    <h4 class="fw-800 mb-0">24</h4>
+                    <h4 class="fw-800 mb-0">13</h4>
                 </div>
             </div>
             <div class="col-6 col-lg-3">
@@ -137,7 +143,7 @@
                         <i class="fas fa-check-double"></i>
                     </div>
                     <p class="text-success smaller mb-1 fw-bold text-uppercase">Approved</p>
-                    <h4 class="fw-800 mb-0 text-nowrap">1,054</h4>
+                    <h4 class="fw-800 mb-0">35</h4>
                 </div>
             </div>
             <div class="col-6 col-lg-3">
@@ -146,7 +152,7 @@
                         <i class="fas fa-triangle-exclamation"></i>
                     </div>
                     <p class="text-danger smaller mb-1 fw-bold text-uppercase">Flagged</p>
-                    <h4 class="fw-800 mb-0 text-nowrap">186</h4>
+                    <h4 class="fw-800 mb-0">2</h4>
                 </div>
             </div>
         </div>
@@ -164,104 +170,67 @@
                             <th>Country/State</th>
                             <th>Method</th>
                             <th>Submitted</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="d-flex align-items-center gap-3">
-                                    <img src="https://ui-avatars.com/api/?name=MK&background=10b981&color=fff"
-                                        class="rounded-circle" width="35">
-                                    <div>
-                                        <p class="mb-0 fw-bold text-nowrap">Michael Kelvin</p>
-                                        <small class="text-muted">#482910</small>
-                                    </div>
-                                </div>
-                            </td>
-                            <td><span class="small font-medium">Nigeria, Abuja</span></td>
-                            <td><span class="badge bg-light text-dark border px-3">NIN (Nigeria)</span></td>
-                            <td><span class="small text-muted">2 hours ago</span></td>
-                            <td>
-                                <button class="btn btn-primary btn-sm rounded-pill px-4 shadow-sm"
-                                    data-bs-toggle="modal" data-bs-target="#kycReviewModal">Verify Audit</button>
-                            </td>
-                        </tr>
-                    </tbody>
+                    <tbody></tbody>
                 </table>
             </div>
         </div>
     </main>
-    </div>
 
     <!-- KYC Review Modal -->
     <div class="modal fade" id="kycReviewModal" tabindex="-1">
         <div class="modal-dialog modal-xl modal-dialog-centered modal-fullscreen-sm-down">
             <div class="modal-content border-0 shadow-lg rounded-4">
                 <div class="modal-header border-bottom p-4">
-                    <h5 class="modal-title fw-bold">Full KYC Audit: Michael Kelvin</h5>
+                    <h5 class="modal-title fw-bold">Full KYC Audit: <span id="modName">-</span></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-4">
                     <div class="row g-4">
-                        <!-- User Identity Block -->
                         <div class="col-md-4">
                             <div class="p-4 bg-light rounded-4 h-100">
                                 <h6 class="fw-bold mb-4 text-primary">Identity Profile</h6>
                                 <div class="mb-3">
                                     <p class="text-muted smaller mb-1 text-uppercase fw-bold">Full Legal Name</p>
-                                    <p class="fw-bold mb-0">Michael Kelvin Okafor</p>
+                                    <p class="fw-bold mb-0" id="modFullName">-</p>
                                 </div>
                                 <div class="mb-3">
-                                    <p class="text-muted smaller mb-1 text-uppercase fw-bold">Email / Phone</p>
-                                    <p class="small fw-bold mb-0">m.kelvin@gmail.com</p>
-                                    <p class="small fw-bold mb-0 text-muted">+234 812 345 6789</p>
+                                    <p class="text-muted smaller mb-1 text-uppercase fw-bold">Reference</p>
+                                    <p class="small fw-bold mb-0" id="modRef">-</p>
                                 </div>
                                 <div class="mb-3">
                                     <p class="text-muted smaller mb-1 text-uppercase fw-bold">Country / State</p>
-                                    <p class="small fw-bold mb-0">Nigeria, Abuja</p>
-                                </div>
-                                <div class="mb-3">
-                                    <p class="text-muted smaller mb-1 text-uppercase fw-bold">Date of Birth</p>
-                                    <p class="small fw-bold mb-0">12th May, 1994</p>
+                                    <p class="small fw-bold mb-0" id="modLocation">-</p>
                                 </div>
                                 <div class="mb-0">
                                     <p class="text-muted smaller mb-1 text-uppercase fw-bold">ID Details</p>
-                                    <span class="badge bg-white text-dark border px-2">National ID (NIN)</span>
-                                    <p class="small fw-bold mb-0 mt-1">#2348590123</p>
+                                    <span class="badge bg-white text-dark border px-2" id="modMethod">-</span>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Documents Grid -->
                         <div class="col-md-8">
-                            <h6 class="fw-bold mb-4 text-primary">Biometric & Document Analysis</h6>
+                            <h6 class="fw-bold mb-4 text-primary">Biometric &amp; Document Analysis</h6>
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <p class="smaller text-muted fw-bold text-uppercase mb-2">ID Front</p>
                                     <div class="doc-preview-container mb-2">
-                                        <a href="https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop"
-                                            target="_blank">
-                                            <img src="https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop"
-                                                class="img-fluid"
-                                                style="height: 180px; width: 100%; object-fit: cover;">
-                                        </a>
+                                        <img src="../images/kyc-id-sample.jpg"
+                                            class="img-fluid" style="height: 180px; width: 100%; object-fit: cover;">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <p class="smaller text-muted fw-bold text-uppercase mb-2">ID Back</p>
                                     <div class="doc-preview-container mb-2">
-                                        <a href="https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop"
-                                            target="_blank">
-                                            <img src="https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop"
-                                                class="img-fluid"
-                                                style="height: 180px; width: 100%; object-fit: cover;">
-                                        </a>
+                                        <img src="../images/kyc-id-sample.jpg"
+                                            class="img-fluid" style="height: 180px; width: 100%; object-fit: cover;">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <p class="smaller text-muted fw-bold text-uppercase mb-2">Selfie</p>
-                                    <a href="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop"
+                                    <a href="../images/kyc-selfie-sample.jpg"
                                         target="_blank"
                                         class="btn btn-outline-primary w-100 py-2 rounded-3 text-decoration-none">
                                         <i class="far fa-eye me-1"></i> View Selfie Image
@@ -276,41 +245,87 @@
                                 </div>
                             </div>
 
-                            <!-- Rejection Form -->
-                            <div id="rejectionForm"
-                                class="mt-4 d-none p-3 border-danger border rounded-4 bg-danger-subtle">
-                                <label class="form-label fw-bold text-danger">Compliance Rejection Reason</label>
-                                <textarea class="form-control border-danger" rows="3"
-                                    placeholder="Input specific failure reason..."></textarea>
-                            </div>
+                            <div id="modResolvedAlert" class="alert small mt-4 mb-0 d-none"></div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer border-0 p-4 pt-0 flex-column flex-sm-row gap-3">
+                <div class="modal-footer border-0 p-4 pt-0 gap-2 flex-column flex-sm-row" id="modActionFooter">
                     <button type="button"
                         class="btn btn-outline-secondary rounded-pill px-4 w-100 w-sm-auto order-3 order-sm-1"
                         data-bs-dismiss="modal">Close</button>
                     <div class="d-flex gap-2 w-100 w-sm-auto order-1 order-sm-2">
                         <button type="button" class="btn btn-outline-danger rounded-pill px-4 flex-grow-1"
-                            id="btnReject">Reject</button>
+                            id="modRejectBtn">Reject</button>
                         <button type="button" class="btn btn-primary rounded-pill px-5 shadow flex-grow-1"
-                            id="btnApprove">Approve</button>
+                            id="modApproveBtn">Approve</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script src="../js/admin.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/mock-data.js"></script>
     <script>
         $(document).ready(function () {
-            $('#kycDataTable').DataTable({
-                "responsive": true
+            const tbody = $('#kycDataTable tbody');
+            CN_DATA.KYC_RECORDS.forEach(function (k, i) {
+                const statusBadge = '<span class="badge-status status-' + k.status + '">' + k.status.charAt(0).toUpperCase() + k.status.slice(1) + '</span>';
+                const actionBtn = k.status === 'pending'
+                    ? '<button class="btn btn-primary btn-sm rounded-pill px-4 shadow-sm kyc-review-btn" data-bs-toggle="modal" data-bs-target="#kycReviewModal" data-idx="' + i + '">Verify Audit</button>'
+                    : '<button class="btn btn-light btn-sm rounded-pill px-4 border kyc-review-btn" data-bs-toggle="modal" data-bs-target="#kycReviewModal" data-idx="' + i + '">View</button>';
+
+                tbody.append(
+                    '<tr>' +
+                    '<td><div class="d-flex align-items-center gap-3">' +
+                    '<img src="https://ui-avatars.com/api/?name=' + encodeURIComponent(k.name) + '&background=10b981&color=fff" class="rounded-circle" width="35">' +
+                    '<div><p class="mb-0 fw-bold text-nowrap">' + k.name + '</p><small class="text-muted">' + k.ref + '</small></div>' +
+                    '</div></td>' +
+                    '<td><span class="small font-medium">' + k.country + ', ' + k.state + '</span></td>' +
+                    '<td><span class="badge bg-light text-dark border px-3">' + k.method + '</span></td>' +
+                    '<td><span class="small text-muted">' + k.submitted + '</span></td>' +
+                    '<td>' + statusBadge + '</td>' +
+                    '<td>' + actionBtn + '</td>' +
+                    '</tr>'
+                );
+            });
+
+            $('#kycDataTable').DataTable({ pageLength: 10, responsive: true });
+
+            $(document).on('click', '.kyc-review-btn', function () {
+                const k = CN_DATA.KYC_RECORDS[$(this).data('idx')];
+                $('#modName').text(k.name);
+                $('#modFullName').text(k.name);
+                $('#modRef').text(k.ref);
+                $('#modLocation').text(k.country + ', ' + k.state);
+                $('#modMethod').text(k.method);
+
+                if (k.status === 'pending') {
+                    $('#modActionFooter').removeClass('d-none');
+                    $('#modResolvedAlert').addClass('d-none');
+                } else {
+                    $('#modActionFooter').addClass('d-none');
+                    const alertBox = $('#modResolvedAlert').removeClass('d-none alert-success alert-danger');
+                    if (k.status === 'approved') {
+                        alertBox.addClass('alert-success').html('<i class="fas fa-check-circle me-1"></i> This application has already been approved.');
+                    } else {
+                        alertBox.addClass('alert-danger').html('<i class="fas fa-times-circle me-1"></i> This application was rejected.');
+                    }
+                }
+            });
+
+            $('#modApproveBtn').on('click', function () {
+                bootstrap.Modal.getInstance(document.getElementById('kycReviewModal')).hide();
+                alert('KYC application approved.');
+            });
+            $('#modRejectBtn').on('click', function () {
+                bootstrap.Modal.getInstance(document.getElementById('kycReviewModal')).hide();
+                alert('KYC application rejected.');
             });
         });
     </script>
