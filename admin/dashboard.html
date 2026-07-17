@@ -25,13 +25,183 @@
 
         .chart-container {
             position: relative;
-            height: 300px;
+            height: 260px;
             width: 100%;
+        }
+
+        .chart-container-sm {
+            position: relative;
+            height: 200px;
+            width: 100%;
+        }
+
+        .date-pill {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 0.55rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .date-range-pill {
+            display: flex;
+            align-items: center;
+        }
+
+        .date-range-input {
+            border: none;
+            background: transparent;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-main);
+            width: 118px;
+        }
+
+        .date-range-input:focus {
+            outline: none;
+        }
+
+        .stat-delta {
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .stat-card h3 {
+            font-size: 1.3rem;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 1399.98px) and (min-width: 1200px) {
+            .stat-card h3 {
+                font-size: 1.1rem;
+            }
+        }
+
+        .donut-wrap {
+            position: relative;
+        }
+
+        .donut-center-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .donut-center-label .val {
+            font-size: 1.3rem;
+            font-weight: 800;
+            display: block;
+            line-height: 1.1;
+        }
+
+        .donut-center-label .lbl {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .legend-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .legend-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        .country-row,
+        .service-bar-row {
+            margin-bottom: 0.9rem;
+        }
+
+        .country-row .progress,
+        .service-bar-row .progress {
+            height: 6px;
+            border-radius: 4px;
+        }
+
+        .system-status-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            font-size: 0.85rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .system-status-item:last-child {
+            border-bottom: none;
+        }
+
+        .gauge-wrap {
+            position: relative;
+            height: 170px;
+        }
+
+        .gauge-center-label {
+            position: absolute;
+            top: 62%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+        }
+
+        .gauge-center-label .val {
+            font-size: 1.6rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .gauge-center-label .lbl {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .kyc-avatar-chip {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .dashboard-footer {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            padding: 1.25rem 0 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .dashboard-footer .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
         }
 
         @media (max-width: 575.98px) {
             .chart-container {
-                height: 250px;
+                height: 220px;
             }
 
             .top-navbar h4 {
@@ -70,6 +240,8 @@
             <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
             <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
             <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+            <a href="ads.html" class="nav-link"><i class="fas fa-rectangle-ad"></i> Ads / Promotions</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
             <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
             <hr class="my-3 opacity-10">
             <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
@@ -105,6 +277,8 @@
                 <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
                 <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
                 <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+                <a href="ads.html" class="nav-link"><i class="fas fa-rectangle-ad"></i> Ads / Promotions</a>
+                <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
                 <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
                 <hr class="my-3 opacity-10">
                 <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
@@ -152,174 +326,319 @@
             </div>
         </header>
 
-        <!-- Stats Grid: counts only, no amounts -->
+        <!-- Page Header -->
+        <div class="d-flex flex-wrap align-items-start justify-content-between gap-3 mb-4">
+            <div>
+                <h2 class="mb-1 fw-bold">Dashboard</h2>
+                <p class="text-muted mb-0">Real-time overview of platform performance and key metrics.</p>
+            </div>
+            <div class="d-flex flex-wrap align-items-center gap-2">
+                <div class="date-pill date-range-pill">
+                    <i class="fas fa-calendar-days me-1"></i>
+                    <input type="date" class="date-range-input" id="statsFromDate">
+                    <span class="text-muted mx-1">&rarr;</span>
+                    <input type="date" class="date-range-input" id="statsToDate">
+                </div>
+                <button type="button" id="statsRequestBtn" class="btn btn-outline-primary rounded-3">
+                    <i class="fas fa-magnifying-glass me-1"></i> Request
+                </button>
+                <button type="button" id="exportReportBtn" class="btn btn-primary rounded-3">
+                    <i class="fas fa-download me-1"></i> Export Report
+                </button>
+            </div>
+        </div>
+        <p class="text-muted small mb-4 mt-n3" id="statsRangeLabel"></p>
+
+        <!-- Stats Grid -->
         <div class="row g-4 mb-4">
             <div class="col-6 col-md-4 col-xl-2">
                 <div class="card stat-card h-100">
                     <div class="stat-icon bg-primary-subtle text-primary">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-coins"></i>
                     </div>
-                    <p class="text-muted mb-1 small">Total Users</p>
-                    <h3 class="mb-0">12,543</h3>
+                    <p class="text-muted mb-1 small">Total Volume</p>
+                    <h3 class="mb-1" id="statVolume">₦0</h3>
+                    <p class="mb-0 stat-delta" id="statVolumeDelta"></p>
                 </div>
             </div>
             <div class="col-6 col-md-4 col-xl-2">
                 <div class="card stat-card h-100">
                     <div class="stat-icon bg-warning-subtle text-warning">
-                        <i class="fas fa-user-clock"></i>
+                        <i class="fas fa-sack-dollar"></i>
                     </div>
-                    <p class="text-muted mb-1 small">Pending KYC</p>
-                    <h3 class="mb-0">13</h3>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-xl-2">
-                <div class="card stat-card h-100">
-                    <div class="stat-icon bg-secondary-subtle text-secondary">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <p class="text-muted mb-1 small">Deriv Transactions</p>
-                    <h3 class="mb-0" id="statDeriv">0</h3>
+                    <p class="text-muted mb-1 small">Total Profit</p>
+                    <h3 class="mb-1" id="statProfit">₦0</h3>
+                    <p class="mb-0 stat-delta" id="statProfitDelta"></p>
                 </div>
             </div>
             <div class="col-6 col-md-4 col-xl-2">
                 <div class="card stat-card h-100">
                     <div class="stat-icon bg-info-subtle text-info">
-                        <i class="fas fa-right-left"></i>
+                        <i class="fas fa-receipt"></i>
                     </div>
-                    <p class="text-muted mb-1 small">Crypto Transactions</p>
-                    <h3 class="mb-0" id="statCrypto">0</h3>
+                    <p class="text-muted mb-1 small">Transactions</p>
+                    <h3 class="mb-1" id="statTransactions">0</h3>
+                    <p class="mb-0 stat-delta" id="statTransactionsDelta"></p>
                 </div>
             </div>
             <div class="col-6 col-md-4 col-xl-2">
                 <div class="card stat-card h-100">
-                    <div class="stat-icon bg-success-subtle text-success">
-                        <i class="fas fa-ship"></i>
+                    <div class="stat-icon" style="background:#ede9fe;color:#6d28d9;">
+                        <i class="fas fa-shield-halved"></i>
                     </div>
-                    <p class="text-muted mb-1 small">Supplier Payments</p>
-                    <h3 class="mb-0">5</h3>
+                    <p class="text-muted mb-1 small">Success Rate</p>
+                    <h3 class="mb-1" id="statSuccessRate">0%</h3>
+                    <p class="mb-0 stat-delta" id="statSuccessRateDelta"></p>
                 </div>
             </div>
             <div class="col-6 col-md-4 col-xl-2">
                 <div class="card stat-card h-100">
-                    <div class="stat-icon bg-danger-subtle text-danger">
-                        <i class="fas fa-earth-africa"></i>
+                    <div class="stat-icon bg-warning-subtle text-warning">
+                        <i class="fas fa-users"></i>
                     </div>
-                    <p class="text-muted mb-1 small">Cross Border</p>
-                    <h3 class="mb-0">5</h3>
+                    <p class="text-muted mb-1 small">Active Users</p>
+                    <h3 class="mb-1" id="statActiveUsers">0</h3>
+                    <p class="mb-0 stat-delta text-muted" id="statActiveUsersSub"></p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-xl-2">
+                <div class="card stat-card h-100">
+                    <div class="stat-icon bg-info-subtle text-info">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <p class="text-muted mb-1 small">Liquidity</p>
+                    <h3 class="mb-1" id="statLiquidity">₦0</h3>
+                    <p class="mb-0 stat-delta text-muted">Across all wallets</p>
                 </div>
             </div>
         </div>
 
+        <!-- Quick Actions -->
+        <div class="card p-4 mb-4">
+            <h5 class="mb-4">Quick Actions</h5>
+            <div class="row g-3">
+                <div class="col-6 col-md-4 col-xl-2">
+                    <a href="rates.html" class="btn btn-light text-start p-3 rounded-4 border w-100 h-100">
+                        <div class="stat-icon bg-primary-subtle text-primary mb-2"
+                            style="width: 40px; height: 40px; font-size: 1.1rem;">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <p class="mb-0 fw-bold text-dark small">Update Rates</p>
+                        <p class="mb-0 text-muted" style="font-size: 0.75rem;">Adjust buy/sell margins</p>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 col-xl-2">
+                    <a href="broadcast.html" class="btn btn-light text-start p-3 rounded-4 border w-100 h-100">
+                        <div class="stat-icon bg-info-subtle text-info mb-2"
+                            style="width: 40px; height: 40px; font-size: 1.1rem;">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <p class="mb-0 fw-bold text-dark small">Send Broadcast</p>
+                        <p class="mb-0 text-muted" style="font-size: 0.75rem;">Notify all users via email</p>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 col-xl-2">
+                    <a href="kyc.html" class="btn btn-light text-start p-3 rounded-4 border w-100 h-100">
+                        <div class="stat-icon bg-warning-subtle text-warning mb-2"
+                            style="width: 40px; height: 40px; font-size: 1.1rem;">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <p class="mb-0 fw-bold text-dark small">Verify KYC</p>
+                        <p class="mb-0 text-muted" style="font-size: 0.75rem;">Review pending documents</p>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 col-xl-2">
+                    <a href="pay-supplier.html" class="btn btn-light text-start p-3 rounded-4 border w-100 h-100">
+                        <div class="stat-icon bg-secondary-subtle text-secondary mb-2"
+                            style="width: 40px; height: 40px; font-size: 1.1rem;">
+                            <i class="fas fa-ship"></i>
+                        </div>
+                        <p class="mb-0 fw-bold text-dark small">Pay Supplier Requests</p>
+                        <p class="mb-0 text-muted" style="font-size: 0.75rem;">Review pending requests</p>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 col-xl-2">
+                    <a href="send-abroad.html" class="btn btn-light text-start p-3 rounded-4 border w-100 h-100">
+                        <div class="stat-icon bg-success-subtle text-success mb-2"
+                            style="width: 40px; height: 40px; font-size: 1.1rem;">
+                            <i class="fas fa-earth-africa"></i>
+                        </div>
+                        <p class="mb-0 fw-bold text-dark small">Send Abroad Requests</p>
+                        <p class="mb-0 text-muted" style="font-size: 0.75rem;">Review pending payouts</p>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 col-xl-2">
+                    <a href="ads.html" class="btn btn-light text-start p-3 rounded-4 border w-100 h-100">
+                        <div class="stat-icon mb-2" style="width: 40px; height: 40px; font-size: 1.1rem; background:#ede9fe;color:#6d28d9;">
+                            <i class="fas fa-rectangle-ad"></i>
+                        </div>
+                        <p class="mb-0 fw-bold text-dark small">Manage Ads</p>
+                        <p class="mb-0 text-muted" style="font-size: 0.75rem;">Promotions on user dashboard</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
         <div class="row g-4 mb-4">
-            <!-- Activity Chart -->
-            <div class="col-12 col-xl-8">
+            <div class="col-12 col-lg-6 col-xl-4">
                 <div class="card p-4 h-100">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5 class="mb-0">Transaction Activity</h5>
-                        <select class="form-select form-select-sm" style="width: 120px;">
-                            <option>Last 7 days</option>
-                            <option>Last 30 days</option>
-                        </select>
+                        <h5 class="mb-0">Transaction Overview</h5>
+                        <span class="badge bg-light text-muted border">This Week</span>
                     </div>
                     <div class="chart-container">
-                        <canvas id="activityChart"></canvas>
+                        <canvas id="chartTransactionOverview"></canvas>
                     </div>
                 </div>
             </div>
-            <!-- Quick Tasks -->
-            <div class="col-12 col-xl-4">
+            <div class="col-12 col-lg-6 col-xl-4">
                 <div class="card p-4 h-100">
-                    <h5 class="mb-4">Quick Actions</h5>
-                    <div class="d-grid gap-3">
-                        <a href="rates.html" class="btn btn-light text-start p-3 rounded-4 border">
-                            <div class="d-flex align-items-center">
-                                <div class="stat-icon bg-primary-subtle text-primary mb-0 me-3"
-                                    style="width: 40px; height: 40px; font-size: 1.1rem;">
-                                    <i class="fas fa-percentage"></i>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <p class="mb-0 fw-bold text-dark small">Update Rates</p>
-                                    <p class="mb-0 text-muted" style="font-size: 0.75rem;">Adjust buy/sell margins</p>
-                                </div>
-                                <i class="fas fa-chevron-right ms-auto opacity-25"></i>
-                            </div>
-                        </a>
-                        <a href="broadcast.html" class="btn btn-light text-start p-3 rounded-4 border">
-                            <div class="d-flex align-items-center">
-                                <div class="stat-icon bg-info-subtle text-info mb-0 me-3"
-                                    style="width: 40px; height: 40px; font-size: 1.1rem;">
-                                    <i class="fas fa-paper-plane"></i>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <p class="mb-0 fw-bold text-dark small">Send Broadcast</p>
-                                    <p class="mb-0 text-muted" style="font-size: 0.75rem;">Notify all users via email
-                                    </p>
-                                </div>
-                                <i class="fas fa-chevron-right ms-auto opacity-25"></i>
-                            </div>
-                        </a>
-                        <a href="kyc.html" class="btn btn-light text-start p-3 rounded-4 border">
-                            <div class="d-flex align-items-center">
-                                <div class="stat-icon bg-warning-subtle text-warning mb-0 me-3"
-                                    style="width: 40px; height: 40px; font-size: 1.1rem;">
-                                    <i class="fas fa-user-shield"></i>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <p class="mb-0 fw-bold text-dark small">Verify KYC</p>
-                                    <p class="mb-0 text-muted" style="font-size: 0.75rem;">Review 13 new documents</p>
-                                </div>
-                                <i class="fas fa-chevron-right ms-auto opacity-25"></i>
-                            </div>
-                        </a>
-                        <a href="pay-supplier.html" class="btn btn-light text-start p-3 rounded-4 border">
-                            <div class="d-flex align-items-center">
-                                <div class="stat-icon bg-secondary-subtle text-secondary mb-0 me-3"
-                                    style="width: 40px; height: 40px; font-size: 1.1rem;">
-                                    <i class="fas fa-ship"></i>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <p class="mb-0 fw-bold text-dark small">Pay Supplier Requests</p>
-                                    <p class="mb-0 text-muted" style="font-size: 0.75rem;">1 request pending review</p>
-                                </div>
-                                <i class="fas fa-chevron-right ms-auto opacity-25"></i>
-                            </div>
-                        </a>
-                        <a href="send-abroad.html" class="btn btn-light text-start p-3 rounded-4 border">
-                            <div class="d-flex align-items-center">
-                                <div class="stat-icon bg-success-subtle text-success mb-0 me-3"
-                                    style="width: 40px; height: 40px; font-size: 1.1rem;">
-                                    <i class="fas fa-earth-africa"></i>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <p class="mb-0 fw-bold text-dark small">Send Abroad Requests</p>
-                                    <p class="mb-0 text-muted" style="font-size: 0.75rem;">1 payout pending review</p>
-                                </div>
-                                <i class="fas fa-chevron-right ms-auto opacity-25"></i>
-                            </div>
-                        </a>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Transactions by Type</h5>
+                        <span class="badge bg-light text-muted border">This Week</span>
+                    </div>
+                    <div class="donut-wrap chart-container-sm mb-3">
+                        <canvas id="chartTransactionsByType"></canvas>
+                        <div class="donut-center-label">
+                            <span class="val" id="typeBreakdownTotal">0</span>
+                            <span class="lbl">Total</span>
+                        </div>
+                    </div>
+                    <div id="typeBreakdownLegend"></div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xl-4">
+                <div class="card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Profit Trend</h5>
+                        <span class="badge bg-light text-muted border">This Week</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chartProfitTrend"></canvas>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="card p-4">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h5 class="mb-0">Last 10 Transactions</h5>
-                <a href="deriv-funding.html" class="btn btn-light btn-sm">View All</a>
+        <!-- Operational Row -->
+        <div class="row g-4 mb-4">
+            <div class="col-12 col-xl-5">
+                <div class="card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Recent Transactions</h5>
+                        <a href="deposit-withdrawal.html" class="btn btn-light btn-sm">View All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table tx-table mb-0 w-100" id="recentTransactions">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Reference</th>
+                                    <th>User</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <a href="deposit-withdrawal.html"
+                        class="small fw-bold text-decoration-none mt-3 d-inline-block">View All Transactions <i
+                            class="fas fa-arrow-right ms-1"></i></a>
+                </div>
             </div>
-            <div class="table-responsive">
-                <table class="table tx-table mb-0 w-100" id="recentTransactions">
-                    <thead>
-                        <tr>
-                            <th>Transaction</th>
-                            <th>User</th>
-                            <th>Date</th>
-                            <th>Amount</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+            <div class="col-12 col-xl-4">
+                <div class="card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">KYC Queue</h5>
+                        <a href="kyc.html" class="btn btn-light btn-sm">View All</a>
+                    </div>
+                    <div id="kycQueueList"></div>
+                    <a href="kyc.html" class="small fw-bold text-decoration-none mt-2 d-inline-block">View All KYC
+                        Submissions <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+            <div class="col-12 col-xl-3">
+                <div class="card p-4 h-100">
+                    <h5 class="mb-3">System Status</h5>
+                    <div id="systemStatusList">
+                        <div class="system-status-item"><span><i
+                                    class="fas fa-circle-check text-success me-2"></i>API Connection</span><span
+                                class="text-success fw-bold">Active</span></div>
+                        <div class="system-status-item"><span><i
+                                    class="fas fa-circle-check text-success me-2"></i>Deriv API</span><span
+                                class="text-success fw-bold">Active</span></div>
+                        <div class="system-status-item"><span><i
+                                    class="fas fa-circle-check text-success me-2"></i>Payment Gateway</span><span
+                                class="text-success fw-bold">Active</span></div>
+                        <div class="system-status-item"><span><i
+                                    class="fas fa-circle-check text-success me-2"></i>Database</span><span
+                                class="text-success fw-bold">Active</span></div>
+                        <div class="system-status-item"><span><i
+                                    class="fas fa-circle-check text-success me-2"></i>KYC Service</span><span
+                                class="text-success fw-bold">Active</span></div>
+                        <div class="system-status-item"><span><i
+                                    class="fas fa-circle-check text-success me-2"></i>Email Service</span><span
+                                class="text-success fw-bold">Active</span></div>
+                        <div class="system-status-item"><span><i
+                                    class="fas fa-circle-check text-success me-2"></i>Rate Feed</span><span
+                                class="text-success fw-bold">Active</span></div>
+                        <div class="system-status-item"><span><i
+                                    class="fas fa-circle-check text-success me-2"></i>WebSocket</span><span
+                                class="text-success fw-bold">Active</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Row -->
+        <div class="row g-4 mb-4">
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="card p-4 h-100">
+                    <h5 class="mb-3">Volume by Channel</h5>
+                    <div class="donut-wrap chart-container-sm mb-3">
+                        <canvas id="chartChannelBreakdown"></canvas>
+                    </div>
+                    <div id="channelBreakdownLegend"></div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Top Countries</h5>
+                        <span class="badge bg-light text-muted border">This Week</span>
+                    </div>
+                    <div id="topCountriesList"></div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="card p-4 h-100">
+                    <h5 class="mb-4">Top Services (By Volume)</h5>
+                    <div id="topServicesList"></div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="card p-4 h-100">
+                    <h5 class="mb-3">Transaction Success Rate</h5>
+                    <div class="gauge-wrap">
+                        <canvas id="chartSuccessGauge"></canvas>
+                        <div class="gauge-center-label">
+                            <span class="val" id="gaugeValue">0%</span>
+                            <span class="lbl">Successful</span>
+                        </div>
+                    </div>
+                    <p class="text-center mb-0 stat-delta" id="gaugeDelta"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-footer">
+            <span>&copy; 2026 CheapNaria. All rights reserved.</span>
+            <div class="trust-badges">
+                <span><i class="fas fa-building-shield me-1"></i>Bank-grade Security</span>
+                <span><i class="fas fa-lock me-1"></i>256-bit Encrypted</span>
+                <span><i class="fas fa-award me-1"></i>ISO 27001 Compliant</span>
             </div>
         </div>
     </main>
@@ -335,69 +654,272 @@
     <script src="../js/mock-data.js"></script>
 
     <script>
-        // Activity Chart
-        const ctx = document.getElementById('activityChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                datasets: [{
-                    label: 'Volume (₦)',
-                    data: [1200000, 1900000, 1500000, 2500000, 2200000, 3000000, 2800000],
-                    borderColor: '#10b981',
-                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                    fill: true,
-                    tension: 0.4,
-                    pointRadius: 4,
-                    pointBackgroundColor: '#10b981'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: { borderDash: [5, 5] },
-                        ticks: {
-                            callback: value => '₦' + (value / 1000000).toFixed(1) + 'M'
-                        }
-                    },
-                    x: { grid: { display: false } }
-                }
-            }
-        });
+        const FLAGS = { Nigeria: '🇳🇬', Ghana: '🇬🇭', Kenya: '🇰🇪', Tanzania: '🇹🇿', Uganda: '🇺🇬' };
+        const CATEGORY_COLORS = {
+            'Deposits': '#059669',
+            'Withdrawals': '#dc2626',
+            'Deriv Funding': '#6d28d9',
+            'Cross Border': '#1d4ed8'
+        };
+        const CHANNEL_COLORS = { 'Bank Transfer': '#10b981', 'Crypto (USDT)': '#6d28d9', 'Card Payment': '#1d4ed8', 'Other': '#b45309' };
 
-        $(document).ready(function () {
-            $('#statDeriv').text(CN_DATA.DERIV_FUNDING_RECORDS.length + CN_DATA.DERIV_WITHDRAWAL_RECORDS.length);
-            $('#statCrypto').text(CN_DATA.DEPOSIT_RECORDS.length + CN_DATA.WITHDRAWAL_RECORDS.length);
+        function fmtNgn(n) { return '₦' + Math.round(n).toLocaleString(); }
+        function fmtDelta(pct) {
+            const up = pct >= 0;
+            return '<i class="fas fa-arrow-' + (up ? 'up' : 'down') + '"></i> ' + Math.abs(pct).toFixed(1) + '% vs yesterday';
+        }
+        function applyDelta(elId, pct) {
+            const $el = $('#' + elId);
+            $el.html(fmtDelta(pct)).toggleClass('text-success', pct >= 0).toggleClass('text-danger', pct < 0);
+        }
 
-            const rows = CN_DATA.recentTransactions(10);
+        // Formats using local date components (not toISOString(), which converts to
+        // UTC and can shift the date back a day depending on the browser's timezone).
+        function toDateInputValue(d) {
+            const y = d.getFullYear();
+            const m = String(d.getMonth() + 1).padStart(2, '0');
+            const day = String(d.getDate()).padStart(2, '0');
+            return y + '-' + m + '-' + day;
+        }
+
+        function fmtRangeLabel(d) {
+            return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        function renderStatCards() {
+            const s = CN_DATA.dashboardStats();
+            $('#statVolume').text(fmtNgn(s.totalVolume));
+            $('#statProfit').text(fmtNgn(s.totalProfit));
+            $('#statTransactions').text(s.totalTransactions.toLocaleString());
+            $('#statSuccessRate').text(s.successRatePct.toFixed(2) + '%');
+            $('#statActiveUsers').text(s.activeUsers.toLocaleString());
+            $('#statActiveUsersSub').text(s.verifiedPct.toFixed(1) + '% KYC verified');
+            $('#statLiquidity').text(fmtNgn(s.liquidityAvailable));
+            applyDelta('statVolumeDelta', s.volumeDeltaPct);
+            applyDelta('statProfitDelta', s.profitDeltaPct);
+            applyDelta('statTransactionsDelta', s.transactionsDeltaPct);
+            applyDelta('statSuccessRateDelta', s.successRateDeltaPct);
+
+            const today = CN_DATA.REPORT_REF_DATE;
+            const weekAgo = new Date(today); weekAgo.setDate(weekAgo.getDate() - 6);
+            $('#statsFromDate').val(toDateInputValue(weekAgo));
+            $('#statsToDate').val(toDateInputValue(today));
+            $('#statsRangeLabel').text('Showing ' + fmtRangeLabel(weekAgo) + ' – ' + fmtRangeLabel(today) + ' (this week)');
+        }
+
+        function applyDateRange() {
+            const fromVal = $('#statsFromDate').val();
+            const toVal = $('#statsToDate').val();
+            if (!fromVal || !toVal) { alert('Please choose both a from and to date.'); return; }
+            const from = new Date(fromVal + 'T00:00:00');
+            const to = new Date(toVal + 'T00:00:00');
+            if (to < from) { alert('The "to" date must be on or after the "from" date.'); return; }
+
+            const s = CN_DATA.statsForDateRange(from, to);
+            $('#statVolume').text(fmtNgn(s.totalVolume));
+            $('#statProfit').text(fmtNgn(s.totalProfit));
+            $('#statTransactions').text(s.totalTransactions.toLocaleString());
+            $('#statSuccessRate').text(s.successRatePct.toFixed(2) + '%');
+            $('#statLiquidity').text(fmtNgn(s.liquidityAvailable));
+            // A day-over-day delta doesn't mean anything for an arbitrary picked
+            // range, so clear those lines instead of showing a stale comparison.
+            $('#statVolumeDelta, #statProfitDelta, #statTransactionsDelta, #statSuccessRateDelta').empty();
+            $('#statsRangeLabel').text('Showing ' + fmtRangeLabel(from) + ' – ' + fmtRangeLabel(to) + ' (custom range)');
+        }
+
+        function renderRecentTransactions() {
+            const rows = CN_DATA.recentTransactions(8);
             const tbody = $('#recentTransactions tbody');
             rows.forEach(function (r) {
                 tbody.append(
                     '<tr>' +
                     '<td><div class="tx-row"><div class="tx-type-icon ' + r.iconClass + '"><i class="fas ' + r.icon + '"></i></div>' +
-                    '<div class="tx-text"><p>' + r.category + '</p><small>' + r.ref + '</small></div></div></td>' +
+                    '<div class="tx-text"><p>' + r.category + '</p></div></div></td>' +
+                    '<td class="text-muted small">' + r.ref + '</td>' +
                     '<td><span class="small fw-bold">' + r.user.name + '</span></td>' +
-                    '<td class="text-muted small">' + r.date + '</td>' +
                     '<td class="fw-bold ' + (r.sign === '+' ? 'text-success' : 'text-danger') + '">' + r.sign + ' ' + r.currency + Number(r.amount).toLocaleString() + '</td>' +
                     '<td><span class="badge-status status-' + r.status + '">' + r.status.charAt(0).toUpperCase() + r.status.slice(1) + '</span></td>' +
                     '</tr>'
                 );
             });
-
             $('#recentTransactions').DataTable({
-                "pageLength": 10,
-                "lengthChange": false,
-                "searching": false,
-                "info": false,
-                "responsive": true,
-                "autoWidth": false
+                pageLength: 8, lengthChange: false, searching: false, info: false, responsive: true, autoWidth: false
             });
+        }
+
+        function renderKycQueue() {
+            const avatarColors = ['10b981', '6366f1', 'f59e0b', 'ef4444', '0dcaf0'];
+            const items = CN_DATA.pendingKyc(5);
+            const html = items.map(function (r, i) {
+                const initials = r.name.split(' ').map(function (p) { return p[0]; }).slice(0, 2).join('').toUpperCase();
+                return '<div class="d-flex align-items-center gap-2 py-2' + (i < items.length - 1 ? ' border-bottom' : '') + '">' +
+                    '<div class="kyc-avatar-chip" style="background:#' + avatarColors[i % avatarColors.length] + ';">' + initials + '</div>' +
+                    '<div class="flex-grow-1">' +
+                    '<p class="mb-0 small fw-bold">' + r.name + ' <span class="text-muted fw-normal">' + r.ref + '</span></p>' +
+                    '<p class="mb-0 text-muted" style="font-size:0.72rem;">' + r.country + ' &middot; ' + r.submitted + '</p>' +
+                    '</div>' +
+                    '<span class="badge-status status-pending">Pending</span>' +
+                    '</div>';
+            }).join('');
+            $('#kycQueueList').html(html || '<p class="text-muted small mb-0">No pending KYC submissions.</p>');
+        }
+
+        function renderTransactionOverviewChart() {
+            const series = CN_DATA.dailyActivitySeries();
+            new Chart(document.getElementById('chartTransactionOverview').getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: series.labels,
+                    datasets: [
+                        { label: 'Deposits', data: series.deposits, borderColor: CATEGORY_COLORS.Deposits, backgroundColor: 'transparent', tension: 0.4, pointRadius: 3 },
+                        { label: 'Withdrawals', data: series.withdrawals, borderColor: CATEGORY_COLORS.Withdrawals, backgroundColor: 'transparent', tension: 0.4, pointRadius: 3 },
+                        { label: 'Deriv Funding', data: series.derivFunding, borderColor: CATEGORY_COLORS['Deriv Funding'], backgroundColor: 'transparent', tension: 0.4, pointRadius: 3 },
+                        { label: 'Cross Border', data: series.crossBorder, borderColor: CATEGORY_COLORS['Cross Border'], backgroundColor: 'transparent', tension: 0.4, pointRadius: 3 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 8, usePointStyle: true, font: { size: 10 } } } },
+                    scales: {
+                        y: { beginAtZero: true, grid: { borderDash: [5, 5] }, ticks: { callback: v => '₦' + (v / 1000000).toFixed(1) + 'M' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        }
+
+        function renderTypeBreakdownChart() {
+            const bd = CN_DATA.typeBreakdown();
+            $('#typeBreakdownTotal').text(bd.total.toLocaleString());
+            new Chart(document.getElementById('chartTransactionsByType').getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: bd.items.map(i => i.label),
+                    datasets: [{ data: bd.items.map(i => i.count), backgroundColor: bd.items.map(i => CATEGORY_COLORS[i.label]), borderWidth: 0 }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, cutout: '72%', plugins: { legend: { display: false } } }
+            });
+            $('#typeBreakdownLegend').html(bd.items.map(function (i) {
+                return '<div class="legend-row"><span><span class="legend-dot" style="background:' + CATEGORY_COLORS[i.label] + ';"></span>' + i.label + '</span><span class="fw-bold">' + i.count.toLocaleString() + ' (' + i.pct + '%)</span></div>';
+            }).join(''));
+        }
+
+        function renderProfitTrendChart() {
+            const series = CN_DATA.dailyActivitySeries();
+            const profit = series.labels.map(function (_, idx) {
+                const vol = series.deposits[idx] + series.withdrawals[idx] + series.derivFunding[idx] + series.crossBorder[idx];
+                return Math.round(vol * 0.015);
+            });
+            new Chart(document.getElementById('chartProfitTrend').getContext('2d'), {
+                type: 'bar',
+                data: { labels: series.labels, datasets: [{ label: 'Profit (₦)', data: profit, backgroundColor: '#10b981', borderRadius: 6, maxBarThickness: 28 }] },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, grid: { borderDash: [5, 5] }, ticks: { callback: v => '₦' + (v / 1000).toFixed(0) + 'k' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        }
+
+        function renderChannelBreakdownChart() {
+            const cb = CN_DATA.channelBreakdown();
+            new Chart(document.getElementById('chartChannelBreakdown').getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: cb.items.map(i => i.label),
+                    datasets: [{ data: cb.items.map(i => i.count), backgroundColor: cb.items.map(i => CHANNEL_COLORS[i.label]), borderWidth: 0 }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, cutout: '65%', plugins: { legend: { display: false } } }
+            });
+            $('#channelBreakdownLegend').html(cb.items.map(function (i) {
+                return '<div class="legend-row"><span><span class="legend-dot" style="background:' + CHANNEL_COLORS[i.label] + ';"></span>' + i.label + '</span><span class="fw-bold">' + i.pct + '%</span></div>';
+            }).join(''));
+        }
+
+        function renderTopCountries() {
+            const list = CN_DATA.topCountriesByVolume();
+            $('#topCountriesList').html(list.map(function (c) {
+                return '<div class="country-row">' +
+                    '<div class="d-flex justify-content-between small mb-1">' +
+                    '<span>' + (FLAGS[c.country] || '') + ' ' + c.country + '</span>' +
+                    '<span class="fw-bold">' + fmtNgn(c.volume) + ' &middot; ' + c.pct + '%</span>' +
+                    '</div>' +
+                    '<div class="progress"><div class="progress-bar bg-primary" style="width:' + c.pct + '%"></div></div>' +
+                    '</div>';
+            }).join(''));
+        }
+
+        function renderTopServices() {
+            const list = CN_DATA.topServicesByVolume();
+            const max = Math.max.apply(null, list.map(i => i.volume)) || 1;
+            $('#topServicesList').html(list.map(function (s) {
+                const w = Math.round((s.volume / max) * 100);
+                return '<div class="service-bar-row">' +
+                    '<div class="d-flex justify-content-between small mb-1"><span>' + s.label + '</span><span class="fw-bold">' + fmtNgn(s.volume) + '</span></div>' +
+                    '<div class="progress"><div class="progress-bar" style="width:' + w + '%;background:#10b981;"></div></div>' +
+                    '</div>';
+            }).join(''));
+        }
+
+        function renderSuccessGauge() {
+            const rate = CN_DATA.successRate(6);
+            const prevRate = CN_DATA.successRate(13);
+            $('#gaugeValue').text(rate.toFixed(2) + '%');
+            $('#gaugeDelta').html(fmtDelta(Math.round((rate - prevRate) * 10) / 10)).toggleClass('text-success', rate >= prevRate).toggleClass('text-danger', rate < prevRate);
+            new Chart(document.getElementById('chartSuccessGauge').getContext('2d'), {
+                type: 'doughnut',
+                data: { datasets: [{ data: [rate, 100 - rate], backgroundColor: ['#10b981', '#e2e8f0'], borderWidth: 0 }] },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    circumference: 180, rotation: -90, cutout: '75%',
+                    plugins: { legend: { display: false }, tooltip: { enabled: false } }
+                }
+            });
+        }
+
+        function wireExportButton() {
+            $('#exportReportBtn').on('click', function () {
+                const rows = [['Type', 'Reference', 'User', 'Amount', 'Status']];
+                $('#recentTransactions tbody tr').each(function () {
+                    const cells = $(this).find('td');
+                    rows.push([
+                        $(cells[0]).find('.tx-text p').text().trim(),
+                        $(cells[1]).text().trim(),
+                        $(cells[2]).text().trim(),
+                        $(cells[3]).text().trim(),
+                        $(cells[4]).text().trim()
+                    ]);
+                });
+                const csv = rows.map(r => r.map(v => '"' + String(v).replace(/"/g, '""') + '"').join(',')).join('\n');
+                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'cheapnaria-report-' + toDateInputValue(CN_DATA.REPORT_REF_DATE) + '.csv';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+        }
+
+        $(document).ready(function () {
+            renderStatCards();
+            renderRecentTransactions();
+            renderKycQueue();
+            renderTransactionOverviewChart();
+            renderTypeBreakdownChart();
+            renderProfitTrendChart();
+            renderChannelBreakdownChart();
+            renderTopCountries();
+            renderTopServices();
+            renderSuccessGauge();
+            wireExportButton();
+            $('#statsRequestBtn').on('click', applyDateRange);
         });
     </script>
 </body>

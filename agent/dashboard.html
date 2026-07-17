@@ -52,6 +52,7 @@
             <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
             <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
             <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
             <hr class="my-3 opacity-10">
             <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
         </nav>
@@ -87,6 +88,7 @@
                 <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
                 <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
                 <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+                <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
                 <hr class="my-3 opacity-10">
                 <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
                 <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
@@ -134,62 +136,162 @@
             </div>
         </header>
 
-        <!-- Stats Overview: counts only -->
+        <!-- Stats Overview -->
         <div class="row g-3 mb-4">
             <div class="col-6 col-lg-3">
                 <div class="card stat-card h-100">
-                    <div class="stat-icon bg-secondary-subtle text-secondary">
-                        <i class="fas fa-chart-line"></i>
+                    <div class="stat-icon bg-success-subtle text-success">
+                        <i class="fas fa-arrow-down"></i>
                     </div>
-                    <p class="text-muted mb-1 small">Deriv Transactions</p>
-                    <h3 class="mb-0" id="statDeriv">0</h3>
+                    <p class="text-muted mb-1 small">Deposits</p>
+                    <h3 class="mb-0" id="statDeposits">0</h3>
+                    <a href="deposit-withdrawal.html" class="small fw-bold text-decoration-none">View all <i
+                            class="fas fa-arrow-right-long ms-1"></i></a>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100">
+                    <div class="stat-icon bg-danger-subtle text-danger">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <p class="text-muted mb-1 small">Withdrawals</p>
+                    <h3 class="mb-0" id="statWithdrawals">0</h3>
+                    <a href="deposit-withdrawal.html?type=withdrawals" class="small fw-bold text-decoration-none">View
+                        all <i class="fas fa-arrow-right-long ms-1"></i></a>
                 </div>
             </div>
             <div class="col-6 col-lg-3">
                 <div class="card stat-card h-100">
                     <div class="stat-icon bg-primary-subtle text-primary">
-                        <i class="fas fa-right-left"></i>
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <p class="text-muted mb-1 small">Crypto Transactions</p>
-                    <h3 class="mb-0" id="statCrypto">0</h3>
+                    <p class="text-muted mb-1 small">Deriv Funding</p>
+                    <h3 class="mb-0" id="statDerivFunding">0</h3>
+                    <a href="deriv-funding.html" class="small fw-bold text-decoration-none">View all <i
+                            class="fas fa-arrow-right-long ms-1"></i></a>
                 </div>
             </div>
             <div class="col-6 col-lg-3">
                 <div class="card stat-card h-100">
                     <div class="stat-icon bg-info-subtle text-info">
-                        <i class="fas fa-ship"></i>
-                    </div>
-                    <p class="text-muted mb-1 small">Supplier Payments</p>
-                    <h3 class="mb-0" id="statSupplier">0</h3>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3">
-                <div class="card stat-card h-100">
-                    <div class="stat-icon bg-success-subtle text-success">
                         <i class="fas fa-earth-africa"></i>
                     </div>
                     <p class="text-muted mb-1 small">Cross Border</p>
                     <h3 class="mb-0" id="statAbroad">0</h3>
+                    <a href="send-abroad.html" class="small fw-bold text-decoration-none">View all <i
+                            class="fas fa-arrow-right-long ms-1"></i></a>
                 </div>
             </div>
         </div>
 
-        <!-- Last 10 Transactions -->
-        <h5 class="fw-bold mb-3">Last 10 Transactions</h5>
-        <div class="card border-0 shadow-sm p-4">
-            <div class="table-responsive">
-                <table class="table tx-table w-100" id="recentTable">
-                    <thead>
-                        <tr>
-                            <th>Transaction</th>
-                            <th>User</th>
-                            <th>Date</th>
-                            <th>Amount</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+        <div class="row g-4">
+            <!-- Main column -->
+            <div class="col-lg-8">
+                <div class="row g-3 mb-4 align-items-stretch">
+                    <!-- Recent Transactions -->
+                    <div class="col-lg-7">
+                        <div class="card border-0 shadow-sm p-4 h-100 d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h6 class="fw-bold mb-0">Recent Transactions</h6>
+                                <a href="transactions.html" class="small fw-bold text-decoration-none">View All</a>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table tx-table tx-table-compact w-100" id="recentTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Transaction</th>
+                                            <th>User</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                            <th>Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                            <div class="text-center mt-auto pt-2">
+                                <a href="transactions.html" class="fw-bold text-decoration-none small">View All
+                                    Transactions <i class="fas fa-arrow-right-long ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KYC Queue -->
+                    <div class="col-lg-5">
+                        <div class="card border-0 shadow-sm p-4 h-100 d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h6 class="fw-bold mb-0">KYC Queue</h6>
+                                <a href="kyc.html" class="small fw-bold text-decoration-none">View All</a>
+                            </div>
+                            <div id="kycQueueList"></div>
+                            <div class="text-center mt-auto pt-2">
+                                <a href="kyc.html" class="fw-bold text-decoration-none small">View All KYC
+                                    Submissions <i class="fas fa-arrow-right-long ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="card border-0 shadow-sm p-4">
+                    <h6 class="fw-bold mb-3">Quick Actions</h6>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="deposit-withdrawal.html" class="quick-action-btn">
+                            <span class="quick-action-icon"><i class="fas fa-wallet"></i></span>
+                            Manual Deposit
+                        </a>
+                        <a href="deposit-withdrawal.html?type=withdrawals" class="quick-action-btn">
+                            <span class="quick-action-icon"><i class="fas fa-arrow-up"></i></span>
+                            Manual Withdrawal
+                        </a>
+                        <a href="deriv-funding.html" class="quick-action-btn">
+                            <span class="quick-action-icon"><i class="fas fa-chart-line"></i></span>
+                            Deriv Funding
+                        </a>
+                        <a href="deriv-funding.html?type=withdrawal" class="quick-action-btn">
+                            <span class="quick-action-icon"><i class="fas fa-arrow-down"></i></span>
+                            Deriv Withdrawal
+                        </a>
+                        <a href="send-abroad.html" class="quick-action-btn">
+                            <span class="quick-action-icon"><i class="fas fa-earth-africa"></i></span>
+                            Send Abroad
+                        </a>
+                        <a href="pay-supplier.html" class="quick-action-btn">
+                            <span class="quick-action-icon"><i class="fas fa-ship"></i></span>
+                            Pay Supplier
+                        </a>
+                        <a href="utility-betting.html" class="quick-action-btn">
+                            <span class="quick-action-icon"><i class="fas fa-bolt"></i></span>
+                            Utility &amp; Betting
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Support rail -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm p-4 h-100 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="fw-bold mb-0">Customer Support</h6>
+                        <a href="support.html" class="small fw-bold text-decoration-none">View All</a>
+                    </div>
+                    <ul class="nav support-tabs gap-2 mb-3" id="supportTabs">
+                        <li class="nav-item"><button type="button" class="nav-link active" data-filter="inbox">Inbox
+                                <span class="badge rounded-pill bg-white text-success ms-1" id="countInbox"></span></button>
+                        </li>
+                        <li class="nav-item"><button type="button" class="nav-link" data-filter="unassigned">Unassigned
+                                <span class="badge rounded-pill bg-secondary-subtle text-secondary ms-1" id="countUnassigned"></span></button>
+                        </li>
+                        <li class="nav-item"><button type="button" class="nav-link" data-filter="resolved">Resolved</button>
+                        </li>
+                    </ul>
+                    <input type="text" class="form-control support-search mb-3" id="supportSearch"
+                        placeholder="Search conversations...">
+                    <div id="conversationList" class="flex-grow-1" style="overflow-y: auto; max-height: 420px;"></div>
+                    <a href="support.html?new=1" class="btn btn-success w-100 mt-3 rounded-pill fw-bold">
+                        <i class="fas fa-comment-medical me-1"></i> Start New Conversation
+                    </a>
+                </div>
             </div>
         </div>
     </main>
@@ -204,13 +306,13 @@
     <script src="../js/mock-data.js"></script>
     <script>
         $(document).ready(function () {
-            const derivCount = CN_DATA.DERIV_FUNDING_RECORDS.length + CN_DATA.DERIV_WITHDRAWAL_RECORDS.length;
-            const cryptoCount = CN_DATA.DEPOSIT_RECORDS.length + CN_DATA.WITHDRAWAL_RECORDS.length;
-            $('#statDeriv').text(derivCount);
-            $('#statCrypto').text(cryptoCount);
-            $('#statSupplier').text(5);
-            $('#statAbroad').text(5);
+            // --- Stat cards ---
+            $('#statDeposits').text(CN_DATA.DEPOSIT_RECORDS.length);
+            $('#statWithdrawals').text(CN_DATA.WITHDRAWAL_RECORDS.length);
+            $('#statDerivFunding').text(CN_DATA.DERIV_FUNDING_RECORDS.length);
+            $('#statAbroad').text(CN_DATA.CROSS_BORDER_RECORDS.length);
 
+            // --- Recent Transactions ---
             const rows = CN_DATA.recentTransactions(10);
             const tbody = $('#recentTable tbody');
             rows.forEach(function (r) {
@@ -219,9 +321,9 @@
                     '<td><div class="tx-row"><div class="tx-type-icon ' + r.iconClass + '"><i class="fas ' + r.icon + '"></i></div>' +
                     '<div class="tx-text"><p>' + r.category + '</p><small>' + r.ref + '</small></div></div></td>' +
                     '<td><span class="small fw-bold">' + r.user.name + '</span></td>' +
-                    '<td class="text-muted small">' + r.date + '</td>' +
                     '<td class="fw-bold ' + (r.sign === '+' ? 'text-success' : 'text-danger') + '">' + r.sign + ' ' + r.currency + Number(r.amount).toLocaleString() + '</td>' +
                     '<td><span class="badge-status status-' + r.status + '">' + r.status.charAt(0).toUpperCase() + r.status.slice(1) + '</span></td>' +
+                    '<td class="text-muted small">' + r.date.split(' - ')[1] + '</td>' +
                     '</tr>'
                 );
             });
@@ -232,6 +334,75 @@
                 searching: false,
                 info: false,
                 responsive: true
+            });
+
+            // --- KYC Queue ---
+            const AGO_LABELS = ['2 mins ago', '5 mins ago', '8 mins ago', '12 mins ago', '15 mins ago'];
+            const kycList = $('#kycQueueList');
+            CN_DATA.pendingKyc(5).forEach(function (k, i) {
+                kycList.append(
+                    '<div class="kyc-queue-row">' +
+                    '<img src="https://ui-avatars.com/api/?name=' + encodeURIComponent(k.name) + '&background=10b981&color=fff" class="rounded-circle" width="36">' +
+                    '<div class="kyc-queue-text flex-grow-1">' +
+                    '<p>' + k.name + '</p><small>' + k.country + ' &middot; ' + k.ref + '</small>' +
+                    '</div>' +
+                    '<div class="text-end">' +
+                    '<span class="badge-status status-pending">Pending</span>' +
+                    '<br><small class="text-muted" style="font-size:0.68rem;">' + (AGO_LABELS[i] || (i + 1) * 3 + ' mins ago') + '</small>' +
+                    '</div>' +
+                    '</div>'
+                );
+            });
+
+            // --- Customer Support panel ---
+            let currentFilter = 'inbox';
+
+            function renderConversations() {
+                const term = $('#supportSearch').val().trim().toLowerCase();
+                const list = $('#conversationList').empty();
+                CN_DATA.SUPPORT_CONVERSATIONS
+                    .filter(function (c) { return c.status === currentFilter; })
+                    .filter(function (c) {
+                        if (!term) return true;
+                        return c.user.name.toLowerCase().indexOf(term) !== -1 || c.message.toLowerCase().indexOf(term) !== -1;
+                    })
+                    .forEach(function (c) {
+                        const initials = c.user.name.split(' ').map(function (p) { return p[0]; }).slice(0, 2).join('');
+                        list.append(
+                            '<div class="conversation-item" data-id="' + c.id + '">' +
+                            '<span class="conversation-avatar" style="background:#' + c.user.avatarBg + ';">' + initials + '</span>' +
+                            '<div class="conversation-body">' +
+                            '<p>' + c.user.name + '</p>' +
+                            '<small class="conversation-preview">' + c.message + '</small>' +
+                            '</div>' +
+                            '<div class="conversation-meta">' +
+                            '<small>' + c.time + '</small>' +
+                            (c.unread > 0 ? '<span class="unread-badge">' + c.unread + '</span>' : '') +
+                            '</div>' +
+                            '</div>'
+                        );
+                    });
+            }
+
+            function refreshCounts() {
+                $('#countInbox').text(CN_DATA.countBy(CN_DATA.SUPPORT_CONVERSATIONS, 'inbox'));
+                $('#countUnassigned').text(CN_DATA.countBy(CN_DATA.SUPPORT_CONVERSATIONS, 'unassigned'));
+            }
+
+            refreshCounts();
+            renderConversations();
+
+            $('#supportTabs').on('click', '.nav-link', function () {
+                $('#supportTabs .nav-link').removeClass('active');
+                $(this).addClass('active');
+                currentFilter = $(this).data('filter');
+                renderConversations();
+            });
+
+            $('#supportSearch').on('input', renderConversations);
+
+            $(document).on('click', '.conversation-item', function () {
+                window.location.href = 'support.html?id=' + $(this).data('id');
             });
         });
     </script>

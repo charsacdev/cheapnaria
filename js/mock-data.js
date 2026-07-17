@@ -161,9 +161,75 @@
         });
     }
 
+    // --- CROSS BORDER (25, Send Abroad wallet-level activity for dashboard/recent-tx feeds) ---
+    const CROSS_BORDER_RECORDS = [];
+    for (let i = 0; i < 25; i++) {
+        const u = userByIndex(i + 20);
+        const amountNgn = 15000 + i * 9200;
+        CROSS_BORDER_RECORDS.push({
+            ref: 'ABR-' + (52000 + i * 8),
+            user: u,
+            destCountry: COUNTRIES[(i + 2) % COUNTRIES.length],
+            amountNgn: amountNgn,
+            date: dateBack(i, 8 + (i % 10), (i * 5) % 60),
+            daysAgo: i,
+            status: statusForIndex(i, 6, 19)
+        });
+    }
+
     function countBy(records, status) {
         return records.filter(function (r) { return r.status === status; }).length;
     }
+
+    // First N pending KYC applicants, most-recent-first (KYC_RECORDS is already ordered that way)
+    function pendingKyc(n) {
+        return KYC_RECORDS.filter(function (r) { return r.status === 'pending'; }).slice(0, n || 5);
+    }
+
+    // --- SUPPORT CONVERSATIONS (8, for the Agent Dashboard "Customer Support" panel) ---
+    const SUPPORT_MESSAGES = [
+        { text: "Hello, I'm having issues funding my Deriv account.", unread: 2, status: 'inbox' },
+        { text: 'Please I need help with my withdrawal.', unread: 1, status: 'inbox' },
+        { text: 'What is the current rate for USD to NGN?', unread: 0, status: 'inbox' },
+        { text: 'My KYC is still pending, kindly check.', unread: 0, status: 'inbox' },
+        { text: 'Can I send money to Kenya via MoMo?', unread: 0, status: 'unassigned' },
+        { text: 'Payment not received yet.', unread: 0, status: 'inbox' },
+        { text: 'How long does Deriv funding take?', unread: 0, status: 'resolved' },
+        { text: 'I was charged twice for one transaction.', unread: 0, status: 'unassigned' }
+    ];
+    const SUPPORT_TIMES = ['10:42 AM', '10:30 AM', '10:15 AM', '09:55 AM', '09:40 AM', '09:25 AM', '09:10 AM', '08:50 AM'];
+
+    // Agents who can be assigned a support conversation (for the Admin "Support" oversight page).
+    const AGENT_NAMES = ['James Bond', 'Amara Obi', 'Tunde Fashola', 'Grace Adeyemi'];
+
+    // Deterministic follow-up replies, alternating agent/customer, appended after the
+    // opening customer message — gives the Admin Support page a real-looking thread
+    // instead of a single line.
+    const SUPPORT_FOLLOWUPS = [
+        [{ from: 'agent', text: "Hi, thanks for reaching out — let me pull up your account now." }, { from: 'customer', text: 'Sure, thank you for the quick response.' }],
+        [{ from: 'agent', text: "I've escalated this to our payments team, you'll hear back within the hour." }],
+        [{ from: 'agent', text: 'The current rate is shown live on your dashboard under Rates — it updates every few minutes.' }, { from: 'customer', text: 'Got it, thanks!' }],
+        [{ from: 'agent', text: 'Checking now — can you confirm the last 4 digits of the ID you uploaded?' }],
+        [],
+        [{ from: 'agent', text: 'Can you share the transaction reference so I can trace it?' }, { from: 'customer', text: 'Sure, one moment.' }],
+        [{ from: 'agent', text: 'Usually within 5-10 minutes once your transfer is confirmed on our end.' }, { from: 'customer', text: 'Perfect, thank you.' }],
+        [{ from: 'agent', text: "You've been refunded the duplicate charge — apologies for the inconvenience." }]
+    ];
+
+    const SUPPORT_CONVERSATIONS = SUPPORT_MESSAGES.map(function (m, i) {
+        const u = userByIndex(i);
+        const thread = [{ from: 'customer', text: m.text }].concat(SUPPORT_FOLLOWUPS[i] || []);
+        return {
+            id: i + 1,
+            user: u,
+            agent: AGENT_NAMES[i % AGENT_NAMES.length],
+            message: m.text,
+            time: SUPPORT_TIMES[i],
+            unread: m.unread,
+            status: m.status,
+            thread: thread
+        };
+    });
 
     // --- REPORT DATASETS (wide historical spread for the Admin Reports page) ---
     // Reference "today" across the whole app is Nov 5, 2024 (see dateBack/shortDate above).
@@ -187,6 +253,7 @@
     const REPORT_DERIV = buildReportSeries('RPD', 55, 45000, 21200, 180);
     const REPORT_ABROAD = buildReportSeries('RPA', 50, 22000, 9800, 180);
     const REPORT_CHINA = buildReportSeries('RPS', 40, 180000, 65000, 180);
+    const REPORT_UTILITY = buildReportSeries('RPU', 45, 8000, 4200, 180);
 
     const REPORT_REF_DATE = new Date(2024, 10, 5); // fixed "today" — matches dateBack()/shortDate()
 
@@ -201,7 +268,8 @@
         crypto: { label: 'Crypto', records: REPORT_CRYPTO, feeKey: 'cn-fee-crypto', defaultFeePct: 1.5 },
         deriv: { label: 'Deriv', records: REPORT_DERIV, feeKey: 'cn-fee-deriv', defaultFeePct: 1.2 },
         abroad: { label: 'Send Abroad', records: REPORT_ABROAD, feeKey: null, defaultFeePct: 2.0 },
-        china: { label: 'Pay Supplier (China)', records: REPORT_CHINA, feeKey: null, defaultFeePct: 1.8 }
+        china: { label: 'Pay Supplier (China)', records: REPORT_CHINA, feeKey: null, defaultFeePct: 1.8 },
+        utility: { label: 'Utilities & Betting', records: REPORT_UTILITY, feeKey: null, defaultFeePct: 1.0 }
     };
 
     function feePctFor(typeKey) {
@@ -256,16 +324,224 @@
         };
     }
 
-    // Unified "last N transactions" feed across all 4 categories, most recent first
+    // Unified "last N transactions" feed across all 5 categories, most recent first
     function recentTransactions(n) {
         const tagged = []
             .concat(DEPOSIT_RECORDS.map(function (r) { return Object.assign({ category: 'Deposit', icon: 'fa-arrow-down', iconClass: 'tx-in', sign: '+', currency: '₦', amount: r.amountNgn }, r); }))
             .concat(WITHDRAWAL_RECORDS.map(function (r) { return Object.assign({ category: 'Withdrawal', icon: 'fa-arrow-up', iconClass: 'tx-out', sign: '-', currency: '₦', amount: r.amountNgn }, r); }))
             .concat(DERIV_FUNDING_RECORDS.map(function (r) { return Object.assign({ category: 'Deriv Funding', icon: 'fa-arrow-down', iconClass: 'tx-deriv', sign: '+', currency: '$', amount: r.amountUsd }, r); }))
-            .concat(DERIV_WITHDRAWAL_RECORDS.map(function (r) { return Object.assign({ category: 'Deriv Withdrawal', icon: 'fa-arrow-up', iconClass: 'tx-deriv', sign: '-', currency: '$', amount: r.amountUsd }, r); }));
+            .concat(DERIV_WITHDRAWAL_RECORDS.map(function (r) { return Object.assign({ category: 'Deriv Withdrawal', icon: 'fa-arrow-up', iconClass: 'tx-deriv', sign: '-', currency: '$', amount: r.amountUsd }, r); }))
+            .concat(CROSS_BORDER_RECORDS.map(function (r) { return Object.assign({ category: 'Cross Border', icon: 'fa-earth-africa', iconClass: 'tx-border', sign: '+', currency: '₦', amount: r.amountNgn }, r); }));
 
         tagged.sort(function (a, b) { return a.daysAgo - b.daysAgo; });
         return tagged.slice(0, n || 10);
+    }
+
+    // --- DASHBOARD ANALYTICS HELPERS (admin/dashboard.html) ---
+    // All "this week" aggregates use daysAgo 0-6 against the same fixed reference date
+    // as dateBack()/shortDate() (Nov 5, 2024), so figures stay stable across reloads.
+    const WEEKDAY_LABELS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    // Records are generated with amount increasing alongside daysAgo (see DEPOSIT_RECORDS
+    // etc above), so bucketing strictly by daysAgo===N would make "today" always the
+    // smallest and "6 days ago" always the largest — a guaranteed decline every reload.
+    // Grouping by (daysAgo % 7) instead spreads that gradient evenly across weekdays.
+    function dailyActivitySeries() {
+        const days = [6, 5, 4, 3, 2, 1, 0];
+        const labels = days.map(function (daysAgo) { return WEEKDAY_LABELS[daysAgoToDate(daysAgo).getDay()]; });
+        function bucketSum(records, amountFn) {
+            return days.map(function (daysAgo) {
+                return records.filter(function (r) { return r.daysAgo % 7 === daysAgo; })
+                    .reduce(function (sum, r) { return sum + amountFn(r); }, 0);
+            });
+        }
+        return {
+            labels: labels,
+            deposits: bucketSum(DEPOSIT_RECORDS, function (r) { return r.amountNgn; }),
+            withdrawals: bucketSum(WITHDRAWAL_RECORDS, function (r) { return r.amountNgn; }),
+            derivFunding: bucketSum(DERIV_FUNDING_RECORDS, function (r) { return r.amountUsd * 1535; }),
+            crossBorder: bucketSum(CROSS_BORDER_RECORDS, function (r) { return r.amountNgn; })
+        };
+    }
+
+    function typeBreakdown() {
+        const days = function (arr) { return arr.filter(function (r) { return r.daysAgo <= 6; }).length; };
+        const counts = {
+            'Deriv Funding': days(DERIV_FUNDING_RECORDS),
+            'Deposits': days(DEPOSIT_RECORDS),
+            'Withdrawals': days(WITHDRAWAL_RECORDS),
+            'Cross Border': days(CROSS_BORDER_RECORDS)
+        };
+        const total = Object.keys(counts).reduce(function (s, k) { return s + counts[k]; }, 0);
+        const items = Object.keys(counts).map(function (label) {
+            const count = counts[label];
+            return { label: label, count: count, pct: total ? Math.round((count / total) * 1000) / 10 : 0 };
+        });
+        return { total: total, items: items };
+    }
+
+    // Bank Transfer / Crypto / Card / Other split. Card & Other are deterministic
+    // synthetic slices (index-based, no Math.random) since no card-payment dataset
+    // exists yet — mirrors how isCrypto already splits DEPOSIT/WITHDRAWAL records.
+    function channelBreakdown() {
+        const all = DEPOSIT_RECORDS.concat(WITHDRAWAL_RECORDS);
+        let bank = 0, crypto = 0, card = 0, other = 0;
+        all.forEach(function (r, i) {
+            if (i % 9 === 0) card++;
+            else if (i % 13 === 0) other++;
+            else if (r.isCrypto) crypto++;
+            else bank++;
+        });
+        const total = bank + crypto + card + other;
+        function pct(n) { return total ? Math.round((n / total) * 1000) / 10 : 0; }
+        return {
+            total: total,
+            items: [
+                { label: 'Bank Transfer', count: bank, pct: pct(bank) },
+                { label: 'Crypto (USDT)', count: crypto, pct: pct(crypto) },
+                { label: 'Card Payment', count: card, pct: pct(card) },
+                { label: 'Other', count: other, pct: pct(other) }
+            ]
+        };
+    }
+
+    function topCountriesByVolume() {
+        const totals = {};
+        COUNTRIES.forEach(function (c) { totals[c] = 0; });
+        DEPOSIT_RECORDS.concat(WITHDRAWAL_RECORDS).forEach(function (r) { totals[r.user.country] += r.amountNgn; });
+        CROSS_BORDER_RECORDS.forEach(function (r) { totals[r.user.country] += r.amountNgn; });
+        const grand = Object.keys(totals).reduce(function (s, c) { return s + totals[c]; }, 0);
+        return Object.keys(totals)
+            .map(function (c) { return { country: c, volume: totals[c], pct: grand ? Math.round((totals[c] / grand) * 1000) / 10 : 0 }; })
+            .sort(function (a, b) { return b.volume - a.volume; });
+    }
+
+    // Long-range (180-day) volume per REPORT_TYPES category, for apples-to-apples
+    // comparison — mixing these with the short-range wallet-level datasets above
+    // would skew the totals since those only span ~25 days.
+    function topServicesByVolume() {
+        const from = daysAgoToDate(180);
+        const to = daysAgoToDate(0);
+        const summary = reportSummary('all', from, to);
+        return Object.keys(summary.byType)
+            .map(function (k) { return { key: k, label: summary.byType[k].label, volume: summary.byType[k].volume }; })
+            .sort(function (a, b) { return b.volume - a.volume; });
+    }
+
+    function successRate(daysBack) {
+        const cutoff = daysBack == null ? 6 : daysBack;
+        const all = DEPOSIT_RECORDS.concat(WITHDRAWAL_RECORDS, DERIV_FUNDING_RECORDS, DERIV_WITHDRAWAL_RECORDS, CROSS_BORDER_RECORDS)
+            .filter(function (r) { return r.daysAgo <= cutoff; });
+        const approved = all.filter(function (r) { return r.status === 'approved'; }).length;
+        return all.length ? Math.round((approved / all.length) * 1000) / 10 : 0;
+    }
+
+    // Day-over-day (today vs yesterday) deltas for the dashboard stat cards,
+    // derived from dailyActivitySeries() rather than hardcoded.
+    function dashboardStats() {
+        const series = dailyActivitySeries();
+        const todayIdx = series.labels.length - 1;
+        const yestIdx = todayIdx - 1;
+        function pctChange(today, yest) {
+            if (!yest) return today > 0 ? 100 : 0;
+            return Math.round(((today - yest) / yest) * 1000) / 10;
+        }
+        const dailyTotal = function (idx) {
+            return series.deposits[idx] + series.withdrawals[idx] + series.derivFunding[idx] + series.crossBorder[idx];
+        };
+        const todayVolume = dailyTotal(todayIdx), yestVolume = dailyTotal(yestIdx);
+
+        // Same modulo grouping as dailyActivitySeries (drawn from the full record set,
+        // not just the last-7-days window), so "today" vs "yesterday" counts are
+        // comparable rather than a single raw (and possibly empty) day.
+        const allRecs = DEPOSIT_RECORDS.concat(WITHDRAWAL_RECORDS, DERIV_FUNDING_RECORDS, DERIV_WITHDRAWAL_RECORDS, CROSS_BORDER_RECORDS);
+        const todayRecs = allRecs.filter(function (r) { return r.daysAgo % 7 === 0; });
+        const yestRecs = allRecs.filter(function (r) { return r.daysAgo % 7 === 1; });
+        const blendedFeePct = 1.5;
+        const todayProfit = Math.round(todayVolume * (blendedFeePct / 100));
+        const yestProfit = Math.round(yestVolume * (blendedFeePct / 100));
+
+        const activeUsers = USERS.filter(function (u) { return u.status === 'active'; }).length;
+        const verifiedPct = Math.round((USERS.filter(function (u) { return u.kyc === 'verified'; }).length / USERS.length) * 1000) / 10;
+
+        // Same combined-pool computation the From/To date-range picker uses (for
+        // fromDate = 6 days ago, toDate = today), so the default "this week" cards
+        // and re-requesting that identical range never show two different numbers.
+        const weekAgo = new Date(REPORT_REF_DATE); weekAgo.setDate(weekAgo.getDate() - 6);
+        const rangeStats = statsForDateRange(weekAgo, REPORT_REF_DATE);
+
+        return {
+            totalVolume: rangeStats.totalVolume,
+            totalProfit: rangeStats.totalProfit,
+            totalTransactions: rangeStats.totalTransactions,
+            successRatePct: rangeStats.successRatePct,
+            activeUsers: activeUsers,
+            verifiedPct: verifiedPct,
+            liquidityAvailable: rangeStats.liquidityAvailable,
+            volumeDeltaPct: pctChange(todayVolume, yestVolume),
+            profitDeltaPct: pctChange(todayProfit, yestProfit),
+            transactionsDeltaPct: pctChange(todayRecs.length, yestRecs.length),
+            // This-week vs prior-week windowed comparison — a literal single-day
+            // sample (today vs yesterday) is too small to be a meaningful rate.
+            successRateDeltaPct: Math.round((successRateForRange(allRecs, 0, 6) - successRateForRange(allRecs, 7, 13)) * 10) / 10
+        };
+    }
+
+    function successRateForRange(records, fromDaysAgo, toDaysAgo) {
+        const recs = records.filter(function (r) { return r.daysAgo >= fromDaysAgo && r.daysAgo <= toDaysAgo; });
+        const approved = recs.filter(function (r) { return r.status === 'approved'; }).length;
+        return recs.length ? Math.round((approved / recs.length) * 1000) / 10 : 0;
+    }
+
+    // Every transaction-bearing dataset in one NGN-normalized pool, each tagged with
+    // the fee % of whichever REPORT_TYPES category it's closest to. This is the single
+    // source of truth behind both dashboardStats() (fixed "this week" cards) and
+    // statsForDateRange() (the admin-picked From/To range) — using two different
+    // record pools for the same headline figures would make picking the *same* week
+    // via the date picker show different numbers than the default view.
+    function combinedRecordPool() {
+        return []
+            .concat(DEPOSIT_RECORDS.map(function (r) { return { amountNgn: r.amountNgn, daysAgo: r.daysAgo, status: r.status, feePct: feePctFor('crypto') }; }))
+            .concat(WITHDRAWAL_RECORDS.map(function (r) { return { amountNgn: r.amountNgn, daysAgo: r.daysAgo, status: r.status, feePct: feePctFor('crypto') }; }))
+            .concat(DERIV_FUNDING_RECORDS.map(function (r) { return { amountNgn: r.amountUsd * 1535, daysAgo: r.daysAgo, status: r.status, feePct: feePctFor('deriv') }; }))
+            .concat(DERIV_WITHDRAWAL_RECORDS.map(function (r) { return { amountNgn: r.amountUsd * 1490, daysAgo: r.daysAgo, status: r.status, feePct: feePctFor('deriv') }; }))
+            .concat(CROSS_BORDER_RECORDS.map(function (r) { return { amountNgn: r.amountNgn, daysAgo: r.daysAgo, status: r.status, feePct: feePctFor('abroad') }; }))
+            .concat(Object.keys(REPORT_TYPES).reduce(function (acc, k) {
+                return acc.concat(REPORT_TYPES[k].records.map(function (r) { return { amountNgn: r.amountNgn, daysAgo: r.daysAgo, status: r.status, feePct: feePctFor(k) }; }));
+            }, []));
+    }
+
+    // Success rate for an arbitrary calendar-date window (used by the Dashboard's
+    // From/To date-range picker). Unlike the volume/profit total below, this counts
+    // rejected records too (they're part of "how many attempts succeeded").
+    function successRateForDateRange(fromDate, toDate) {
+        const from = new Date(fromDate); from.setHours(0, 0, 0, 0);
+        const to = new Date(toDate); to.setHours(23, 59, 59, 999);
+        const inRange = combinedRecordPool().filter(function (r) {
+            const d = daysAgoToDate(r.daysAgo);
+            return d >= from && d <= to;
+        });
+        const approved = inRange.filter(function (r) { return r.status === 'approved'; }).length;
+        return inRange.length ? Math.round((approved / inRange.length) * 1000) / 10 : 0;
+    }
+
+    // Headline dashboard figures for an arbitrary admin-picked date range.
+    function statsForDateRange(fromDate, toDate) {
+        const from = new Date(fromDate); from.setHours(0, 0, 0, 0);
+        const to = new Date(toDate); to.setHours(23, 59, 59, 999);
+        const inRange = combinedRecordPool().filter(function (r) {
+            const d = daysAgoToDate(r.daysAgo);
+            return d >= from && d <= to && r.status !== 'rejected';
+        });
+        const totalVolume = inRange.reduce(function (s, r) { return s + r.amountNgn; }, 0);
+        const totalProfit = inRange.reduce(function (s, r) { return s + Math.round(r.amountNgn * (r.feePct / 100)); }, 0);
+        return {
+            totalVolume: totalVolume,
+            totalProfit: totalProfit,
+            totalTransactions: inRange.length,
+            successRatePct: successRateForDateRange(fromDate, toDate),
+            liquidityAvailable: Math.round(totalVolume * 0.35 / 1000) * 1000
+        };
     }
 
     global.CN_DATA = {
@@ -275,12 +551,24 @@
         WITHDRAWAL_RECORDS: WITHDRAWAL_RECORDS,
         DERIV_FUNDING_RECORDS: DERIV_FUNDING_RECORDS,
         DERIV_WITHDRAWAL_RECORDS: DERIV_WITHDRAWAL_RECORDS,
+        CROSS_BORDER_RECORDS: CROSS_BORDER_RECORDS,
+        SUPPORT_CONVERSATIONS: SUPPORT_CONVERSATIONS,
+        AGENT_NAMES: AGENT_NAMES,
         countBy: countBy,
+        pendingKyc: pendingKyc,
         statsForUser: statsForUser,
         userByIndex: userByIndex,
         recentTransactions: recentTransactions,
         REPORT_TYPES: REPORT_TYPES,
         REPORT_REF_DATE: REPORT_REF_DATE,
-        reportSummary: reportSummary
+        reportSummary: reportSummary,
+        dailyActivitySeries: dailyActivitySeries,
+        typeBreakdown: typeBreakdown,
+        channelBreakdown: channelBreakdown,
+        topCountriesByVolume: topCountriesByVolume,
+        topServicesByVolume: topServicesByVolume,
+        successRate: successRate,
+        dashboardStats: dashboardStats,
+        statsForDateRange: statsForDateRange
     };
 })(window);

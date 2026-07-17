@@ -40,6 +40,7 @@
             <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> Other Services</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
             <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
             <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
         </nav>
 
@@ -68,6 +69,7 @@
                 <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> Other Services</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
                 <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+                <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
                 <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
                 <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </nav>
@@ -81,6 +83,10 @@
                 <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
                     <i class="fas fa-bars"></i>
                 </button>
+                <a href="index.html" class="mobile-brand">
+                    <img src="../images/logo-icon.png" alt="CheapNaria">
+                    <span><span class="mb-name">CheapNaria</span><span class="mb-tag">Wallet</span></span>
+                </a>
                 <h4 class="m-0 d-none d-md-block">Hello, Chukwudi 👋</h4>
             </div>
 
@@ -118,6 +124,312 @@
             </div>
         </header>
 
+        <!-- ======= Mobile App Dashboard (phone-style layout, <lg) ======= -->
+        <div class="d-lg-none mobile-dashboard">
+            <div class="balance-card mb-3">
+                <div class="bc-top-row">
+                    <div class="bc-label-group">
+                        <span>Total Balance</span>
+                        <i class="fas fa-eye" id="balanceEyeIconMobile" style="cursor:pointer;"></i>
+                    </div>
+                    <a href="deposit.html" class="bc-add-money-btn"><i class="fas fa-plus"></i> Add Money</a>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <div class="balance-amount mb-0" id="balanceAmountMobile"
+                        data-value="245680.00">₦245,680.00</div>
+                    <span class="bc-ngn-badge">NGN</span>
+                </div>
+                <div class="balance-label mt-1">Available Balance</div>
+                <i class="fas fa-wallet bc-illustration"></i>
+            </div>
+
+            <div class="card p-3 mb-3">
+                <div class="quick-actions-row m-0">
+                    <a href="deposit.html" class="wallet-qa-btn">
+                        <div class="qa-icon qa-green"><i class="fas fa-arrow-down"></i></div>
+                        <span>Deposit</span>
+                    </a>
+                    <a href="withdraw.html" class="wallet-qa-btn">
+                        <div class="qa-icon qa-red"><i class="fas fa-arrow-up"></i></div>
+                        <span>Withdraw</span>
+                    </a>
+                    <a href="transfer.html" class="wallet-qa-btn">
+                        <div class="qa-icon qa-red"><i class="fas fa-paper-plane"></i></div>
+                        <span>Transfer</span>
+                    </a>
+                    <button type="button" class="wallet-qa-btn" data-bs-toggle="modal"
+                        data-bs-target="#derivModal">
+                        <div class="qa-icon qa-green"><i class="fas fa-chart-line"></i></div>
+                        <span>Deriv</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Ads Carousel -->
+            <div id="dashAdsCarousel" class="carousel slide ads-carousel mb-4" data-bs-ride="carousel"
+                data-bs-interval="4500">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <a href="deriv-deposit.html" class="ads-slide-img">
+                            <img src="../images/hero-trader.png" alt="Fund your Deriv account">
+                            <div class="ads-slide-caption">
+                                <h6>Fund your Deriv account in minutes</h6>
+                                <p>Use your CheapNaria Wallet to fund or withdraw instantly.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="send-abroad.html" class="ads-slide-img">
+                            <img src="../images/team-collaboration.png" alt="Send money across Africa">
+                            <div class="ads-slide-caption">
+                                <h6>Send money across Africa in seconds</h6>
+                                <p>Pay into mobile money or bank accounts at great rates.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="pay-supplier.html" class="ads-slide-img">
+                            <img src="../images/hero-china-supplier.jpg" alt="Pay China suppliers">
+                            <div class="ads-slide-caption">
+                                <h6>Settle supplier invoices instantly</h6>
+                                <p>Pay your China suppliers directly in CNY from your NGN wallet.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="utility-betting.html" class="ads-slide-img">
+                            <img src="../images/utility.webp" alt="Airtime, data and betting">
+                            <div class="ads-slide-caption">
+                                <h6>Airtime, data &amp; betting in one tap</h6>
+                                <p>Top up airtime, data, electricity or your betting account instantly.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="kyc.html" class="ads-slide-img">
+                            <img src="../images/kyc-id-sample.jpg" alt="Verify your identity">
+                            <div class="ads-slide-caption">
+                                <h6>Verify your identity to unlock more</h6>
+                                <p>Complete KYC to raise your limits and unlock full wallet features.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#dashAdsCarousel" data-bs-slide-to="0" class="active"
+                        aria-current="true"></button>
+                    <button type="button" data-bs-target="#dashAdsCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#dashAdsCarousel" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#dashAdsCarousel" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#dashAdsCarousel" data-bs-slide-to="4"></button>
+                </div>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <h5 class="mb-0">Services</h5>
+                <a href="services.html" class="text-decoration-none small fw-bold"
+                    style="color:var(--primary-dark);">View All <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+            <div class="row g-2 mb-2">
+                <div class="col-3">
+                    <a href="deriv-deposit.html" class="service-icon-tile">
+                        <div class="sit-icon qa-icon qa-green"><i class="fas fa-arrow-down"></i></div>
+                        <span>Deriv Funding</span>
+                    </a>
+                </div>
+                <div class="col-3">
+                    <a href="deriv-withdraw.html" class="service-icon-tile">
+                        <div class="sit-icon qa-icon qa-red"><i class="fas fa-arrow-up"></i></div>
+                        <span>Deriv Withdrawal</span>
+                    </a>
+                </div>
+                <div class="col-3">
+                    <a href="utility-betting.html" class="service-icon-tile">
+                        <div class="sit-icon qa-icon qa-green"><i class="fas fa-mobile-screen"></i></div>
+                        <span>Airtime</span>
+                    </a>
+                </div>
+                <div class="col-3">
+                    <a href="utility-betting.html" class="service-icon-tile">
+                        <div class="sit-icon qa-icon qa-green"><i class="fas fa-wifi"></i></div>
+                        <span>Data</span>
+                    </a>
+                </div>
+                <div class="col-3 services-extra d-none">
+                    <a href="utility-betting.html" class="service-icon-tile">
+                        <div class="sit-icon qa-icon qa-red"><i class="fas fa-futbol"></i></div>
+                        <span>Betting</span>
+                    </a>
+                </div>
+                <div class="col-3 services-extra d-none">
+                    <a href="utility-betting.html" class="service-icon-tile">
+                        <div class="sit-icon qa-icon qa-red"><i class="fas fa-bolt"></i></div>
+                        <span>Electricity</span>
+                    </a>
+                </div>
+                <div class="col-3 services-extra d-none">
+                    <a href="pay-supplier.html" class="service-icon-tile">
+                        <div class="sit-icon qa-icon qa-red"><i class="fas fa-building"></i></div>
+                        <span>Pay Supplier</span>
+                    </a>
+                </div>
+                <div class="col-3 services-extra d-none">
+                    <a href="send-abroad.html" class="service-icon-tile">
+                        <div class="sit-icon qa-icon qa-red"><i class="fas fa-earth-africa"></i></div>
+                        <span>Send Abroad</span>
+                    </a>
+                </div>
+                <div class="col-3 services-extra d-none">
+                    <a href="profile.html#payout" class="service-icon-tile">
+                        <div class="sit-icon qa-icon qa-green"><i class="fas fa-landmark"></i></div>
+                        <span>Manage Accounts</span>
+                    </a>
+                </div>
+                <div class="col-3 services-extra d-none">
+                    <a href="transactions.html" class="service-icon-tile">
+                        <div class="sit-icon qa-icon qa-green"><i class="fas fa-file-invoice"></i></div>
+                        <span>Statement</span>
+                    </a>
+                </div>
+                <div class="col-3 services-extra d-none">
+                    <a href="deposit.html#rates" class="service-icon-tile">
+                        <div class="sit-icon qa-icon qa-green"><i class="fas fa-percent"></i></div>
+                        <span>Rates</span>
+                    </a>
+                </div>
+            </div>
+            <button type="button" id="toggleServicesBtn" class="btn btn-light w-100 mb-4 fw-bold"
+                style="color:var(--primary-dark);">View More Services <i
+                    class="fas fa-chevron-down ms-1" id="toggleServicesIcon"></i></button>
+
+            <!-- Recent Transactions -->
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <h5 class="mb-0">Recent Transactions</h5>
+                <a href="transactions.html" class="text-decoration-none small fw-bold"
+                    style="color:var(--primary-dark);">View All <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+            <div class="card p-3">
+                <div class="mobile-tx-list">
+                    <div class="mtx-row">
+                        <div class="tx-type-icon tx-in"><i class="fas fa-arrow-down"></i></div>
+                        <div class="mtx-text">
+                            <p class="mb-0 fw-bold" style="font-size:0.86rem;">Deriv Deposit</p>
+                            <small class="text-muted">Bank Transfer &middot; TXN-9988221100</small>
+                        </div>
+                        <div class="mtx-amount-col">
+                            <span class="mtx-amt text-success">+ ₦120,000</span>
+                            <small>Today, 10:45 AM</small>
+                        </div>
+                    </div>
+                    <div class="mtx-row">
+                        <div class="tx-type-icon tx-out"><i class="fas fa-paper-plane"></i></div>
+                        <div class="mtx-text">
+                            <p class="mb-0 fw-bold" style="font-size:0.86rem;">Transfer to John Trader</p>
+                            <small class="text-muted">Internal &middot; TXN-9988221101</small>
+                        </div>
+                        <div class="mtx-amount-col">
+                            <span class="mtx-amt text-danger">- ₦25,000</span>
+                            <small>Today, 09:30 AM</small>
+                        </div>
+                    </div>
+                    <div class="mtx-row">
+                        <div class="tx-type-icon tx-out"><i class="fas fa-arrow-up"></i></div>
+                        <div class="mtx-text">
+                            <p class="mb-0 fw-bold" style="font-size:0.86rem;">Withdrawal to Bank</p>
+                            <small class="text-muted">Bank Transfer &middot; TXN-9988221102</small>
+                        </div>
+                        <div class="mtx-amount-col">
+                            <span class="mtx-amt text-danger">- ₦80,000</span>
+                            <small>Yesterday, 08:15 PM</small>
+                        </div>
+                    </div>
+                    <div class="mtx-row">
+                        <div class="tx-type-icon tx-out"><i class="fas fa-mobile-screen"></i></div>
+                        <div class="mtx-text">
+                            <p class="mb-0 fw-bold" style="font-size:0.86rem;">Airtime Purchase</p>
+                            <small class="text-muted">MTN &middot; TXN-9988221103</small>
+                        </div>
+                        <div class="mtx-amount-col">
+                            <span class="mtx-amt text-danger">- ₦2,000</span>
+                            <small>Yesterday, 03:10 PM</small>
+                        </div>
+                    </div>
+                    <div class="mtx-row">
+                        <div class="tx-type-icon tx-out"><i class="fas fa-wifi"></i></div>
+                        <div class="mtx-text">
+                            <p class="mb-0 fw-bold" style="font-size:0.86rem;">Data Bundle</p>
+                            <small class="text-muted">Airtel &middot; TXN-9988221104</small>
+                        </div>
+                        <div class="mtx-amount-col">
+                            <span class="mtx-amt text-danger">- ₦5,000</span>
+                            <small>2 days ago, 11:05 AM</small>
+                        </div>
+                    </div>
+                    <div class="mtx-row">
+                        <div class="tx-type-icon tx-in"><i class="fas fa-arrow-down"></i></div>
+                        <div class="mtx-text">
+                            <p class="mb-0 fw-bold" style="font-size:0.86rem;">Deposit via Card</p>
+                            <small class="text-muted">Card Payment &middot; TXN-9988221105</small>
+                        </div>
+                        <div class="mtx-amount-col">
+                            <span class="mtx-amt text-success">+ ₦150,000</span>
+                            <small>2 days ago, 09:00 AM</small>
+                        </div>
+                    </div>
+                    <div class="mtx-row">
+                        <div class="tx-type-icon tx-out"><i class="fas fa-futbol"></i></div>
+                        <div class="mtx-text">
+                            <p class="mb-0 fw-bold" style="font-size:0.86rem;">Betting Top-up</p>
+                            <small class="text-muted">Bet9ja &middot; TXN-9988221106</small>
+                        </div>
+                        <div class="mtx-amount-col">
+                            <span class="mtx-amt text-danger">- ₦10,000</span>
+                            <small>3 days ago, 06:45 PM</small>
+                        </div>
+                    </div>
+                    <div class="mtx-row">
+                        <div class="tx-type-icon tx-in"><i class="fas fa-arrow-down"></i></div>
+                        <div class="mtx-text">
+                            <p class="mb-0 fw-bold" style="font-size:0.86rem;">Received from Blessing O.</p>
+                            <small class="text-muted">Internal &middot; TXN-9988221107</small>
+                        </div>
+                        <div class="mtx-amount-col">
+                            <span class="mtx-amt text-success">+ ₦35,000</span>
+                            <small>3 days ago, 02:20 PM</small>
+                        </div>
+                    </div>
+                    <div class="mtx-row">
+                        <div class="tx-type-icon tx-out"><i class="fas fa-bolt"></i></div>
+                        <div class="mtx-text">
+                            <p class="mb-0 fw-bold" style="font-size:0.86rem;">Electricity Bill</p>
+                            <small class="text-muted">Ikeja Electric &middot; TXN-9988221108</small>
+                        </div>
+                        <div class="mtx-amount-col">
+                            <span class="mtx-amt text-danger">- ₦18,500</span>
+                            <small>4 days ago, 07:00 AM</small>
+                        </div>
+                    </div>
+                    <div class="mtx-row">
+                        <div class="tx-type-icon tx-in"><i class="fas fa-arrow-up"></i></div>
+                        <div class="mtx-text">
+                            <p class="mb-0 fw-bold" style="font-size:0.86rem;">Deriv Withdrawal</p>
+                            <small class="text-muted">Deriv CR Account &middot; TXN-9988221109</small>
+                        </div>
+                        <div class="mtx-amount-col">
+                            <span class="mtx-amt text-success">+ ₦60,000</span>
+                            <small>5 days ago, 01:15 PM</small>
+                        </div>
+                    </div>
+                </div>
+                <a href="transactions.html" class="btn btn-light w-100 mt-3 fw-bold"
+                    style="color:var(--primary-dark);">View All Transactions <i
+                        class="fas fa-chevron-right ms-1"></i></a>
+            </div>
+        </div>
+
+        <!-- ======= Desktop Dashboard (sidebar layout, >=lg) ======= -->
+        <div class="d-none d-lg-block">
         <div class="row g-4">
             <!-- Balance Card + Quick Actions -->
             <div class="col-12 col-xl-7">
@@ -133,19 +445,19 @@
                             style="color:#a7f3d0;"></i></div>
 
                     <div class="quick-actions-row">
-                        <a href="deposit.html" class="quick-action-btn">
+                        <a href="deposit.html" class="wallet-qa-btn">
                             <div class="qa-icon qa-green"><i class="fas fa-arrow-down"></i></div>
                             <span>Deposit</span>
                         </a>
-                        <a href="withdraw.html" class="quick-action-btn">
+                        <a href="withdraw.html" class="wallet-qa-btn">
                             <div class="qa-icon qa-red"><i class="fas fa-arrow-up"></i></div>
                             <span>Withdraw</span>
                         </a>
-                        <a href="transfer.html" class="quick-action-btn">
+                        <a href="transfer.html" class="wallet-qa-btn">
                             <div class="qa-icon qa-amber"><i class="fas fa-exchange-alt"></i></div>
                             <span>Transfer</span>
                         </a>
-                        <button type="button" class="quick-action-btn" data-bs-toggle="modal"
+                        <button type="button" class="wallet-qa-btn" data-bs-toggle="modal"
                             data-bs-target="#derivModal">
                             <div class="qa-icon qa-purple"><i class="fas fa-chart-line"></i></div>
                             <span>Deriv</span>
@@ -153,15 +465,64 @@
                     </div>
                 </div>
 
-                <!-- Deriv Promo Card -->
-                <div class="card p-4 d-flex flex-row align-items-center justify-content-between gap-3">
-                    <div>
-                        <h6 class="fw-bold mb-1">Fund your Deriv account in minutes</h6>
-                        <p class="text-muted small mb-0">Use your CheapNaria wallet to fund or withdraw from Deriv
-                            instantly.</p>
+                <!-- Ads Carousel (desktop) -->
+                <div id="dashAdsCarouselDesktop" class="carousel slide ads-carousel" data-bs-ride="carousel"
+                    data-bs-interval="4500">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="deriv-deposit.html" class="ads-slide-img">
+                                <img src="../images/hero-trader.png" alt="Fund your Deriv account">
+                                <div class="ads-slide-caption">
+                                    <h6>Fund your Deriv account in minutes</h6>
+                                    <p>Use your CheapNaria Wallet to fund or withdraw instantly.</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="send-abroad.html" class="ads-slide-img">
+                                <img src="../images/team-collaboration.png" alt="Send money across Africa">
+                                <div class="ads-slide-caption">
+                                    <h6>Send money across Africa in seconds</h6>
+                                    <p>Pay into mobile money or bank accounts at great rates.</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="pay-supplier.html" class="ads-slide-img">
+                                <img src="../images/hero-china-supplier.jpg" alt="Pay China suppliers">
+                                <div class="ads-slide-caption">
+                                    <h6>Settle supplier invoices instantly</h6>
+                                    <p>Pay your China suppliers directly in CNY from your NGN wallet.</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="utility-betting.html" class="ads-slide-img">
+                                <img src="../images/utility.webp" alt="Airtime, data and betting">
+                                <div class="ads-slide-caption">
+                                    <h6>Airtime, data &amp; betting in one tap</h6>
+                                    <p>Top up airtime, data, electricity or your betting account instantly.</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="kyc.html" class="ads-slide-img">
+                                <img src="../images/kyc-id-sample.jpg" alt="Verify your identity">
+                                <div class="ads-slide-caption">
+                                    <h6>Verify your identity to unlock more</h6>
+                                    <p>Complete KYC to raise your limits and unlock full wallet features.</p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                    <button type="button" class="btn btn-primary rounded-pill px-4 flex-shrink-0"
-                        data-bs-toggle="modal" data-bs-target="#derivModal">Get Started</button>
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#dashAdsCarouselDesktop" data-bs-slide-to="0"
+                            class="active" aria-current="true"></button>
+                        <button type="button" data-bs-target="#dashAdsCarouselDesktop" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#dashAdsCarouselDesktop" data-bs-slide-to="2"></button>
+                        <button type="button" data-bs-target="#dashAdsCarouselDesktop" data-bs-slide-to="3"></button>
+                        <button type="button" data-bs-target="#dashAdsCarouselDesktop" data-bs-slide-to="4"></button>
+                    </div>
                 </div>
             </div>
 
@@ -191,6 +552,14 @@
                             <div class="wmi-text">
                                 <p>Transfer</p>
                                 <small>Send to a CheapNaria user</small>
+                            </div>
+                            <i class="fas fa-chevron-right wmi-chevron"></i>
+                        </a>
+                        <a href="request-money.html" class="wallet-menu-item">
+                            <div class="wmi-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+                            <div class="wmi-text">
+                                <p>Request Money</p>
+                                <small>Ask another user to pay you</small>
                             </div>
                             <i class="fas fa-chevron-right wmi-chevron"></i>
                         </a>
@@ -232,6 +601,14 @@
                             <div class="wmi-text">
                                 <p>Rate &amp; Fees</p>
                                 <small>View current rates and fees</small>
+                            </div>
+                            <i class="fas fa-chevron-right wmi-chevron"></i>
+                        </a>
+                        <a href="support.html" class="wallet-menu-item">
+                            <div class="wmi-icon"><i class="fas fa-headset"></i></div>
+                            <div class="wmi-text">
+                                <p>Support</p>
+                                <small>Chat with our support team</small>
                             </div>
                             <i class="fas fa-chevron-right wmi-chevron"></i>
                         </a>
@@ -303,7 +680,17 @@
                 </table>
             </div>
         </div>
+        </div>
     </main>
+
+    <!-- Mobile Bottom Tab Bar -->
+    <nav class="bottom-tab-bar d-lg-none">
+        <a href="index.html" class="btb-item active"><i class="fas fa-house"></i><span>Home</span></a>
+        <a href="deposit.html" class="btb-item"><i class="fas fa-arrow-down"></i><span>Deposit</span></a>
+        <a href="request-money.html" class="btb-fab"><i class="fas fa-hand-holding-dollar"></i></a>
+        <a href="transfer.html" class="btb-item"><i class="fas fa-paper-plane"></i><span>Transfer</span></a>
+        <a href="profile.html" class="btb-item"><i class="fas fa-user"></i><span>Profile</span></a>
+    </nav>
 
     <!-- Deriv Funding Modal -->
     <div class="modal fade" id="derivModal" tabindex="-1">
@@ -369,21 +756,31 @@
             const rawValue = parseFloat($('#balanceAmount').data('value'));
             const formatted = '₦' + rawValue.toLocaleString(undefined, { minimumFractionDigits: 2 });
 
-            $('#balanceEyeToggle').on('click', function () {
+            function setBalanceVisibility(visible) {
+                const text = visible ? formatted : '₦ • • • • • •';
+                $('#balanceAmount, #balanceAmountMobile').text(text);
+                $('#balanceEyeIcon, #balanceEyeIconMobile')
+                    .toggleClass('fa-eye', visible)
+                    .toggleClass('fa-eye-slash', !visible);
+            }
+
+            $('#balanceEyeToggle, #balanceEyeIconMobile').on('click', function () {
                 balanceVisible = !balanceVisible;
-                if (balanceVisible) {
-                    $('#balanceAmount').text(formatted);
-                    $('#balanceEyeIcon').removeClass('fa-eye-slash').addClass('fa-eye');
-                } else {
-                    $('#balanceAmount').text('₦ • • • • • •');
-                    $('#balanceEyeIcon').removeClass('fa-eye').addClass('fa-eye-slash');
-                }
+                setBalanceVisibility(balanceVisible);
             });
 
             // Open Deriv modal directly if arriving via #deriv hash
             if (window.location.hash === '#deriv') {
                 new bootstrap.Modal(document.getElementById('derivModal')).show();
             }
+
+            // Services grid: show first 2 rows, expand the rest in place
+            $('#toggleServicesBtn').on('click', function () {
+                const expanded = $('.services-extra').first().hasClass('d-none') === false;
+                $('.services-extra').toggleClass('d-none');
+                $(this).contents().first()[0].textContent = expanded ? 'View More Services ' : 'View Less Services ';
+                $('#toggleServicesIcon').toggleClass('fa-chevron-down fa-chevron-up');
+            });
         });
     </script>
 </body>

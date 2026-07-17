@@ -854,7 +854,7 @@ table.dataTable tbody td:last-child {
     margin-top: 1.75rem;
 }
 
-.quick-action-btn {
+.wallet-qa-btn {
     background: none;
     border: none;
     display: flex;
@@ -867,11 +867,11 @@ table.dataTable tbody td:last-child {
     text-decoration: none;
 }
 
-.quick-action-btn:hover {
+.wallet-qa-btn:hover {
     color: var(--text-main);
 }
 
-.quick-action-btn .qa-icon {
+.wallet-qa-btn .qa-icon {
     width: 54px;
     height: 54px;
     border-radius: 50%;
@@ -883,12 +883,12 @@ table.dataTable tbody td:last-child {
     box-shadow: var(--shadow-sm);
 }
 
-.quick-action-btn:hover .qa-icon {
+.wallet-qa-btn:hover .qa-icon {
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
 }
 
-.quick-action-btn span {
+.wallet-qa-btn span {
     font-size: 0.78rem;
     font-weight: 700;
 }
@@ -1339,6 +1339,11 @@ table.dataTable tbody td:last-child {
     color: #6d28d9;
 }
 
+.tx-type-icon.tx-border {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
 .tx-type-icon.tx-supplier {
     background: #cffafe;
     color: #0e7490;
@@ -1369,6 +1374,187 @@ table.dataTable tbody td:last-child {
 .tx-row .tx-text small {
     color: var(--text-muted);
     font-size: 0.76rem;
+}
+
+/* Compact variant of .tx-table for the Agent Dashboard's narrower Recent Transactions widget */
+.tx-table-compact.dataTable thead th {
+    padding: 0 0.5rem 0.6rem !important;
+    font-size: 0.64rem;
+}
+
+.tx-table-compact.dataTable tbody td {
+    padding: 0.7rem 0.5rem !important;
+    font-size: 0.78rem;
+}
+
+.tx-table-compact .tx-type-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 0.78rem;
+}
+
+/* ============================================
+   Agent Dashboard: Quick Actions
+   ============================================ */
+.quick-action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    flex: 1 1 0;
+    min-width: 90px;
+    padding: 1rem 0.5rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    background: var(--bg-body);
+    color: var(--text-main);
+    text-decoration: none;
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.quick-action-btn:hover {
+    color: var(--text-main);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.quick-action-btn .quick-action-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--primary-color);
+}
+
+/* ============================================
+   Agent Dashboard: KYC Queue widget
+   ============================================ */
+.kyc-queue-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.kyc-queue-row:last-child {
+    border-bottom: none;
+}
+
+.kyc-queue-row .kyc-queue-text p {
+    margin: 0;
+    font-weight: 700;
+    font-size: 0.84rem;
+    color: var(--text-main);
+}
+
+.kyc-queue-row .kyc-queue-text small {
+    color: var(--text-muted);
+    font-size: 0.74rem;
+}
+
+/* ============================================
+   Agent Dashboard: Customer Support panel
+   ============================================ */
+.support-tabs .nav-link {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    padding: 0.35rem 0.9rem;
+}
+
+.support-tabs .nav-link.active {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.support-search {
+    background: var(--bg-body);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+}
+
+.conversation-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 0.5rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.conversation-item:hover {
+    background: var(--bg-body);
+}
+
+.conversation-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.conversation-item .conversation-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.conversation-item .conversation-body p {
+    margin: 0;
+    font-weight: 700;
+    font-size: 0.84rem;
+    color: var(--text-main);
+}
+
+.conversation-item .conversation-body small.conversation-preview {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.conversation-item .conversation-meta {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.conversation-item .conversation-meta small {
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+.unread-badge {
+    background: #dc2626;
+    color: #fff;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Inline balance hint (shown before amount entry) */
@@ -1587,4 +1773,468 @@ table.dataTable tbody td:last-child {
 
 .receipt-preview-card .rpc-text small {
     color: var(--text-muted);
+}
+
+/* ============================================
+   Mobile App Header Brand Mark
+   ============================================ */
+.mobile-brand {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--text-main);
+    line-height: 1.15;
+}
+
+.mobile-brand img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.mobile-brand .mb-name {
+    font-weight: 800;
+    font-size: 0.95rem;
+    display: block;
+}
+
+.mobile-brand .mb-tag {
+    font-weight: 500;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    display: block;
+}
+
+@media (max-width: 767.98px) {
+    .mobile-brand {
+        display: flex;
+    }
+}
+
+/* ============================================
+   Mobile Bottom Tab Bar
+   ============================================ */
+.bottom-tab-bar {
+    display: none;
+}
+
+@media (max-width: 991.98px) {
+    .bottom-tab-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 66px;
+        padding-bottom: env(safe-area-inset-bottom);
+        background: var(--bg-card);
+        border-top: 1px solid var(--border-color);
+        z-index: 1030;
+    }
+
+    .main-content {
+        padding-bottom: 95px;
+    }
+}
+
+.btb-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    flex: 1;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.66rem;
+    font-weight: 700;
+}
+
+.btb-item i {
+    font-size: 1.2rem;
+}
+
+.btb-item:hover,
+.btb-item.active {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.btb-fab {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-top: -30px;
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.45);
+    flex-shrink: 0;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.btb-fab:hover {
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   Mobile App Dashboard Home (index.html, <lg)
+   ============================================ */
+.balance-card .bc-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.balance-card .bc-label-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.balance-card .bc-add-money-btn {
+    background: rgba(255, 255, 255, 0.18);
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.78rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.balance-card .bc-add-money-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+.balance-card .bc-ngn-badge {
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 0.15rem 0.5rem;
+    border-radius: 6px;
+}
+
+.balance-card .bc-illustration {
+    position: absolute;
+    right: -0.5rem;
+    bottom: -0.5rem;
+    font-size: 5.5rem;
+    color: rgba(255, 255, 255, 0.12);
+    z-index: 0;
+    transform: rotate(-8deg);
+}
+
+/* Compact icon-only service tile (dashboard home, 4-column mobile grid) */
+.service-icon-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    padding: 0.9rem 0.4rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    text-decoration: none;
+    color: var(--text-main);
+    transition: var(--transition);
+    height: 100%;
+}
+
+.service-icon-tile:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    color: var(--text-main);
+    text-decoration: none;
+}
+
+.service-icon-tile .sit-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+}
+
+.service-icon-tile span {
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+/* Ads Carousel (dashboard home promo banner, image-based) */
+.ads-carousel .carousel-item {
+    min-height: 168px;
+}
+
+.ads-slide-img {
+    position: relative;
+    display: block;
+    height: 168px;
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+@media (min-width: 992px) {
+    .ads-carousel .carousel-item {
+        min-height: 220px;
+    }
+
+    .ads-slide-img {
+        height: 220px;
+    }
+}
+
+.ads-slide-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.ads-slide-img .ads-slide-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1rem 1.1rem 0.9rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+}
+
+.ads-slide-img .ads-slide-caption h6 {
+    margin: 0 0 0.15rem;
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+.ads-slide-img .ads-slide-caption p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.ads-carousel .carousel-indicators {
+    position: static;
+    margin: 0.75rem 0 0;
+}
+
+.ads-carousel .carousel-indicators [data-bs-target] {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    opacity: 1;
+    border: none;
+}
+
+.ads-carousel .carousel-indicators .active {
+    background-color: var(--primary-color);
+    width: 20px;
+    border-radius: 4px;
+}
+
+/* Mobile transaction list (card style, no table) */
+.mobile-tx-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-tx-list .mtx-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.mobile-tx-list .mtx-row:last-child {
+    border-bottom: none;
+}
+
+.mobile-tx-list .mtx-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.mobile-tx-list .mtx-amount-col {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.mobile-tx-list .mtx-amount-col .mtx-amt {
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: block;
+}
+
+.mobile-tx-list .mtx-amount-col small {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+}
+
+/* ============================================
+   Support Chat
+   ============================================ */
+.ctc-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    font-size: 1.05rem;
+    flex-shrink: 0;
+}
+
+.chat-window {
+    height: 55vh;
+    max-height: 480px;
+    min-height: 280px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 0.25rem;
+}
+
+.chat-bubble {
+    max-width: 78%;
+    padding: 0.65rem 0.95rem;
+    border-radius: 16px;
+    font-size: 0.87rem;
+    line-height: 1.4;
+}
+
+.chat-bubble.agent {
+    align-self: flex-start;
+    background: var(--bg-body);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    border-bottom-left-radius: 4px;
+}
+
+.chat-bubble.user {
+    align-self: flex-end;
+    background: var(--primary-color);
+    color: #fff;
+    border-bottom-right-radius: 4px;
+}
+
+.chat-bubble small {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.68rem;
+    opacity: 0.7;
+}
+
+.chat-bubble.chat-typing {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0.85rem 1.1rem;
+}
+
+.typing-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    display: inline-block;
+    animation: typing-bounce 1.2s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes typing-bounce {
+
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+
+    30% {
+        transform: translateY(-4px);
+        opacity: 1;
+    }
+}
+
+.chat-input-row {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-end;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+}
+
+.chat-input-row textarea {
+    resize: none;
+    max-height: 120px;
+}
+
+.chat-attachment-img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 12px;
+    display: block;
+    margin-top: 0.3rem;
+    object-fit: cover;
+}
+
+.chat-attachment-file {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-top: 0.3rem;
+    text-decoration: none;
+}
+
+.chat-bubble.user .chat-attachment-file {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+}
+
+.chat-bubble.agent .chat-attachment-file {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
 }
