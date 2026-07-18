@@ -29,7 +29,7 @@
             <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
             <a href="withdraw.html" class="nav-link active"><i class="fas fa-arrow-up"></i> Withdrawals</a>
             <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
-            <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+            <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
             <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> Other Services</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
             <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
@@ -58,7 +58,7 @@
                 <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
                 <a href="withdraw.html" class="nav-link active"><i class="fas fa-arrow-up"></i> Withdrawals</a>
                 <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
-                <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+                <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
                 <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> Other Services</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
                 <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
@@ -75,7 +75,7 @@
                 <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
                     <i class="fas fa-bars"></i>
                 </button>
-                <button type="button" class="btn btn-light btn-sm rounded-pill me-2 d-none" id="backBtn"><i
+                <button type="button" class="btn btn-light btn-sm rounded-pill me-2" id="backBtn"><i
                         class="fas fa-arrow-left"></i></button>
                 <h4 class="m-0" id="pageTitle">Withdraw Funds</h4>
             </div>
@@ -111,7 +111,7 @@
                                 <div class="smc-icon"><i class="fas fa-dollar-sign"></i></div>
                                 <div class="smc-text">
                                     <p>Withdraw via USD</p>
-                                    <small class="text-muted">Withdraw your funds via crypto (USD assets)</small>
+                                    <small class="text-muted">Withdraw your funds in USD</small>
                                 </div>
                                 <span class="smc-tag">5 - 60 mins</span>
                             </div>
@@ -157,8 +157,8 @@
                             <div class="step-dot"></div>
                         </div>
                         <p class="text-muted small mb-1">Step 1 of 3</p>
-                        <h5 class="mb-4">Select Asset</h5>
-                        <p class="text-muted small mb-3">Choose the asset you want to receive</p>
+                        <h5 class="mb-4">Select USD Option</h5>
+                        <p class="text-muted small mb-3">Choose how you'd like to receive USD</p>
                         <div class="d-grid gap-1">
                             <div class="asset-list-item" data-asset="USDT" data-network="TRC20 (Tron)"
                                 data-rate="1403.37">
@@ -351,20 +351,21 @@
             let selectedAsset = null;
             const steps = ['#methodStep', '#bankStep', '#assetStep', '#detailsStep', '#reviewStep'];
 
-            function showStep(id, title, showBack) {
+            function showStep(id, title) {
                 steps.forEach(s => $(s).addClass('d-none'));
                 $(id).removeClass('d-none').hide().fadeIn(200);
                 $('#pageTitle').text(title);
-                $('#backBtn').toggleClass('d-none', !showBack);
             }
 
             $('#backBtn').click(function () {
                 if (!$('#bankStep').hasClass('d-none') || !$('#assetStep').hasClass('d-none')) {
-                    showStep('#methodStep', 'Withdraw Funds', false);
+                    showStep('#methodStep', 'Withdraw Funds');
                 } else if (!$('#detailsStep').hasClass('d-none')) {
-                    showStep('#assetStep', 'Withdraw via USD', true);
+                    showStep('#assetStep', 'Withdraw via USD');
                 } else if (!$('#reviewStep').hasClass('d-none')) {
-                    showStep('#detailsStep', 'Withdraw via USD', true);
+                    showStep('#detailsStep', 'Withdraw via USD');
+                } else {
+                    window.location.href = 'index.html';
                 }
             });
 

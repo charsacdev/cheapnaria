@@ -29,7 +29,7 @@
             <a href="deposit.html" class="nav-link active"><i class="fas fa-arrow-down"></i> Deposits</a>
             <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
             <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
-            <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+            <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
             <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> Other Services</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
             <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
@@ -58,7 +58,7 @@
                 <a href="deposit.html" class="nav-link active"><i class="fas fa-arrow-down"></i> Deposits</a>
                 <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
                 <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
-                <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+                <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
                 <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> Other Services</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
                 <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
@@ -75,7 +75,7 @@
                 <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
                     <i class="fas fa-bars"></i>
                 </button>
-                <button type="button" class="btn btn-light btn-sm rounded-pill me-2 d-none" id="backBtn"><i
+                <button type="button" class="btn btn-light btn-sm rounded-pill me-2" id="backBtn"><i
                         class="fas fa-arrow-left"></i></button>
                 <h4 class="m-0" id="pageTitle">Deposit Funds</h4>
             </div>
@@ -94,7 +94,7 @@
                     <div id="methodStep">
                         <h5 class="mb-1">Choose your preferred deposit method</h5>
                         <p class="text-muted small mb-4">Top up your CheapNaria NGN wallet.</p>
-                        <div class="balance-hint mb-4" id="rates" title="Current crypto deposit rate">
+                        <div class="balance-hint mb-4" id="rates" title="Current USD deposit rate">
                             <span><i class="fas fa-chart-line me-1"></i> Current Rate</span>
                             <strong class="text-success">$1 = ₦1,420</strong>
                         </div>
@@ -111,7 +111,7 @@
                                 <div class="smc-icon"><i class="fas fa-dollar-sign"></i></div>
                                 <div class="smc-text">
                                     <p>Deposit via USD</p>
-                                    <small class="text-muted">Send USD (Crypto) and we convert to NGN</small>
+                                    <small class="text-muted">Send USD and we convert to NGN</small>
                                 </div>
                                 <span class="smc-tag">Best Rate</span>
                             </div>
@@ -163,8 +163,8 @@
                             <div class="step-dot"></div>
                         </div>
                         <p class="text-muted small mb-1">Step 1 of 3</p>
-                        <h5 class="mb-4">Select Asset</h5>
-                        <p class="text-muted small mb-3">Choose the asset you want to send</p>
+                        <h5 class="mb-4">Select USD Option</h5>
+                        <p class="text-muted small mb-3">Choose how you'd like to send USD</p>
                         <div class="d-grid gap-1">
                             <div class="asset-list-item" data-asset="USDT" data-network="TRC20 (Tron)" data-rate="1420">
                                 <div class="ali-icon" style="background:#26a17b;"><i class="fas fa-dollar-sign"></i></div>
@@ -369,20 +369,21 @@
 
             const steps = ['#methodStep', '#bankStep', '#assetStep', '#sendStep', '#summaryStep'];
 
-            function showStep(id, title, showBack) {
+            function showStep(id, title) {
                 steps.forEach(s => $(s).addClass('d-none'));
                 $(id).removeClass('d-none').hide().fadeIn(200);
                 $('#pageTitle').text(title);
-                $('#backBtn').toggleClass('d-none', !showBack);
             }
 
             $('#backBtn').click(function () {
                 if (!$('#bankStep').hasClass('d-none') || !$('#assetStep').hasClass('d-none')) {
-                    showStep('#methodStep', 'Deposit Funds', false);
+                    showStep('#methodStep', 'Deposit Funds');
                 } else if (!$('#sendStep').hasClass('d-none')) {
-                    showStep('#assetStep', 'Deposit via USD', true);
+                    showStep('#assetStep', 'Deposit via USD');
                 } else if (!$('#summaryStep').hasClass('d-none')) {
-                    showStep('#sendStep', 'Deposit via USD', true);
+                    showStep('#sendStep', 'Deposit via USD');
+                } else {
+                    window.location.href = 'index.html';
                 }
             });
 
