@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
-    <title>More Services | CheapNaria</title>
+    <title>Rates | CheapNaria</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet"
@@ -30,8 +30,8 @@
             <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
             <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
             <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
-            <a href="rates.html" class="nav-link"><i class="fas fa-percent"></i> Rates</a>
-            <a href="services.html" class="nav-link active"><i class="fas fa-layer-group"></i> More Services</a>
+            <a href="rates.html" class="nav-link active"><i class="fas fa-percent"></i> Rates</a>
+            <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> More Services</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
             <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
             <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
@@ -60,8 +60,8 @@
                 <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
                 <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
                 <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
-                <a href="rates.html" class="nav-link"><i class="fas fa-percent"></i> Rates</a>
-                <a href="services.html" class="nav-link active"><i class="fas fa-layer-group"></i> More Services</a>
+                <a href="rates.html" class="nav-link active"><i class="fas fa-percent"></i> Rates</a>
+                <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> More Services</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
                 <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
                 <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
@@ -77,72 +77,92 @@
                 <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
                     <i class="fas fa-bars"></i>
                 </button>
-                <h4 class="m-0">More Services</h4>
+                <h4 class="m-0">Rates</h4>
             </div>
             <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
             </button>
         </header>
 
-        <p class="text-muted mb-4">More ways to move money with CheapNaria.</p>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <p class="text-muted small mb-4">Rates update automatically and may vary slightly by payment
+                    method. All amounts settle to your NGN wallet.</p>
 
-        <div class="row g-4">
-            <div class="col-12 col-md-6 col-xl-4">
-                <a href="pay-supplier.html" class="service-tile">
-                    <div class="st-icon" style="background:#fef3c7;color:#b45309;"><i class="fas fa-ship"></i></div>
-                    <div>
-                        <h6>Pay China Supplier</h6>
-                        <p>Settle supplier invoices in CNY directly from your NGN wallet.</p>
+                <h6 class="fw-bold mb-2">USD Rates</h6>
+                <div class="card p-3 mb-4">
+                    <div class="rc-detail-row">
+                        <div class="rc-detail-icon"><i class="fas fa-arrow-down"></i></div>
+                        <div class="rc-detail-label">Deposit Rate</div>
+                        <div class="rc-detail-value text-success">$1 = ₦1,420.00</div>
                     </div>
-                </a>
-            </div>
-            <div class="col-12 col-md-6 col-xl-4">
-                <a href="send-abroad.html" class="service-tile">
-                    <div class="st-icon" style="background:#dbeafe;color:#1d4ed8;"><i
-                            class="fas fa-earth-africa"></i></div>
-                    <div>
-                        <h6>Send to Other African Countries</h6>
-                        <p>Pay into mobile money or bank accounts across Africa at great rates.</p>
+                    <div class="rc-detail-row">
+                        <div class="rc-detail-icon"><i class="fas fa-arrow-up"></i></div>
+                        <div class="rc-detail-label">Withdrawal Rate</div>
+                        <div class="rc-detail-value text-success">$1 = ₦1,403.37</div>
                     </div>
-                </a>
-            </div>
-            <div class="col-12 col-md-6 col-xl-4">
-                <a href="index.html#deriv" class="service-tile">
-                    <div class="st-icon" style="background:#ede9fe;color:#6d28d9;"><i
-                            class="fas fa-chart-line"></i></div>
-                    <div>
-                        <h6>Deriv</h6>
-                        <p>Fund or withdraw from your Deriv CR account.</p>
+                </div>
+
+                <h6 class="fw-bold mb-2">Deriv Rates</h6>
+                <div class="card p-3 mb-4">
+                    <div class="rc-detail-row">
+                        <div class="rc-detail-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="rc-detail-label">Deriv Funding Rate <span
+                                class="badge-status status-approved ms-2">Free</span></div>
+                        <div class="rc-detail-value text-success">$1 = ₦1,535.00</div>
                     </div>
-                </a>
-            </div>
-            <div class="col-12 col-md-6 col-xl-4">
-                <a href="transfer.html" class="service-tile">
-                    <div class="st-icon" style="background:#d1fae5;color:#059669;"><i
-                            class="fas fa-paper-plane"></i></div>
-                    <div>
-                        <h6>Send to CheapNaria User</h6>
-                        <p>Instant transfer to any verified CheapNaria account.</p>
+                    <div class="rc-detail-row">
+                        <div class="rc-detail-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="rc-detail-label">Deriv Payout Rate</div>
+                        <div class="rc-detail-value text-success">$1 = ₦1,490.00</div>
                     </div>
-                </a>
-            </div>
-            <div class="col-12 col-md-6 col-xl-4">
-                <a href="utility-betting.html" class="service-tile">
-                    <div class="st-icon" style="background:#fce7f3;color:#be185d;"><i class="fas fa-bolt"></i></div>
-                    <div>
-                        <h6>Utility &amp; Betting</h6>
-                        <p>Fund your betting account, buy airtime, data or pay electricity bills instantly.</p>
+                </div>
+
+                <h6 class="fw-bold mb-2">Send Abroad</h6>
+                <div class="card p-3 mb-4">
+                    <div class="rc-detail-row">
+                        <div class="rc-detail-icon">🇬🇭</div>
+                        <div class="rc-detail-label">Ghana (GHS)</div>
+                        <div class="rc-detail-value text-success">₦1 = 0.0090 GHS</div>
                     </div>
-                </a>
-            </div>
-            <div class="col-12 col-md-6 col-xl-4">
-                <a href="support.html" class="service-tile">
-                    <div class="st-icon" style="background:#e0e7ff;color:#4338ca;"><i class="fas fa-wallet"></i></div>
-                    <div>
-                        <h6>Skrill, Neteller &amp; More</h6>
-                        <p>Skrill, Neteller, ATM cards and iCash are arranged directly with our support team.</p>
+                    <div class="rc-detail-row">
+                        <div class="rc-detail-icon">🇰🇪</div>
+                        <div class="rc-detail-label">Kenya (KES)</div>
+                        <div class="rc-detail-value text-success">₦1 = 0.0850 KES</div>
                     </div>
-                </a>
+                    <div class="rc-detail-row">
+                        <div class="rc-detail-icon">🇹🇿</div>
+                        <div class="rc-detail-label">Tanzania (TZS)</div>
+                        <div class="rc-detail-value text-success">₦1 = 1.6800 TZS</div>
+                    </div>
+                    <div class="rc-detail-row">
+                        <div class="rc-detail-icon">🇨🇲</div>
+                        <div class="rc-detail-label">Cameroon (XAF)</div>
+                        <div class="rc-detail-value text-success">₦1 = 0.4200 XAF</div>
+                    </div>
+                    <div class="rc-detail-row">
+                        <div class="rc-detail-icon">🇿🇦</div>
+                        <div class="rc-detail-label">South Africa (ZAR)</div>
+                        <div class="rc-detail-value text-success">₦1 = 0.0120 ZAR</div>
+                    </div>
+                </div>
+
+                <h6 class="fw-bold mb-2">Pay China Supplier</h6>
+                <div class="card p-3 mb-4">
+                    <div class="rc-detail-row">
+                        <div class="rc-detail-icon">🇨🇳</div>
+                        <div class="rc-detail-label">China (CNY)</div>
+                        <div class="rc-detail-value text-success">¥1 = ₦208.50</div>
+                    </div>
+                </div>
+
+                <div class="rc-warning-box mb-0">
+                    <i class="fas fa-circle-info rc-warning-icon"></i>
+                    <div>
+                        <p>Rates fluctuate with the market</p>
+                        <small>Always check this page for the latest rate before confirming a transaction.</small>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -156,7 +176,7 @@
                     class="fas fa-plus"></i></button>
             <span>Quick</span>
         </div>
-        <a href="rates.html" class="btb-item"><i class="fas fa-percent"></i><span>Rates</span></a>
+        <a href="rates.html" class="btb-item active"><i class="fas fa-percent"></i><span>Rates</span></a>
         <button type="button" class="btb-item" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"><i
                 class="fas fa-bars"></i><span>More</span></button>
     </nav>

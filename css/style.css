@@ -1851,6 +1851,10 @@ table.dataTable tbody td:last-child {
     text-decoration: none;
     font-size: 0.66rem;
     font-weight: 700;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
 }
 
 .btb-item i {
@@ -1878,6 +1882,17 @@ table.dataTable tbody td:last-child {
     flex-shrink: 0;
     text-decoration: none;
     transition: var(--transition);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.btb-fab-wrap {
+    gap: 5px;
+}
+
+.btb-fab-wrap span {
+    margin-top: -2px;
 }
 
 .btb-fab:hover {
@@ -2237,4 +2252,299 @@ table.dataTable tbody td:last-child {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     color: var(--text-main);
+}
+
+/* ============================================
+   Review & Confirm (shared charges-breakdown pattern
+   for withdraw / deriv withdraw / pay-supplier / send-abroad)
+   ============================================ */
+.rc-rate-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.8rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--text-main);
+    white-space: nowrap;
+}
+
+.rc-rate-badge i {
+    color: var(--primary-color);
+}
+
+.rc-step-label {
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.rc-caution-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1rem 1.1rem;
+    border-radius: var(--radius-lg);
+    background: rgba(220, 38, 38, 0.08);
+    border: 1px solid rgba(220, 38, 38, 0.25);
+    margin-bottom: 1.25rem;
+}
+
+.rc-caution-banner .rc-caution-icon {
+    color: #dc2626;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.rc-caution-banner p {
+    margin: 0;
+    font-weight: 700;
+    font-size: 0.86rem;
+    color: var(--text-main);
+}
+
+.rc-caution-banner small {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+.rc-detail-rows {
+    margin-bottom: 1.25rem;
+}
+
+.rc-detail-row {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.rc-detail-row:last-child {
+    border-bottom: none;
+}
+
+.rc-detail-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+.rc-detail-row .rc-detail-label {
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    flex: 1;
+}
+
+.rc-detail-row .rc-detail-value {
+    font-weight: 700;
+    font-size: 0.86rem;
+    color: var(--text-main);
+    text-align: right;
+}
+
+.rc-highlight-row {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--primary-color);
+    background: var(--primary-light);
+    margin-bottom: 1.25rem;
+}
+
+.rc-highlight-row .rc-detail-icon {
+    background: var(--bg-card);
+    color: var(--primary-color);
+}
+
+.rc-highlight-row .rc-detail-label {
+    color: var(--text-main);
+}
+
+.rc-highlight-row .rc-detail-value {
+    color: var(--primary-dark);
+    font-size: 1rem;
+}
+
+.rc-section-title {
+    font-weight: 800;
+    font-size: 0.92rem;
+    margin-bottom: 0.75rem;
+}
+
+.rc-charge-row {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.rc-charge-row:last-child {
+    border-bottom: none;
+}
+
+.rc-charge-row .rc-detail-icon {
+    background: rgba(220, 38, 38, 0.12);
+    color: #dc2626;
+}
+
+.rc-charge-row .rc-charge-label {
+    flex: 1;
+    min-width: 0;
+}
+
+.rc-charge-row .rc-charge-label p {
+    margin: 0;
+    font-weight: 700;
+    font-size: 0.84rem;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.rc-charge-row .rc-charge-label p i {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    cursor: help;
+}
+
+.rc-charge-row .rc-charge-label small {
+    color: var(--text-muted);
+    font-size: 0.74rem;
+}
+
+.rc-charge-row .rc-charge-amount {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #dc2626;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.rc-total-box {
+    border: 1px solid var(--primary-color);
+    border-radius: var(--radius-lg);
+    background: var(--primary-light);
+    margin: 1.25rem 0;
+    overflow: hidden;
+}
+
+.rc-total-header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.9rem 1rem;
+    cursor: pointer;
+}
+
+.rc-total-header .rc-detail-icon {
+    background: var(--bg-card);
+    color: var(--primary-dark);
+}
+
+.rc-total-header .rc-total-label {
+    flex: 1;
+}
+
+.rc-total-header .rc-total-label p {
+    margin: 0;
+    font-weight: 800;
+    font-size: 0.88rem;
+    color: var(--text-main);
+}
+
+.rc-total-header .rc-total-label small {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+}
+
+.rc-total-header .rc-total-amount {
+    font-weight: 800;
+    font-size: 0.98rem;
+    color: var(--text-main);
+    text-align: right;
+}
+
+.rc-total-header .rc-total-chevron {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.rc-total-header[aria-expanded="true"] .rc-total-chevron {
+    transform: rotate(180deg);
+}
+
+.rc-total-detail {
+    padding: 0 1rem 1rem;
+}
+
+.rc-total-detail .rc-total-detail-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    padding: 0.3rem 0;
+    color: var(--text-muted);
+}
+
+.rc-total-detail .rc-total-detail-row.rc-total-final {
+    border-top: 1px dashed var(--primary-color);
+    margin-top: 0.3rem;
+    padding-top: 0.5rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+}
+
+.rc-warning-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1rem 1.1rem;
+    border-radius: var(--radius-lg);
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    margin-bottom: 1.25rem;
+}
+
+.rc-warning-box .rc-warning-icon {
+    color: #d97706;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.rc-warning-box p {
+    margin: 0;
+    font-weight: 700;
+    font-size: 0.86rem;
+    color: var(--text-main);
+}
+
+.rc-warning-box small {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+.rc-confirm-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }

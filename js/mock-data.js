@@ -569,6 +569,7 @@
         topServicesByVolume: topServicesByVolume,
         successRate: successRate,
         dashboardStats: dashboardStats,
-        statsForDateRange: statsForDateRange
+        statsForDateRange: statsForDateRange,
+        daysAgoToDate: daysAgoToDate
     };
 })(window);

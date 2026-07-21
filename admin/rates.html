@@ -33,8 +33,8 @@
             <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
                     class="badge bg-danger rounded-pill ms-auto">13</span></a>
-            <a href="deposit-withdrawal.html" class="nav-link"><i class="fas fa-right-left"></i> Deposit /
-                Withdrawal</a>
+            <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
             <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
             <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
             <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
@@ -70,8 +70,8 @@
                 <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
                         class="badge bg-danger rounded-pill ms-auto">13</span></a>
-                <a href="deposit-withdrawal.html" class="nav-link"><i class="fas fa-right-left"></i> Deposit /
-                    Withdrawal</a>
+                <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
                 <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
                 <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
                 <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
@@ -106,11 +106,6 @@
                     <i class="fas fa-moon"></i>
                 </button>
 
-                <button class="btn btn-primary rounded-pill px-4 shadow-sm py-2 d-none d-sm-block"
-                    data-bs-toggle="modal" data-bs-target="#addRateModal">
-                    <i class="fas fa-plus me-2"></i> Add Country Rate
-                </button>
-
                 <div class="dropdown">
                     <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
                         <img src="https://ui-avatars.com/api/?name=Admin+User&background=10b981&color=fff" alt="Profile"
@@ -133,39 +128,16 @@
             </div>
         </header>
 
-        <div class="d-sm-none mb-4">
-            <button class="btn btn-primary rounded-pill px-4 shadow-sm py-2 w-100" data-bs-toggle="modal"
-                data-bs-target="#addRateModal">
-                <i class="fas fa-plus me-2"></i> Add Country Rate
-            </button>
-        </div>
-
         <div class="row g-4">
-            <!-- Nigeria -->
+            <!-- Nigeria / Deriv -->
             <div class="col-12 col-xl-6">
                 <div class="card p-4 border-0 shadow-sm border-top border-4 border-primary">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h5 class="fw-bold mb-0">🇳🇬 Nigeria (NGN)</h5>
+                        <h5 class="fw-bold mb-0">🇳🇬 Nigeria (NGN) &mdash; Deriv</h5>
                         <button type="button" class="btn btn-link btn-sm p-0 fw-bold text-decoration-none"
                             id="saveNigeriaRates">Save Changes</button>
                     </div>
                     <div class="row g-3">
-                        <div class="col-6">
-                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Buy
-                                Rate</label>
-                            <div class="input-group">
-                                <span class="input-group-text bg-light border-0">₦</span>
-                                <input type="number" class="form-control bg-light border-0 fw-bold" value="1450">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Sell
-                                Rate</label>
-                            <div class="input-group">
-                                <span class="input-group-text bg-light border-0">₦</span>
-                                <input type="number" class="form-control bg-light border-0 fw-bold" value="1420">
-                            </div>
-                        </div>
                         <div class="col-6">
                             <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Buy
                                 Rate</label>
@@ -186,15 +158,6 @@
                             <hr class="my-0 opacity-10">
                         </div>
                         <div class="col-6">
-                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto
-                                Transaction Fee (%)</label>
-                            <div class="input-group">
-                                <input type="number" step="0.1" class="form-control bg-light border-0 fw-bold"
-                                    id="feeCrypto" value="1.5">
-                                <span class="input-group-text bg-light border-0">%</span>
-                            </div>
-                        </div>
-                        <div class="col-6">
                             <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv
                                 Transaction Fee (%)</label>
                             <div class="input-group">
@@ -202,19 +165,6 @@
                                     id="feeDeriv" value="1.2">
                                 <span class="input-group-text bg-light border-0">%</span>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <hr class="my-0 opacity-10">
-                        </div>
-                        <div class="col-6">
-                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Min Buy
-                                ($)</label>
-                            <input type="number" class="form-control bg-light border-0 fw-bold" value="10">
-                        </div>
-                        <div class="col-6">
-                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Crypto Min Sell
-                                ($)</label>
-                            <input type="number" class="form-control bg-light border-0 fw-bold" value="10">
                         </div>
                         <div class="col-6">
                             <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Min Buy
@@ -234,9 +184,22 @@
 
         <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
             <div>
+                <h5 class="fw-bold mb-1">Crypto Asset Rates &amp; Fees</h5>
+                <p class="text-muted small mb-0">Set the Naira rate, processing fee and network fee for each
+                    supported crypto asset. These apply to both user deposits and withdrawals.</p>
+            </div>
+        </div>
+
+        <div class="row g-3" id="cryptoAssetRow">
+            <!-- Crypto asset cards injected by JS from ASSET_DEFS -->
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
+            <div>
                 <h5 class="fw-bold mb-1">Send Abroad &amp; Supplier Corridors</h5>
-                <p class="text-muted small mb-0">Simple rate against the Naira &mdash; used for Send Abroad payouts
-                    and supplier payments. Only Nigeria carries separate Crypto/Deriv rates.</p>
+                <p class="text-muted small mb-0">Simple rate against the Naira, plus a flat processing fee in Naira
+                    charged per transaction. Only these corridors are available to users &mdash; all others are
+                    disabled.</p>
             </div>
         </div>
 
@@ -248,12 +211,20 @@
                         <span class="fw-bold small"><span class="src-flag">&#127468;&#127469;</span>Ghana</span>
                         <span class="src-currency">GHS</span>
                     </div>
+                    <label class="smaller text-muted mb-1 d-block">Rate</label>
                     <div class="input-group input-group-sm mb-2">
                         <span class="input-group-text bg-light border-0">&#8358;1 =</span>
                         <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="0.0090">
+                            id="corrRate-GH" value="0.0090">
                     </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
+                    <label class="smaller text-muted mb-1 d-block">Processing Fee</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;</span>
+                        <input type="number" class="form-control bg-light border-0 fw-bold" id="corrFee-GH"
+                            value="2000">
+                    </div>
+                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none corridor-save-btn"
+                        data-code="GH">Save</button>
                 </div>
             </div>
             <!-- Kenya -->
@@ -263,12 +234,20 @@
                         <span class="fw-bold small"><span class="src-flag">&#127472;&#127466;</span>Kenya</span>
                         <span class="src-currency">KES</span>
                     </div>
+                    <label class="smaller text-muted mb-1 d-block">Rate</label>
                     <div class="input-group input-group-sm mb-2">
                         <span class="input-group-text bg-light border-0">&#8358;1 =</span>
                         <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="0.0850">
+                            id="corrRate-KE" value="0.0850">
                     </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
+                    <label class="smaller text-muted mb-1 d-block">Processing Fee</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;</span>
+                        <input type="number" class="form-control bg-light border-0 fw-bold" id="corrFee-KE"
+                            value="2000">
+                    </div>
+                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none corridor-save-btn"
+                        data-code="KE">Save</button>
                 </div>
             </div>
             <!-- Tanzania -->
@@ -278,27 +257,20 @@
                         <span class="fw-bold small"><span class="src-flag">&#127481;&#127487;</span>Tanzania</span>
                         <span class="src-currency">TZS</span>
                     </div>
+                    <label class="smaller text-muted mb-1 d-block">Rate</label>
                     <div class="input-group input-group-sm mb-2">
                         <span class="input-group-text bg-light border-0">&#8358;1 =</span>
                         <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="1.6800">
+                            id="corrRate-TZ" value="1.6800">
                     </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
-                </div>
-            </div>
-            <!-- Uganda -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card simple-rate-card border-0 shadow-sm">
-                    <div class="src-head">
-                        <span class="fw-bold small"><span class="src-flag">&#127482;&#127468;</span>Uganda</span>
-                        <span class="src-currency">UGX</span>
-                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Processing Fee</label>
                     <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
-                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="2.4500">
+                        <span class="input-group-text bg-light border-0">&#8358;</span>
+                        <input type="number" class="form-control bg-light border-0 fw-bold" id="corrFee-TZ"
+                            value="2000">
                     </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
+                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none corridor-save-btn"
+                        data-code="TZ">Save</button>
                 </div>
             </div>
             <!-- South Africa -->
@@ -309,73 +281,20 @@
                             Africa</span>
                         <span class="src-currency">ZAR</span>
                     </div>
+                    <label class="smaller text-muted mb-1 d-block">Rate</label>
                     <div class="input-group input-group-sm mb-2">
                         <span class="input-group-text bg-light border-0">&#8358;1 =</span>
                         <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="0.0120">
+                            id="corrRate-ZA" value="0.0120">
                     </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
-                </div>
-            </div>
-            <!-- Rwanda -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card simple-rate-card border-0 shadow-sm">
-                    <div class="src-head">
-                        <span class="fw-bold small"><span class="src-flag">&#127479;&#127484;</span>Rwanda</span>
-                        <span class="src-currency">RWF</span>
-                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Processing Fee</label>
                     <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
-                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="0.8300">
+                        <span class="input-group-text bg-light border-0">&#8358;</span>
+                        <input type="number" class="form-control bg-light border-0 fw-bold" id="corrFee-ZA"
+                            value="2000">
                     </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
-                </div>
-            </div>
-            <!-- Zambia -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card simple-rate-card border-0 shadow-sm">
-                    <div class="src-head">
-                        <span class="fw-bold small"><span class="src-flag">&#127487;&#127474;</span>Zambia</span>
-                        <span class="src-currency">ZMW</span>
-                    </div>
-                    <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
-                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="0.0165">
-                    </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
-                </div>
-            </div>
-            <!-- Senegal -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card simple-rate-card border-0 shadow-sm">
-                    <div class="src-head">
-                        <span class="fw-bold small"><span class="src-flag">&#127480;&#127475;</span>Senegal</span>
-                        <span class="src-currency">XOF</span>
-                    </div>
-                    <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
-                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="0.3950">
-                    </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
-                </div>
-            </div>
-            <!-- Ivory Coast -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card simple-rate-card border-0 shadow-sm">
-                    <div class="src-head">
-                        <span class="fw-bold small"><span class="src-flag">&#127464;&#127470;</span>Ivory
-                            Coast</span>
-                        <span class="src-currency">XOF</span>
-                    </div>
-                    <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
-                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="0.3950">
-                    </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
+                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none corridor-save-btn"
+                        data-code="ZA">Save</button>
                 </div>
             </div>
             <!-- Cameroon -->
@@ -385,163 +304,20 @@
                         <span class="fw-bold small"><span class="src-flag">&#127464;&#127474;</span>Cameroon</span>
                         <span class="src-currency">XAF</span>
                     </div>
+                    <label class="smaller text-muted mb-1 d-block">Rate</label>
                     <div class="input-group input-group-sm mb-2">
                         <span class="input-group-text bg-light border-0">&#8358;1 =</span>
                         <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="0.3950">
+                            id="corrRate-CM" value="0.4200">
                     </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
-                </div>
-            </div>
-            <!-- Egypt -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card simple-rate-card border-0 shadow-sm">
-                    <div class="src-head">
-                        <span class="fw-bold small"><span class="src-flag">&#127466;&#127468;</span>Egypt</span>
-                        <span class="src-currency">EGP</span>
-                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Processing Fee</label>
                     <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
-                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="0.0300">
+                        <span class="input-group-text bg-light border-0">&#8358;</span>
+                        <input type="number" class="form-control bg-light border-0 fw-bold" id="corrFee-CM"
+                            value="2000">
                     </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
-                </div>
-            </div>
-            <!-- Ethiopia -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card simple-rate-card border-0 shadow-sm">
-                    <div class="src-head">
-                        <span class="fw-bold small"><span class="src-flag">&#127466;&#127481;</span>Ethiopia</span>
-                        <span class="src-currency">ETB</span>
-                    </div>
-                    <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
-                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="0.0370">
-                    </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
-                </div>
-            </div>
-            <!-- Sierra Leone -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card simple-rate-card border-0 shadow-sm">
-                    <div class="src-head">
-                        <span class="fw-bold small"><span class="src-flag">&#127480;&#127473;</span>Sierra
-                            Leone</span>
-                        <span class="src-currency">SLE</span>
-                    </div>
-                    <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
-                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="0.0135">
-                    </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
-                </div>
-            </div>
-            <!-- Benin -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card simple-rate-card border-0 shadow-sm">
-                    <div class="src-head">
-                        <span class="fw-bold small"><span class="src-flag">&#127463;&#127471;</span>Benin</span>
-                        <span class="src-currency">XOF</span>
-                    </div>
-                    <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
-                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="0.3950">
-                    </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
-                </div>
-            </div>
-            <!-- Togo -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card simple-rate-card border-0 shadow-sm">
-                    <div class="src-head">
-                        <span class="fw-bold small"><span class="src-flag">&#127481;&#127468;</span>Togo</span>
-                        <span class="src-currency">XOF</span>
-                    </div>
-                    <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
-                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="0.3950">
-                    </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
-                </div>
-            </div>
-            <!-- Malawi -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card simple-rate-card border-0 shadow-sm">
-                    <div class="src-head">
-                        <span class="fw-bold small"><span class="src-flag">&#127474;&#127484;</span>Malawi</span>
-                        <span class="src-currency">MWK</span>
-                    </div>
-                    <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
-                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="1.1200">
-                    </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
-                </div>
-            </div>
-            <!-- Botswana -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card simple-rate-card border-0 shadow-sm">
-                    <div class="src-head">
-                        <span class="fw-bold small"><span class="src-flag">&#127463;&#127484;</span>Botswana</span>
-                        <span class="src-currency">BWP</span>
-                    </div>
-                    <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
-                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="0.0087">
-                    </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
-                </div>
-            </div>
-            <!-- Namibia -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card simple-rate-card border-0 shadow-sm">
-                    <div class="src-head">
-                        <span class="fw-bold small"><span class="src-flag">&#127475;&#127462;</span>Namibia</span>
-                        <span class="src-currency">NAD</span>
-                    </div>
-                    <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
-                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="0.0120">
-                    </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
-                </div>
-            </div>
-            <!-- Mozambique -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card simple-rate-card border-0 shadow-sm">
-                    <div class="src-head">
-                        <span class="fw-bold small"><span class="src-flag">&#127474;&#127487;</span>Mozambique</span>
-                        <span class="src-currency">MZN</span>
-                    </div>
-                    <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
-                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="0.0410">
-                    </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
-                </div>
-            </div>
-            <!-- Gambia -->
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="card simple-rate-card border-0 shadow-sm">
-                    <div class="src-head">
-                        <span class="fw-bold small"><span class="src-flag">&#127468;&#127474;</span>Gambia</span>
-                        <span class="src-currency">GMD</span>
-                    </div>
-                    <div class="input-group input-group-sm mb-2">
-                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
-                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="0.0440">
-                    </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
+                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none corridor-save-btn"
+                        data-code="CM">Save</button>
                 </div>
             </div>
             <!-- China (Pay Supplier corridor) -->
@@ -551,54 +327,24 @@
                         <span class="fw-bold small"><span class="src-flag">&#127464;&#127475;</span>China</span>
                         <span class="src-currency">CNY</span>
                     </div>
+                    <label class="smaller text-muted mb-1 d-block">Rate</label>
                     <div class="input-group input-group-sm mb-2">
                         <span class="input-group-text bg-light border-0">&#8358;1 =</span>
                         <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
-                            value="0.0047">
+                            id="corrRate-CN" value="0.0047">
                     </div>
-                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none">Save</button>
+                    <label class="smaller text-muted mb-1 d-block">Processing Fee</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;</span>
+                        <input type="number" class="form-control bg-light border-0 fw-bold" id="corrFee-CN"
+                            value="2000">
+                    </div>
+                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none corridor-save-btn"
+                        data-code="CN">Save</button>
                 </div>
             </div>
         </div>
     </main>
-    </div>
-
-    <!-- Add Country Rate Modal -->
-    <div class="modal fade" id="addRateModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg rounded-4">
-                <div class="modal-header border-bottom p-4">
-                    <h5 class="modal-title fw-bold">Add Country Rate</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <form id="addRateForm">
-                        <div class="mb-3">
-                            <label class="form-label small fw-bold">Country</label>
-                            <input type="text" class="form-control bg-light border-0 p-3"
-                                placeholder="e.g. Burkina Faso">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label small fw-bold">Currency Code</label>
-                            <input type="text" class="form-control bg-light border-0 p-3" placeholder="e.g. XOF">
-                        </div>
-                        <p class="small text-muted mb-3"><i class="fas fa-circle-info me-1"></i> New corridors get a
-                            simple rate against the Naira. Only Nigeria carries separate Crypto/Deriv rates.</p>
-                        <div class="mb-1">
-                            <label class="form-label small fw-bold">Rate Against Naira (&#8358;1 =)</label>
-                            <input type="number" step="0.0001" class="form-control bg-light border-0 p-3"
-                                placeholder="0.0000">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer border-0 p-4 pt-0">
-                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4 py-2 flex-grow-1"
-                        data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary rounded-pill px-4 py-2 flex-grow-1 shadow"
-                        onclick="alert('Country rate added!')">Initialize</button>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Scripts -->
@@ -608,15 +354,77 @@
     <script src="../js/theme.js"></script>
     <script>
         $(document).ready(function () {
-            const savedCrypto = localStorage.getItem('cn-fee-crypto');
             const savedDeriv = localStorage.getItem('cn-fee-deriv');
-            if (savedCrypto !== null) $('#feeCrypto').val(savedCrypto);
             if (savedDeriv !== null) $('#feeDeriv').val(savedDeriv);
 
             $('#saveNigeriaRates').on('click', function () {
-                localStorage.setItem('cn-fee-crypto', $('#feeCrypto').val());
                 localStorage.setItem('cn-fee-deriv', $('#feeDeriv').val());
-                alert('Nigeria rates & transaction fees saved.');
+                alert('Deriv rates & transaction fee saved.');
+            });
+
+            // --- Crypto asset rate/fee cards ---
+            const ASSET_DEFS = [
+                { code: 'USDT', network: 'TRC20 (Tron)', buy: 1450, sell: 1420, processingFee: 1000, networkFee: 1.00 },
+                { code: 'USDC', network: 'Solana', buy: 1445, sell: 1415, processingFee: 1000, networkFee: 0.50 },
+                { code: 'BTC', network: 'Bitcoin', buy: 1450, sell: 1420, processingFee: 1000, networkFee: 0.0001 },
+                { code: 'BNB', network: 'BNB Smart Chain', buy: 1450, sell: 1420, processingFee: 1000, networkFee: 0.001 },
+                { code: 'ETH', network: 'Ethereum', buy: 1450, sell: 1420, processingFee: 1000, networkFee: 0.002 }
+            ];
+
+            const $row = $('#cryptoAssetRow');
+            ASSET_DEFS.forEach(function (a) {
+                const savedBuy = localStorage.getItem('cn-rate-buy-' + a.code);
+                const savedSell = localStorage.getItem('cn-rate-sell-' + a.code);
+                const savedProcFee = localStorage.getItem('cn-fee-processing-' + a.code);
+                const savedNetFee = localStorage.getItem('cn-fee-network-' + a.code);
+
+                $row.append(
+                    '<div class="col-6 col-md-4 col-lg">' +
+                    '<div class="card simple-rate-card border-0 shadow-sm">' +
+                    '<div class="src-head"><span class="fw-bold small">' + a.code + '</span>' +
+                    '<span class="src-currency">' + a.network + '</span></div>' +
+                    '<label class="smaller text-muted mb-1 d-block">Buy Rate</label>' +
+                    '<div class="input-group input-group-sm mb-2"><span class="input-group-text bg-light border-0">&#8358;</span>' +
+                    '<input type="number" class="form-control bg-light border-0 fw-bold asset-buy" value="' + (savedBuy !== null ? savedBuy : a.buy) + '"></div>' +
+                    '<label class="smaller text-muted mb-1 d-block">Sell Rate</label>' +
+                    '<div class="input-group input-group-sm mb-2"><span class="input-group-text bg-light border-0">&#8358;</span>' +
+                    '<input type="number" class="form-control bg-light border-0 fw-bold asset-sell" value="' + (savedSell !== null ? savedSell : a.sell) + '"></div>' +
+                    '<label class="smaller text-muted mb-1 d-block">Processing Fee</label>' +
+                    '<div class="input-group input-group-sm mb-2"><span class="input-group-text bg-light border-0">&#8358;</span>' +
+                    '<input type="number" class="form-control bg-light border-0 fw-bold asset-proc-fee" value="' + (savedProcFee !== null ? savedProcFee : a.processingFee) + '"></div>' +
+                    '<label class="smaller text-muted mb-1 d-block">Network Fee (' + a.code + ')</label>' +
+                    '<div class="input-group input-group-sm mb-2">' +
+                    '<input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold asset-net-fee" value="' + (savedNetFee !== null ? savedNetFee : a.networkFee) + '">' +
+                    '<span class="input-group-text bg-light border-0">' + a.code + '</span></div>' +
+                    '<button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none asset-save-btn" data-code="' + a.code + '">Save</button>' +
+                    '</div></div>'
+                );
+            });
+
+            $(document).on('click', '.asset-save-btn', function () {
+                const code = $(this).data('code');
+                const card = $(this).closest('.simple-rate-card');
+                localStorage.setItem('cn-rate-buy-' + code, card.find('.asset-buy').val());
+                localStorage.setItem('cn-rate-sell-' + code, card.find('.asset-sell').val());
+                localStorage.setItem('cn-fee-processing-' + code, card.find('.asset-proc-fee').val());
+                localStorage.setItem('cn-fee-network-' + code, card.find('.asset-net-fee').val());
+                alert(code + ' rate and fees saved.');
+            });
+
+            // --- Send Abroad & Supplier corridor rate/fee ---
+            const CORRIDOR_CODES = ['GH', 'KE', 'TZ', 'ZA', 'CM', 'CN'];
+            CORRIDOR_CODES.forEach(function (code) {
+                const savedRate = localStorage.getItem('cn-corridor-rate-' + code);
+                const savedFee = localStorage.getItem('cn-corridor-fee-' + code);
+                if (savedRate !== null) $('#corrRate-' + code).val(savedRate);
+                if (savedFee !== null) $('#corrFee-' + code).val(savedFee);
+            });
+
+            $(document).on('click', '.corridor-save-btn', function () {
+                const code = $(this).data('code');
+                localStorage.setItem('cn-corridor-rate-' + code, $('#corrRate-' + code).val());
+                localStorage.setItem('cn-corridor-fee-' + code, $('#corrFee-' + code).val());
+                alert(code + ' corridor rate and processing fee saved.');
             });
         });
     </script>

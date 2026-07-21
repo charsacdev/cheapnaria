@@ -41,12 +41,13 @@
             <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
                     class="badge bg-danger rounded-pill ms-auto">13</span></a>
-            <a href="deposit-withdrawal.html" class="nav-link"><i class="fas fa-right-left"></i> Deposit /
-                Withdrawal</a>
+            <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
             <a href="deriv-funding.html" class="nav-link active"><i class="fas fa-chart-line"></i> Deriv Funding</a>
             <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
             <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
             <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+            <a href="other-services.html" class="nav-link"><i class="fas fa-wallet"></i> Other Services</a>
             <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
             <hr class="my-3 opacity-10">
             <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
@@ -77,13 +78,14 @@
                 <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
                         class="badge bg-danger rounded-pill ms-auto">13</span></a>
-                <a href="deposit-withdrawal.html" class="nav-link"><i class="fas fa-right-left"></i> Deposit /
-                    Withdrawal</a>
+                <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
                 <a href="deriv-funding.html" class="nav-link active"><i class="fas fa-chart-line"></i> Deriv
                     Funding</a>
                 <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
                 <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
                 <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+                <a href="other-services.html" class="nav-link"><i class="fas fa-wallet"></i> Other Services</a>
                 <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
                 <hr class="my-3 opacity-10">
                 <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
@@ -126,6 +128,39 @@
                 </div>
             </div>
         </header>
+
+        <!-- Stats -->
+        <div class="row g-3 g-md-4 mb-4 text-center text-md-start">
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-success-subtle text-success mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Completed Funding</p>
+                    <h4 class="fw-800 mb-0" id="statFundingCount">0</h4>
+                    <small class="text-muted" id="statFundingValue">$0</small>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-danger-subtle text-danger mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Completed Withdrawal</p>
+                    <h4 class="fw-800 mb-0" id="statWithdrawalCount">0</h4>
+                    <small class="text-muted" id="statWithdrawalValue">$0</small>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-warning-subtle text-warning mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Total Pending (Funding + Withdrawal)</p>
+                    <h4 class="fw-800 mb-0" id="statPendingCount">0</h4>
+                </div>
+            </div>
+        </div>
 
         <div class="card p-4 border-0 shadow-sm">
             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -239,6 +274,18 @@
     <script src="../js/mock-data.js"></script>
     <script>
         $(document).ready(function () {
+            // --- Stat cards ---
+            const fundingCompleted = CN_DATA.DERIV_FUNDING_RECORDS.filter(function (r) { return r.status === 'approved'; });
+            const withdrawalCompleted = CN_DATA.DERIV_WITHDRAWAL_RECORDS.filter(function (r) { return r.status === 'approved'; });
+            const totalPending = CN_DATA.DERIV_FUNDING_RECORDS.filter(function (r) { return r.status === 'pending'; }).length
+                + CN_DATA.DERIV_WITHDRAWAL_RECORDS.filter(function (r) { return r.status === 'pending'; }).length;
+
+            $('#statFundingCount').text(fundingCompleted.length.toLocaleString());
+            $('#statFundingValue').text('$' + fundingCompleted.reduce(function (s, r) { return s + r.amountUsd; }, 0).toLocaleString());
+            $('#statWithdrawalCount').text(withdrawalCompleted.length.toLocaleString());
+            $('#statWithdrawalValue').text('$' + withdrawalCompleted.reduce(function (s, r) { return s + r.amountUsd; }, 0).toLocaleString());
+            $('#statPendingCount').text(totalPending.toLocaleString());
+
             function actionBtn(record, type, idx) {
                 return record.status === 'pending'
                     ? '<button class="btn btn-primary btn-sm rounded-pill px-4 view-btn" data-bs-toggle="modal" data-bs-target="#viewModal" data-type="' + type + '" data-idx="' + idx + '">View</button>'
