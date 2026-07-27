@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
+    <title>E-Wallet Services | CheapNaria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block">
+        <div class="brand mb-5 px-3">
+            <a href="index.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
+            <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+            <a href="rates.html" class="nav-link"><i class="fas fa-percent"></i> Rates</a>
+            <a href="services.html" class="nav-link active"><i class="fas fa-layer-group"></i> More Services</a>
+            <a href="referrals.html" class="nav-link"><i class="fas fa-user-plus"></i> Referrals</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+            <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+            <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="index.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdraw.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
+                <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+                <a href="rates.html" class="nav-link"><i class="fas fa-percent"></i> Rates</a>
+                <a href="services.html" class="nav-link active"><i class="fas fa-layer-group"></i> More Services</a>
+                <a href="referrals.html" class="nav-link"><i class="fas fa-user-plus"></i> Referrals</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+                <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+                <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4">
+            <div class="d-flex align-items-center">
+                <button type="button" class="btn btn-light rounded-circle d-none" id="backBtn"
+                    style="width:40px;height:40px;">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div>
+                    <h4 class="m-0" id="pageTitle">E-Wallet Services</h4>
+                    <small class="text-muted d-none" id="pageStepLabel"></small>
+                </div>
+            </div>
+            <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+
+        <!-- STEP 1: Select Service -->
+        <div id="serviceStep">
+            <p class="text-muted mb-4">Buy or sell balances on popular e-wallets and vouchers &mdash; we'll handle
+                the rest with you over chat.</p>
+            <div class="row g-3" id="serviceGrid"></div>
+        </div>
+
+        <!-- STEP 2: Buy or Sell -->
+        <div id="typeStep" class="d-none">
+            <div class="row g-3 justify-content-center">
+                <div class="col-6 col-md-4">
+                    <div class="ewallet-type-card" data-type="buy">
+                        <div class="etc-icon etc-buy"><i class="fas fa-arrow-down"></i></div>
+                        <h6>Buy</h6>
+                        <p>Pay Naira, receive wallet funds</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4">
+                    <div class="ewallet-type-card" data-type="sell">
+                        <div class="etc-icon etc-sell"><i class="fas fa-arrow-up"></i></div>
+                        <h6>Sell</h6>
+                        <p>Send wallet funds, receive Naira</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 3a: Wallet Buy Form (Airtm / Skrill / Neteller) -->
+        <div id="walletBuyStep" class="d-none">
+            <div class="card p-4" style="max-width:560px;margin:0 auto;">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-600">Amount to Buy</label>
+                        <input type="number" class="form-control" id="wbAmount" placeholder="0.00">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-600">Currency</label>
+                        <select class="form-select" id="wbCurrency">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-600">Receiving Email or Wallet ID</label>
+                        <input type="text" class="form-control" id="wbReceiving" placeholder="you@example.com">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-600">Preferred Payment Method</label>
+                        <div class="d-grid gap-2">
+                            <label class="pay-method-option">
+                                <input type="radio" name="wbMethod" value="Internal Transfer" checked>
+                                <span><i class="fas fa-wallet me-2"></i>Internal Transfer (from CheapNaria wallet)</span>
+                            </label>
+                            <label class="pay-method-option">
+                                <input type="radio" name="wbMethod" value="Bank Transfer">
+                                <span><i class="fas fa-university me-2"></i>Bank Transfer</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-600">Additional Note <span class="text-muted fw-normal">(optional)</span></label>
+                        <textarea class="form-control" id="wbNote" rows="2" placeholder="Anything else we should know?"></textarea>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold" id="wbContinueBtn">Continue
+                            to Review</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 3b: Wallet Sell Form -->
+        <div id="walletSellStep" class="d-none">
+            <div class="card p-4" style="max-width:560px;margin:0 auto;">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-600">Amount to Sell</label>
+                        <input type="number" class="form-control" id="wsAmount" placeholder="0.00">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-600">Currency</label>
+                        <select class="form-select" id="wsCurrency">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-600">Sender Email or Wallet ID</label>
+                        <input type="text" class="form-control" id="wsSender" placeholder="you@example.com">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-600">Preferred Payment Method</label>
+                        <div class="d-grid gap-2">
+                            <label class="pay-method-option">
+                                <input type="radio" name="wsMethod" value="Internal Transfer" checked>
+                                <span><i class="fas fa-wallet me-2"></i>Internal Transfer (to CheapNaria wallet)</span>
+                            </label>
+                            <label class="pay-method-option">
+                                <input type="radio" name="wsMethod" value="Bank Transfer">
+                                <span><i class="fas fa-university me-2"></i>Bank Transfer</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-600">Additional Note <span class="text-muted fw-normal">(optional)</span></label>
+                        <textarea class="form-control" id="wsNote" rows="2" placeholder="Anything else we should know?"></textarea>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold" id="wsContinueBtn">Continue
+                            to Review</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 3c: Voucher Buy Form -->
+        <div id="voucherBuyStep" class="d-none">
+            <div class="card p-4" style="max-width:560px;margin:0 auto;">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-600">Voucher Amount</label>
+                        <input type="number" class="form-control" id="vbAmount" placeholder="0.00">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-600">Currency</label>
+                        <select class="form-select" id="vbCurrency">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-600">Quantity</label>
+                        <input type="number" class="form-control" id="vbQty" placeholder="1" min="1" value="1">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-600">Delivery Email</label>
+                        <input type="email" class="form-control" id="vbEmail" placeholder="you@example.com">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-600">Additional Instruction <span
+                                class="text-muted fw-normal">(optional)</span></label>
+                        <textarea class="form-control" id="vbNote" rows="2" placeholder="Anything else we should know?"></textarea>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold" id="vbContinueBtn">Continue
+                            to Review</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 3d: Voucher Sell Form -->
+        <div id="voucherSellStep" class="d-none">
+            <div class="card p-4" style="max-width:560px;margin:0 auto;">
+                <div class="rc-warning-box mb-3">
+                    <i class="fas fa-triangle-exclamation rc-warning-icon"></i>
+                    <div>
+                        <p>Voucher Code Security</p>
+                        <small>Voucher codes will be visible only to authorised support staff and should not be
+                            reused after submission.</small>
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-600">Voucher Amount</label>
+                        <input type="number" class="form-control" id="vsAmount" placeholder="0.00">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-600">Currency</label>
+                        <select class="form-select" id="vsCurrency">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-600">Number of Vouchers</label>
+                        <input type="number" class="form-control" id="vsQty" placeholder="1" min="1" value="1">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-600">Preferred Payment Method</label>
+                        <div class="d-grid gap-2">
+                            <label class="pay-method-option">
+                                <input type="radio" name="vsMethod" value="Internal Transfer" checked>
+                                <span><i class="fas fa-wallet me-2"></i>Internal Transfer (to CheapNaria wallet)</span>
+                            </label>
+                            <label class="pay-method-option">
+                                <input type="radio" name="vsMethod" value="Bank Transfer">
+                                <span><i class="fas fa-university me-2"></i>Bank Transfer</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fw-600">Additional Note <span class="text-muted fw-normal">(optional)</span></label>
+                        <textarea class="form-control" id="vsNote" rows="2" placeholder="Anything else we should know?"></textarea>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold" id="vsContinueBtn">Continue
+                            to Review</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 4: Review -->
+        <div id="reviewStep" class="d-none">
+            <div class="card p-4" style="max-width:560px;margin:0 auto;">
+                <h6 class="fw-bold mb-3">Transaction Summary</h6>
+                <div class="rc-detail-rows mb-3">
+                    <div class="rc-detail-row">
+                        <span class="rc-detail-label">Service</span>
+                        <span class="rc-detail-value" id="revService">-</span>
+                    </div>
+                    <div class="rc-detail-row">
+                        <span class="rc-detail-label">Transaction Type</span>
+                        <span class="rc-detail-value" id="revType">-</span>
+                    </div>
+                    <div class="rc-detail-row">
+                        <span class="rc-detail-label">Amount</span>
+                        <span class="rc-detail-value" id="revAmount">-</span>
+                    </div>
+                    <div class="rc-detail-row" id="revDetailRow">
+                        <span class="rc-detail-label" id="revDetailLabel">Wallet Email / ID</span>
+                        <span class="rc-detail-value" id="revDetailValue">-</span>
+                    </div>
+                    <div class="rc-detail-row" id="revMethodRow">
+                        <span class="rc-detail-label">Payment Method</span>
+                        <span class="rc-detail-value" id="revMethod">-</span>
+                    </div>
+                    <div class="rc-detail-row">
+                        <span class="rc-detail-label">Estimated Rate</span>
+                        <span class="rc-detail-value" id="revRate">-</span>
+                    </div>
+                    <div class="rc-highlight-row">
+                        <span id="revEstLabel">Estimated Amount to Pay</span>
+                        <strong id="revEstValue">₦0.00</strong>
+                    </div>
+                    <div class="rc-detail-row">
+                        <span class="rc-detail-label">Settlement Account</span>
+                        <span class="rc-detail-value">CheapNaria Wallet</span>
+                    </div>
+                    <div class="rc-detail-row">
+                        <span class="rc-detail-label">Processing Method</span>
+                        <span class="rc-detail-value">Manual</span>
+                    </div>
+                    <div class="rc-detail-row">
+                        <span class="rc-detail-label">Status</span>
+                        <span class="badge-status status-pending">Awaiting Support</span>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary w-100 py-3 fw-bold" id="continueSupportBtn">
+                    <i class="fas fa-headset me-2"></i>Continue via Support
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mobile Bottom Tab Bar -->
+    <nav class="bottom-tab-bar d-lg-none">
+        <a href="index.html" class="btb-item"><i class="fas fa-house"></i><span>Home</span></a>
+        <button type="button" class="btb-item" data-bs-toggle="modal" data-bs-target="#derivActionsModal"><i class="fas fa-chart-line"></i><span>Deriv</span></button>
+        <div class="btb-item btb-fab-wrap">
+            <button type="button" class="btb-fab" data-bs-toggle="modal" data-bs-target="#quickActionsModal"><i
+                    class="fas fa-plus"></i></button>
+            <span>Quick</span>
+        </div>
+        <a href="rates.html" class="btb-item"><i class="fas fa-percent"></i><span>Rates</span></a>
+        <button type="button" class="btb-item" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"><i
+                class="fas fa-bars"></i><span>More</span></button>
+    </nav>
+    <!-- Deriv Actions Modal -->
+    <div class="modal fade" id="derivActionsModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="fw-bold">Deriv</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="text-muted small mb-4">Choose whether you want to fund or withdraw from your Deriv CR
+                        account.</p>
+                    <div class="d-grid gap-3">
+                        <a href="deriv-deposit.html" class="select-method-card text-decoration-none">
+                            <div class="smc-icon"><i class="fas fa-arrow-down"></i></div>
+                            <div class="smc-text">
+                                <p>Fund Deriv Account</p>
+                                <small class="text-muted">Deposit into your CR account</small>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="deriv-withdraw.html" class="select-method-card text-decoration-none">
+                            <div class="smc-icon"><i class="fas fa-arrow-up"></i></div>
+                            <div class="smc-text">
+                                <p>Withdraw from Deriv</p>
+                                <small class="text-muted">Payout from your CR account</small>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        $(document).ready(function () {
+            const SERVICES = [
+                { id: 'airtm', name: 'Airtm', kind: 'wallet', icon: 'fa-globe', color: '#0891b2' },
+                { id: 'skrill', name: 'Skrill', kind: 'wallet', icon: 'fa-wallet', color: '#7c3aed' },
+                { id: 'neteller', name: 'Neteller', kind: 'wallet', icon: 'fa-credit-card', color: '#1d4ed8' },
+                { id: 'voucherry', name: 'Voucherry', kind: 'voucher', icon: 'fa-ticket', color: '#b45309' },
+                { id: 'icash', name: 'iCash.One', kind: 'voucher', icon: 'fa-coins', color: '#059669' },
+                { id: 'giftcards', name: 'Gift Cards', kind: 'giftcard', icon: 'fa-gift', color: '#be185d', disabled: true }
+            ];
+            const CCY_TO_USD = { USD: 1, EUR: 1.08, GBP: 1.27 };
+            const RATE = 1450; // ₦ per $1, mirrors the crypto buy rate used elsewhere
+
+            const $grid = $('#serviceGrid');
+            SERVICES.forEach(function (s) {
+                $grid.append(
+                    '<div class="col-6 col-md-4 col-lg-2">' +
+                    '<div class="ewallet-service-card' + (s.disabled ? ' disabled' : '') + '" data-id="' + s.id + '">' +
+                    (s.disabled ? '<span class="esc-soon">Coming Soon</span>' : '') +
+                    '<div class="esc-icon" style="background:' + s.color + '22;color:' + s.color + ';"><i class="fas ' + s.icon + '"></i></div>' +
+                    '<h6>' + s.name + '</h6>' +
+                    '</div></div>'
+                );
+            });
+
+            let state = { service: null, type: null };
+            const steps = ['#serviceStep', '#typeStep', '#walletBuyStep', '#walletSellStep', '#voucherBuyStep', '#voucherSellStep', '#reviewStep'];
+
+            function showStep(id, title, showBack) {
+                steps.forEach(s => $(s).addClass('d-none'));
+                $(id).removeClass('d-none').hide().fadeIn(200);
+                $('#pageTitle').text(title);
+                $('#backBtn').toggleClass('d-none', !showBack);
+            }
+
+            $(document).on('click', '.ewallet-service-card:not(.disabled)', function () {
+                const id = $(this).data('id');
+                state.service = SERVICES.find(function (s) { return s.id === id; });
+                showStep('#typeStep', state.service.name, true);
+            });
+
+            $(document).on('click', '.ewallet-type-card', function () {
+                state.type = $(this).data('type');
+                const kind = state.service.kind;
+                const title = state.service.name + ' — ' + (state.type === 'buy' ? 'Buy' : 'Sell');
+                if (kind === 'wallet' && state.type === 'buy') showStep('#walletBuyStep', title, true);
+                else if (kind === 'wallet' && state.type === 'sell') showStep('#walletSellStep', title, true);
+                else if (kind === 'voucher' && state.type === 'buy') showStep('#voucherBuyStep', title, true);
+                else if (kind === 'voucher' && state.type === 'sell') showStep('#voucherSellStep', title, true);
+            });
+
+            $('#backBtn').click(function () {
+                if (!$('#typeStep').hasClass('d-none') === false && $('#reviewStep').hasClass('d-none') === false) {
+                    // from review, go back to the form step (best-effort: reload type step)
+                }
+                if (steps.slice(2).some(s => !$(s).hasClass('d-none'))) {
+                    showStep('#typeStep', state.service.name, true);
+                } else {
+                    showStep('#serviceStep', 'E-Wallet Services', false);
+                    state.service = null;
+                }
+            });
+
+            function fmtNgn(n) {
+                return '₦' + n.toLocaleString(undefined, { minimumFractionDigits: 2 });
+            }
+
+            function buildReview(data) {
+                const usdEquiv = data.amount * (CCY_TO_USD[data.currency] || 1);
+                const ngn = usdEquiv * RATE;
+
+                $('#revService').text(state.service.name);
+                $('#revType').text(state.type === 'buy' ? 'Buy' : 'Sell');
+                $('#revAmount').text(data.amount.toLocaleString(undefined, { minimumFractionDigits: 2 }) + ' ' + data.currency + (data.qty ? ' × ' + data.qty : ''));
+                $('#revDetailLabel').text(data.detailLabel);
+                $('#revDetailValue').text(data.detailValue);
+                if (data.method) {
+                    $('#revMethodRow').removeClass('d-none');
+                    $('#revMethod').text(data.method);
+                } else {
+                    $('#revMethodRow').addClass('d-none');
+                }
+                $('#revRate').html('$1 = ₦' + RATE.toLocaleString());
+
+                const totalNgn = ngn * (data.qty || 1);
+                if (state.type === 'buy') {
+                    $('#revEstLabel').text('Estimated Amount to Pay');
+                } else {
+                    $('#revEstLabel').text('Estimated Amount to Receive');
+                }
+                $('#revEstValue').text(fmtNgn(totalNgn));
+
+                showStep('#reviewStep', 'Review & Confirm', true);
+
+                const summaryHtml =
+                    '<strong>E-Wallet Service Request</strong><br>' +
+                    'Service: ' + state.service.name + '<br>' +
+                    'Type: ' + (state.type === 'buy' ? 'Buy' : 'Sell') + '<br>' +
+                    'Amount: ' + data.amount.toLocaleString(undefined, { minimumFractionDigits: 2 }) + ' ' + data.currency + (data.qty ? ' × ' + data.qty + ' unit(s)' : '') + '<br>' +
+                    data.detailLabel + ': ' + data.detailValue + '<br>' +
+                    (data.method ? 'Payment Method: ' + data.method + '<br>' : '') +
+                    'Estimated ' + (state.type === 'buy' ? 'Amount to Pay' : 'Amount to Receive') + ': ' + fmtNgn(totalNgn) + '<br>' +
+                    (data.note ? 'Note: ' + data.note : '');
+
+                $('#reviewStep').data('summary', summaryHtml);
+            }
+
+            $('#wbContinueBtn').click(function () {
+                const amount = parseFloat($('#wbAmount').val());
+                const receiving = $('#wbReceiving').val().trim();
+                if (!amount || amount <= 0 || !receiving) { alert('Please fill in the amount and receiving email/wallet ID'); return; }
+                buildReview({
+                    amount: amount, currency: $('#wbCurrency').val(),
+                    detailLabel: 'Receiving Email/ID', detailValue: receiving,
+                    method: $('input[name="wbMethod"]:checked').val(), note: $('#wbNote').val().trim()
+                });
+            });
+
+            $('#wsContinueBtn').click(function () {
+                const amount = parseFloat($('#wsAmount').val());
+                const sender = $('#wsSender').val().trim();
+                if (!amount || amount <= 0 || !sender) { alert('Please fill in the amount and sender email/wallet ID'); return; }
+                buildReview({
+                    amount: amount, currency: $('#wsCurrency').val(),
+                    detailLabel: 'Sender Email/ID', detailValue: sender,
+                    method: $('input[name="wsMethod"]:checked').val(), note: $('#wsNote').val().trim()
+                });
+            });
+
+            $('#vbContinueBtn').click(function () {
+                const amount = parseFloat($('#vbAmount').val());
+                const email = $('#vbEmail').val().trim();
+                const qty = parseInt($('#vbQty').val()) || 1;
+                if (!amount || amount <= 0 || !email) { alert('Please fill in the voucher amount and delivery email'); return; }
+                buildReview({
+                    amount: amount, currency: $('#vbCurrency').val(), qty: qty,
+                    detailLabel: 'Delivery Email', detailValue: email,
+                    note: $('#vbNote').val().trim()
+                });
+            });
+
+            $('#vsContinueBtn').click(function () {
+                const amount = parseFloat($('#vsAmount').val());
+                const qty = parseInt($('#vsQty').val()) || 1;
+                if (!amount || amount <= 0) { alert('Please fill in the voucher amount'); return; }
+                buildReview({
+                    amount: amount, currency: $('#vsCurrency').val(), qty: qty,
+                    detailLabel: 'Number of Vouchers', detailValue: String(qty),
+                    method: $('input[name="vsMethod"]:checked').val(), note: $('#vsNote').val().trim()
+                });
+            });
+
+            $('#continueSupportBtn').click(function () {
+                const summary = $('#reviewStep').data('summary');
+                sessionStorage.setItem('cn-pending-support-message', summary);
+                window.location.href = 'support.html';
+            });
+        });
+    </script>
+</body>
+
+</html>

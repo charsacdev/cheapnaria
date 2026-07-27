@@ -31,6 +31,7 @@
         <nav class="nav flex-column">
             <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
             <a href="users.html" class="nav-link active"><i class="fas fa-users"></i> Users</a>
+            <a href="tiers.html" class="nav-link"><i class="fas fa-layer-group"></i> Tiers</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
                     class="badge bg-danger rounded-pill ms-auto">13</span></a>
             <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
@@ -68,6 +69,7 @@
             <nav class="nav flex-column">
                 <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
                 <a href="users.html" class="nav-link active"><i class="fas fa-users"></i> Users</a>
+                <a href="tiers.html" class="nav-link"><i class="fas fa-layer-group"></i> Tiers</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
                         class="badge bg-danger rounded-pill ms-auto">13</span></a>
                 <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
@@ -99,7 +101,7 @@
                 </button>
                 <div class="d-flex align-items-center gap-2 gap-md-3">
                     <a href="users.html" class="btn btn-light btn-sm rounded-pill"><i class="fas fa-arrow-left"></i></a>
-                    <h4 class="m-0 d-none d-md-block">Audit: Michael Kelvin</h4>
+                    <h4 class="m-0 d-none d-md-block" id="pageTitle">Audit</h4>
                 </div>
             </div>
 
@@ -158,34 +160,61 @@
             <div class="col-12 col-xl-4">
                 <div class="card p-4 border-0 shadow-sm">
                     <div class="text-center mb-4">
-                        <img src="https://ui-avatars.com/api/?name=Michael+Kelvin&background=10b981&color=fff"
-                            class="rounded-circle border border-4 border-white shadow-sm mb-3" width="100">
-                        <h5 class="fw-bold mb-1">Michael Kelvin Okafor</h5>
-                        <span class="badge-status status-approved">Active Account</span>
+                        <img id="pUserAvatar" src="" class="rounded-circle border border-4 border-white shadow-sm mb-3" width="100">
+                        <h5 class="fw-bold mb-1" id="pUserName">-</h5>
+                        <div class="d-flex align-items-center justify-content-center gap-2">
+                            <span class="badge-status status-approved" id="pUserStatus">Active Account</span>
+                            <span class="tier-badge tier-badge-0" id="pUserTier">Unverified</span>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-light border small mb-3" id="blockedNotice" style="display:none;">
+                        <i class="fas fa-shield-halved text-danger me-1"></i> This account is blocked.
                     </div>
 
                     <div class="d-grid gap-2 mb-4">
-                        <button class="btn btn-outline-danger rounded-pill py-2 fw-bold"><i
-                                class="fas fa-user-slash me-2"></i> Suspend Account</button>
+                        <button type="button" class="btn btn-outline-danger rounded-pill py-2 fw-bold" id="blockUserBtn"><i
+                                class="fas fa-user-slash me-2"></i> Block User</button>
                     </div>
 
-                    <h6 class="fw-bold mb-3 smaller text-muted text-uppercase letter-spacing-1">Basic Information
-                    </h6>
+                    <h6 class="fw-bold mb-3 smaller text-muted text-uppercase letter-spacing-1">Tier Override</h6>
+                    <div class="btn-group w-100 mb-4" role="group">
+                        <button type="button" class="btn btn-outline-secondary tier-override-btn" data-tier="0">Unverified</button>
+                        <button type="button" class="btn btn-outline-secondary tier-override-btn" data-tier="1">1</button>
+                        <button type="button" class="btn btn-outline-secondary tier-override-btn" data-tier="2">2</button>
+                        <button type="button" class="btn btn-outline-secondary tier-override-btn" data-tier="3">3</button>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <h6 class="fw-bold mb-0 smaller text-muted text-uppercase letter-spacing-1">Basic Information</h6>
+                        <button type="button" class="btn btn-link btn-sm p-0 fw-bold text-decoration-none" id="saveProfileBtn">Save Changes</button>
+                    </div>
                     <div class="mb-3">
                         <label class="text-muted smaller fw-bold d-block mb-1">Email Address</label>
-                        <p class="fw-bold mb-0">m.kelvin@gmail.com</p>
+                        <input type="email" class="form-control form-control-sm" id="pUserEmail">
                     </div>
-                    <div class="mb-3">
-                        <label class="text-muted smaller fw-bold d-block mb-1">Phone Number</label>
-                        <p class="fw-bold mb-0">+234 812 345 6789</p>
+                    <div class="row g-3 mb-3">
+                        <div class="col-6">
+                            <label class="text-muted smaller fw-bold d-block mb-1">Country</label>
+                            <input type="text" class="form-control form-control-sm" id="pUserCountry">
+                        </div>
+                        <div class="col-6">
+                            <label class="text-muted smaller fw-bold d-block mb-1">State</label>
+                            <input type="text" class="form-control form-control-sm" id="pUserState">
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label class="text-muted smaller fw-bold d-block mb-1">Country</label>
-                        <p class="fw-bold mb-0">Nigeria</p>
-                    </div>
-                    <div class="mb-3">
-                        <label class="text-muted smaller fw-bold d-block mb-1">Full Address</label>
-                        <p class="fw-bold mb-0">12, Garki Mall Crescent, Area 11, Garki, Abuja, FCT Nigeria.</p>
+                    <div class="row g-3 mb-3">
+                        <div class="col-6">
+                            <label class="text-muted smaller fw-bold d-block mb-1">Age</label>
+                            <input type="number" class="form-control form-control-sm" id="pUserAge">
+                        </div>
+                        <div class="col-6">
+                            <label class="text-muted smaller fw-bold d-block mb-1">Gender</label>
+                            <select class="form-select form-select-sm" id="pUserGender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
                     </div>
 
                     <hr class="my-4">
@@ -319,9 +348,78 @@
     <script src="../js/admin.js"></script>
     <script src="../js/theme.js"></script>
     <script src="../js/mock-data.js"></script>
+    <script src="../js/agent-block.js"></script>
+    <script src="../js/user-overrides.js"></script>
+    <script src="../js/verification.js"></script>
     <script>
         $(document).ready(function () {
-            const user = CN_DATA.USERS.find(function (u) { return u.name === 'Michael Kelvin'; }) || CN_DATA.USERS[2];
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            const baseUser = (id && CN_DATA.USERS.find(function (u) { return u.id === id; }))
+                || CN_DATA.USERS.find(function (u) { return u.name === 'Michael Kelvin'; }) || CN_DATA.USERS[2];
+            const user = CN_OVERRIDES.apply(baseUser);
+
+            $('#pageTitle').text('Audit: ' + user.name);
+            $('#pUserAvatar').attr('src', 'https://ui-avatars.com/api/?name=' + encodeURIComponent(user.name) + '&background=' + user.avatarBg + '&color=fff&size=128');
+            $('#pUserName').text(user.name);
+            $('#pUserEmail').val(user.email);
+            $('#pUserCountry').val(user.country);
+            $('#pUserState').val(user.state);
+            $('#pUserAge').val(user.age);
+            $('#pUserGender').val(user.gender);
+
+            function refreshTierUi() {
+                const tier = typeof CN_OVERRIDES.apply(baseUser).tier === 'number' ? CN_OVERRIDES.apply(baseUser).tier : 0;
+                $('#pUserTier').removeClass('tier-badge-0 tier-badge-1 tier-badge-2 tier-badge-3')
+                    .addClass('tier-badge-' + tier).text(CN_VERIFY.TIER_LABELS[tier]);
+                $('.tier-override-btn').removeClass('active btn-primary').addClass('btn-outline-secondary');
+                $('.tier-override-btn[data-tier="' + tier + '"]').addClass('active btn-primary').removeClass('btn-outline-secondary');
+            }
+            refreshTierUi();
+
+            $('.tier-override-btn').click(function () {
+                const tier = parseInt($(this).data('tier'));
+                CN_OVERRIDES.save(user.id, { tier: tier });
+                refreshTierUi();
+            });
+
+            $('#saveProfileBtn').click(function () {
+                CN_OVERRIDES.save(user.id, {
+                    email: $('#pUserEmail').val(),
+                    country: $('#pUserCountry').val(),
+                    state: $('#pUserState').val(),
+                    age: parseInt($('#pUserAge').val()) || user.age,
+                    gender: $('#pUserGender').val()
+                });
+                alert('Profile updated.');
+            });
+
+            function refreshBlockUi() {
+                const blocked = CN_BLOCK.isBlocked(user);
+                const statusEl = $('#pUserStatus');
+                if (blocked) {
+                    statusEl.removeClass('status-approved').addClass('status-rejected').text('Blocked Account');
+                    $('#blockedNotice').show();
+                    $('#blockUserBtn').html('<i class="fas fa-user-check me-2"></i> Unblock User');
+                } else {
+                    statusEl.removeClass('status-rejected').addClass('status-approved').text('Active Account');
+                    $('#blockedNotice').hide();
+                    $('#blockUserBtn').html('<i class="fas fa-user-slash me-2"></i> Block User');
+                }
+            }
+            refreshBlockUi();
+
+            $('#blockUserBtn').click(function () {
+                if (CN_BLOCK.isBlocked(user)) {
+                    if (!confirm('Unblock ' + user.name + '?')) return;
+                    CN_BLOCK.unblockUser(user.id);
+                } else {
+                    if (!confirm('Block ' + user.name + '?')) return;
+                    CN_BLOCK.blockUser(user.id);
+                }
+                refreshBlockUi();
+            });
+
             const stats = CN_DATA.statsForUser(user.id);
             $('#statDerivFunding').text(stats.derivFunding);
             $('#statDerivWithdrawal').text(stats.derivWithdrawal);

@@ -1,0 +1,48 @@
+
+Homepage: add Rate Calculator popup modal to index.html
+
+Auth: build identity verification page (NIN/BVN simulated lookup) granting Tier 1
+
+Auth: build document verification page (skippable) granting Tier 2
+
+Auth: build proof of address + selfie verification page granting Tier 3
+
+Auth: build bank account verification page (account+bank -> simulated name match)
+
+Auth: wire verify-code.html into new onboarding sequence ending at dashboard
+
+Dashboard: build E-Wallet Services flow (service select, buy/sell forms, review, support handoff)
+
+Dashboard: add Transaction PIN set/change section to profile.html
+
+Dashboard: add PIN confirmation step to withdraw/deriv-withdraw/pay-supplier/send-abroad
+
+Dashboard: embed rate calculator inline on rates.html
+
+Dashboard: build Referrals page with table
+
+Dashboard: bottom nav Deriv tab becomes Deposit/Withdraw popup
+
+Dashboard: add direct Deriv Deposit/Withdrawal tiles to services.html
+
+Dashboard: deposit.html network selection per asset + QR code for address
+
+Dashboard: add QR code for P2P send-to-user on transfer.html
+
+Dashboard: show tier badge on dashboard
+
+Dashboard: update kyc.html into tier status/verification-history view
+
+Agent: allow profile field editing in user-details.html
+
+Agent: show tier in users.html
+
+Admin: tier limits settings page
+
+Admin: tier override in user-details.html
+
+Admin: Trusted Users registration tool
+
+Admin: show tier + profile edit in users.html/user-details.html
+
+Verify everything in browser across all portals

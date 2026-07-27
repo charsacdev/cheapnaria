@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
-    <title>User Management | CheapNaria</title>
+    <title>Tiers &amp; Trusted Users | CheapNaria</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
@@ -13,9 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- DataTables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -33,8 +31,8 @@
 
         <nav class="nav flex-column">
             <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
-            <a href="users.html" class="nav-link active"><i class="fas fa-users"></i> Users</a>
-            <a href="tiers.html" class="nav-link"><i class="fas fa-layer-group"></i> Tiers</a>
+            <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+            <a href="tiers.html" class="nav-link active"><i class="fas fa-layer-group"></i> Tiers</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
                     class="badge bg-danger rounded-pill ms-auto">13</span></a>
             <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
@@ -43,7 +41,7 @@
             <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
             <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
             <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
-            <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+            <a href="rates.html" class="nav-link"><i class="fas fa-percent"></i> Rates</a>
             <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
             <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
             <a href="ads.html" class="nav-link"><i class="fas fa-rectangle-ad"></i> Ads / Promotions</a>
@@ -71,8 +69,8 @@
         <div class="offcanvas-body">
             <nav class="nav flex-column">
                 <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
-                <a href="users.html" class="nav-link active"><i class="fas fa-users"></i> Users</a>
-                <a href="tiers.html" class="nav-link"><i class="fas fa-layer-group"></i> Tiers</a>
+                <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+                <a href="tiers.html" class="nav-link active"><i class="fas fa-layer-group"></i> Tiers</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
                         class="badge bg-danger rounded-pill ms-auto">13</span></a>
                 <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
@@ -81,7 +79,7 @@
                 <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
                 <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
                 <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
-                <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+                <a href="rates.html" class="nav-link"><i class="fas fa-percent"></i> Rates</a>
                 <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
                 <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
                 <a href="ads.html" class="nav-link"><i class="fas fa-rectangle-ad"></i> Ads / Promotions</a>
@@ -102,16 +100,12 @@
                 <button class="menu-toggle d-lg-none me-3" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
                     <i class="fas fa-bars-staggered"></i>
                 </button>
-                <h4 class="m-0 d-none d-md-block">User Management</h4>
+                <h4 class="m-0 d-none d-md-block">Tiers &amp; Trusted Users</h4>
             </div>
-
             <div class="d-flex align-items-center gap-3">
-
                 <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
                     <i class="fas fa-moon"></i>
                 </button>
-
-
                 <div class="dropdown">
                     <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
                         <img src="https://ui-avatars.com/api/?name=Admin+User&background=10b981&color=fff" alt="Profile"
@@ -134,67 +128,88 @@
             </div>
         </header>
 
-        <!-- Filters & Stats Summary -->
-        <div class="row g-3 g-md-4 mb-4 text-center text-md-start">
-            <div class="col-6 col-lg-3">
-                <div class="card stat-card h-100 border-0 shadow-sm">
-                    <div class="stat-icon bg-primary-subtle text-primary mx-auto mx-md-0 mb-3">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Total Users</p>
-                    <h4 class="fw-800 mb-0" id="statTotalUsers">0</h4>
-                </div>
+        <!-- Tier Limits -->
+        <div class="card p-4 border-0 shadow-sm mb-4">
+            <div class="d-flex align-items-center justify-content-between mb-1">
+                <h6 class="fw-bold mb-0">Tier Limits</h6>
+                <button type="button" class="btn btn-link btn-sm p-0 fw-bold text-decoration-none"
+                    id="saveTierLimitsBtn">Save Changes</button>
             </div>
-            <div class="col-6 col-lg-3">
-                <div class="card stat-card h-100 border-0 shadow-sm">
-                    <div class="stat-icon bg-success-subtle text-success mx-auto mx-md-0 mb-3">
-                        <i class="fas fa-user-check"></i>
+            <p class="text-muted small mb-4">Daily transaction limits per verification tier.</p>
+
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="p-3 bg-light rounded-4 h-100">
+                        <span class="tier-badge tier-badge-1 mb-2 d-inline-block">Tier 1</span>
+                        <p class="text-muted smaller mb-2">NIN or BVN verified &mdash; no document/address checks
+                            yet.</p>
+                        <label class="smaller fw-bold text-muted text-uppercase mb-1 d-block">Daily Limit</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-0">₦</span>
+                            <input type="number" class="form-control border-0 fw-bold" id="limitTier1" value="50000">
+                        </div>
                     </div>
-                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Active</p>
-                    <h4 class="fw-800 mb-0 text-success" id="statActiveUsers">0</h4>
                 </div>
-            </div>
-            <div class="col-6 col-lg-3">
-                <div class="card stat-card h-100 border-0 shadow-sm">
-                    <div class="stat-icon bg-warning-subtle text-warning mx-auto mx-md-0 mb-3">
-                        <i class="fas fa-user-clock"></i>
+                <div class="col-md-4">
+                    <div class="p-3 bg-light rounded-4 h-100">
+                        <span class="tier-badge tier-badge-2 mb-2 d-inline-block">Tier 2</span>
+                        <p class="text-muted smaller mb-2">Government-issued ID document verified.</p>
+                        <label class="smaller fw-bold text-muted text-uppercase mb-1 d-block">Daily Limit</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-0">₦</span>
+                            <input type="number" class="form-control border-0 fw-bold" id="limitTier2" value="500000">
+                        </div>
                     </div>
-                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Unverified</p>
-                    <h4 class="fw-800 mb-0 text-warning" id="statUnverifiedUsers">0</h4>
                 </div>
-            </div>
-            <div class="col-6 col-lg-3">
-                <div class="card stat-card h-100 border-0 shadow-sm">
-                    <div class="stat-icon bg-danger-subtle text-danger mx-auto mx-md-0 mb-3">
-                        <i class="fas fa-user-slash"></i>
+                <div class="col-md-4">
+                    <div class="p-3 bg-light rounded-4 h-100">
+                        <span class="tier-badge tier-badge-3 mb-2 d-inline-block">Tier 3</span>
+                        <p class="text-muted smaller mb-2">Proof of address and selfie verified &mdash; full access.</p>
+                        <label class="smaller fw-bold text-muted text-uppercase mb-1 d-block">Daily Limit</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-0">₦</span>
+                            <input type="number" class="form-control border-0 fw-bold" id="limitTier3"
+                                value="5000000">
+                        </div>
                     </div>
-                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Blocked</p>
-                    <h4 class="fw-800 mb-0 text-danger" id="statBlockedUsers">0</h4>
                 </div>
             </div>
         </div>
 
-        <!-- Users Table -->
+        <!-- Trusted Users -->
         <div class="card p-4 border-0 shadow-sm">
+            <h6 class="fw-bold mb-1">Trusted Users</h6>
+            <p class="text-muted small mb-4">Fast-track an existing, already-vetted user straight to full Tier 3
+                access, bypassing the step-by-step verification flow.</p>
+
+            <div class="row g-3 align-items-end mb-4">
+                <div class="col-md-8">
+                    <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Select User</label>
+                    <select class="form-select" id="trustedUserSelect"></select>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-primary w-100 fw-bold" id="upgradeTrustedBtn">
+                        <i class="fas fa-shield-halved me-2"></i>Upgrade to Tier 3
+                    </button>
+                </div>
+            </div>
+
             <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0" id="usersTable">
+                <table class="table table-hover align-middle mb-0" id="trustedUsersTable">
                     <thead>
                         <tr>
                             <th>User</th>
                             <th>Country</th>
+                            <th>Upgraded On</th>
                             <th>Tier</th>
-                            <th>KYC</th>
-                            <th>Status</th>
-                            <th>Date Joined</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
                 </table>
+                <p id="noTrustedUsers" class="text-muted small text-center py-4 mb-0">No trusted users upgraded yet.</p>
             </div>
         </div>
     </main>
-    </div>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -204,61 +219,77 @@
     <script src="../js/admin.js"></script>
     <script src="../js/theme.js"></script>
     <script src="../js/mock-data.js"></script>
-    <script src="../js/agent-block.js"></script>
     <script src="../js/user-overrides.js"></script>
     <script src="../js/verification.js"></script>
-
     <script>
         $(document).ready(function () {
-            const tbody = $('#usersTable tbody');
-            let activeCount = 0, blockedCount = 0, unverifiedCount = 0;
-
-            CN_DATA.USERS.forEach(function (rawUser) {
-                const u = CN_OVERRIDES.apply(rawUser);
-                const blocked = CN_BLOCK.isBlocked(u);
-                if (blocked) { blockedCount++; } else { activeCount++; }
-                if (u.kyc !== 'verified') unverifiedCount++;
-
-                const kycBadge = u.kyc === 'verified'
-                    ? '<span class="badge bg-success-subtle text-success border px-2">Verified</span>'
-                    : '<span class="badge bg-danger-subtle text-danger border px-2">Unverified</span>';
-                const statusBadge = blocked
-                    ? '<span class="badge-status status-rejected">Blocked</span>'
-                    : '<span class="badge-status status-approved">Active</span>';
-                const tier = typeof u.tier === 'number' ? u.tier : 0;
-                const tierBadge = '<span class="tier-badge tier-badge-' + tier + '">' + CN_VERIFY.TIER_LABELS[tier] + '</span>';
-
-                tbody.append(
-                    '<tr>' +
-                    '<td><div class="d-flex align-items-center gap-3">' +
-                    '<img src="https://ui-avatars.com/api/?name=' + encodeURIComponent(u.name) + '&background=' + u.avatarBg + '&color=fff" class="rounded-circle" width="35">' +
-                    '<div><p class="mb-0 fw-bold">' + u.name + '</p><small class="text-muted">' + u.email + '</small></div>' +
-                    '</div></td>' +
-                    '<td>' + u.country + '</td>' +
-                    '<td>' + tierBadge + '</td>' +
-                    '<td>' + kycBadge + '</td>' +
-                    '<td>' + statusBadge + '</td>' +
-                    '<td><span class="smaller text-muted">' + u.joined + '</span></td>' +
-                    '<td><a href="user-details.html?id=' + u.id + '" class="btn btn-outline-primary btn-sm rounded-pill px-3">View Details</a></td>' +
-                    '</tr>'
-                );
+            // --- Tier Limits ---
+            const savedLimits = JSON.parse(localStorage.getItem('cn-tier-limits') || 'null');
+            if (savedLimits) {
+                $('#limitTier1').val(savedLimits[1]);
+                $('#limitTier2').val(savedLimits[2]);
+                $('#limitTier3').val(savedLimits[3]);
+            }
+            $('#saveTierLimitsBtn').click(function () {
+                localStorage.setItem('cn-tier-limits', JSON.stringify({
+                    1: $('#limitTier1').val(), 2: $('#limitTier2').val(), 3: $('#limitTier3').val()
+                }));
+                alert('Tier limits saved.');
             });
 
-            $('#statTotalUsers').text(CN_DATA.USERS.length.toLocaleString());
-            $('#statActiveUsers').text(activeCount.toLocaleString());
-            $('#statUnverifiedUsers').text(unverifiedCount.toLocaleString());
-            $('#statBlockedUsers').text(blockedCount.toLocaleString());
+            // --- Trusted Users ---
+            const TRUSTED_KEY = 'cn-trusted-users';
+            function getTrusted() {
+                try { return JSON.parse(localStorage.getItem(TRUSTED_KEY)) || []; } catch (e) { return []; }
+            }
+            function saveTrusted(list) {
+                localStorage.setItem(TRUSTED_KEY, JSON.stringify(list));
+            }
 
-            $('#usersTable').DataTable({
-                "pageLength": 10,
-                "lengthChange": true,
-                "searching": true,
-                "info": true,
-                "responsive": true,
-                "language": {
-                    "search": "",
-                    "searchPlaceholder": "Search users..."
-                }
+            const $select = $('#trustedUserSelect');
+            CN_DATA.USERS.forEach(function (u) {
+                $select.append('<option value="' + u.id + '">' + u.name + ' (' + u.email + ')</option>');
+            });
+
+            let table = null;
+            function renderTrusted() {
+                const list = getTrusted();
+                const tbody = $('#trustedUsersTable tbody').empty();
+                $('#noTrustedUsers').toggleClass('d-none', list.length > 0);
+                $('#trustedUsersTable').toggleClass('d-none', list.length === 0);
+
+                list.forEach(function (t) {
+                    const u = CN_OVERRIDES.apply(CN_DATA.USERS.find(function (x) { return x.id === t.id; }));
+                    if (!u) return;
+                    tbody.append(
+                        '<tr><td><div class="d-flex align-items-center gap-3">' +
+                        '<img src="https://ui-avatars.com/api/?name=' + encodeURIComponent(u.name) + '&background=' + u.avatarBg + '&color=fff" class="rounded-circle" width="35">' +
+                        '<div><p class="mb-0 fw-bold">' + u.name + '</p><small class="text-muted">' + u.email + '</small></div>' +
+                        '</div></td>' +
+                        '<td>' + u.country + '</td>' +
+                        '<td class="small text-muted">' + t.upgradedAt + '</td>' +
+                        '<td><span class="tier-badge tier-badge-3">Tier 3</span></td></tr>'
+                    );
+                });
+
+                if (table) { table.destroy(); table = null; }
+                if (list.length > 0) table = $('#trustedUsersTable').DataTable({ responsive: true, pageLength: 10 });
+            }
+            renderTrusted();
+
+            $('#upgradeTrustedBtn').click(function () {
+                const id = $select.val();
+                const user = CN_DATA.USERS.find(function (u) { return u.id === id; });
+                if (!user) return;
+                if (!confirm('Upgrade ' + user.name + ' to full Tier 3 access? This bypasses the normal step-by-step verification.')) return;
+
+                CN_OVERRIDES.save(id, { tier: 3 });
+
+                const list = getTrusted().filter(function (t) { return t.id !== id; });
+                list.unshift({ id: id, upgradedAt: new Date().toLocaleDateString() });
+                saveTrusted(list);
+                renderTrusted();
+                alert(user.name + ' has been upgraded to Tier 3.');
             });
         });
     </script>

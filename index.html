@@ -313,8 +313,62 @@
                     <span class="rate-board-delta">View all &rarr;</span>
                 </a>
             </div>
+
+            <div class="rate-calc-cta">
+                <p><i class="fas fa-calculator"></i> Not sure what you'll get? Work it out before you transact.</p>
+                <button type="button" class="btn btn-primary" id="openCalcBtn">Calculate Your Rate <i
+                        class="fas fa-arrow-right"></i></button>
+            </div>
         </div>
     </section>
+
+    <!-- Rate Calculator Modal -->
+    <div class="rc-modal-overlay" id="rcOverlay">
+        <div class="rc-modal">
+            <div class="rc-modal-header">
+                <h3><i class="fas fa-calculator"></i> Rate Calculator</h3>
+                <button type="button" class="rc-modal-close" id="rcCloseBtn" aria-label="Close"><i
+                        class="fas fa-times"></i></button>
+            </div>
+            <div class="rc-modal-body">
+                <label class="rc-label">Service</label>
+                <select class="rc-select" id="rcService">
+                    <option value="derivFunding">Deriv Funding</option>
+                    <option value="derivPayout">Deriv Withdrawal (Payout)</option>
+                    <option value="ghana">Send to Ghana</option>
+                    <option value="kenya">Send to Kenya</option>
+                    <option value="supplier">Pay China Supplier</option>
+                </select>
+
+                <label class="rc-label" id="rcAmountLabel">Amount to Fund (USD)</label>
+                <div class="rc-input-group">
+                    <span class="rc-input-prefix" id="rcAmountPrefix">$</span>
+                    <input type="number" class="rc-input" id="rcAmount" placeholder="0.00" min="0">
+                </div>
+
+                <div class="rc-result-box">
+                    <div class="rc-result-row">
+                        <span>Rate Applied</span>
+                        <strong id="rcRate">&mdash;</strong>
+                    </div>
+                    <div class="rc-result-row">
+                        <span id="rcFeeLabel">Fee</span>
+                        <strong id="rcFee">&mdash;</strong>
+                    </div>
+                    <div class="rc-result-row rc-result-final">
+                        <span id="rcFinalLabel">You Pay</span>
+                        <strong id="rcFinal">&#8358;0.00</strong>
+                    </div>
+                </div>
+
+                <p class="rc-disclaimer"><i class="fas fa-circle-info"></i> Estimate only, for illustration. Actual
+                    rates are confirmed at the time of your transaction.</p>
+
+                <a href="register.html" class="btn btn-primary rc-cta">Create Account to Transact <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
 
     <!-- Mission Teaser - links out to the full About page -->
     <section id="about" class="mission-teaser">
@@ -582,6 +636,93 @@
 
             $(window).scroll(checkScroll);
             checkScroll(); // Initial check
+
+            // Rate Calculator
+            const RC_SERVICES = {
+                derivFunding: {
+                    amountLabel: 'Amount to Fund (USD)', prefix: '$',
+                    rate: 1535, rateLabel: '&#8358;1,535 / $1', feePct: 0,
+                    feeLabel: 'Fee', finalLabel: 'You Pay (NGN)',
+                    calc: function (amt) {
+                        const ngn = amt * 1535;
+                        return { fee: 'Free', final: '&#8358;' + ngn.toLocaleString(undefined, { maximumFractionDigits: 2 }) };
+                    }
+                },
+                derivPayout: {
+                    amountLabel: 'Amount to Withdraw (USD)', prefix: '$',
+                    rate: 1490, rateLabel: '&#8358;1,490 / $1',
+                    feeLabel: 'Service Fee (1.5%)', finalLabel: 'You Receive (NGN)',
+                    calc: function (amt) {
+                        const gross = amt * 1490;
+                        const fee = gross * 0.015;
+                        const net = gross - fee;
+                        return { fee: '&#8358;' + fee.toLocaleString(undefined, { maximumFractionDigits: 2 }), final: '&#8358;' + net.toLocaleString(undefined, { maximumFractionDigits: 2 }) };
+                    }
+                },
+                ghana: {
+                    amountLabel: 'Amount to Send (NGN)', prefix: '&#8358;',
+                    rate: 16.20 / 1535, rateLabel: 'GHS 16.20 / $1',
+                    feeLabel: 'Service Fee', finalLabel: 'Recipient Gets (GHS)',
+                    calc: function (amt) {
+                        const afterFee = Math.max(amt - 2000, 0);
+                        const ghs = afterFee * (16.20 / 1535);
+                        return { fee: '&#8358;2,000.00', final: 'GHS ' + ghs.toLocaleString(undefined, { maximumFractionDigits: 2 }) };
+                    }
+                },
+                kenya: {
+                    amountLabel: 'Amount to Send (NGN)', prefix: '&#8358;',
+                    rate: 145.50 / 1535, rateLabel: 'KES 145.50 / $1',
+                    feeLabel: 'Service Fee', finalLabel: 'Recipient Gets (KES)',
+                    calc: function (amt) {
+                        const afterFee = Math.max(amt - 2000, 0);
+                        const kes = afterFee * (145.50 / 1535);
+                        return { fee: '&#8358;2,000.00', final: 'KES ' + kes.toLocaleString(undefined, { maximumFractionDigits: 2 }) };
+                    }
+                },
+                supplier: {
+                    amountLabel: 'Amount to Pay Supplier (CNY)', prefix: '&yen;',
+                    rate: 7.35 / 1535, rateLabel: '&yen;7.35 / $1',
+                    feeLabel: 'Bank Charge + Processing Fee', finalLabel: 'Total Debited (NGN)',
+                    calc: function (amt) {
+                        const ngnCost = amt / (7.35 / 1535);
+                        const charges = 8000 + 2000;
+                        const total = ngnCost + charges;
+                        return { fee: '&#8358;10,000.00', final: '&#8358;' + total.toLocaleString(undefined, { maximumFractionDigits: 2 }) };
+                    }
+                }
+            };
+
+            function rcUpdate() {
+                const svc = RC_SERVICES[$('#rcService').val()];
+                $('#rcAmountLabel').text(svc.amountLabel);
+                $('#rcAmountPrefix').html(svc.prefix);
+                $('#rcRate').html(svc.rateLabel);
+                $('#rcFeeLabel').text(svc.feeLabel);
+                $('#rcFinalLabel').text(svc.finalLabel);
+
+                const amt = parseFloat($('#rcAmount').val());
+                if (!amt || amt <= 0) {
+                    $('#rcFee').text('&mdash;');
+                    $('#rcFinal').html(svc.prefix === '&#8358;' ? '&#8358;0.00' : '0.00');
+                    return;
+                }
+                const result = svc.calc(amt);
+                $('#rcFee').html(result.fee);
+                $('#rcFinal').html(result.final);
+            }
+
+            $('#rcService, #rcAmount').on('input change', rcUpdate);
+
+            $('#openCalcBtn').on('click', function () {
+                $('#rcOverlay').addClass('active');
+                $('body').css('overflow', 'hidden');
+                rcUpdate();
+            });
+            $('#rcCloseBtn, #rcOverlay').on('click', function (e) {
+                if (e.target !== this) return;
+                $('#rcOverlay').removeClass('active');
+                $('body').css('overflow', 'auto');
+            });
         });
     </script>
 </body>

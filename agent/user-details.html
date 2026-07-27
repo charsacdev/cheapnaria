@@ -117,7 +117,10 @@
                         <img id="pUserAvatar" src="" class="rounded-circle border border-4 border-white shadow-sm mb-3"
                             width="100">
                         <h5 class="fw-bold mb-1" id="pUserName">-</h5>
-                        <span class="badge-status status-approved" id="pUserStatus">Active Account</span>
+                        <div class="d-flex align-items-center justify-content-center gap-2">
+                            <span class="badge-status status-approved" id="pUserStatus">Active Account</span>
+                            <span class="tier-badge tier-badge-0" id="pUserTier">Unverified</span>
+                        </div>
                     </div>
 
                     <div class="alert alert-light border small mb-4" id="blockedNotice" style="display:none;">
@@ -128,14 +131,37 @@
                     <button type="button" class="btn btn-outline-danger w-100 rounded-pill fw-bold mb-4"
                         id="blockUserBtn"><i class="fas fa-user-slash me-2"></i> Block User</button>
 
-                    <h6 class="fw-bold mb-3 smaller text-muted text-uppercase letter-spacing-1">Basic Information</h6>
-                    <div class="mb-3">
-                        <label class="text-muted smaller fw-bold d-block mb-1">Email Address</label>
-                        <p class="fw-bold mb-0" id="pUserEmail">-</p>
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <h6 class="fw-bold mb-0 smaller text-muted text-uppercase letter-spacing-1">Basic Information</h6>
+                        <button type="button" class="btn btn-link btn-sm p-0 fw-bold text-decoration-none"
+                            id="saveProfileBtn">Save Changes</button>
                     </div>
                     <div class="mb-3">
-                        <label class="text-muted smaller fw-bold d-block mb-1">Country</label>
-                        <p class="fw-bold mb-0" id="pUserCountry">-</p>
+                        <label class="text-muted smaller fw-bold d-block mb-1">Email Address</label>
+                        <input type="email" class="form-control form-control-sm" id="pUserEmail">
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-6">
+                            <label class="text-muted smaller fw-bold d-block mb-1">Country</label>
+                            <input type="text" class="form-control form-control-sm" id="pUserCountry">
+                        </div>
+                        <div class="col-6">
+                            <label class="text-muted smaller fw-bold d-block mb-1">State</label>
+                            <input type="text" class="form-control form-control-sm" id="pUserState">
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-6">
+                            <label class="text-muted smaller fw-bold d-block mb-1">Age</label>
+                            <input type="number" class="form-control form-control-sm" id="pUserAge">
+                        </div>
+                        <div class="col-6">
+                            <label class="text-muted smaller fw-bold d-block mb-1">Gender</label>
+                            <select class="form-select form-select-sm" id="pUserGender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label class="text-muted smaller fw-bold d-block mb-1">KYC Status</label>
@@ -220,18 +246,39 @@
     <script src="../js/theme.js"></script>
     <script src="../js/mock-data.js"></script>
     <script src="../js/agent-block.js"></script>
+    <script src="../js/user-overrides.js"></script>
+    <script src="../js/verification.js"></script>
     <script>
         $(document).ready(function () {
             const params = new URLSearchParams(window.location.search);
             const id = params.get('id') || CN_DATA.USERS[0].id;
-            const user = CN_DATA.USERS.find(function (u) { return u.id === id; }) || CN_DATA.USERS[0];
+            let user = CN_DATA.USERS.find(function (u) { return u.id === id; }) || CN_DATA.USERS[0];
+            user = CN_OVERRIDES.apply(user);
 
             $('#pUserAvatar').attr('src', 'https://ui-avatars.com/api/?name=' + encodeURIComponent(user.name) + '&background=' + user.avatarBg + '&color=fff&size=128');
             $('#pUserName').text(user.name);
-            $('#pUserEmail').text(user.email);
-            $('#pUserCountry').text(user.country);
+            $('#pUserEmail').val(user.email);
+            $('#pUserCountry').val(user.country);
+            $('#pUserState').val(user.state);
+            $('#pUserAge').val(user.age);
+            $('#pUserGender').val(user.gender);
             $('#pUserKyc').text(user.kyc === 'verified' ? 'Verified' : 'Unverified');
             $('#pUserJoined').text(user.joined);
+
+            const tier = typeof user.tier === 'number' ? user.tier : 0;
+            $('#pUserTier').removeClass('tier-badge-0 tier-badge-1 tier-badge-2 tier-badge-3')
+                .addClass('tier-badge-' + tier).text(CN_VERIFY.TIER_LABELS[tier]);
+
+            $('#saveProfileBtn').click(function () {
+                CN_OVERRIDES.save(user.id, {
+                    email: $('#pUserEmail').val(),
+                    country: $('#pUserCountry').val(),
+                    state: $('#pUserState').val(),
+                    age: parseInt($('#pUserAge').val()) || user.age,
+                    gender: $('#pUserGender').val()
+                });
+                alert('Profile updated.');
+            });
 
             function refreshBlockUi() {
                 const blocked = CN_BLOCK.isBlocked(user);

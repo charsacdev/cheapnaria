@@ -39,6 +39,7 @@
             <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
             <a href="rates.html" class="nav-link"><i class="fas fa-percent"></i> Rates</a>
             <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> More Services</a>
+            <a href="referrals.html" class="nav-link"><i class="fas fa-user-plus"></i> Referrals</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
             <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
             <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
@@ -69,6 +70,7 @@
                 <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
                 <a href="rates.html" class="nav-link"><i class="fas fa-percent"></i> Rates</a>
                 <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> More Services</a>
+                <a href="referrals.html" class="nav-link"><i class="fas fa-user-plus"></i> Referrals</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
                 <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
                 <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
@@ -108,7 +110,7 @@
                         <img src="../images/avatar-john.jpg" alt="Profile" class="rounded-circle" width="40">
                         <div class="d-none d-sm-block">
                             <p class="mb-0 small fw-bold">John Doe</p>
-                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Verified User</p>
+                            <span class="tier-badge tier-badge-0" id="headerTierBadge">Unverified</span>
                         </div>
                     </div>
                     <ul class="dropdown-menu dropdown-menu-end shadow border-0">
@@ -564,7 +566,7 @@
                             <i class="fas fa-chevron-right wmi-chevron"></i>
                         </a>
                         <button type="button" class="wallet-menu-item border-0 bg-transparent w-100 text-start"
-                            data-bs-toggle="modal" data-bs-target="#derivModal">
+                            data-bs-toggle="modal" data-bs-target="#derivActionsModal">
                             <div class="wmi-icon"><i class="fas fa-chart-line"></i></div>
                             <div class="wmi-text">
                                 <p>Deriv</p>
@@ -686,7 +688,7 @@
     <!-- Mobile Bottom Tab Bar -->
     <nav class="bottom-tab-bar d-lg-none">
         <a href="index.html" class="btb-item active"><i class="fas fa-house"></i><span>Home</span></a>
-        <a href="index.html#deriv" class="btb-item"><i class="fas fa-chart-line"></i><span>Deriv</span></a>
+        <button type="button" class="btb-item" data-bs-toggle="modal" data-bs-target="#derivActionsModal"><i class="fas fa-chart-line"></i><span>Deriv</span></button>
         <div class="btb-item btb-fab-wrap">
             <button type="button" class="btb-fab" data-bs-toggle="modal" data-bs-target="#quickActionsModal"><i
                     class="fas fa-plus"></i></button>
@@ -746,7 +748,7 @@
     </div>
 
     <!-- Deriv Funding Modal -->
-    <div class="modal fade" id="derivModal" tabindex="-1">
+    <div class="modal fade" id="derivActionsModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg rounded-4">
                 <div class="modal-header border-0 pb-0">
@@ -789,9 +791,14 @@
     <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
     <script src="../js/theme.js"></script>
+    <script src="../js/verification.js"></script>
 
     <script>
         $(document).ready(function () {
+            const dashTier = CN_VERIFY.getTier();
+            $('#headerTierBadge').removeClass('tier-badge-0 tier-badge-1 tier-badge-2 tier-badge-3')
+                .addClass('tier-badge-' + dashTier).text(CN_VERIFY.TIER_LABELS[dashTier]);
+
             $('#recentTransactions').DataTable({
                 responsive: false,
                 dom: '<"d-none"f>rt<"d-flex align-items-center justify-content-between mt-3"ip>',
@@ -824,7 +831,7 @@
 
             // Open Deriv modal directly if arriving via #deriv hash
             if (window.location.hash === '#deriv') {
-                new bootstrap.Modal(document.getElementById('derivModal')).show();
+                new bootstrap.Modal(document.getElementById('derivActionsModal')).show();
             }
 
             // Services grid: show first 2 rows, expand the rest in place

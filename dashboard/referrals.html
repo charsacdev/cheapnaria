@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
-    <title>Support | CheapNaria</title>
+    <title>Referrals | CheapNaria</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -32,10 +33,10 @@
             <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
             <a href="rates.html" class="nav-link"><i class="fas fa-percent"></i> Rates</a>
             <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> More Services</a>
-            <a href="referrals.html" class="nav-link"><i class="fas fa-user-plus"></i> Referrals</a>
+            <a href="referrals.html" class="nav-link active"><i class="fas fa-user-plus"></i> Referrals</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
             <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
-            <a href="support.html" class="nav-link active"><i class="fas fa-headset"></i> Support</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
             <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
         </nav>
 
@@ -63,10 +64,10 @@
                 <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
                 <a href="rates.html" class="nav-link"><i class="fas fa-percent"></i> Rates</a>
                 <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> More Services</a>
-                <a href="referrals.html" class="nav-link"><i class="fas fa-user-plus"></i> Referrals</a>
+                <a href="referrals.html" class="nav-link active"><i class="fas fa-user-plus"></i> Referrals</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
                 <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
-                <a href="support.html" class="nav-link active"><i class="fas fa-headset"></i> Support</a>
+                <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
                 <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
                 <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </nav>
@@ -79,45 +80,90 @@
                 <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
                     <i class="fas fa-bars"></i>
                 </button>
-                <h4 class="m-0">Support</h4>
+                <h4 class="m-0">Referrals</h4>
             </div>
             <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
             </button>
         </header>
 
-        <div class="row justify-content-center">
-            <div class="col-lg-7">
-                <div class="card p-4">
-
-                    <div class="d-flex align-items-center gap-3 mb-3 pb-3 border-bottom">
-                        <div class="ctc-icon" style="width:44px;height:44px;"><i class="fas fa-headset"></i></div>
-                        <div>
-                            <p class="mb-0 fw-bold">CheapNaria Support</p>
-                            <small class="text-success"><i class="fas fa-circle" style="font-size:6px;"></i>
-                                Online &middot; handled by <span id="chatAgentLabel">our team</span></small>
-                        </div>
-                    </div>
-
-                    <div class="chat-window" id="chatWindow"></div>
-
-                    <div class="chat-input-row">
-                        <button type="button" class="btn btn-light rounded-circle flex-shrink-0"
-                            id="chatAttachBtn" style="width:44px;height:44px;" title="Attach a file">
-                            <i class="fas fa-paperclip"></i>
-                        </button>
-                        <input type="file" id="chatFileInput" class="d-none"
-                            accept="image/*,.pdf,.doc,.docx">
-                        <textarea class="form-control" id="chatInput" rows="1"
-                            placeholder="Type your message..."></textarea>
-                        <button type="button" class="btn btn-primary rounded-circle flex-shrink-0"
-                            id="chatSendBtn" style="width:46px;height:46px;">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </div>
-                    <small class="text-muted d-block mt-2">You can attach an image, PDF or document (max 5MB).</small>
-
+        <!-- Referral Code Card -->
+        <div class="card p-4 mb-4 border-0 text-white"
+            style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+            <div class="row align-items-center g-3">
+                <div class="col-md-7">
+                    <h5 class="fw-bold mb-1">Earn ₦500 for every friend you refer</h5>
+                    <p class="mb-0 opacity-75 small">Share your link below. You get paid as soon as they make their
+                        first deposit.</p>
                 </div>
+                <div class="col-md-5">
+                    <div class="d-flex align-items-center gap-2 bg-white bg-opacity-10 rounded-4 p-2">
+                        <input type="text" class="form-control bg-transparent text-white border-0 fw-bold" readonly
+                            id="referralLink" value="cheapnaria.com/r/johndoe_cn"
+                            style="box-shadow:none;">
+                        <button type="button" class="btn btn-light rounded-3 flex-shrink-0" id="copyReferralBtn">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="row g-3 g-md-4 mb-4 text-center text-md-start">
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-primary-subtle text-primary mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Total Referrals</p>
+                    <h4 class="fw-800 mb-0" id="statTotal">0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-success-subtle text-success mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-circle-check"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Qualified</p>
+                    <h4 class="fw-800 mb-0" id="statQualified">0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-warning-subtle text-warning mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Pending First Deposit</p>
+                    <h4 class="fw-800 mb-0" id="statPending">0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-primary-subtle text-primary mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-sack-dollar"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Total Earned</p>
+                    <h4 class="fw-800 mb-0" id="statEarned">₦0</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Referrals Table -->
+        <div class="card p-4">
+            <h6 class="fw-bold mb-3">People You've Referred</h6>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle w-100" id="referralsTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Date Joined</th>
+                            <th>Status</th>
+                            <th>Reward</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
         </div>
     </main>
@@ -221,152 +267,48 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script src="../js/theme.js"></script>
-    <script src="../js/mock-data.js"></script>
     <script>
         $(document).ready(function () {
-            // The logged-in customer for this dashboard demo (matches the "John Doe" header avatar).
-            const CURRENT_USER = CN_DATA.USERS[0];
-            const MAX_FILE_BYTES = 5 * 1024 * 1024;
+            const REWARD = 500;
+            const REFERRALS = [
+                { name: 'Amaka Chi', joined: 'Jul 20, 2026', qualified: true },
+                { name: 'Tunde Bakare', joined: 'Jul 15, 2026', qualified: true },
+                { name: 'Blessing O.', joined: 'Jul 08, 2026', qualified: true },
+                { name: 'Emeka Nwosu', joined: 'Jun 29, 2026', qualified: false },
+                { name: 'Grace Effiong', joined: 'Jun 21, 2026', qualified: false },
+                { name: 'Kelvin Iheanacho', joined: 'Jun 10, 2026', qualified: true }
+            ];
 
-            let conversation = CN_DATA.SUPPORT_CONVERSATIONS.find(function (c) {
-                return c.user.id === CURRENT_USER.id;
+            const $tbody = $('#referralsTable tbody');
+            let qualified = 0;
+            REFERRALS.forEach(function (r) {
+                if (r.qualified) qualified++;
+                $tbody.append(
+                    '<tr><td class="fw-bold">' + r.name + '</td>' +
+                    '<td class="text-muted small">' + r.joined + '</td>' +
+                    '<td>' + (r.qualified
+                        ? '<span class="badge-status status-approved">Qualified</span>'
+                        : '<span class="badge-status status-pending">Awaiting First Deposit</span>') + '</td>' +
+                    '<td class="fw-800 ' + (r.qualified ? 'text-success' : 'text-muted') + '">' + (r.qualified ? '₦' + REWARD.toLocaleString() : '—') + '</td></tr>'
+                );
             });
 
-            if (!conversation) {
-                conversation = {
-                    id: Math.max.apply(null, CN_DATA.SUPPORT_CONVERSATIONS.map(function (c) { return c.id; })) + 1,
-                    user: CURRENT_USER,
-                    agent: CN_DATA.AGENT_NAMES[0],
-                    message: '',
-                    time: 'Just now',
-                    unread: 0,
-                    status: 'unassigned',
-                    thread: [{ from: 'agent', text: "Hi! I'm a CheapNaria support agent — how can I help you today?" }]
-                };
-                CN_DATA.SUPPORT_CONVERSATIONS.unshift(conversation);
-            }
+            $('#referralsTable').DataTable({ responsive: true, pageLength: 10 });
 
-            conversation.unread = 0;
-            $('#chatAgentLabel').text(conversation.agent);
+            $('#statTotal').text(REFERRALS.length);
+            $('#statQualified').text(qualified);
+            $('#statPending').text(REFERRALS.length - qualified);
+            $('#statEarned').text('₦' + (qualified * REWARD).toLocaleString());
 
-            function timeNow() {
-                return new Date().toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
-            }
-
-            function scrollChatToBottom() {
-                const el = document.getElementById('chatWindow');
-                el.scrollTop = el.scrollHeight;
-            }
-
-            // `from` is the shared data model's value ('customer' | 'agent'); on this
-            // (the customer's) screen, "customer" bubbles are the current user's own
-            // messages, so they render on the right — the agent's on the left.
-            function bubbleClassFor(from) {
-                return from === 'customer' ? 'user' : 'agent';
-            }
-
-            function renderMessage(m) {
-                const $bubble = $('<div>').addClass('chat-bubble ' + bubbleClassFor(m.from));
-                $('<div>').html(m.text).appendTo($bubble);
-                $('<small>').text(timeNow()).appendTo($bubble);
-                $('#chatWindow').append($bubble);
-            }
-
-            function renderThread() {
-                $('#chatWindow').empty();
-                conversation.thread.forEach(renderMessage);
-                scrollChatToBottom();
-            }
-
-            function showTyping() {
-                const $typing = $('<div>').addClass('chat-bubble agent chat-typing').attr('id', 'typingBubble')
-                    .html('<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>');
-                $('#chatWindow').append($typing);
-                scrollChatToBottom();
-            }
-
-            function agentAutoReply(text) {
-                showTyping();
-                setTimeout(function () {
-                    $('#typingBubble').remove();
-                    const m = { from: 'agent', text: text };
-                    conversation.thread.push(m);
-                    conversation.message = text;
-                    renderMessage(m);
-                    scrollChatToBottom();
-                }, 1400);
-            }
-
-            renderThread();
-
-            const pendingMessage = sessionStorage.getItem('cn-pending-support-message');
-            if (pendingMessage) {
-                sessionStorage.removeItem('cn-pending-support-message');
-                pushCustomerMessage(pendingMessage);
-                agentAutoReply("Thanks — I've got all the details for your request and I'm passing this to a specialist now. We'll process this manually and follow up here shortly.");
-            }
-
-            function pushCustomerMessage(html) {
-                const m = { from: 'customer', text: html };
-                conversation.thread.push(m);
-                conversation.message = html;
-                conversation.status = conversation.status === 'resolved' ? 'inbox' : conversation.status;
-                renderMessage(m);
-                scrollChatToBottom();
-            }
-
-            function sendMessage() {
-                const text = $('#chatInput').val().trim();
-                if (!text) return;
-                pushCustomerMessage($('<div>').text(text).html());
-                $('#chatInput').val('').trigger('input');
-                agentAutoReply("Thanks for the details — I've logged this and a specialist will follow up shortly. Is there anything else I can help with?");
-            }
-
-            $('#chatSendBtn').click(sendMessage);
-            $('#chatInput').on('keydown', function (e) {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    sendMessage();
-                }
-            });
-
-            // Auto-grow the textarea
-            $('#chatInput').on('input', function () {
-                this.style.height = 'auto';
-                this.style.height = Math.min(this.scrollHeight, 120) + 'px';
-            });
-
-            // File attachment
-            $('#chatAttachBtn').click(function () {
-                $('#chatFileInput').trigger('click');
-            });
-
-            $('#chatFileInput').on('change', function () {
-                const file = this.files && this.files[0];
-                if (!file) return;
-
-                if (file.size > MAX_FILE_BYTES) {
-                    alert('That file is larger than 5MB — please attach a smaller file.');
-                    this.value = '';
-                    return;
-                }
-
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    const dataUrl = e.target.result;
-                    const isImage = file.type.startsWith('image/');
-                    const safeName = $('<div>').text(file.name).html();
-                    const html = isImage
-                        ? '<img src="' + dataUrl + '" alt="' + safeName + '" class="chat-attachment-img">'
-                        : '<a href="' + dataUrl + '" download="' + safeName + '" class="chat-attachment-file"><i class="fas fa-file-arrow-down"></i>' + safeName + '</a>';
-
-                    pushCustomerMessage(html);
-                    agentAutoReply("Got your file, thanks — I'll take a look and get back to you shortly.");
-                };
-                reader.readAsDataURL(file);
-                this.value = '';
+            $('#copyReferralBtn').click(function () {
+                navigator.clipboard.writeText($('#referralLink').val());
+                const $btn = $(this);
+                const original = $btn.html();
+                $btn.html('<i class="fas fa-check"></i> Copied');
+                setTimeout(function () { $btn.html(original); }, 1500);
             });
         });
     </script>

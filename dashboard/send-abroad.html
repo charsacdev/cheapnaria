@@ -32,6 +32,7 @@
             <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
             <a href="rates.html" class="nav-link"><i class="fas fa-percent"></i> Rates</a>
             <a href="services.html" class="nav-link active"><i class="fas fa-layer-group"></i> More Services</a>
+            <a href="referrals.html" class="nav-link"><i class="fas fa-user-plus"></i> Referrals</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
             <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
             <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
@@ -62,6 +63,7 @@
                 <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
                 <a href="rates.html" class="nav-link"><i class="fas fa-percent"></i> Rates</a>
                 <a href="services.html" class="nav-link active"><i class="fas fa-layer-group"></i> More Services</a>
+                <a href="referrals.html" class="nav-link"><i class="fas fa-user-plus"></i> Referrals</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
                 <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
                 <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
@@ -328,18 +330,31 @@
                             </div>
                         </div>
 
-                        <label class="form-label fw-600 text-center w-100">Enter PIN to confirm</label>
-                        <div class="pin-dots-wrapper">
-                            <div class="pin-dot" data-i="0"></div>
-                            <div class="pin-dot" data-i="1"></div>
-                            <div class="pin-dot" data-i="2"></div>
-                            <div class="pin-dot" data-i="3"></div>
-                            <input type="password" inputmode="numeric" maxlength="4" class="pin-hidden-input"
-                                id="pinInput">
+                        <div id="pinRequiredNotice" class="rc-warning-box d-none">
+                            <i class="fas fa-lock rc-warning-icon"></i>
+                            <div>
+                                <p>Set a Transaction PIN first</p>
+                                <small>You need a 4-digit PIN before you can send. <a href="profile.html#security">Set
+                                        it now</a>.</small>
+                            </div>
                         </div>
 
-                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm rc-confirm-btn"
-                            id="confirmAbroadBtn"><i class="fas fa-lock"></i> Confirm &amp; Send</button>
+                        <div id="pinEntryArea">
+                            <label class="form-label fw-600 text-center w-100">Enter PIN to confirm</label>
+                            <div class="pin-dots-wrapper">
+                                <div class="pin-dot" data-i="0"></div>
+                                <div class="pin-dot" data-i="1"></div>
+                                <div class="pin-dot" data-i="2"></div>
+                                <div class="pin-dot" data-i="3"></div>
+                                <input type="password" inputmode="numeric" maxlength="4" class="pin-hidden-input"
+                                    id="pinInput">
+                            </div>
+                            <p id="pinErrorMsg" class="text-danger small text-center d-none">Incorrect PIN. Please
+                                try again.</p>
+
+                            <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm rc-confirm-btn"
+                                id="confirmAbroadBtn"><i class="fas fa-lock"></i> Confirm &amp; Send</button>
+                        </div>
                     </div>
 
                 </div>
@@ -350,7 +365,7 @@
     <!-- Mobile Bottom Tab Bar -->
     <nav class="bottom-tab-bar d-lg-none">
         <a href="index.html" class="btb-item"><i class="fas fa-house"></i><span>Home</span></a>
-        <a href="index.html#deriv" class="btb-item"><i class="fas fa-chart-line"></i><span>Deriv</span></a>
+        <button type="button" class="btb-item" data-bs-toggle="modal" data-bs-target="#derivActionsModal"><i class="fas fa-chart-line"></i><span>Deriv</span></button>
         <div class="btb-item btb-fab-wrap">
             <button type="button" class="btb-fab" data-bs-toggle="modal" data-bs-target="#quickActionsModal"><i
                     class="fas fa-plus"></i></button>
@@ -428,12 +443,53 @@
             </div>
         </div>
     </div>
+    <!-- Deriv Actions Modal -->
+    <div class="modal fade" id="derivActionsModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="fw-bold">Deriv</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="text-muted small mb-4">Choose whether you want to fund or withdraw from your Deriv CR
+                        account.</p>
+                    <div class="d-grid gap-3">
+                        <a href="deriv-deposit.html" class="select-method-card text-decoration-none">
+                            <div class="smc-icon"><i class="fas fa-arrow-down"></i></div>
+                            <div class="smc-text">
+                                <p>Fund Deriv Account</p>
+                                <small class="text-muted">Deposit into your CR account</small>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="deriv-withdraw.html" class="select-method-card text-decoration-none">
+                            <div class="smc-icon"><i class="fas fa-arrow-up"></i></div>
+                            <div class="smc-text">
+                                <p>Withdraw from Deriv</p>
+                                <small class="text-muted">Payout from your CR account</small>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/theme.js"></script>
+    <script src="../js/transaction-pin.js"></script>
     <script>
         $(document).ready(function () {
+            if (!CN_PIN.isSet()) {
+                $('#pinRequiredNotice').removeClass('d-none');
+                $('#pinEntryArea').addClass('d-none');
+            }
+
             let method = null;
             let country = null;
             const SERVICE_FEE = 2000; // flat NGN, added to amount sent
@@ -562,7 +618,15 @@
             });
 
             $('#confirmAbroadBtn').click(function () {
-                if ($('#pinInput').val().length < 4) { alert('Please enter your 4-digit PIN'); return; }
+                const pin = $('#pinInput').val();
+                if (pin.length < 4) { alert('Please enter your 4-digit PIN'); return; }
+                if (!CN_PIN.verify(pin)) {
+                    $('#pinErrorMsg').removeClass('d-none');
+                    $('#pinInput').val('');
+                    $('.pin-dot').removeClass('filled');
+                    return;
+                }
+                $('#pinErrorMsg').addClass('d-none');
                 new bootstrap.Modal(document.getElementById('successModal')).show();
             });
         });

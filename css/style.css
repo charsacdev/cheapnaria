@@ -562,6 +562,237 @@ table.dataTable tbody td {
     color: #991b1b;
 }
 
+/* Tier badges (KYC verification level) */
+.tier-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 2rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.tier-badge-0 {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.tier-badge-1 {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.tier-badge-2 {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.tier-badge-3 {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.kyc-step-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    background: #f1f5f9;
+    color: #64748b;
+    transition: var(--transition);
+}
+
+.kyc-step-icon.done {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+/* E-Wallet Services flow */
+.ewallet-service-card {
+    position: relative;
+    background: var(--bg-card);
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    height: 100%;
+}
+
+.ewallet-service-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.ewallet-service-card.disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.esc-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin: 0 auto 0.9rem;
+}
+
+.ewallet-service-card h6 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 0.88rem;
+}
+
+.esc-soon {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    background: #fef3c7;
+    color: #92400e;
+    font-size: 0.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: 50px;
+}
+
+.ewallet-type-card {
+    background: var(--bg-card);
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.ewallet-type-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.etc-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 1rem;
+}
+
+.etc-buy {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.etc-sell {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.ewallet-type-card h6 {
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+}
+
+.ewallet-type-card p {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    margin: 0;
+}
+
+.pay-method-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1.1rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.pay-method-option:has(input:checked) {
+    border-color: var(--primary-color);
+    background: var(--primary-light);
+}
+
+.pay-method-option input {
+    accent-color: var(--primary-color);
+}
+
+/* Scan-to-Pay viewfinder */
+.qr-scan-viewfinder {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
+    background: #0f172a;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-scan-viewfinder>i {
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.qsv-corner {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border: 3px solid var(--primary-color);
+}
+
+.qsv-tl {
+    top: 12px;
+    left: 12px;
+    border-right: none;
+    border-bottom: none;
+    border-top-left-radius: 8px;
+}
+
+.qsv-tr {
+    top: 12px;
+    right: 12px;
+    border-left: none;
+    border-bottom: none;
+    border-top-right-radius: 8px;
+}
+
+.qsv-bl {
+    bottom: 12px;
+    left: 12px;
+    border-right: none;
+    border-top: none;
+    border-bottom-left-radius: 8px;
+}
+
+.qsv-br {
+    bottom: 12px;
+    right: 12px;
+    border-left: none;
+    border-top: none;
+    border-bottom-right-radius: 8px;
+}
+
 /* Custom Inputs */
 .form-control,
 .form-select {

@@ -41,16 +41,28 @@
         return 'approved';
     }
 
+    const NG_STATES = ['Lagos', 'Abuja (FCT)', 'Rivers', 'Kano', 'Oyo', 'Enugu', 'Kaduna'];
+    const GENDERS = ['Male', 'Female'];
+
     // --- USERS (25) ---
+    // First two users are seeded as having registered "today" (relative to the
+    // fixed REPORT_REF_DATE below) so the admin dashboard's "New Users Today"
+    // card has something non-zero to show in the demo.
     const USERS = NAMES.map(function (name, i) {
+        const joinedDaysAgo = i < 2 ? 0 : 200 + i * 7;
         return {
             id: 'CN-' + (10000 + i),
             name: name,
             email: slugEmail(name, i),
             country: COUNTRIES[i % COUNTRIES.length],
+            state: NG_STATES[i % NG_STATES.length],
+            age: 21 + (i * 3) % 40,
+            gender: GENDERS[i % 2],
+            tier: i % 4,
             kyc: (i % 4 === 3) ? 'unverified' : 'verified',
             status: (i % 9 === 8) ? 'blocked' : 'active',
-            joined: shortDate(200 + i * 7),
+            joined: shortDate(joinedDaysAgo),
+            joinedDaysAgo: joinedDaysAgo,
             avatarBg: ['10b981', '6366f1', 'f59e0b', 'ef4444', '0dcaf0'][i % 5]
         };
     });
@@ -463,6 +475,7 @@
 
         const activeUsers = USERS.filter(function (u) { return u.status === 'active'; }).length;
         const verifiedPct = Math.round((USERS.filter(function (u) { return u.kyc === 'verified'; }).length / USERS.length) * 1000) / 10;
+        const newUsersToday = USERS.filter(function (u) { return u.joinedDaysAgo === 0; }).length;
 
         // Same combined-pool computation the From/To date-range picker uses (for
         // fromDate = 6 days ago, toDate = today), so the default "this week" cards
@@ -477,6 +490,7 @@
             successRatePct: rangeStats.successRatePct,
             activeUsers: activeUsers,
             verifiedPct: verifiedPct,
+            newUsersToday: newUsersToday,
             liquidityAvailable: rangeStats.liquidityAvailable,
             volumeDeltaPct: pctChange(todayVolume, yestVolume),
             profitDeltaPct: pctChange(todayProfit, yestProfit),

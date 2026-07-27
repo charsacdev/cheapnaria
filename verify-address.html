@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proof of Address | CheapNaria</title>
+    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="auth-container">
+
+    <div class="auth-card auth-card-wide animate-up">
+        <div class="auth-header">
+            <a href="index.html" class="logo" style="justify-content: center; margin-bottom: 2rem;">
+                <img src="images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+        </div>
+
+        <div class="verify-progress">
+            <div class="verify-progress-step done"><div class="verify-progress-dot"><i class="fas fa-check"></i></div></div>
+            <div class="verify-progress-line"></div>
+            <div class="verify-progress-step done"><div class="verify-progress-dot"><i class="fas fa-check"></i></div></div>
+            <div class="verify-progress-line"></div>
+            <div class="verify-progress-step active"><div class="verify-progress-dot">3</div></div>
+            <div class="verify-progress-line"></div>
+            <div class="verify-progress-step"><div class="verify-progress-dot">4</div></div>
+        </div>
+
+        <div class="auth-header" style="margin-bottom: 2rem;">
+            <h2 style="font-size: 1.8rem; color: var(--secondary); letter-spacing: -1px;">Proof of address &amp;
+                selfie</h2>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">The last step to unlock full Tier 3 access and
+                the highest transaction limits.</p>
+        </div>
+
+        <div class="form-group" style="text-align: left; margin-bottom: 0.75rem;">
+            <label style="font-size: 0.9rem; font-weight: 700; color: var(--secondary); display: block; margin-bottom: 0.6rem;">Proof
+                of Address</label>
+        </div>
+        <div id="addrUploadArea" class="upload-dropzone">
+            <i class="fas fa-file-lines"></i>
+            <p>Click to upload document</p>
+            <small>Utility bill or bank statement, issued within the last 3 months</small>
+            <input type="file" id="addrFileInput" style="display: none;" accept="image/*,.pdf">
+        </div>
+        <div id="addrPreviewArea" class="upload-preview" style="display: none;">
+            <i class="fas fa-file-invoice"></i>
+            <span class="upload-preview-name" id="addrFileName">-</span>
+            <button type="button" id="removeAddrBtn"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div class="form-group" style="text-align: left; margin: 1.5rem 0 0.75rem;">
+            <label style="font-size: 0.9rem; font-weight: 700; color: var(--secondary); display: block; margin-bottom: 0.6rem;">Selfie</label>
+        </div>
+        <div id="selfieUploadArea" class="upload-dropzone">
+            <i class="fas fa-camera"></i>
+            <p>Take or upload a selfie</p>
+            <small>Make sure your face is clearly visible and well-lit</small>
+            <input type="file" id="selfieFileInput" style="display: none;" accept="image/*" capture="user">
+        </div>
+        <div id="selfiePreviewArea" class="upload-preview" style="display: none;">
+            <i class="fas fa-user-circle"></i>
+            <span class="upload-preview-name" id="selfieFileName">-</span>
+            <button type="button" id="removeSelfieBtn"><i class="fas fa-times"></i></button>
+        </div>
+
+        <button type="button" class="btn btn-primary" id="submitAddrBtn" disabled
+            style="width: 100%; border-radius: 12px; padding: 1rem; opacity: 0.5; margin-top: 0.5rem;">
+            Submit for Review <i class="fas fa-arrow-right ms-2"></i>
+        </button>
+        <a href="verify-bank.html" class="verify-skip-link">Skip for now &mdash; I'll finish this later</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/verification.js"></script>
+    <script>
+        $(document).ready(function () {
+            function wireUpload(uploadId, inputId, previewId, nameId, removeId) {
+                $('#' + uploadId).on('click', function () { $('#' + inputId).trigger('click'); });
+                $('#' + inputId).on('change', function () {
+                    const file = this.files[0];
+                    if (!file) return;
+                    $('#' + nameId).text(file.name);
+                    $('#' + uploadId).hide();
+                    $('#' + previewId).show();
+                    checkReady();
+                });
+                $('#' + removeId).on('click', function () {
+                    $('#' + inputId).val('');
+                    $('#' + previewId).hide();
+                    $('#' + uploadId).show();
+                    checkReady();
+                });
+            }
+
+            function checkReady() {
+                const ready = $('#addrPreviewArea').is(':visible') && $('#selfiePreviewArea').is(':visible');
+                $('#submitAddrBtn').prop('disabled', !ready).css('opacity', ready ? '1' : '0.5');
+            }
+
+            wireUpload('addrUploadArea', 'addrFileInput', 'addrPreviewArea', 'addrFileName', 'removeAddrBtn');
+            wireUpload('selfieUploadArea', 'selfieFileInput', 'selfiePreviewArea', 'selfieFileName', 'removeSelfieBtn');
+
+            $('#submitAddrBtn').on('click', function () {
+                CN_VERIFY.saveAddress($('#addrFileName').text(), $('#selfieFileName').text());
+                window.location.href = 'verify-bank.html';
+            });
+        });
+    </script>
+</body>
+
+</html>

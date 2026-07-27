@@ -165,6 +165,7 @@
                         <tr>
                             <th>User</th>
                             <th>Country</th>
+                            <th>Tier</th>
                             <th>KYC</th>
                             <th>Status</th>
                             <th>Date Joined</th>
@@ -185,12 +186,15 @@
     <script src="../js/theme.js"></script>
     <script src="../js/mock-data.js"></script>
     <script src="../js/agent-block.js"></script>
+    <script src="../js/user-overrides.js"></script>
+    <script src="../js/verification.js"></script>
     <script>
         $(document).ready(function () {
             const tbody = $('#usersTable tbody');
             let activeCount = 0, blockedCount = 0;
 
-            CN_DATA.USERS.forEach(function (u) {
+            CN_DATA.USERS.forEach(function (rawUser) {
+                const u = CN_OVERRIDES.apply(rawUser);
                 const blocked = CN_BLOCK.isBlocked(u);
                 if (blocked) { blockedCount++; } else { activeCount++; }
 
@@ -200,6 +204,8 @@
                 const statusBadge = blocked
                     ? '<span class="badge-status status-rejected">Blocked</span>'
                     : '<span class="badge-status status-approved">Active</span>';
+                const tier = typeof u.tier === 'number' ? u.tier : 0;
+                const tierBadge = '<span class="tier-badge tier-badge-' + tier + '">' + CN_VERIFY.TIER_LABELS[tier] + '</span>';
 
                 tbody.append(
                     '<tr>' +
@@ -208,6 +214,7 @@
                     '<div><p class="mb-0 fw-bold">' + u.name + '</p><small class="text-muted">' + u.email + '</small></div>' +
                     '</div></td>' +
                     '<td>' + u.country + '</td>' +
+                    '<td>' + tierBadge + '</td>' +
                     '<td>' + kycBadge + '</td>' +
                     '<td>' + statusBadge + '</td>' +
                     '<td><span class="smaller text-muted">' + u.joined + '</span></td>' +

@@ -69,13 +69,14 @@
         }
 
         .stat-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
+            font-weight: 800;
             white-space: nowrap;
         }
 
         @media (max-width: 1399.98px) and (min-width: 1200px) {
             .stat-card h3 {
-                font-size: 1.1rem;
+                font-size: 0.98rem;
             }
         }
 
@@ -229,6 +230,7 @@
         <nav class="nav flex-column">
             <a href="dashboard.html" class="nav-link active"><i class="fas fa-th-large"></i> Dashboard</a>
             <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+            <a href="tiers.html" class="nav-link"><i class="fas fa-layer-group"></i> Tiers</a>
             <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
                     class="badge bg-danger rounded-pill ms-auto">13</span></a>
             <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
@@ -266,6 +268,7 @@
             <nav class="nav flex-column">
                 <a href="dashboard.html" class="nav-link active"><i class="fas fa-th-large"></i> Dashboard</a>
                 <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+                <a href="tiers.html" class="nav-link"><i class="fas fa-layer-group"></i> Tiers</a>
                 <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
                         class="badge bg-danger rounded-pill ms-auto">13</span></a>
                 <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
@@ -351,7 +354,7 @@
 
         <!-- Stats Grid -->
         <div class="row g-4 mb-4">
-            <div class="col-6 col-md-4 col-xl-2">
+            <div class="col-6 col-md-4 col-xl-3">
                 <div class="card stat-card h-100">
                     <div class="stat-icon bg-primary-subtle text-primary">
                         <i class="fas fa-coins"></i>
@@ -361,7 +364,7 @@
                     <p class="mb-0 stat-delta" id="statVolumeDelta"></p>
                 </div>
             </div>
-            <div class="col-6 col-md-4 col-xl-2">
+            <div class="col-6 col-md-4 col-xl-3">
                 <div class="card stat-card h-100">
                     <div class="stat-icon bg-warning-subtle text-warning">
                         <i class="fas fa-sack-dollar"></i>
@@ -371,7 +374,7 @@
                     <p class="mb-0 stat-delta" id="statProfitDelta"></p>
                 </div>
             </div>
-            <div class="col-6 col-md-4 col-xl-2">
+            <div class="col-6 col-md-4 col-xl-3">
                 <div class="card stat-card h-100">
                     <div class="stat-icon bg-info-subtle text-info">
                         <i class="fas fa-receipt"></i>
@@ -381,7 +384,7 @@
                     <p class="mb-0 stat-delta" id="statTransactionsDelta"></p>
                 </div>
             </div>
-            <div class="col-6 col-md-4 col-xl-2">
+            <div class="col-6 col-md-4 col-xl-3">
                 <div class="card stat-card h-100">
                     <div class="stat-icon" style="background:#ede9fe;color:#6d28d9;">
                         <i class="fas fa-shield-halved"></i>
@@ -391,7 +394,7 @@
                     <p class="mb-0 stat-delta" id="statSuccessRateDelta"></p>
                 </div>
             </div>
-            <div class="col-6 col-md-4 col-xl-2">
+            <div class="col-6 col-md-4 col-xl-3">
                 <div class="card stat-card h-100">
                     <div class="stat-icon bg-warning-subtle text-warning">
                         <i class="fas fa-users"></i>
@@ -401,7 +404,7 @@
                     <p class="mb-0 stat-delta text-muted" id="statActiveUsersSub"></p>
                 </div>
             </div>
-            <div class="col-6 col-md-4 col-xl-2">
+            <div class="col-6 col-md-4 col-xl-3">
                 <div class="card stat-card h-100">
                     <div class="stat-icon bg-info-subtle text-info">
                         <i class="fas fa-wallet"></i>
@@ -409,6 +412,16 @@
                     <p class="text-muted mb-1 small">Liquidity</p>
                     <h3 class="mb-1" id="statLiquidity">₦0</h3>
                     <p class="mb-0 stat-delta text-muted">Across all wallets</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-xl-3">
+                <div class="card stat-card h-100">
+                    <div class="stat-icon bg-success-subtle text-success">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <p class="text-muted mb-1 small">New Users Today</p>
+                    <h3 class="mb-1" id="statNewUsersToday">0</h3>
+                    <p class="mb-0 stat-delta text-muted">Registered today</p>
                 </div>
             </div>
         </div>
@@ -695,6 +708,7 @@
             $('#statActiveUsers').text(s.activeUsers.toLocaleString());
             $('#statActiveUsersSub').text(s.verifiedPct.toFixed(1) + '% KYC verified');
             $('#statLiquidity').text(fmtNgn(s.liquidityAvailable));
+            $('#statNewUsersToday').text(s.newUsersToday.toLocaleString());
             applyDelta('statVolumeDelta', s.volumeDeltaPct);
             applyDelta('statProfitDelta', s.profitDeltaPct);
             applyDelta('statTransactionsDelta', s.transactionsDeltaPct);
