@@ -48,7 +48,20 @@
 
             <div class="form-group">
                 <label>Create Password</label>
-                <input type="password" placeholder="Min. 8 characters" required>
+                <div class="password-field-container">
+                    <input type="password" class="pw-input" id="createPassword" placeholder="Min. 8 characters" required>
+                    <i class="far fa-eye pw-toggle"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <div class="password-field-container">
+                    <input type="password" class="pw-input" id="confirmPassword" placeholder="Re-enter your password" required>
+                    <i class="far fa-eye pw-toggle"></i>
+                </div>
+                <small id="pwMismatchError" style="display:none; color:#ef4444; font-weight:600; margin-top:0.5rem;">Passwords
+                    do not match.</small>
             </div>
 
             <button type="submit" class="btn btn-primary"
@@ -74,6 +87,31 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.pw-toggle').on('click', function () {
+                const input = $(this).siblings('.pw-input');
+                const type = input.attr('type') === 'password' ? 'text' : 'password';
+                input.attr('type', type);
+                $(this).toggleClass('fa-eye fa-eye-slash');
+            });
+
+            $('form').on('submit', function (e) {
+                if ($('#createPassword').val() !== $('#confirmPassword').val()) {
+                    e.preventDefault();
+                    $('#pwMismatchError').show();
+                    $('#confirmPassword').trigger('focus');
+                } else {
+                    $('#pwMismatchError').hide();
+                }
+            });
+
+            $('#confirmPassword').on('input', function () {
+                $('#pwMismatchError').hide();
+            });
+        });
+    </script>
 </body>
 
 </html>

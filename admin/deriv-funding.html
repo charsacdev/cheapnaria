@@ -133,7 +133,7 @@
                     </div>
                     <p class="text-muted smaller fw-bold mb-1 text-uppercase">Completed Funding</p>
                     <h4 class="fw-800 mb-0" id="statFundingCount">0</h4>
-                    <small class="text-muted" id="statFundingValue">$0</small>
+                    <small class="text-muted" id="statFundingValue">₦0</small>
                 </div>
             </div>
             <div class="col-6 col-lg-3">
@@ -143,7 +143,7 @@
                     </div>
                     <p class="text-muted smaller fw-bold mb-1 text-uppercase">Completed Withdrawal</p>
                     <h4 class="fw-800 mb-0" id="statWithdrawalCount">0</h4>
-                    <small class="text-muted" id="statWithdrawalValue">$0</small>
+                    <small class="text-muted" id="statWithdrawalValue">₦0</small>
                 </div>
             </div>
             <div class="col-12 col-lg-6">
@@ -268,6 +268,10 @@
     <script src="../js/mock-data.js"></script>
     <script>
         $(document).ready(function () {
+            function toAmount(v) {
+                return parseFloat(String(v).replace(/,/g, '')) || 0;
+            }
+
             // --- Stat cards ---
             const fundingCompleted = CN_DATA.DERIV_FUNDING_RECORDS.filter(function (r) { return r.status === 'approved'; });
             const withdrawalCompleted = CN_DATA.DERIV_WITHDRAWAL_RECORDS.filter(function (r) { return r.status === 'approved'; });
@@ -275,9 +279,9 @@
                 + CN_DATA.DERIV_WITHDRAWAL_RECORDS.filter(function (r) { return r.status === 'pending'; }).length;
 
             $('#statFundingCount').text(fundingCompleted.length.toLocaleString());
-            $('#statFundingValue').text('$' + fundingCompleted.reduce(function (s, r) { return s + r.amountUsd; }, 0).toLocaleString());
+            $('#statFundingValue').text('₦' + fundingCompleted.reduce(function (s, r) { return s + toAmount(r.amountNgn); }, 0).toLocaleString());
             $('#statWithdrawalCount').text(withdrawalCompleted.length.toLocaleString());
-            $('#statWithdrawalValue').text('$' + withdrawalCompleted.reduce(function (s, r) { return s + r.amountUsd; }, 0).toLocaleString());
+            $('#statWithdrawalValue').text('₦' + withdrawalCompleted.reduce(function (s, r) { return s + toAmount(r.amountNgn); }, 0).toLocaleString());
             $('#statPendingCount').text(totalPending.toLocaleString());
 
             function actionBtn(record, type, idx) {

@@ -1536,6 +1536,29 @@ nav.scrolled .nav-auth .btn-outline {
     box-shadow: 0 0 0 4px var(--primary-soft);
 }
 
+.password-field-container {
+    position: relative;
+}
+
+.password-field-container input {
+    padding-right: 3rem;
+}
+
+.password-field-container .pw-toggle {
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.password-field-container .pw-toggle:hover {
+    color: var(--primary);
+}
+
 .auth-header {
     text-align: center;
     margin-bottom: 3rem;

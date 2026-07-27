@@ -291,7 +291,11 @@
                             </div>
                             <div class="col-12">
                                 <label class="small fw-bold mb-1">Default Password</label>
-                                <input type="password" class="form-control bg-light border-0" placeholder="********">
+                                <div class="password-field-container">
+                                    <input type="password" class="form-control bg-light border-0 pw-input"
+                                        placeholder="********">
+                                    <i class="far fa-eye pw-toggle"></i>
+                                </div>
                             </div>
                             <div class="col-12">
                                 <label class="small fw-bold mb-1">Shift</label>
@@ -347,13 +351,19 @@
                             </div>
                             <div class="col-12">
                                 <label class="small fw-bold mb-1">New Password</label>
-                                <input type="password" class="form-control bg-light border-0"
-                                    placeholder="New password">
+                                <div class="password-field-container">
+                                    <input type="password" class="form-control bg-light border-0 pw-input"
+                                        placeholder="New password">
+                                    <i class="far fa-eye pw-toggle"></i>
+                                </div>
                             </div>
                             <div class="col-12">
                                 <label class="small fw-bold mb-1">Confirm Password</label>
-                                <input type="password" class="form-control bg-light border-0"
-                                    placeholder="Confirm password">
+                                <div class="password-field-container">
+                                    <input type="password" class="form-control bg-light border-0 pw-input"
+                                        placeholder="Confirm password">
+                                    <i class="far fa-eye pw-toggle"></i>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -377,6 +387,13 @@
     <script>
         $(document).ready(function () {
             $('#agentsTable').DataTable({ responsive: true });
+
+            $('.pw-toggle').on('click', function () {
+                const input = $(this).siblings('.pw-input');
+                const type = input.attr('type') === 'password' ? 'text' : 'password';
+                input.attr('type', type);
+                $(this).toggleClass('fa-eye fa-eye-slash');
+            });
         });
     </script>
 </body>

@@ -40,7 +40,10 @@
                     <a href="forgot-password.html"
                         style="font-size: 0.85rem; color: var(--primary); font-weight: 700;">Forgot?</a>
                 </div>
-                <input type="password" placeholder="••••••••" required>
+                <div class="password-field-container">
+                    <input type="password" class="pw-input" placeholder="••••••••" required>
+                    <i class="far fa-eye pw-toggle"></i>
+                </div>
             </div>
 
             <button type="submit" class="btn btn-primary"
@@ -66,6 +69,17 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.pw-toggle').on('click', function () {
+                const input = $(this).siblings('.pw-input');
+                const type = input.attr('type') === 'password' ? 'text' : 'password';
+                input.attr('type', type);
+                $(this).toggleClass('fa-eye fa-eye-slash');
+            });
+        });
+    </script>
 </body>
 
 </html>

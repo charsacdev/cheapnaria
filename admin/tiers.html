@@ -179,19 +179,40 @@
         <!-- Trusted Users -->
         <div class="card p-4 border-0 shadow-sm">
             <h6 class="fw-bold mb-1">Trusted Users</h6>
-            <p class="text-muted small mb-4">Fast-track an existing, already-vetted user straight to full Tier 3
-                access, bypassing the step-by-step verification flow.</p>
+            <p class="text-muted small mb-4">Search for an existing, already-vetted user by email, then choose which
+                tier to upgrade them to &mdash; bypassing the step-by-step verification flow.</p>
 
-            <div class="row g-3 align-items-end mb-4">
+            <div class="row g-3 align-items-end mb-3">
                 <div class="col-md-8">
-                    <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Select User</label>
-                    <select class="form-select" id="trustedUserSelect"></select>
+                    <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">User Email</label>
+                    <input type="email" class="form-control" id="trustedSearchInput" placeholder="user@example.com">
                 </div>
                 <div class="col-md-4">
-                    <button type="button" class="btn btn-primary w-100 fw-bold" id="upgradeTrustedBtn">
-                        <i class="fas fa-shield-halved me-2"></i>Upgrade to Tier 3
+                    <button type="button" class="btn btn-primary w-100 fw-bold" id="trustedSearchBtn">
+                        <i class="fas fa-magnifying-glass me-2"></i>Search
                     </button>
                 </div>
+            </div>
+            <p id="trustedSearchError" class="text-danger small d-none mb-3">No user found with that email.</p>
+
+            <div id="trustedUserCard" class="d-none p-3 bg-light rounded-4 mb-4">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                    <img id="trustedUserAvatar" src="" class="rounded-circle" width="48">
+                    <div>
+                        <p class="mb-0 fw-bold" id="trustedUserName">-</p>
+                        <small class="text-muted" id="trustedUserEmail">-</small>
+                    </div>
+                    <span class="tier-badge tier-badge-0 ms-auto" id="trustedUserCurrentTier">Unverified</span>
+                </div>
+                <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Upgrade To</label>
+                <div class="btn-group w-100 mb-3" role="group" id="trustedTierGroup">
+                    <button type="button" class="btn btn-outline-secondary" data-tier="1">Tier 1</button>
+                    <button type="button" class="btn btn-outline-secondary" data-tier="2">Tier 2</button>
+                    <button type="button" class="btn btn-outline-secondary" data-tier="3">Tier 3</button>
+                </div>
+                <button type="button" class="btn btn-primary w-100 fw-bold" id="applyTrustedTierBtn" disabled>
+                    <i class="fas fa-shield-halved me-2"></i>Apply Tier
+                </button>
             </div>
 
             <div class="table-responsive">
@@ -246,11 +267,6 @@
                 localStorage.setItem(TRUSTED_KEY, JSON.stringify(list));
             }
 
-            const $select = $('#trustedUserSelect');
-            CN_DATA.USERS.forEach(function (u) {
-                $select.append('<option value="' + u.id + '">' + u.name + ' (' + u.email + ')</option>');
-            });
-
             let table = null;
             function renderTrusted() {
                 const list = getTrusted();
@@ -261,6 +277,7 @@
                 list.forEach(function (t) {
                     const u = CN_OVERRIDES.apply(CN_DATA.USERS.find(function (x) { return x.id === t.id; }));
                     if (!u) return;
+                    const tier = typeof t.tier === 'number' ? t.tier : 3;
                     tbody.append(
                         '<tr><td><div class="d-flex align-items-center gap-3">' +
                         '<img src="https://ui-avatars.com/api/?name=' + encodeURIComponent(u.name) + '&background=' + u.avatarBg + '&color=fff" class="rounded-circle" width="35">' +
@@ -268,7 +285,7 @@
                         '</div></td>' +
                         '<td>' + u.country + '</td>' +
                         '<td class="small text-muted">' + t.upgradedAt + '</td>' +
-                        '<td><span class="tier-badge tier-badge-3">Tier 3</span></td></tr>'
+                        '<td><span class="tier-badge tier-badge-' + tier + '">' + CN_VERIFY.TIER_LABELS[tier] + '</span></td></tr>'
                     );
                 });
 
@@ -277,19 +294,65 @@
             }
             renderTrusted();
 
-            $('#upgradeTrustedBtn').click(function () {
-                const id = $select.val();
-                const user = CN_DATA.USERS.find(function (u) { return u.id === id; });
-                if (!user) return;
-                if (!confirm('Upgrade ' + user.name + ' to full Tier 3 access? This bypasses the normal step-by-step verification.')) return;
+            // --- Search by email -> show user card -> pick tier -> apply ---
+            let foundUser = null;
+            let selectedTier = null;
 
-                CN_OVERRIDES.save(id, { tier: 3 });
+            function resetTrustedCard() {
+                foundUser = null;
+                selectedTier = null;
+                $('#trustedUserCard').addClass('d-none');
+                $('#trustedTierGroup button').removeClass('active btn-primary').addClass('btn-outline-secondary');
+                $('#applyTrustedTierBtn').prop('disabled', true);
+            }
 
-                const list = getTrusted().filter(function (t) { return t.id !== id; });
-                list.unshift({ id: id, upgradedAt: new Date().toLocaleDateString() });
+            $('#trustedSearchBtn').click(function () {
+                const email = $('#trustedSearchInput').val().trim().toLowerCase();
+                resetTrustedCard();
+                if (!email) return;
+
+                const rawUser = CN_DATA.USERS.find(function (u) { return u.email.toLowerCase() === email; });
+                if (!rawUser) {
+                    $('#trustedSearchError').removeClass('d-none');
+                    return;
+                }
+                $('#trustedSearchError').addClass('d-none');
+
+                foundUser = CN_OVERRIDES.apply(rawUser);
+                const currentTier = typeof foundUser.tier === 'number' ? foundUser.tier : 0;
+
+                $('#trustedUserAvatar').attr('src', 'https://ui-avatars.com/api/?name=' + encodeURIComponent(foundUser.name) + '&background=' + foundUser.avatarBg + '&color=fff');
+                $('#trustedUserName').text(foundUser.name);
+                $('#trustedUserEmail').text(foundUser.email);
+                $('#trustedUserCurrentTier').removeClass('tier-badge-0 tier-badge-1 tier-badge-2 tier-badge-3')
+                    .addClass('tier-badge-' + currentTier).text('Currently ' + CN_VERIFY.TIER_LABELS[currentTier]);
+                $('#trustedUserCard').removeClass('d-none');
+            });
+
+            $('#trustedSearchInput').on('keydown', function (e) {
+                if (e.key === 'Enter') { e.preventDefault(); $('#trustedSearchBtn').click(); }
+            });
+
+            $('#trustedTierGroup').on('click', 'button', function () {
+                selectedTier = parseInt($(this).data('tier'));
+                $('#trustedTierGroup button').removeClass('active btn-primary').addClass('btn-outline-secondary');
+                $(this).removeClass('btn-outline-secondary').addClass('active btn-primary');
+                $('#applyTrustedTierBtn').prop('disabled', false);
+            });
+
+            $('#applyTrustedTierBtn').click(function () {
+                if (!foundUser || selectedTier === null) return;
+                if (!confirm('Upgrade ' + foundUser.name + ' to Tier ' + selectedTier + '? This bypasses the normal step-by-step verification.')) return;
+
+                CN_OVERRIDES.save(foundUser.id, { tier: selectedTier });
+
+                const list = getTrusted().filter(function (t) { return t.id !== foundUser.id; });
+                list.unshift({ id: foundUser.id, tier: selectedTier, upgradedAt: new Date().toLocaleDateString() });
                 saveTrusted(list);
                 renderTrusted();
-                alert(user.name + ' has been upgraded to Tier 3.');
+                alert(foundUser.name + ' has been upgraded to Tier ' + selectedTier + '.');
+                $('#trustedSearchInput').val('');
+                resetTrustedCard();
             });
         });
     </script>
