@@ -2200,6 +2200,15 @@ footer {
     display: flex;
     align-items: flex-start;
     gap: 0.4rem;
+    padding: 0.75rem 0.9rem;
+    border: 1.5px solid #ef4444;
+    border-radius: var(--radius-md);
+    background: rgba(239, 68, 68, 0.06);
+}
+
+.rc-disclaimer i {
+    color: #ef4444;
+    margin-top: 0.15rem;
 }
 
 .rc-cta {
@@ -2508,4 +2517,32 @@ footer {
     .sim-result-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Styles migrated out of page-level <style> block (verify-code.html) */
+.otp-wrapper {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0 3rem;
+}
+
+.otp-field {
+    width: 65px;
+    height: 75px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 800;
+    border-radius: 16px;
+    border: 2px solid #e2e8f0;
+    background: #f8fafc;
+    transition: all 0.3s ease;
+}
+
+.otp-field:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 4px var(--primary-soft);
+    transform: translateY(-5px);
 }

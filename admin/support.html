@@ -15,169 +15,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        .support-shell {
-            display: flex;
-            gap: 1.25rem;
-            height: calc(100vh - 220px);
-            min-height: 480px;
-        }
-
-        .support-list-pane {
-            width: 360px;
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .support-list-scroll {
-            overflow-y: auto;
-            flex: 1;
-        }
-
-        .support-thread-pane {
-            flex: 1;
-            min-width: 0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .conversation-item.selected {
-            background: var(--primary-soft);
-        }
-
-        .thread-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 1rem;
-        }
-
-        .thread-scroll {
-            flex: 1;
-            overflow-y: auto;
-            padding-right: 0.25rem;
-        }
-
-        .chat-bubble-row {
-            display: flex;
-            margin-bottom: 0.85rem;
-        }
-
-        .chat-bubble-row.from-agent {
-            justify-content: flex-end;
-        }
-
-        .chat-bubble {
-            max-width: 72%;
-            padding: 0.6rem 0.95rem;
-            border-radius: 1rem;
-            font-size: 0.85rem;
-            line-height: 1.4;
-        }
-
-        .chat-bubble-row.from-customer .chat-bubble {
-            background: var(--bg-body);
-            border: 1px solid var(--border-color);
-            border-bottom-left-radius: 0.25rem;
-        }
-
-        .chat-bubble-row.from-agent .chat-bubble {
-            background: var(--primary-color);
-            color: #fff;
-            border-bottom-right-radius: 0.25rem;
-        }
-
-        .chat-bubble-sender {
-            display: block;
-            font-size: 0.68rem;
-            font-weight: 700;
-            opacity: 0.7;
-            margin-bottom: 0.2rem;
-        }
-
-        .empty-thread-state {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-        }
-
-        .chat-attachment-image {
-            max-width: 220px;
-            max-height: 220px;
-            border-radius: 0.85rem;
-            display: block;
-            cursor: pointer;
-        }
-
-        .chat-bubble.chat-bubble-media {
-            padding: 0.35rem;
-            background: transparent !important;
-            border: none !important;
-        }
-
-        .chat-attachment-file {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .chat-attachment-file i {
-            font-size: 1.4rem;
-        }
-
-        .chat-attachment-file small {
-            display: block;
-            opacity: 0.75;
-            font-size: 0.7rem;
-        }
-
-        .attach-btn {
-            width: 44px;
-            height: 44px;
-            flex-shrink: 0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border-color);
-            background: var(--bg-body);
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .attach-btn:hover {
-            color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-
-        @media (max-width: 991.98px) {
-            .support-shell {
-                flex-direction: column;
-                height: auto;
-            }
-
-            .support-list-pane {
-                width: 100%;
-            }
-
-            .support-list-scroll {
-                max-height: 320px;
-            }
-
-            .support-thread-pane {
-                height: 520px;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -199,7 +36,7 @@
                     class="badge bg-danger rounded-pill ms-auto">13</span></a>
             <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
             <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
-            <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+            <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
             <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
             <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
             <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
@@ -237,7 +74,7 @@
                         class="badge bg-danger rounded-pill ms-auto">13</span></a>
                 <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
                 <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
-                <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv Funding</a>
+                <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
                 <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
                 <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
                 <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
@@ -298,23 +135,11 @@
         </div>
 
         <div class="support-shell">
-            <!-- Conversation list -->
-            <div class="card p-3 support-list-pane">
-                <ul class="nav support-tabs gap-2 mb-3" id="supportTabs">
-                    <li class="nav-item"><button type="button" class="nav-link active" data-filter="all">All</button>
-                    </li>
-                    <li class="nav-item"><button type="button" class="nav-link" data-filter="inbox">Inbox
-                            <span class="badge rounded-pill bg-white text-success ms-1" id="countInbox"></span></button>
-                    </li>
-                    <li class="nav-item"><button type="button" class="nav-link" data-filter="unassigned">Unassigned
-                            <span class="badge rounded-pill bg-secondary-subtle text-secondary ms-1" id="countUnassigned"></span></button>
-                    </li>
-                    <li class="nav-item"><button type="button" class="nav-link" data-filter="resolved">Resolved</button>
-                    </li>
-                </ul>
-                <input type="text" class="form-control support-search mb-3" id="supportSearch"
-                    placeholder="Search by customer, agent or message...">
-                <div class="support-list-scroll" id="conversationList"></div>
+            <div class="support-toolbar">
+                <button type="button" class="btn btn-light border rounded-pill px-3 fw-bold" data-bs-toggle="offcanvas"
+                    data-bs-target="#conversationsPanel">
+                    <i class="fas fa-bars me-2"></i>Conversations
+                </button>
             </div>
 
             <!-- Thread -->
@@ -340,15 +165,43 @@
                         </div>
                     </div>
                     <div class="thread-scroll" id="threadMessages"></div>
-                    <div class="d-flex gap-2 pt-3 mt-2 border-top align-items-center">
+                    <div class="chat-input-row">
                         <input type="file" id="threadFileInput" class="d-none"
                             accept="image/*,.pdf,.doc,.docx,.xls,.xlsx" multiple>
                         <button type="button" class="attach-btn" id="threadAttachBtn" title="Attach a file"><i
                                 class="fas fa-paperclip"></i></button>
-                        <input type="text" class="form-control" id="threadReply" placeholder="Reply as admin...">
-                        <button type="button" class="btn btn-primary rounded-pill px-4" id="threadSend">Send</button>
+                        <textarea class="form-control" id="threadReply" rows="1" placeholder="Reply as admin..."></textarea>
+                        <button type="button" class="btn btn-primary rounded-circle flex-shrink-0"
+                            id="threadSend" style="width:44px;height:44px;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Conversations slide-in panel -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="conversationsPanel">
+            <div class="offcanvas-header border-bottom">
+                <h5 class="offcanvas-title fw-bold">Conversations</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body p-3">
+                <ul class="nav support-tabs gap-2 mb-3" id="supportTabs">
+                    <li class="nav-item"><button type="button" class="nav-link active" data-filter="all">All</button>
+                    </li>
+                    <li class="nav-item"><button type="button" class="nav-link" data-filter="inbox">Inbox
+                            <span class="badge rounded-pill bg-white text-success ms-1" id="countInbox"></span></button>
+                    </li>
+                    <li class="nav-item"><button type="button" class="nav-link" data-filter="unassigned">Unassigned
+                            <span class="badge rounded-pill bg-secondary-subtle text-secondary ms-1" id="countUnassigned"></span></button>
+                    </li>
+                    <li class="nav-item"><button type="button" class="nav-link" data-filter="resolved">Resolved</button>
+                    </li>
+                </ul>
+                <input type="text" class="form-control support-search mb-3" id="supportSearch"
+                    placeholder="Search by customer, agent or message...">
+                <div class="support-list-scroll" id="conversationList"></div>
             </div>
         </div>
     </main>
@@ -404,7 +257,7 @@
             if (m.text) { inner += '<div' + (m.attachment ? ' class="mt-2"' : '') + '>' + m.text + '</div>'; }
             const isImageOnly = m.attachment && !m.text && m.attachment.type.indexOf('image/') === 0;
             return '<div class="chat-bubble-row from-' + m.from + '">' +
-                '<div class="chat-bubble' + (isImageOnly ? ' chat-bubble-media' : '') + '">' +
+                '<div class="thread-chat-bubble' + (isImageOnly ? ' chat-bubble-media' : '') + '">' +
                 '<span class="chat-bubble-sender">' + senderLabel + '</span>' + inner +
                 '</div></div>';
         }
@@ -468,12 +321,25 @@
                 $messages.append(bubbleHtml(m, m.from === 'agent' ? c.agent : c.user.name));
             });
             $messages.scrollTop($messages[0].scrollHeight);
-            $('#threadReply').val('').focus();
+            $('#threadReply').val('').trigger('input').focus();
+            closeConversationsPanel();
+        }
+
+        function closeConversationsPanel() {
+            const el = document.getElementById('conversationsPanel');
+            const instance = bootstrap.Offcanvas.getInstance(el);
+            if (instance) instance.hide();
         }
 
         $(document).ready(function () {
             refreshCounts();
             renderConversations();
+
+            // Default view: show the most recent conversation's chat instead of
+            // an empty placeholder. The list itself now lives in the slide-in panel.
+            if (CN_DATA.SUPPORT_CONVERSATIONS.length) {
+                openConversation(CN_DATA.SUPPORT_CONVERSATIONS[0].id);
+            }
 
             $('#supportTabs').on('click', '.nav-link', function () {
                 $('#supportTabs .nav-link').removeClass('active');
@@ -498,11 +364,17 @@
                 const $messages = $('#threadMessages');
                 $messages.append(bubbleHtml(m, c.agent + ' (Admin)'));
                 $messages.scrollTop($messages[0].scrollHeight);
-                $('#threadReply').val('').focus();
+                $('#threadReply').val('').trigger('input').focus();
             });
 
             $('#threadReply').on('keydown', function (e) {
-                if (e.key === 'Enter') { e.preventDefault(); $('#threadSend').click(); }
+                if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); $('#threadSend').click(); }
+            });
+
+            // Auto-grow the textarea
+            $('#threadReply').on('input', function () {
+                this.style.height = 'auto';
+                this.style.height = Math.min(this.scrollHeight, 120) + 'px';
             });
 
             $('#threadAttachBtn').on('click', function () {

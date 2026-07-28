@@ -243,19 +243,9 @@
                     <p>Fund your betting wallet instantly</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon svc-indigo"><i class="fas fa-building-columns"></i></div>
-                    <h3>Manage Accounts</h3>
-                    <p>Manage your bank accounts securely</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon svc-purple"><i class="fas fa-file-invoice"></i></div>
-                    <h3>Account Statement</h3>
-                    <p>View and download account statements</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon svc-rose"><i class="fas fa-percent"></i></div>
-                    <h3>Rates</h3>
-                    <p>Check live rates across currencies</p>
+                    <div class="service-icon svc-indigo"><i class="fas fa-wallet"></i></div>
+                    <h3>E-Wallet Services</h3>
+                    <p>Buy or sell Airtm, Skrill, Neteller, vouchers and more</p>
                 </div>
             </div>
         </div>
@@ -361,9 +351,8 @@
                     </div>
                 </div>
 
-                <p class="rc-disclaimer"><i class="fas fa-circle-info"></i> Processing charges are already included
-                    in the figures above. This is an estimate for illustration — the rate you see at the time of
-                    your transaction may differ slightly.</p>
+                <p class="rc-disclaimer"><i class="fas fa-circle-info"></i> The amount shown is an estimate based on
+                    the current exchange rate. Network fees and service charges are not included and may apply.</p>
 
                 <a href="register.html" class="btn btn-primary rc-cta">Create Account to Transact <i
                         class="fas fa-arrow-right"></i></a>
@@ -703,7 +692,7 @@
 
                 const amt = parseFloat($('#rcAmount').val());
                 if (!amt || amt <= 0) {
-                    $('#rcFee').text('&mdash;');
+                    $('#rcFee').html('&mdash;');
                     $('#rcFinal').html(svc.prefix === '&#8358;' ? '&#8358;0.00' : '0.00');
                     return;
                 }

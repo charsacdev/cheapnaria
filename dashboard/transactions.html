@@ -92,6 +92,37 @@
             </div>
         </header>
 
+        <!-- Stats -->
+        <div class="row g-3 g-md-4 mb-4 text-center text-md-start">
+            <div class="col-6 col-lg-4">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-success-subtle text-success mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Total Deposit</p>
+                    <h4 class="fw-800 mb-0" id="statTotalDeposit">₦0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg-4">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-danger-subtle text-danger mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Total Withdrawal</p>
+                    <h4 class="fw-800 mb-0" id="statTotalWithdrawal">₦0</h4>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-primary-subtle text-primary mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Total Transactions</p>
+                    <h4 class="fw-800 mb-0" id="statTotalCount">0</h4>
+                </div>
+            </div>
+        </div>
+
         <!-- Filters Section -->
         <div class="card p-4 mb-4">
             <div class="row g-3">
@@ -1218,6 +1249,23 @@
                             </div>
                             <i class="fas fa-chevron-right text-muted"></i>
                         </a>
+                        <a href="profile.html#payout" class="select-method-card text-decoration-none">
+                            <div class="smc-icon"><i class="fas fa-landmark"></i></div>
+                            <div class="smc-text">
+                                <p>Manage Account</p>
+                                <small class="text-muted">Manage your bank accounts and wallets</small>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="transactions.html" class="select-method-card text-decoration-none">
+                            <div class="smc-icon"><i class="fas fa-file-invoice"></i></div>
+                            <div class="smc-text">
+                                <p>Statement</p>
+                                <small class="text-muted">View and download your transaction history</small>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+
                     </div>
                 </div>
             </div>
@@ -1356,6 +1404,20 @@
                 $(this).css('border-color', '').css('box-shadow', '');
             });
 
+            // Compute summary stats from the full transaction list
+            let totalDeposit = 0;
+            let totalWithdrawal = 0;
+            const $rows = $('#transactionsTable tbody tr');
+            $rows.each(function () {
+                const title = $(this).find('.tx-text p').text().trim();
+                const amount = parseFloat($(this).find('td.fw-bold').first().text().replace(/[^\d.]/g, '')) || 0;
+                if (title === 'Wallet Deposit') totalDeposit += amount;
+                if (title === 'Wallet Withdrawal') totalWithdrawal += amount;
+            });
+            $('#statTotalDeposit').text('₦' + totalDeposit.toLocaleString('en-NG', { minimumFractionDigits: 0 }));
+            $('#statTotalWithdrawal').text('₦' + totalWithdrawal.toLocaleString('en-NG', { minimumFractionDigits: 0 }));
+            $('#statTotalCount').text($rows.length);
+
             $('#transactionsTable').DataTable({
                 responsive: false, // Force manual scroll (handled by .table-responsive)
                 dom: 'rtip', // Removed search box and buttons from DOM
@@ -1464,12 +1526,6 @@
                 }
             });
         });
-    </script>
-    <style>
-        .border-dashed {
-            border-style: dashed !important;
-        }
-    </style>
-    </body>
+    </script>    </body>
 
 </html>

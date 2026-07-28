@@ -11,77 +11,6 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        .vas-tab-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.5rem;
-            margin-bottom: 1.75rem;
-        }
-
-        .vas-tab-btn {
-            border: 1px solid var(--border-color);
-            background: var(--bg-body);
-            border-radius: var(--radius-md);
-            padding: 0.75rem 0.5rem;
-            text-align: center;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .vas-tab-btn i {
-            display: block;
-            font-size: 1.1rem;
-            margin-bottom: 0.35rem;
-        }
-
-        .vas-tab-btn.active {
-            background: var(--primary-color);
-            border-color: var(--primary-color);
-            color: #fff;
-        }
-
-        .quick-amount-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .quick-amount-btn {
-            border: 1px solid var(--border-color);
-            background: var(--bg-body);
-            border-radius: 100px;
-            padding: 0.45rem 1rem;
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--text-main);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .quick-amount-btn.active {
-            background: var(--primary-color);
-            border-color: var(--primary-color);
-            color: #fff;
-        }
-
-        .token-box {
-            background: var(--bg-body);
-            border: 1px dashed var(--primary-color);
-            border-radius: var(--radius-md);
-            padding: 1rem;
-            text-align: center;
-            font-size: 1.1rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
-        }
-    </style>
 </head>
 
 <body>
@@ -381,6 +310,23 @@
                             </div>
                             <i class="fas fa-chevron-right text-muted"></i>
                         </a>
+                        <a href="profile.html#payout" class="select-method-card text-decoration-none">
+                            <div class="smc-icon"><i class="fas fa-landmark"></i></div>
+                            <div class="smc-text">
+                                <p>Manage Account</p>
+                                <small class="text-muted">Manage your bank accounts and wallets</small>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="transactions.html" class="select-method-card text-decoration-none">
+                            <div class="smc-icon"><i class="fas fa-file-invoice"></i></div>
+                            <div class="smc-text">
+                                <p>Statement</p>
+                                <small class="text-muted">View and download your transaction history</small>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+
                     </div>
                 </div>
             </div>
