@@ -125,7 +125,7 @@
                                 </div>
                                 <span class="smc-tag">1 - 30 mins</span>
                             </div>
-                            <div class="select-method-card" id="chooseCrypto">
+                            <div class="select-method-card" id="chooseCrypto" style="display:none;">
                                 <div class="smc-icon"><i class="fas fa-dollar-sign"></i></div>
                                 <div class="smc-text">
                                     <p>Withdraw via USD</p>
@@ -135,9 +135,10 @@
                             </div>
                         </div>
 
-                        <div class="alert alert-light border small mt-4 mb-0">
-                            <i class="fas fa-circle-info text-primary me-1"></i> Withdrawals are processed manually
-                            and may take 5 – 60 minutes depending on the method selected.
+                        <div class="alert alert-warning small mt-4 mb-0">
+                            <i class="fas fa-triangle-exclamation me-1"></i> Verify your withdrawal details
+                            carefully. Withdrawals are processed instantly, and we are not liable for funds sent
+                            to an incorrect account.
                         </div>
                     </div>
 
@@ -565,6 +566,28 @@
             const BANK_PROCESSING_FEE = 500; // flat NGN
             const steps = ['#methodStep', '#bankStep', '#assetStep', '#detailsStep', '#reviewStep'];
 
+            // ---- Refresh persistence: keep the current step + entered data across a page reload ----
+            const FLOW_KEY = 'cn-withdraw-flow';
+
+            function persistFlow(stepId) {
+                const state = {
+                    step: stepId,
+                    selectedAsset: selectedAsset,
+                    reviewFrom: reviewFrom,
+                    bankAmount: $('#bankAmount').val(),
+                    bankSelectIndex: $('#bankSelect')[0] ? $('#bankSelect')[0].selectedIndex : 0,
+                    ngnAmount: $('#ngnAmount').val(),
+                    walletAddress: $('#withdrawWalletAddress').val()
+                };
+                try { sessionStorage.setItem(FLOW_KEY, JSON.stringify(state)); } catch (e) { }
+                try { history.replaceState(null, '', '#' + stepId); } catch (e) { }
+            }
+
+            function clearFlow() {
+                try { sessionStorage.removeItem(FLOW_KEY); } catch (e) { }
+                try { history.replaceState(null, '', location.pathname); } catch (e) { }
+            }
+
             function showStep(id, title, stepLabel) {
                 steps.forEach(s => $(s).addClass('d-none'));
                 $(id).removeClass('d-none').hide().fadeIn(200);
@@ -574,6 +597,44 @@
                 } else {
                     $('#pageStepLabel').addClass('d-none');
                 }
+                persistFlow(id.replace('#', ''));
+            }
+
+            function renderBankReview(amt) {
+                reviewFrom = 'bank';
+                toggleReviewRows(false);
+                const fee = BANK_PROCESSING_FEE;
+                const total = amt + fee;
+                $('#revBankName').text($('#bankSelect').val());
+                $('#revNgn').text('₦' + amt.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#revServiceFee').text('₦' + fee.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#revTotal, #revTotalDetailFinal').text('₦' + total.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#revTotalDetailAmount').text('₦' + amt.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#revTotalDetailFee').text('₦' + fee.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+            }
+
+            function renderCryptoReview(ngn, address) {
+                reviewFrom = 'crypto';
+                toggleReviewRows(true);
+                const gross = ngn / selectedAsset.rate;
+                const netReceive = gross - NETWORK_FEE_UNITS;
+                const networkFeeNgn = NETWORK_FEE_UNITS * selectedAsset.rate;
+                const processingFee = CRYPTO_PROCESSING_FEE;
+                const total = ngn + processingFee;
+                const shortAddr = address.length > 14 ? address.slice(0, 6) + '...' + address.slice(-6) : address;
+
+                $('#revAddress').text(shortAddr);
+                $('#revAsset').text(selectedAsset.name + ' (' + selectedAsset.network + ')');
+                $('#revNetwork').text(selectedAsset.network);
+                $('#revNgn').text('₦' + ngn.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#revEstimate').html(netReceive.toFixed(2) + ' ' + selectedAsset.name +
+                    '<br><small class="text-muted fw-normal">(' + gross.toFixed(2) + ' ' + selectedAsset.name + ' - ' + NETWORK_FEE_UNITS.toFixed(2) + ')</small>');
+                $('#revNetworkFee').html('$' + NETWORK_FEE_UNITS.toFixed(2) +
+                    '<br><small class="text-muted fw-normal">(&asymp; ₦' + networkFeeNgn.toLocaleString(undefined, { minimumFractionDigits: 2 }) + ')</small>');
+                $('#revServiceFee').text('₦' + processingFee.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#revTotal, #revTotalDetailFinal').text('₦' + total.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#revTotalDetailAmount').text('₦' + ngn.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#revTotalDetailFee').text('₦' + processingFee.toLocaleString(undefined, { minimumFractionDigits: 2 }));
             }
 
             $('#backBtn').click(function () {
@@ -616,18 +677,7 @@
                 const amt = parseFloat($('#bankAmount').val());
                 if (!amt || $('#bankSelect').val() === null) { alert('Enter an amount and select a bank'); return; }
 
-                reviewFrom = 'bank';
-                toggleReviewRows(false);
-
-                const fee = BANK_PROCESSING_FEE;
-                const total = amt + fee;
-                $('#revBankName').text($('#bankSelect').val());
-                $('#revNgn').text('₦' + amt.toLocaleString(undefined, { minimumFractionDigits: 2 }));
-                $('#revServiceFee').text('₦' + fee.toLocaleString(undefined, { minimumFractionDigits: 2 }));
-                $('#revTotal, #revTotalDetailFinal').text('₦' + total.toLocaleString(undefined, { minimumFractionDigits: 2 }));
-                $('#revTotalDetailAmount').text('₦' + amt.toLocaleString(undefined, { minimumFractionDigits: 2 }));
-                $('#revTotalDetailFee').text('₦' + fee.toLocaleString(undefined, { minimumFractionDigits: 2 }));
-
+                renderBankReview(amt);
                 showStep('#reviewStep', 'Review & Confirm', 'Step 2 of 2');
             });
 
@@ -661,29 +711,7 @@
                 if (!ngn || ngn <= 0) { alert('Please enter an amount'); return; }
                 if (!address) { alert('Please enter a destination wallet address'); return; }
 
-                reviewFrom = 'crypto';
-                toggleReviewRows(true);
-
-                const gross = ngn / selectedAsset.rate;
-                const netReceive = gross - NETWORK_FEE_UNITS;
-                const networkFeeNgn = NETWORK_FEE_UNITS * selectedAsset.rate;
-                const processingFee = CRYPTO_PROCESSING_FEE;
-                const total = ngn + processingFee;
-                const shortAddr = address.length > 14 ? address.slice(0, 6) + '...' + address.slice(-6) : address;
-
-                $('#revAddress').text(shortAddr);
-                $('#revAsset').text(selectedAsset.name + ' (' + selectedAsset.network + ')');
-                $('#revNetwork').text(selectedAsset.network);
-                $('#revNgn').text('₦' + ngn.toLocaleString(undefined, { minimumFractionDigits: 2 }));
-                $('#revEstimate').html(netReceive.toFixed(2) + ' ' + selectedAsset.name +
-                    '<br><small class="text-muted fw-normal">(' + gross.toFixed(2) + ' ' + selectedAsset.name + ' - ' + NETWORK_FEE_UNITS.toFixed(2) + ')</small>');
-                $('#revNetworkFee').html('$' + NETWORK_FEE_UNITS.toFixed(2) +
-                    '<br><small class="text-muted fw-normal">(&asymp; ₦' + networkFeeNgn.toLocaleString(undefined, { minimumFractionDigits: 2 }) + ')</small>');
-                $('#revServiceFee').text('₦' + processingFee.toLocaleString(undefined, { minimumFractionDigits: 2 }));
-                $('#revTotal, #revTotalDetailFinal').text('₦' + total.toLocaleString(undefined, { minimumFractionDigits: 2 }));
-                $('#revTotalDetailAmount').text('₦' + ngn.toLocaleString(undefined, { minimumFractionDigits: 2 }));
-                $('#revTotalDetailFee').text('₦' + processingFee.toLocaleString(undefined, { minimumFractionDigits: 2 }));
-
+                renderCryptoReview(ngn, address);
                 showStep('#reviewStep', 'Review & Confirm', 'Step 3 of 3');
             });
 
@@ -716,8 +744,59 @@
                     return;
                 }
                 $('#pinErrorMsg').addClass('d-none');
+                clearFlow();
                 new bootstrap.Modal(document.getElementById('successModal')).show();
             });
+
+            // Restore step + entered data after a page refresh
+            (function restoreFlow() {
+                let saved = null;
+                try { saved = JSON.parse(sessionStorage.getItem(FLOW_KEY) || 'null'); } catch (e) { }
+                if (!saved || steps.indexOf('#' + saved.step) === -1 || saved.step === 'methodStep') return;
+
+                if (saved.bankAmount) $('#bankAmount').val(saved.bankAmount);
+                if (saved.bankSelectIndex) $('#bankSelect')[0].selectedIndex = saved.bankSelectIndex;
+                if (saved.walletAddress) $('#withdrawWalletAddress').val(saved.walletAddress);
+                if (saved.ngnAmount) $('#ngnAmount').val(saved.ngnAmount);
+
+                if (saved.selectedAsset) {
+                    selectedAsset = saved.selectedAsset;
+                    $('#estimateAssetLabel').text(selectedAsset.name);
+                    $('#rateDisplay').text('₦' + selectedAsset.rate.toLocaleString() + ' per ' + selectedAsset.name);
+                    $('#withdrawNetworkDisplay').text(selectedAsset.network);
+                    $('#headerRateText').text('Rate: $1 = ₦' + selectedAsset.rate.toLocaleString());
+                    if (saved.step === 'detailsStep' || saved.step === 'reviewStep') {
+                        $('#headerRateBadge').toggleClass('d-none', saved.reviewFrom === 'bank');
+                    }
+                    if (saved.ngnAmount) {
+                        const ngn = parseFloat(saved.ngnAmount) || 0;
+                        $('#cryptoEstimate').val((ngn / selectedAsset.rate).toFixed(4));
+                    }
+                }
+
+                const titles = {
+                    bankStep: ['Withdraw to Bank', null],
+                    assetStep: ['Withdraw via USD', 'Step 1 of 3'],
+                    detailsStep: ['Withdraw via USD', 'Step 2 of 3'],
+                    reviewStep: ['Review & Confirm', saved.reviewFrom === 'crypto' ? 'Step 3 of 3' : 'Step 2 of 2']
+                };
+
+                if (saved.step === 'reviewStep') {
+                    if (saved.reviewFrom === 'crypto' && selectedAsset && saved.ngnAmount && saved.walletAddress) {
+                        renderCryptoReview(parseFloat(saved.ngnAmount) || 0, saved.walletAddress);
+                    } else if (saved.reviewFrom === 'bank' && saved.bankAmount) {
+                        renderBankReview(parseFloat(saved.bankAmount) || 0);
+                    } else {
+                        return; // not enough saved data to rebuild the review — stay on default step
+                    }
+                }
+
+                const t = titles[saved.step];
+                steps.forEach(s => $(s).addClass('d-none'));
+                $('#' + saved.step).removeClass('d-none');
+                $('#pageTitle').text(t[0]);
+                if (t[1]) { $('#pageStepLabel').text(t[1]).removeClass('d-none'); } else { $('#pageStepLabel').addClass('d-none'); }
+            })();
         });
     </script>
 </body>

@@ -100,7 +100,7 @@
                                 <option value="deposit">USD Deposit</option>
                                 <option value="withdraw">USD Withdrawal</option>
                                 <option value="derivFunding">Deriv Funding</option>
-                                <option value="derivPayout">Deriv Payout</option>
+                                <option value="derivWithdraw">Deriv Withdrawal</option>
                                 <option value="ghana">Send to Ghana</option>
                                 <option value="kenya">Send to Kenya</option>
                                 <option value="tanzania">Send to Tanzania</option>
@@ -154,7 +154,8 @@
                     </div>
                     <div class="rc-detail-row">
                         <div class="rc-detail-icon"><i class="fas fa-chart-line"></i></div>
-                        <div class="rc-detail-label">Deriv Payout Rate</div>
+                        <div class="rc-detail-label">Deriv Withdrawal Rate <span
+                                class="badge-status status-approved ms-2">Free</span></div>
                         <div class="rc-detail-value text-success">$1 = ₦1,490.00</div>
                     </div>
                 </div>
@@ -331,7 +332,7 @@
                 deposit: { label: 'Amount (USD)', unit: 'USD', rate: 1420, rateLabel: '$1 = ₦1,420.00', resultLabel: "You'll Receive", calc: (a) => '₦' + (a * 1420).toLocaleString(undefined, { minimumFractionDigits: 2 }) },
                 withdraw: { label: 'Amount (USD)', unit: 'USD', rate: 1403.37, rateLabel: '$1 = ₦1,403.37', resultLabel: "You'll Receive", calc: (a) => '₦' + (a * 1403.37).toLocaleString(undefined, { minimumFractionDigits: 2 }) },
                 derivFunding: { label: 'Amount (USD)', unit: 'USD', rate: 1535, rateLabel: '$1 = ₦1,535.00 (Free)', resultLabel: "You'll Pay", calc: (a) => '₦' + (a * 1535).toLocaleString(undefined, { minimumFractionDigits: 2 }) },
-                derivPayout: { label: 'Amount (USD)', unit: 'USD', rate: 1490, rateLabel: '$1 = ₦1,490.00', resultLabel: "You'll Receive", calc: (a) => '₦' + (a * 1490).toLocaleString(undefined, { minimumFractionDigits: 2 }) },
+                derivWithdraw: { label: 'Amount (USD)', unit: 'USD', rate: 1490, rateLabel: '$1 = ₦1,490.00 (Free)', resultLabel: "You'll Receive", calc: (a) => '₦' + (a * 1490).toLocaleString(undefined, { minimumFractionDigits: 2 }) },
                 ghana: { label: 'Amount (NGN)', unit: 'NGN', rate: 0.0090, rateLabel: '₦1 = 0.0090 GHS', resultLabel: "Recipient Gets", calc: (a) => (a * 0.0090).toLocaleString(undefined, { minimumFractionDigits: 2 }) + ' GHS' },
                 kenya: { label: 'Amount (NGN)', unit: 'NGN', rate: 0.0850, rateLabel: '₦1 = 0.0850 KES', resultLabel: "Recipient Gets", calc: (a) => (a * 0.0850).toLocaleString(undefined, { minimumFractionDigits: 2 }) + ' KES' },
                 tanzania: { label: 'Amount (NGN)', unit: 'NGN', rate: 1.6800, rateLabel: '₦1 = 1.6800 TZS', resultLabel: "Recipient Gets", calc: (a) => (a * 1.6800).toLocaleString(undefined, { minimumFractionDigits: 2 }) + ' TZS' },

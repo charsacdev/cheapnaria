@@ -109,6 +109,22 @@
             </div>
         </div>
 
+        <!-- Referral Wallet -->
+        <div class="card p-4 mb-4 border-0 shadow-sm">
+            <div
+                class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-sm-between gap-3">
+                <div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Referral Wallet &middot; Available
+                        Balance</p>
+                    <h3 class="fw-800 mb-0" id="referralWalletBalance">₦0</h3>
+                </div>
+                <button type="button" class="btn btn-primary rounded-pill px-4 fw-bold" data-bs-toggle="modal"
+                    data-bs-target="#cashoutModal">
+                    <i class="fas fa-money-bill-transfer me-1"></i> Cash Out
+                </button>
+            </div>
+        </div>
+
         <!-- Stats -->
         <div class="row g-3 g-md-4 mb-4 text-center text-md-start">
             <div class="col-6 col-lg-3">
@@ -280,6 +296,104 @@
         </div>
     </div>
 
+    <!-- Cash Out Modal -->
+    <div class="modal fade" id="cashoutModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="fw-bold">Cash Out Referral Balance</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 pt-2">
+
+                    <!-- Choice view -->
+                    <div id="cashoutChoiceView">
+                        <div class="balance-hint mb-4">
+                            <span><i class="fas fa-wallet me-1"></i> Available Balance</span>
+                            <strong class="text-success" id="cashoutAvailableText">₦0</strong>
+                        </div>
+                        <div class="d-grid gap-3">
+                            <div class="select-method-card" id="chooseTransferBalance">
+                                <div class="smc-icon"><i class="fas fa-right-left"></i></div>
+                                <div class="smc-text">
+                                    <p>Transfer to Balance</p>
+                                    <small class="text-muted">Move funds into your main NGN wallet</small>
+                                </div>
+                                <i class="fas fa-chevron-right text-muted"></i>
+                            </div>
+                            <div class="select-method-card" id="chooseWithdrawBank">
+                                <div class="smc-icon"><i class="fas fa-university"></i></div>
+                                <div class="smc-text">
+                                    <p>Withdraw to Bank</p>
+                                    <small class="text-muted">Send straight to your bank account</small>
+                                </div>
+                                <i class="fas fa-chevron-right text-muted"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transfer to Balance view -->
+                    <div id="cashoutTransferView" class="d-none">
+                        <button type="button" class="btn btn-light btn-sm rounded-pill mb-3"
+                            id="cashoutBackFromTransfer"><i class="fas fa-arrow-left"></i></button>
+                        <div class="balance-hint mb-3">
+                            <span><i class="fas fa-wallet me-1"></i> Available Balance</span>
+                            <strong id="cashoutAvailableText2">₦0</strong>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-600">Amount (NGN)</label>
+                            <input type="number" class="form-control" id="cashoutTransferAmount"
+                                placeholder="e.g 500">
+                        </div>
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm"
+                            id="confirmTransferBtn">Transfer to Balance</button>
+                    </div>
+
+                    <!-- Withdraw to Bank view -->
+                    <div id="cashoutBankView" class="d-none">
+                        <button type="button" class="btn btn-light btn-sm rounded-pill mb-3"
+                            id="cashoutBackFromBank"><i class="fas fa-arrow-left"></i></button>
+                        <div class="balance-hint mb-3">
+                            <span><i class="fas fa-wallet me-1"></i> Available Balance</span>
+                            <strong id="cashoutAvailableText3">₦0</strong>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-600">Amount (NGN)</label>
+                            <input type="number" class="form-control" id="cashoutBankAmount" placeholder="e.g 500">
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label small fw-bold">Select Saved Bank</label>
+                            <select class="form-select" id="cashoutBankSelect">
+                                <option selected disabled>Choose beneficiary</option>
+                                <option>Access Bank - 0123***789</option>
+                                <option>GTBank - 001***321</option>
+                            </select>
+                            <a href="profile.html#payout" class="small text-primary text-decoration-none">+ Manage
+                                payout methods</a>
+                        </div>
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm"
+                            id="confirmBankWithdrawBtn">Withdraw to Bank</button>
+                    </div>
+
+                    <!-- Success view -->
+                    <div id="cashoutSuccessView" class="d-none text-center py-3">
+                        <div class="mb-3">
+                            <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center"
+                                style="width:64px;height:64px;">
+                                <i class="fas fa-check fs-3"></i>
+                            </div>
+                        </div>
+                        <h5 class="fw-bold mb-2" id="cashoutSuccessTitle">Success!</h5>
+                        <p class="text-muted small mb-4" id="cashoutSuccessText">Your funds are on the way.</p>
+                        <button type="button" class="btn btn-primary w-100 py-2 fw-bold"
+                            data-bs-dismiss="modal">Done</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -326,6 +440,75 @@
                 const original = $btn.html();
                 $btn.html('<i class="fas fa-check"></i> Copied');
                 setTimeout(function () { $btn.html(original); }, 1500);
+            });
+
+            // --- Referral wallet cash out ---
+            const totalEarned = qualified * REWARD;
+            let cashedOut = parseFloat(localStorage.getItem('cn-referral-cashedout')) || 0;
+
+            function availableBalance() {
+                return Math.max(0, totalEarned - cashedOut);
+            }
+
+            function refreshWalletUI() {
+                const text = '₦' + availableBalance().toLocaleString();
+                $('#referralWalletBalance, #cashoutAvailableText, #cashoutAvailableText2, #cashoutAvailableText3').text(text);
+            }
+            refreshWalletUI();
+
+            function resetCashoutModal() {
+                $('#cashoutTransferView, #cashoutBankView, #cashoutSuccessView').addClass('d-none');
+                $('#cashoutChoiceView').removeClass('d-none');
+                $('#cashoutTransferAmount, #cashoutBankAmount').val('');
+                if ($('#cashoutBankSelect')[0]) $('#cashoutBankSelect')[0].selectedIndex = 0;
+                refreshWalletUI();
+            }
+
+            $('#cashoutModal').on('show.bs.modal', resetCashoutModal);
+
+            $('#chooseTransferBalance').click(function () {
+                $('#cashoutChoiceView').addClass('d-none');
+                $('#cashoutTransferView').removeClass('d-none');
+            });
+            $('#chooseWithdrawBank').click(function () {
+                $('#cashoutChoiceView').addClass('d-none');
+                $('#cashoutBankView').removeClass('d-none');
+            });
+            $('#cashoutBackFromTransfer, #cashoutBackFromBank').click(function () {
+                $('#cashoutTransferView, #cashoutBankView').addClass('d-none');
+                $('#cashoutChoiceView').removeClass('d-none');
+            });
+
+            function recordCashout(amt) {
+                cashedOut += amt;
+                localStorage.setItem('cn-referral-cashedout', cashedOut);
+                refreshWalletUI();
+            }
+
+            $('#confirmTransferBtn').click(function () {
+                const amt = parseFloat($('#cashoutTransferAmount').val());
+                if (!amt || amt <= 0) { alert('Enter an amount'); return; }
+                if (amt > availableBalance()) { alert('Amount exceeds your available referral balance'); return; }
+
+                recordCashout(amt);
+                $('#cashoutTransferView').addClass('d-none');
+                $('#cashoutSuccessTitle').text('Transferred!');
+                $('#cashoutSuccessText').text('₦' + amt.toLocaleString() + ' has been moved to your main NGN wallet balance.');
+                $('#cashoutSuccessView').removeClass('d-none');
+            });
+
+            $('#confirmBankWithdrawBtn').click(function () {
+                const amt = parseFloat($('#cashoutBankAmount').val());
+                const bank = $('#cashoutBankSelect').val();
+                if (!amt || amt <= 0) { alert('Enter an amount'); return; }
+                if (amt > availableBalance()) { alert('Amount exceeds your available referral balance'); return; }
+                if (!bank) { alert('Select a bank account'); return; }
+
+                recordCashout(amt);
+                $('#cashoutBankView').addClass('d-none');
+                $('#cashoutSuccessTitle').text('Withdrawal Submitted!');
+                $('#cashoutSuccessText').text('₦' + amt.toLocaleString() + ' is being sent to ' + bank + '.');
+                $('#cashoutSuccessView').removeClass('d-none');
             });
         });
     </script>

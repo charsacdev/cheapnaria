@@ -215,6 +215,13 @@
                                 <i class="fas fa-chevron-right text-muted"></i>
                             </div>
                         </div>
+
+                        <div class="alert alert-warning small mt-3 mb-0">
+                            <i class="fas fa-circle-info me-1"></i> Crypto deposits are subject to a network fee
+                            and a processing fee, both deducted from the amount credited, as well as a minimum
+                            deposit amount set by CheapNaria. <strong>Tip:</strong> choose the BEP20 network for
+                            USDT deposits for a free network fee &mdash; the processing fee still applies.
+                        </div>
                     </div>
 
                     <!-- CRYPTO STEP 1b (USDT only): Select Network -->
@@ -247,8 +254,8 @@
                         <p class="text-muted small mb-1" id="sendStepLabel">Step 2 of 2</p>
                         <h5 class="mb-4">Send <span id="sendAssetLabel">USDT (TRC20)</span></h5>
                         <p class="text-muted small mb-3">Only send <span id="sendAssetName">USDT</span> on the <strong
-                                id="sendNetworkName">TRC20 (Tron)</strong> network to the address below. Any amount
-                            sent is credited to your NGN wallet automatically.</p>
+                                id="sendNetworkName">TRC20 (Tron)</strong> network to the address below. Your NGN
+                            wallet is credited automatically once payment is confirmed, minus the fees below.</p>
 
                         <div class="qr-box mb-4">
                             <img id="qrCodeImg" src="" alt="Deposit address QR code">
@@ -261,9 +268,39 @@
                                     class="fas fa-check-circle me-1"></i> Address copied to clipboard</small>
                         </div>
 
-                        <div class="alert alert-light border small d-flex justify-content-between mb-4">
+                        <div class="alert alert-light border small d-flex justify-content-between mb-3">
                             <span class="text-muted">Current Rate</span>
                             <span class="fw-bold text-success" id="sendRateDisplay">₦1,420.00 / 1 USDT</span>
+                        </div>
+
+                        <div class="rc-section-title">Deposit Fees</div>
+                        <div class="mb-2">
+                            <div class="rc-charge-row" id="sendNetworkFeeRow">
+                                <div class="rc-detail-icon"><i class="fas fa-diagram-project"></i></div>
+                                <div class="rc-charge-label">
+                                    <p>Network Fee <i class="fas fa-circle-info"
+                                            title="Deducted from the amount credited"></i></p>
+                                    <small>Deducted from amount credited</small>
+                                </div>
+                                <div class="rc-charge-amount" id="sendNetworkFee">$0.00</div>
+                            </div>
+                            <div class="rc-charge-row">
+                                <div class="rc-detail-icon"><i class="fas fa-gear"></i></div>
+                                <div class="rc-charge-label">
+                                    <p>Processing Fee <i class="fas fa-circle-info"
+                                            title="Deducted from the amount credited"></i></p>
+                                    <small>Deducted from amount credited</small>
+                                </div>
+                                <div class="rc-charge-amount" id="sendProcessingFee">₦0.00</div>
+                            </div>
+                            <div class="rc-charge-row">
+                                <div class="rc-detail-icon"><i class="fas fa-circle-exclamation"></i></div>
+                                <div class="rc-charge-label">
+                                    <p>Minimum Deposit</p>
+                                    <small>Deposits below this amount will not be credited</small>
+                                </div>
+                                <div class="rc-charge-amount" id="sendMinDeposit">$0.00</div>
+                            </div>
                         </div>
 
                         <div class="d-grid gap-2">
@@ -447,15 +484,50 @@
             const USDT_NETWORKS = [
                 { code: 'TRC20', label: 'TRC20 (Tron)', icon: 'fa-bolt', color: '#ff0013', address: 'TV8xVJ7geBNLDyYh8k9F2u35Y8xVJ7geBNLDyYh8k9F2u3' },
                 { code: 'ERC20', label: 'ERC20 (Ethereum)', icon: 'fab fa-ethereum', color: '#627eea', address: '0x71c7656ec7ab88b098defb751b7401b5f6d8976f' },
-                { code: 'BEP20', label: 'BEP20 (BNB Smart Chain)', icon: 'fa-coins', color: '#f0b90b', address: 'bnb1grpf0955h0ykzq3ar5nmum7y6gdfl6lxfn46h2' }
+                { code: 'BEP20', label: 'BEP20 (BNB Smart Chain)', icon: 'fa-coins', color: '#f0b90b', address: 'bnb1grpf0955h0ykzq3ar5nmum7y6gdfl6lxfn46h2', recommended: true }
             ];
 
+            // Network fee in asset units — matches the admin-configured defaults (Rates Control).
+            // BEP20 is free to encourage its use; other USDT networks and single-network assets carry a small fee.
+            const NETWORK_FEES = { TRC20: 1.00, ERC20: 1.00, BEP20: 0, USDC: 0.50, BTC: 0.0001, BNB: 0.001, ETH: 0.002 };
+            const PROCESSING_FEE_NGN = 1000; // flat, matches admin default
+            const MIN_DEPOSIT_USD = 10; // matches admin default
+
             let currentAsset = null;
+            let lastSendArgs = null; // args last passed to renderSendStep, so a refresh can rebuild the send step
+
+            // ---- Refresh persistence: keep the current step + entered data across a page reload ----
+            const FLOW_KEY = 'cn-deposit-flow';
+
+            function persistFlow(stepId) {
+                const state = { step: stepId, currentAsset: currentAsset, sendArgs: lastSendArgs };
+                try { sessionStorage.setItem(FLOW_KEY, JSON.stringify(state)); } catch (e) { }
+                try { history.replaceState(null, '', '#' + stepId); } catch (e) { }
+            }
+
+            function clearFlow() {
+                try { sessionStorage.removeItem(FLOW_KEY); } catch (e) { }
+                try { history.replaceState(null, '', location.pathname); } catch (e) { }
+            }
 
             function showStep(id, title) {
                 steps.forEach(s => $(s).addClass('d-none'));
                 $(id).removeClass('d-none').hide().fadeIn(200);
                 $('#pageTitle').text(title);
+                persistFlow(id.replace('#', ''));
+            }
+
+            function buildNetworkList() {
+                const $list = $('#networkList').empty();
+                USDT_NETWORKS.forEach(function (n) {
+                    $list.append(
+                        '<div class="asset-list-item network-option" data-code="' + n.code + '" data-label="' + n.label + '" data-address="' + n.address + '">' +
+                        '<div class="ali-icon" style="background:' + n.color + ';"><i class="fas ' + n.icon + '"></i></div>' +
+                        '<div class="ali-text"><p>' + n.label + '</p><small>USDT on ' + n.code + '</small></div>' +
+                        (n.recommended ? '<span class="smc-tag me-2">Free &middot; Recommended</span>' : '') +
+                        '<i class="fas fa-chevron-right text-muted"></i></div>'
+                    );
+                });
             }
 
             $('#backBtn').click(function () {
@@ -481,10 +553,12 @@
 
             // Bank flow
             $('#bankPaidBtn').click(function () {
+                clearFlow();
                 new bootstrap.Modal(document.getElementById('successModal')).show();
             });
 
-            function renderSendStep(assetName, networkLabel, address, rate, stepLabel) {
+            function renderSendStep(assetName, networkLabel, address, rate, stepLabel, feeUnits) {
+                lastSendArgs = { assetName: assetName, networkLabel: networkLabel, address: address, rate: rate, stepLabel: stepLabel, feeUnits: feeUnits };
                 $('#sendAssetLabel').text(assetName + ' (' + networkLabel + ')');
                 $('#sendAssetName').text(assetName);
                 $('#sendNetworkName').text(networkLabel);
@@ -492,6 +566,18 @@
                 $('#depositWalletAddr').text(address);
                 $('#qrCodeImg').attr('src', 'https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=' + encodeURIComponent(address));
                 $('#sendStepLabel').text(stepLabel);
+
+                if (feeUnits > 0) {
+                    const feeNgn = feeUnits * rate;
+                    $('#sendNetworkFee').html(feeUnits.toFixed(feeUnits < 0.01 ? 6 : 2) + ' ' + assetName +
+                        ' <br><small class="text-muted fw-normal">(&asymp; ₦' + feeNgn.toLocaleString(undefined, { minimumFractionDigits: 2 }) + ')</small>');
+                } else {
+                    $('#sendNetworkFee').html('<span class="text-success fw-bold">Free</span>');
+                }
+                $('#sendProcessingFee').text('₦' + PROCESSING_FEE_NGN.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#sendMinDeposit').html('$' + MIN_DEPOSIT_USD.toFixed(2) +
+                    ' <br><small class="text-muted fw-normal">(&asymp; ₦' + (MIN_DEPOSIT_USD * rate).toLocaleString(undefined, { minimumFractionDigits: 2 }) + ')</small>');
+
                 showStep('#sendStep', 'Deposit via USD');
             }
 
@@ -503,20 +589,12 @@
                 currentAsset = name;
 
                 if (name === 'USDT') {
-                    const $list = $('#networkList').empty();
-                    USDT_NETWORKS.forEach(function (n) {
-                        $list.append(
-                            '<div class="asset-list-item network-option" data-code="' + n.code + '" data-label="' + n.label + '" data-address="' + n.address + '">' +
-                            '<div class="ali-icon" style="background:' + n.color + ';"><i class="fas ' + n.icon + '"></i></div>' +
-                            '<div class="ali-text"><p>' + n.label + '</p><small>USDT on ' + n.code + '</small></div>' +
-                            '<i class="fas fa-chevron-right text-muted"></i></div>'
-                        );
-                    });
+                    buildNetworkList();
                     showStep('#networkStep', 'Select Network');
                     return;
                 }
 
-                renderSendStep(name, network, $(this).data('address') || 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', rate, 'Step 2 of 2');
+                renderSendStep(name, network, $(this).data('address') || 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', rate, 'Step 2 of 2', NETWORK_FEES[name] || 0);
             });
 
             $(document).on('click', '.network-option', function () {
@@ -524,16 +602,43 @@
                 const label = $(this).data('label');
                 const address = $(this).data('address');
                 const rate = parseFloat($('.asset-list-item[data-asset="USDT"]').data('rate'));
-                renderSendStep('USDT', code, address, rate, 'Step 3 of 3');
+                const feeUnits = NETWORK_FEES[code] !== undefined ? NETWORK_FEES[code] : 1.00;
+                renderSendStep('USDT', code, address, rate, 'Step 3 of 3', feeUnits);
             });
 
             $('#sentPaymentBtn').click(function () {
+                clearFlow();
                 new bootstrap.Modal(document.getElementById('successModal')).show();
             });
 
             $('#cancelDepositBtn').click(function () {
                 showStep('#methodStep', 'Deposit Funds');
             });
+
+            // Restore step + entered data after a page refresh
+            (function restoreFlow() {
+                let saved = null;
+                try { saved = JSON.parse(sessionStorage.getItem(FLOW_KEY) || 'null'); } catch (e) { }
+                if (!saved || steps.indexOf('#' + saved.step) === -1 || saved.step === 'methodStep') return;
+
+                currentAsset = saved.currentAsset || null;
+
+                if (saved.step === 'networkStep') {
+                    buildNetworkList();
+                    showStep('#networkStep', 'Select Network');
+                    return;
+                }
+
+                if (saved.step === 'sendStep') {
+                    if (!saved.sendArgs) return;
+                    const a = saved.sendArgs;
+                    renderSendStep(a.assetName, a.networkLabel, a.address, a.rate, a.stepLabel, a.feeUnits);
+                    return;
+                }
+
+                const titles = { bankStep: 'Bank Transfer Deposit', assetStep: 'Deposit via USD' };
+                showStep('#' + saved.step, titles[saved.step] || 'Deposit Funds');
+            })();
         });
     </script>
 </body>

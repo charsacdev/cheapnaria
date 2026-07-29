@@ -187,8 +187,8 @@
         <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
             <div>
                 <h5 class="fw-bold mb-1">Crypto Asset Rates &amp; Fees</h5>
-                <p class="text-muted small mb-0">Set the Naira rate, processing fee and network fee for each
-                    supported crypto asset. These apply to both user deposits and withdrawals.</p>
+                <p class="text-muted small mb-0">Set the Naira rate, processing fee, network fee and minimum
+                    deposit for each supported crypto asset. These apply to both user deposits and withdrawals.</p>
             </div>
         </div>
 
@@ -366,11 +366,11 @@
 
             // --- Crypto asset rate/fee cards ---
             const ASSET_DEFS = [
-                { code: 'USDT', network: 'TRC20 (Tron)', buy: 1450, sell: 1420, processingFee: 1000, networkFee: 1.00 },
-                { code: 'USDC', network: 'Solana', buy: 1445, sell: 1415, processingFee: 1000, networkFee: 0.50 },
-                { code: 'BTC', network: 'Bitcoin', buy: 1450, sell: 1420, processingFee: 1000, networkFee: 0.0001 },
-                { code: 'BNB', network: 'BNB Smart Chain', buy: 1450, sell: 1420, processingFee: 1000, networkFee: 0.001 },
-                { code: 'ETH', network: 'Ethereum', buy: 1450, sell: 1420, processingFee: 1000, networkFee: 0.002 }
+                { code: 'USDT', network: 'TRC20 (Tron)', buy: 1450, sell: 1420, processingFee: 1000, networkFee: 1.00, minDeposit: 10 },
+                { code: 'USDC', network: 'Solana', buy: 1445, sell: 1415, processingFee: 1000, networkFee: 0.50, minDeposit: 10 },
+                { code: 'BTC', network: 'Bitcoin', buy: 1450, sell: 1420, processingFee: 1000, networkFee: 0.0001, minDeposit: 10 },
+                { code: 'BNB', network: 'BNB Smart Chain', buy: 1450, sell: 1420, processingFee: 1000, networkFee: 0.001, minDeposit: 10 },
+                { code: 'ETH', network: 'Ethereum', buy: 1450, sell: 1420, processingFee: 1000, networkFee: 0.002, minDeposit: 10 }
             ];
 
             const $row = $('#cryptoAssetRow');
@@ -379,6 +379,7 @@
                 const savedSell = localStorage.getItem('cn-rate-sell-' + a.code);
                 const savedProcFee = localStorage.getItem('cn-fee-processing-' + a.code);
                 const savedNetFee = localStorage.getItem('cn-fee-network-' + a.code);
+                const savedMinDeposit = localStorage.getItem('cn-min-deposit-' + a.code);
 
                 $row.append(
                     '<div class="col-6 col-md-4 col-lg">' +
@@ -398,6 +399,10 @@
                     '<div class="input-group input-group-sm mb-2">' +
                     '<input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold asset-net-fee" value="' + (savedNetFee !== null ? savedNetFee : a.networkFee) + '">' +
                     '<span class="input-group-text bg-light border-0">' + a.code + '</span></div>' +
+                    '<label class="smaller text-muted mb-1 d-block">Minimum Deposit</label>' +
+                    '<div class="input-group input-group-sm mb-2">' +
+                    '<span class="input-group-text bg-light border-0">$</span>' +
+                    '<input type="number" class="form-control bg-light border-0 fw-bold asset-min-deposit" value="' + (savedMinDeposit !== null ? savedMinDeposit : a.minDeposit) + '"></div>' +
                     '<button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none asset-save-btn" data-code="' + a.code + '">Save</button>' +
                     '</div></div>'
                 );
@@ -410,6 +415,7 @@
                 localStorage.setItem('cn-rate-sell-' + code, card.find('.asset-sell').val());
                 localStorage.setItem('cn-fee-processing-' + code, card.find('.asset-proc-fee').val());
                 localStorage.setItem('cn-fee-network-' + code, card.find('.asset-net-fee').val());
+                localStorage.setItem('cn-min-deposit-' + code, card.find('.asset-min-deposit').val());
                 alert(code + ' rate and fees saved.');
             });
 
