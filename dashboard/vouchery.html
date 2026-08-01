@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
-    <title>More Services | CheapNaria</title>
+    <title>Vouchery | CheapNaria</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet"
@@ -79,101 +79,75 @@
                 <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
                     <i class="fas fa-bars"></i>
                 </button>
-                <h4 class="m-0">More Services</h4>
+                <a href="services.html" class="btn btn-light btn-sm rounded-pill me-2"><i
+                        class="fas fa-arrow-left"></i></a>
+                <h4 class="m-0" id="pageTitle">Vouchery</h4>
             </div>
             <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
             </button>
         </header>
 
-        <p class="text-muted mb-4">More ways to move money with CheapNaria.</p>
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card p-4">
 
-        <div class="row g-4">
-            <div class="col-12 col-md-6 col-xl-4">
-                <a href="pay-supplier.html" class="service-tile">
-                    <div class="st-icon" style="background:#fef3c7;color:#b45309;"><i class="fas fa-ship"></i></div>
-                    <div>
-                        <h6>Pay China Supplier</h6>
-                        <p>Settle supplier invoices in CNY directly from your NGN wallet.</p>
+                    <!-- STEP 1: Amount form -->
+                    <div id="formStep">
+                        <h5 class="mb-1">Buy or Sell Vouchery</h5>
+                        <p class="text-muted small mb-4">Trade Vouchery instantly &mdash; settled straight to or
+                            from your NGN wallet.</p>
+
+                        <div class="balance-hint mb-4">
+                            <span><i class="fas fa-wallet me-1"></i> Available Balance</span>
+                            <strong>₦245,680.00</strong>
+                        </div>
+
+                        <div class="vas-tab-row">
+                            <div class="vas-tab-btn active" data-type="buy">
+                                <i class="fas fa-arrow-down"></i>Buy Vouchery
+                            </div>
+                            <div class="vas-tab-btn" data-type="sell">
+                                <i class="fas fa-arrow-up"></i>Sell Vouchery
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-600" id="amountLabel">Amount to Buy (USD)</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0">$</span>
+                                <input type="number" class="form-control border-start-0" id="voucheryAmount"
+                                    placeholder="e.g 50">
+                            </div>
+                        </div>
+
+                        <div class="rc-detail-rows mb-4">
+                            <div class="rc-detail-row">
+                                <span class="rc-detail-label">Rate Applied</span>
+                                <span class="rc-detail-value" id="voucheryRateDisplay">$1 = ₦1,400.00</span>
+                            </div>
+                            <div class="rc-highlight-row">
+                                <span id="voucheryResultLabel">You'll Pay</span>
+                                <strong id="voucheryResult">₦0.00</strong>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm"
+                            id="continueVoucheryBtn">Continue</button>
                     </div>
-                </a>
-            </div>
-            <div class="col-12 col-md-6 col-xl-4">
-                <a href="send-abroad.html" class="service-tile">
-                    <div class="st-icon" style="background:#dbeafe;color:#1d4ed8;"><i
-                            class="fas fa-earth-africa"></i></div>
-                    <div>
-                        <h6>Send to Other African Countries</h6>
-                        <p>Pay into mobile money or bank accounts across Africa at great rates.</p>
+
+                    <!-- STEP 2: Confirm -->
+                    <div id="confirmStep" class="d-none">
+                        <h5 class="mb-4 text-center" id="confirmHeading">Confirm Purchase</h5>
+
+                        <div class="summary-rows mb-4" id="confirmSummaryRows"></div>
+
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm"
+                            id="confirmVoucheryBtn">Confirm &amp; Pay</button>
+                        <button type="button" class="btn btn-light w-100 py-2 mt-2" id="cancelVoucheryBtn">Cancel</button>
                     </div>
-                </a>
-            </div>
-            <div class="col-12 col-md-6 col-xl-4">
-                <a href="deriv-deposit.html" class="service-tile">
-                    <div class="st-icon" style="background:#ede9fe;color:#6d28d9;"><i
-                            class="fas fa-arrow-down"></i></div>
-                    <div>
-                        <h6>Deriv Deposit</h6>
-                        <p>Fund your Deriv CR account instantly, free of charge.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-12 col-md-6 col-xl-4">
-                <a href="deriv-withdraw.html" class="service-tile">
-                    <div class="st-icon" style="background:#ede9fe;color:#6d28d9;"><i
-                            class="fas fa-arrow-up"></i></div>
-                    <div>
-                        <h6>Deriv Withdrawal</h6>
-                        <p>Withdraw your Deriv earnings straight to your bank.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-12 col-md-6 col-xl-4">
-                <a href="transfer.html" class="service-tile">
-                    <div class="st-icon" style="background:#d1fae5;color:#059669;"><i
-                            class="fas fa-paper-plane"></i></div>
-                    <div>
-                        <h6>Send to CheapNaria User</h6>
-                        <p>Instant transfer to any verified CheapNaria account.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-12 col-md-6 col-xl-4">
-                <a href="utility-betting.html" class="service-tile">
-                    <div class="st-icon" style="background:#fce7f3;color:#be185d;"><i class="fas fa-bolt"></i></div>
-                    <div>
-                        <h6>Utility &amp; Betting</h6>
-                        <p>Fund your betting account, buy airtime, data or pay electricity bills instantly.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-12 col-md-6 col-xl-4">
-                <a href="ewallet-services.html" class="service-tile">
-                    <div class="st-icon" style="background:#e0e7ff;color:#4338ca;"><i class="fas fa-wallet"></i></div>
-                    <div>
-                        <h6>E-Wallet Services</h6>
-                        <p>Buy or sell Airtm, Skrill, Neteller, vouchers and more.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-12 col-md-6 col-xl-4">
-                <a href="vouchery.html" class="service-tile">
-                    <div class="st-icon" style="background:#fef3c7;color:#b45309;"><i class="fas fa-ticket"></i></div>
-                    <div>
-                        <h6>Vouchery</h6>
-                        <p>Buy or sell Vouchery instantly, settled straight to your NGN wallet.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-12 col-md-6 col-xl-4">
-                <a href="support.html" class="service-tile">
-                    <div class="st-icon" style="background:#fce7f3;color:#9d174d;"><i
-                            class="fas fa-credit-card"></i></div>
-                    <div>
-                        <h6>ATM Cards &amp; Other Requests</h6>
-                        <p>ATM cards and anything else are arranged directly with our support team.</p>
-                    </div>
-                </a>
+
+                </div>
             </div>
         </div>
     </main>
@@ -256,6 +230,26 @@
             </div>
         </div>
     </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow text-center p-5">
+                <div class="mb-4">
+                    <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center"
+                        style="width: 80px; height: 80px;">
+                        <i class="fas fa-check fs-1"></i>
+                    </div>
+                </div>
+                <h3 class="fw-bold mb-2" id="successTitle">Purchase Successful!</h3>
+                <p class="text-muted mb-4" id="successMessage">Your transaction was completed instantly.</p>
+                <div class="d-grid gap-2">
+                    <a href="index.html" class="btn btn-primary py-3 fw-bold">Back to Dashboard</a>
+                    <a href="transactions.html" class="btn btn-light py-2">View Receipt</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Deriv Actions Modal -->
     <div class="modal fade" id="derivActionsModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -294,6 +288,78 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/theme.js"></script>
+    <script>
+        $(document).ready(function () {
+            // ₦ per $1 — set by the admin on the Rates Control page, falls back to these defaults
+            const savedBuyRate = parseFloat(localStorage.getItem('cn-vouchery-buy-rate'));
+            const savedSellRate = parseFloat(localStorage.getItem('cn-vouchery-sell-rate'));
+            const BUY_RATE = !isNaN(savedBuyRate) ? savedBuyRate : 1400;
+            const SELL_RATE = !isNaN(savedSellRate) ? savedSellRate : 1370;
+            let activeType = 'buy';
+            let lastResult = null;
+
+            function currentRate() {
+                return activeType === 'buy' ? BUY_RATE : SELL_RATE;
+            }
+
+            function updateCalc() {
+                const rate = currentRate();
+                $('#voucheryRateDisplay').text('$1 = ₦' + rate.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#voucheryResultLabel').text(activeType === 'buy' ? "You'll Pay" : "You'll Receive");
+                const amt = parseFloat($('#voucheryAmount').val());
+                $('#voucheryResult').text(amt > 0 ? '₦' + (amt * rate).toLocaleString(undefined, { minimumFractionDigits: 2 }) : '₦0.00');
+            }
+
+            $('.vas-tab-btn').on('click', function () {
+                activeType = $(this).data('type');
+                $('.vas-tab-btn').removeClass('active');
+                $(this).addClass('active');
+                $('#amountLabel').text(activeType === 'buy' ? 'Amount to Buy (USD)' : 'Amount to Sell (USD)');
+                updateCalc();
+            });
+
+            $('#voucheryAmount').on('input', updateCalc);
+            updateCalc();
+
+            $('#continueVoucheryBtn').click(function () {
+                const amt = parseFloat($('#voucheryAmount').val());
+                if (!amt || amt <= 0) { alert('Please enter an amount'); return; }
+
+                const rate = currentRate();
+                const total = amt * rate;
+                lastResult = { type: activeType, amount: amt, rate: rate, total: total };
+
+                $('#confirmHeading').text(activeType === 'buy' ? 'Confirm Purchase' : 'Confirm Sale');
+                $('#confirmSummaryRows').html(
+                    '<div class="summary-row"><span class="sr-label">Transaction Type</span><span class="sr-value">' + (activeType === 'buy' ? 'Buy Vouchery' : 'Sell Vouchery') + '</span></div>' +
+                    '<div class="summary-row"><span class="sr-label">Amount</span><span class="sr-value">$' + amt.toLocaleString(undefined, { minimumFractionDigits: 2 }) + '</span></div>' +
+                    '<div class="summary-row"><span class="sr-label">Rate Applied</span><span class="sr-value">$1 = ₦' + rate.toLocaleString(undefined, { minimumFractionDigits: 2 }) + '</span></div>' +
+                    '<div class="summary-row"><span class="sr-label">' + (activeType === 'buy' ? 'Total to Pay' : 'Total to Receive') + '</span><span class="sr-value fw-bold">₦' + total.toLocaleString(undefined, { minimumFractionDigits: 2 }) + '</span></div>'
+                );
+
+                $('#formStep').addClass('d-none');
+                $('#confirmStep').removeClass('d-none').hide().fadeIn(200);
+            });
+
+            $('#cancelVoucheryBtn').click(function () {
+                $('#confirmStep').addClass('d-none');
+                $('#formStep').removeClass('d-none').hide().fadeIn(200);
+            });
+
+            $('#confirmVoucheryBtn').click(function () {
+                if (!lastResult) return;
+                const totalTxt = '₦' + lastResult.total.toLocaleString(undefined, { minimumFractionDigits: 2 });
+                if (lastResult.type === 'buy') {
+                    $('#successTitle').text('Vouchery Purchase Successful!');
+                    $('#successMessage').text('You bought $' + lastResult.amount.toLocaleString(undefined, { minimumFractionDigits: 2 }) + ' of Vouchery for ' + totalTxt + ', debited from your NGN wallet.');
+                } else {
+                    $('#successTitle').text('Vouchery Sale Successful!');
+                    $('#successMessage').text('You sold $' + lastResult.amount.toLocaleString(undefined, { minimumFractionDigits: 2 }) + ' of Vouchery for ' + totalTxt + ', credited to your NGN wallet.');
+                }
+                new bootstrap.Modal(document.getElementById('successModal')).show();
+            });
+        });
+    </script>
 </body>
 
 </html>

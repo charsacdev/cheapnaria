@@ -40,6 +40,7 @@
             <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
             <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
             <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+            <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
             <a href="rates.html" class="nav-link active"><i class="fas fa-chart-line"></i> Rates</a>
             <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
             <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
@@ -78,6 +79,7 @@
                 <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
                 <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
                 <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+                <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
                 <a href="rates.html" class="nav-link active"><i class="fas fa-chart-line"></i> Rates</a>
                 <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
                 <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
@@ -194,6 +196,37 @@
 
         <div class="row g-3" id="cryptoAssetRow">
             <!-- Crypto asset cards injected by JS from ASSET_DEFS -->
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
+            <div>
+                <h5 class="fw-bold mb-1">Vouchery Rate</h5>
+                <p class="text-muted small mb-0">Set the Naira buy and sell rate for Vouchery. This is the rate
+                    applied instantly on the user's Buy/Sell Vouchery page.</p>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card simple-rate-card border-0 shadow-sm">
+                    <div class="src-head">
+                        <span class="fw-bold small"><i class="fas fa-ticket me-1"></i>Vouchery</span>
+                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Buy Rate</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;</span>
+                        <input type="number" class="form-control bg-light border-0 fw-bold" id="voucheryBuyRate"
+                            value="1400">
+                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Sell Rate</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;</span>
+                        <input type="number" class="form-control bg-light border-0 fw-bold" id="voucherySellRate"
+                            value="1370">
+                    </div>
+                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none" id="voucherySaveBtn">Save</button>
+                </div>
+            </div>
         </div>
 
         <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
@@ -362,6 +395,22 @@
             $('#saveNigeriaRates').on('click', function () {
                 localStorage.setItem('cn-fee-deriv', $('#feeDeriv').val());
                 alert('Deriv rates & transaction fee saved.');
+            });
+
+            // --- Vouchery rate ---
+            const savedVoucheryBuy = localStorage.getItem('cn-vouchery-buy-rate');
+            const savedVoucherySell = localStorage.getItem('cn-vouchery-sell-rate');
+            if (savedVoucheryBuy !== null) $('#voucheryBuyRate').val(savedVoucheryBuy);
+            if (savedVoucherySell !== null) $('#voucherySellRate').val(savedVoucherySell);
+
+            $('#voucherySaveBtn').on('click', function () {
+                const buy = parseFloat($('#voucheryBuyRate').val());
+                const sell = parseFloat($('#voucherySellRate').val());
+                if (!buy || !sell || buy <= 0 || sell <= 0) { alert('Please enter valid buy and sell rates.'); return; }
+                if (sell >= buy) { alert('Sell rate should be lower than the buy rate.'); return; }
+                localStorage.setItem('cn-vouchery-buy-rate', buy);
+                localStorage.setItem('cn-vouchery-sell-rate', sell);
+                alert('Vouchery buy and sell rates saved.');
             });
 
             // --- Crypto asset rate/fee cards ---

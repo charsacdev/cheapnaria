@@ -840,7 +840,8 @@ table.dataTable tbody td {
 .form-select:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
-    background-color: #fff;
+    background-color: var(--bg-card);
+    color: var(--text-main);
     outline: none;
 }
 

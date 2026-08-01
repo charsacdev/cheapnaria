@@ -167,9 +167,9 @@
                         </div>
                         <p class="text-muted small mb-1">Step 1 of 2</p>
                         <h5 class="mb-4">Select USD Option</h5>
-                        <p class="text-muted small mb-3">Choose how you'd like to send USD</p>
+                        <p class="text-muted small mb-2 fw-bold text-uppercase smaller">Stablecoins</p>
                         <div class="d-grid gap-1">
-                            <div class="asset-list-item" data-asset="USDT" data-network="TRC20 (Tron)" data-rate="1420">
+                            <div class="asset-list-item" data-asset="USDT" data-rate="1420">
                                 <div class="ali-icon" style="background:#26a17b;"><i class="fas fa-dollar-sign"></i></div>
                                 <div class="ali-text">
                                     <p>USDT</p>
@@ -177,8 +177,7 @@
                                 </div>
                                 <i class="fas fa-chevron-right text-muted"></i>
                             </div>
-                            <div class="asset-list-item" data-asset="USDC" data-network="Solana" data-rate="1415"
-                                data-address="7VfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs">
+                            <div class="asset-list-item" data-asset="USDC" data-rate="1415">
                                 <div class="ali-icon" style="background:#2775ca;"><i
                                         class="fas fa-circle-dollar-to-slot"></i></div>
                                 <div class="ali-text">
@@ -187,44 +186,15 @@
                                 </div>
                                 <i class="fas fa-chevron-right text-muted"></i>
                             </div>
-                            <div class="asset-list-item" data-asset="BTC" data-network="Bitcoin" data-rate="1420"
-                                data-address="bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh">
-                                <div class="ali-icon" style="background:#f7931a;"><i class="fab fa-bitcoin"></i></div>
-                                <div class="ali-text">
-                                    <p>BTC</p>
-                                    <small>Bitcoin</small>
-                                </div>
-                                <i class="fas fa-chevron-right text-muted"></i>
-                            </div>
-                            <div class="asset-list-item" data-asset="BNB" data-network="BNB Smart Chain" data-rate="1420"
-                                data-address="bnb1grpf0955h0ykzq3ar5nmum7y6gdfl6lxfn46h2">
-                                <div class="ali-icon" style="background:#f0b90b;"><i class="fas fa-coins"></i></div>
-                                <div class="ali-text">
-                                    <p>BNB</p>
-                                    <small>BNB Smart Chain</small>
-                                </div>
-                                <i class="fas fa-chevron-right text-muted"></i>
-                            </div>
-                            <div class="asset-list-item" data-asset="ETH" data-network="Ethereum" data-rate="1420"
-                                data-address="0x71c7656ec7ab88b098defb751b7401b5f6d8976f">
-                                <div class="ali-icon" style="background:#627eea;"><i class="fab fa-ethereum"></i></div>
-                                <div class="ali-text">
-                                    <p>ETH</p>
-                                    <small>Ethereum</small>
-                                </div>
-                                <i class="fas fa-chevron-right text-muted"></i>
-                            </div>
                         </div>
 
-                        <div class="alert alert-warning small mt-3 mb-0">
-                            <i class="fas fa-circle-info me-1"></i> Crypto deposits are subject to a network fee
-                            and a processing fee, both deducted from the amount credited, as well as a minimum
-                            deposit amount set by CheapNaria. <strong>Tip:</strong> choose the BEP20 network for
-                            USDT deposits for a free network fee &mdash; the processing fee still applies.
+                        <div class="alert alert-light border small mt-3 mb-0">
+                            <i class="fas fa-circle-info text-primary me-1"></i> All deposits are converted to
+                            Naira and reflected on your dashboard once confirmed.
                         </div>
                     </div>
 
-                    <!-- CRYPTO STEP 1b (USDT only): Select Network -->
+                    <!-- CRYPTO STEP 1b: Select Network -->
                     <div id="networkStep" class="d-none">
                         <div class="step-indicator-row">
                             <div class="step-dot done"></div>
@@ -233,14 +203,6 @@
                         </div>
                         <p class="text-muted small mb-1">Step 2 of 3</p>
                         <h5 class="mb-4">Select Network</h5>
-                        <div class="rc-warning-box mb-3">
-                            <i class="fas fa-triangle-exclamation rc-warning-icon"></i>
-                            <div>
-                                <p>Choose the correct network</p>
-                                <small>Your deposit address is specific to the network you select. Sending on the
-                                    wrong network can result in permanent loss of funds.</small>
-                            </div>
-                        </div>
                         <div class="d-grid gap-1" id="networkList"></div>
                     </div>
 
@@ -254,8 +216,16 @@
                         <p class="text-muted small mb-1" id="sendStepLabel">Step 2 of 2</p>
                         <h5 class="mb-4">Send <span id="sendAssetLabel">USDT (TRC20)</span></h5>
                         <p class="text-muted small mb-3">Only send <span id="sendAssetName">USDT</span> on the <strong
-                                id="sendNetworkName">TRC20 (Tron)</strong> network to the address below. Your NGN
-                            wallet is credited automatically once payment is confirmed, minus the fees below.</p>
+                                id="sendNetworkName">TRC20 (Tron)</strong> network to the address below.</p>
+
+                        <div class="rc-warning-box mb-3">
+                            <i class="fas fa-triangle-exclamation rc-warning-icon"></i>
+                            <div>
+                                <p>Choose the correct network</p>
+                                <small>Your deposit address is specific to the network you selected. Sending on the
+                                    wrong network can result in permanent loss of funds.</small>
+                            </div>
+                        </div>
 
                         <div class="qr-box mb-4">
                             <img id="qrCodeImg" src="" alt="Deposit address QR code">
@@ -273,34 +243,9 @@
                             <span class="fw-bold text-success" id="sendRateDisplay">₦1,420.00 / 1 USDT</span>
                         </div>
 
-                        <div class="rc-section-title">Deposit Fees</div>
-                        <div class="mb-2">
-                            <div class="rc-charge-row" id="sendNetworkFeeRow">
-                                <div class="rc-detail-icon"><i class="fas fa-diagram-project"></i></div>
-                                <div class="rc-charge-label">
-                                    <p>Network Fee <i class="fas fa-circle-info"
-                                            title="Deducted from the amount credited"></i></p>
-                                    <small>Deducted from amount credited</small>
-                                </div>
-                                <div class="rc-charge-amount" id="sendNetworkFee">$0.00</div>
-                            </div>
-                            <div class="rc-charge-row">
-                                <div class="rc-detail-icon"><i class="fas fa-gear"></i></div>
-                                <div class="rc-charge-label">
-                                    <p>Processing Fee <i class="fas fa-circle-info"
-                                            title="Deducted from the amount credited"></i></p>
-                                    <small>Deducted from amount credited</small>
-                                </div>
-                                <div class="rc-charge-amount" id="sendProcessingFee">₦0.00</div>
-                            </div>
-                            <div class="rc-charge-row">
-                                <div class="rc-detail-icon"><i class="fas fa-circle-exclamation"></i></div>
-                                <div class="rc-charge-label">
-                                    <p>Minimum Deposit</p>
-                                    <small>Deposits below this amount will not be credited</small>
-                                </div>
-                                <div class="rc-charge-amount" id="sendMinDeposit">$0.00</div>
-                            </div>
+                        <div class="alert alert-light border small mb-3">
+                            <i class="fas fa-circle-info text-primary me-1"></i> All deposits are converted to
+                            Naira and reflected on your dashboard once confirmed.
                         </div>
 
                         <div class="d-grid gap-2">
@@ -423,14 +368,13 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-4">
-                    <p class="text-muted small mb-4">Choose whether you want to fund or withdraw from your Deriv CR
-                        account.</p>
+                    <p class="text-muted small mb-4">Choose whether you want to fund or withdraw using your Deriv nickname.</p>
                     <div class="d-grid gap-3">
                         <a href="deriv-deposit.html" class="select-method-card text-decoration-none">
                             <div class="smc-icon"><i class="fas fa-arrow-down"></i></div>
                             <div class="smc-text">
                                 <p>Fund Deriv Account</p>
-                                <small class="text-muted">Deposit into your CR account</small>
+                                <small class="text-muted">Deposit using your Deriv nickname</small>
                             </div>
                             <i class="fas fa-chevron-right text-muted"></i>
                         </a>
@@ -438,7 +382,7 @@
                             <div class="smc-icon"><i class="fas fa-arrow-up"></i></div>
                             <div class="smc-text">
                                 <p>Withdraw from Deriv</p>
-                                <small class="text-muted">Payout from your CR account</small>
+                                <small class="text-muted">Payout using your Deriv nickname</small>
                             </div>
                             <i class="fas fa-chevron-right text-muted"></i>
                         </a>
@@ -478,20 +422,16 @@
         $(document).ready(function () {
             const steps = ['#methodStep', '#bankStep', '#assetStep', '#networkStep', '#sendStep'];
 
-            // USDT is the only asset here with more than one real-world network;
-            // each network gets its own address so a wrong-network selection is
-            // structurally impossible, not just a warning label.
-            const USDT_NETWORKS = [
-                { code: 'TRC20', label: 'TRC20 (Tron)', icon: 'fa-bolt', color: '#ff0013', address: 'TV8xVJ7geBNLDyYh8k9F2u35Y8xVJ7geBNLDyYh8k9F2u3' },
-                { code: 'ERC20', label: 'ERC20 (Ethereum)', icon: 'fab fa-ethereum', color: '#627eea', address: '0x71c7656ec7ab88b098defb751b7401b5f6d8976f' },
-                { code: 'BEP20', label: 'BEP20 (BNB Smart Chain)', icon: 'fa-coins', color: '#f0b90b', address: 'bnb1grpf0955h0ykzq3ar5nmum7y6gdfl6lxfn46h2', recommended: true }
+            // Every network is free of network fees; each still gets its own address so a
+            // wrong-network selection is structurally impossible, not just a warning label.
+            const NETWORKS = [
+                { code: 'TRC20', label: 'TRC-20', icon: 'fa-bolt', color: '#ff0013', address: 'TV8xVJ7geBNLDyYh8k9F2u35Y8xVJ7geBNLDyYh8k9F2u3' },
+                { code: 'ERC20', label: 'ERC-20', icon: 'fab fa-ethereum', color: '#627eea', address: '0x71c7656ec7ab88b098defb751b7401b5f6d8976f' },
+                { code: 'SOL', label: 'Solana', icon: 'fa-bolt', color: '#14f195', address: '7VfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs' },
+                { code: 'BASE', label: 'Base', icon: 'fa-circle', color: '#0052ff', address: '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063' },
+                { code: 'BEP20', label: 'Binance Smart Chain (BEP-20)', icon: 'fa-coins', color: '#f0b90b', address: 'bnb1grpf0955h0ykzq3ar5nmum7y6gdfl6lxfn46h2' },
+                { code: 'ARB', label: 'Arbitrum (ARB)', icon: 'fa-cube', color: '#28a0f0', address: '0x1F98431c8aD98523631AE4a59f267346ea31F984' }
             ];
-
-            // Network fee in asset units — matches the admin-configured defaults (Rates Control).
-            // BEP20 is free to encourage its use; other USDT networks and single-network assets carry a small fee.
-            const NETWORK_FEES = { TRC20: 1.00, ERC20: 1.00, BEP20: 0, USDC: 0.50, BTC: 0.0001, BNB: 0.001, ETH: 0.002 };
-            const PROCESSING_FEE_NGN = 1000; // flat, matches admin default
-            const MIN_DEPOSIT_USD = 10; // matches admin default
 
             let currentAsset = null;
             let lastSendArgs = null; // args last passed to renderSendStep, so a refresh can rebuild the send step
@@ -517,14 +457,13 @@
                 persistFlow(id.replace('#', ''));
             }
 
-            function buildNetworkList() {
+            function buildNetworkList(assetName) {
                 const $list = $('#networkList').empty();
-                USDT_NETWORKS.forEach(function (n) {
+                NETWORKS.forEach(function (n) {
                     $list.append(
                         '<div class="asset-list-item network-option" data-code="' + n.code + '" data-label="' + n.label + '" data-address="' + n.address + '">' +
                         '<div class="ali-icon" style="background:' + n.color + ';"><i class="fas ' + n.icon + '"></i></div>' +
-                        '<div class="ali-text"><p>' + n.label + '</p><small>USDT on ' + n.code + '</small></div>' +
-                        (n.recommended ? '<span class="smc-tag me-2">Free &middot; Recommended</span>' : '') +
+                        '<div class="ali-text"><p>' + n.label + '</p><small>' + assetName + ' on ' + n.code + '</small></div>' +
                         '<i class="fas fa-chevron-right text-muted"></i></div>'
                     );
                 });
@@ -536,8 +475,8 @@
                 } else if (!$('#networkStep').hasClass('d-none')) {
                     showStep('#assetStep', 'Deposit via USD');
                 } else if (!$('#sendStep').hasClass('d-none')) {
-                    if (currentAsset === 'USDT') showStep('#networkStep', 'Select Network');
-                    else showStep('#assetStep', 'Deposit via USD');
+                    buildNetworkList(currentAsset);
+                    showStep('#networkStep', 'Select Network');
                 } else {
                     window.location.href = 'index.html';
                 }
@@ -557,8 +496,8 @@
                 new bootstrap.Modal(document.getElementById('successModal')).show();
             });
 
-            function renderSendStep(assetName, networkLabel, address, rate, stepLabel, feeUnits) {
-                lastSendArgs = { assetName: assetName, networkLabel: networkLabel, address: address, rate: rate, stepLabel: stepLabel, feeUnits: feeUnits };
+            function renderSendStep(assetName, networkLabel, address, rate, stepLabel) {
+                lastSendArgs = { assetName: assetName, networkLabel: networkLabel, address: address, rate: rate, stepLabel: stepLabel };
                 $('#sendAssetLabel').text(assetName + ' (' + networkLabel + ')');
                 $('#sendAssetName').text(assetName);
                 $('#sendNetworkName').text(networkLabel);
@@ -567,43 +506,22 @@
                 $('#qrCodeImg').attr('src', 'https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=' + encodeURIComponent(address));
                 $('#sendStepLabel').text(stepLabel);
 
-                if (feeUnits > 0) {
-                    const feeNgn = feeUnits * rate;
-                    $('#sendNetworkFee').html(feeUnits.toFixed(feeUnits < 0.01 ? 6 : 2) + ' ' + assetName +
-                        ' <br><small class="text-muted fw-normal">(&asymp; ₦' + feeNgn.toLocaleString(undefined, { minimumFractionDigits: 2 }) + ')</small>');
-                } else {
-                    $('#sendNetworkFee').html('<span class="text-success fw-bold">Free</span>');
-                }
-                $('#sendProcessingFee').text('₦' + PROCESSING_FEE_NGN.toLocaleString(undefined, { minimumFractionDigits: 2 }));
-                $('#sendMinDeposit').html('$' + MIN_DEPOSIT_USD.toFixed(2) +
-                    ' <br><small class="text-muted fw-normal">(&asymp; ₦' + (MIN_DEPOSIT_USD * rate).toLocaleString(undefined, { minimumFractionDigits: 2 }) + ')</small>');
-
                 showStep('#sendStep', 'Deposit via USD');
             }
 
-            // Asset selection
+            // Asset selection — both stablecoins route through network selection
             $('.asset-list-item').click(function () {
                 const name = $(this).data('asset');
-                const network = $(this).data('network');
-                const rate = parseFloat($(this).data('rate'));
                 currentAsset = name;
-
-                if (name === 'USDT') {
-                    buildNetworkList();
-                    showStep('#networkStep', 'Select Network');
-                    return;
-                }
-
-                renderSendStep(name, network, $(this).data('address') || 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', rate, 'Step 2 of 2', NETWORK_FEES[name] || 0);
+                buildNetworkList(name);
+                showStep('#networkStep', 'Select Network');
             });
 
             $(document).on('click', '.network-option', function () {
-                const code = $(this).data('code');
                 const label = $(this).data('label');
                 const address = $(this).data('address');
-                const rate = parseFloat($('.asset-list-item[data-asset="USDT"]').data('rate'));
-                const feeUnits = NETWORK_FEES[code] !== undefined ? NETWORK_FEES[code] : 1.00;
-                renderSendStep('USDT', code, address, rate, 'Step 3 of 3', feeUnits);
+                const rate = parseFloat($('.asset-list-item[data-asset="' + currentAsset + '"]').data('rate'));
+                renderSendStep(currentAsset, label, address, rate, 'Step 3 of 3');
             });
 
             $('#sentPaymentBtn').click(function () {
@@ -624,7 +542,7 @@
                 currentAsset = saved.currentAsset || null;
 
                 if (saved.step === 'networkStep') {
-                    buildNetworkList();
+                    buildNetworkList(currentAsset);
                     showStep('#networkStep', 'Select Network');
                     return;
                 }
@@ -632,7 +550,7 @@
                 if (saved.step === 'sendStep') {
                     if (!saved.sendArgs) return;
                     const a = saved.sendArgs;
-                    renderSendStep(a.assetName, a.networkLabel, a.address, a.rate, a.stepLabel, a.feeUnits);
+                    renderSendStep(a.assetName, a.networkLabel, a.address, a.rate, a.stepLabel);
                     return;
                 }
 

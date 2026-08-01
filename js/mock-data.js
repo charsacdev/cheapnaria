@@ -266,6 +266,7 @@
     const REPORT_ABROAD = buildReportSeries('RPA', 50, 22000, 9800, 180);
     const REPORT_CHINA = buildReportSeries('RPS', 40, 180000, 65000, 180);
     const REPORT_UTILITY = buildReportSeries('RPU', 45, 8000, 4200, 180);
+    const REPORT_VOUCHERY = buildReportSeries('RPV', 45, 15000, 6500, 180);
 
     const REPORT_REF_DATE = new Date(2024, 10, 5); // fixed "today" — matches dateBack()/shortDate()
 
@@ -281,10 +282,22 @@
         deriv: { label: 'Deriv', records: REPORT_DERIV, feeKey: 'cn-fee-deriv', defaultFeePct: 1.2 },
         abroad: { label: 'Send Abroad', records: REPORT_ABROAD, feeKey: null, defaultFeePct: 2.0 },
         china: { label: 'Pay Supplier (China)', records: REPORT_CHINA, feeKey: null, defaultFeePct: 1.8 },
-        utility: { label: 'Utilities & Betting', records: REPORT_UTILITY, feeKey: null, defaultFeePct: 1.0 }
+        utility: { label: 'Utilities & Betting', records: REPORT_UTILITY, feeKey: null, defaultFeePct: 1.0 },
+        vouchery: { label: 'Vouchery', records: REPORT_VOUCHERY, feeKey: null, defaultFeePct: 2.1 }
     };
 
+    // Vouchery's margin is the spread between its admin-configured buy/sell rate,
+    // rather than a flat fee percentage like the other types.
+    function voucheryMarginPct() {
+        const buy = parseFloat(localStorage.getItem('cn-vouchery-buy-rate'));
+        const sell = parseFloat(localStorage.getItem('cn-vouchery-sell-rate'));
+        const buyRate = !isNaN(buy) ? buy : 1400;
+        const sellRate = !isNaN(sell) ? sell : 1370;
+        return buyRate > 0 ? ((buyRate - sellRate) / buyRate) * 100 : 0;
+    }
+
     function feePctFor(typeKey) {
+        if (typeKey === 'vouchery') return voucheryMarginPct();
         const cfg = REPORT_TYPES[typeKey];
         if (cfg.feeKey) {
             const stored = localStorage.getItem(cfg.feeKey);
