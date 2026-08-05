@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
+    <title>Other Services | CheapNaria Agent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <div class="d-flex flex-column justify-content-center">
+                    <span class="lh-1"><span>CheapNaria</span></span>
+                    <span class="badge bg-secondary mt-1 align-self-start"
+                        style="font-size: 0.5rem; letter-spacing: 1px;">AGENT</span>
+                </div>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">13</span></a>
+            <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+            <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+            <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+            <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+            <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+            <a href="other-services.html" class="nav-link active"><i class="fas fa-wallet"></i> Other Services</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+            <hr class="my-3 opacity-10">
+            <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <div class="d-flex flex-column justify-content-center">
+                    <span class="lh-1"><span>CheapNaria</span></span>
+                    <span class="badge bg-secondary mt-1 align-self-start"
+                        style="font-size: 0.5rem; letter-spacing: 1px;">AGENT</span>
+                </div>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">13</span></a>
+                <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+                <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+                <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+                <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+                <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+                <a href="other-services.html" class="nav-link active"><i class="fas fa-wallet"></i> Other Services</a>
+                <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+                <hr class="my-3 opacity-10">
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="menu-toggle d-lg-none me-3" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars-staggered"></i>
+                </button>
+                <div>
+                    <h4 class="m-0 fw-bold">Other Services</h4>
+                    <p class="mb-0 text-muted small">Skrill, Neteller, ATM cards & iCash — negotiated and recorded
+                        manually.</p>
+                </div>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="dropdown">
+                    <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=James+Bond&background=0dcaf0&color=fff" alt="Profile"
+                            class="rounded-circle" width="40">
+                        <div class="d-none d-sm-block">
+                            <p class="mb-0 small fw-bold">James Bond</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Support Agent</p>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-user-circle me-2"></i>
+                                Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i
+                                    class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats -->
+        <div class="row g-3 g-md-4 mb-4 text-center text-md-start">
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-primary-subtle text-primary mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-sack-dollar"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Total Volume</p>
+                    <h4 class="fw-800 mb-0" id="statVolume">₦0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-secondary-subtle text-secondary mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-list-ol"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Total Logged</p>
+                    <h4 class="fw-800 mb-0" id="statCount">0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-success-subtle text-success mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Deposits</p>
+                    <h4 class="fw-800 mb-0" id="statDeposits">0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-danger-subtle text-danger mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Withdrawals</p>
+                    <h4 class="fw-800 mb-0" id="statWithdrawals">0</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="card p-4 border-0 shadow-sm">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="mb-0 fw-bold">Logged Transactions</h5>
+                <button type="button" class="btn btn-primary rounded-pill px-4 fw-bold" data-bs-toggle="modal"
+                    data-bs-target="#logModal"><i class="fas fa-plus me-1"></i> Log Transaction</button>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" id="otherServicesTable">
+                    <thead>
+                        <tr>
+                            <th>Reference</th>
+                            <th>Customer</th>
+                            <th>Service</th>
+                            <th>Type</th>
+                            <th>Amount (NGN)</th>
+                            <th>Date</th>
+                            <th>Note</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <p class="text-muted small text-center mt-4 mb-0 d-none" id="emptyState">No transactions logged yet.
+                Click "Log Transaction" to record a Skrill, Neteller, ATM or iCash request.</p>
+        </div>
+    </main>
+
+    <!-- Log Transaction Modal -->
+    <div class="modal fade" id="logModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="fw-bold">Log a Transaction</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-muted">Customer Name</label>
+                        <input type="text" class="form-control" id="logCustomerName" placeholder="e.g John Doe">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-muted">Customer Email</label>
+                        <input type="email" class="form-control" id="logCustomerEmail"
+                            placeholder="e.g john.doe@example.com">
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-6">
+                            <label class="form-label small fw-bold text-muted">Service</label>
+                            <select class="form-select" id="logService">
+                                <option>Skrill</option>
+                                <option>Neteller</option>
+                                <option>ATM Card</option>
+                                <option>iCash</option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small fw-bold text-muted">Type</label>
+                            <select class="form-select" id="logType">
+                                <option value="deposit">Deposit</option>
+                                <option value="withdrawal">Withdrawal</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-muted">Amount (NGN)</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light">₦</span>
+                            <input type="number" class="form-control" id="logAmount" placeholder="e.g 50000">
+                        </div>
+                    </div>
+                    <div class="mb-0">
+                        <label class="form-label small fw-bold text-muted">Note</label>
+                        <input type="text" class="form-control" id="logNote"
+                            placeholder="e.g Agreed rate, reference number, etc.">
+                    </div>
+                </div>
+                <div class="modal-footer border-0 pt-0 p-4">
+                    <button type="button" class="btn btn-primary w-100 rounded-pill fw-bold py-2"
+                        id="logSaveBtn">Save Transaction</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        $(document).ready(function () {
+            const STORAGE_KEY = 'cn-other-services';
+            let table = null;
+
+            function readAll() {
+                try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch (e) { return []; }
+            }
+            function writeAll(items) {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+            }
+
+            function render() {
+                const items = readAll();
+                const tbody = $('#otherServicesTable tbody').empty();
+
+                items.forEach(function (r) {
+                    const typeBadge = r.type === 'deposit'
+                        ? '<span class="badge-status status-approved">Deposit</span>'
+                        : '<span class="badge-status status-rejected">Withdrawal</span>';
+                    tbody.append(
+                        '<tr><td><span class="fw-bold text-primary">' + r.ref + '</span></td>' +
+                        '<td><p class="mb-0 small fw-bold">' + r.customerName + '</p><small class="text-muted">' + r.customerEmail + '</small></td>' +
+                        '<td><span class="badge bg-light text-dark border px-2">' + r.service + '</span></td>' +
+                        '<td>' + typeBadge + '</td>' +
+                        '<td class="fw-800">₦' + Number(r.amount).toLocaleString() + '</td>' +
+                        '<td class="small text-muted">' + r.date + '</td>' +
+                        '<td class="small text-muted">' + (r.note || '&mdash;') + '</td></tr>'
+                    );
+                });
+
+                if (table) { table.destroy(); }
+                table = $('#otherServicesTable').DataTable({ responsive: true, pageLength: 10 });
+                $('#emptyState').toggleClass('d-none', items.length > 0);
+
+                const deposits = items.filter(function (r) { return r.type === 'deposit'; });
+                const withdrawals = items.filter(function (r) { return r.type === 'withdrawal'; });
+                const volume = items.reduce(function (s, r) { return s + Number(r.amount); }, 0);
+
+                $('#statVolume').text('₦' + volume.toLocaleString());
+                $('#statCount').text(items.length.toLocaleString());
+                $('#statDeposits').text(deposits.length.toLocaleString());
+                $('#statWithdrawals').text(withdrawals.length.toLocaleString());
+            }
+            render();
+
+            $('#logSaveBtn').click(function () {
+                const name = $('#logCustomerName').val().trim();
+                const email = $('#logCustomerEmail').val().trim();
+                const amount = parseFloat($('#logAmount').val());
+
+                if (!name || !amount || amount <= 0) {
+                    alert('Please enter the customer name and a valid amount.');
+                    return;
+                }
+
+                const items = readAll();
+                items.unshift({
+                    ref: 'OTH-' + Date.now().toString().slice(-6),
+                    customerName: name,
+                    customerEmail: email || '—',
+                    service: $('#logService').val(),
+                    type: $('#logType').val(),
+                    amount: amount,
+                    note: $('#logNote').val().trim(),
+                    date: new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: '2-digit' })
+                });
+                writeAll(items);
+
+                $('#logCustomerName, #logCustomerEmail, #logAmount, #logNote').val('');
+                bootstrap.Modal.getInstance(document.getElementById('logModal')).hide();
+                render();
+            });
+        });
+    </script>
+</body>
+
+</html>

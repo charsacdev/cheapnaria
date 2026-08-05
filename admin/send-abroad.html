@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Abroad Requests | CheapNaria</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+            <a href="tiers.html" class="nav-link"><i class="fas fa-layer-group"></i> Tiers</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">13</span></a>
+            <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+            <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+            <a href="send-abroad.html" class="nav-link active"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+            <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+            <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+            <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+            <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
+            <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+            <a href="ads.html" class="nav-link"><i class="fas fa-rectangle-ad"></i> Ads / Promotions</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+            <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
+            <hr class="my-3 opacity-10">
+            <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+                <a href="tiers.html" class="nav-link"><i class="fas fa-layer-group"></i> Tiers</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">13</span></a>
+                <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+                <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+                <a href="send-abroad.html" class="nav-link active"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+                <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+                <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+                <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+                <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
+                <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+                <a href="ads.html" class="nav-link"><i class="fas fa-rectangle-ad"></i> Ads / Promotions</a>
+                <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+                <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
+                <hr class="my-3 opacity-10">
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="menu-toggle d-lg-none me-3" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars-staggered"></i>
+                </button>
+                <h4 class="m-0 d-none d-md-block">Send Abroad Requests</h4>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+                <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="dropdown">
+                    <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=10b981&color=fff" alt="Profile"
+                            class="rounded-circle" width="40">
+                        <div class="d-none d-sm-block">
+                            <p class="mb-0 small fw-bold">Admin User</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Super Admin</p>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-user-circle me-2"></i>
+                                Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i
+                                    class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Date Range Filter -->
+        <div class="card p-4 border-0 shadow-sm mb-4">
+            <div class="row g-3 align-items-end">
+                <div class="col-6 col-md-3">
+                    <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Start Date</label>
+                    <input type="date" class="form-control bg-light border-0 fw-bold" id="abrStartDate">
+                </div>
+                <div class="col-6 col-md-3">
+                    <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">End Date</label>
+                    <input type="date" class="form-control bg-light border-0 fw-bold" id="abrEndDate">
+                </div>
+                <div class="col-12 col-md-3">
+                    <button type="button" class="btn btn-primary w-100 fw-bold" id="abrFilter">
+                        <i class="fas fa-magnifying-glass-chart me-2"></i>Filter
+                    </button>
+                </div>
+                <div class="col-12 col-md-3">
+                    <button type="button" class="btn btn-light w-100 fw-bold border" id="abrReset">Reset</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="row g-3 g-md-4 mb-4 text-center text-md-start">
+            <div class="col-6 col-lg">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-secondary-subtle text-secondary mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-earth-africa"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Total Requests</p>
+                    <h4 class="fw-800 mb-0" id="statTotal">0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-primary-subtle text-primary mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-sack-dollar"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Total Volume (NGN)</p>
+                    <h4 class="fw-800 mb-0" id="statVolume">₦0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-warning-subtle text-warning mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-clock-rotate-left"></i>
+                    </div>
+                    <p class="text-warning smaller fw-bold mb-1 text-uppercase">Pending</p>
+                    <h4 class="fw-800 mb-0" id="statPending">0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-success-subtle text-success mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <p class="text-success smaller fw-bold mb-1 text-uppercase">Approved</p>
+                    <h4 class="fw-800 mb-0" id="statApproved">0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-danger-subtle text-danger mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-triangle-exclamation"></i>
+                    </div>
+                    <p class="text-danger smaller fw-bold mb-1 text-uppercase">Rejected</p>
+                    <h4 class="fw-800 mb-0" id="statRejected">0</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Queue Table -->
+        <div class="card p-4 border-0 shadow-sm">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" id="abroadTable">
+                    <thead>
+                        <tr>
+                            <th>Reference</th>
+                            <th>Requested By</th>
+                            <th>Destination</th>
+                            <th>NGN Sent</th>
+                            <th>Recipient Gets</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="fw-bold text-primary">ABR-52011</span></td>
+                            <td>
+                                <p class="mb-0 small fw-bold">John Doe</p>
+                                <small class="text-muted">john.doe@example.com</small>
+                            </td>
+                            <td>&#127468;&#127469; Ghana &middot; MoMo</td>
+                            <td class="fw-800">₦50,000.00</td>
+                            <td class="fw-bold">450.00 GHS</td>
+                            <td class="small text-muted">Nov 02, 2024</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td>
+                                <button class="btn btn-light btn-sm rounded-pill px-4 border abroad-review-btn"
+                                    data-bs-toggle="modal" data-bs-target="#abroadAuditModal" data-ref="ABR-52011"
+                                    data-user-name="John Doe" data-user-email="john.doe@example.com"
+                                    data-recipient="Kwame Mensah" data-country="Ghana &#127468;&#127469;"
+                                    data-method="Mobile Money" data-method-detail="MTN MoMo &middot; 0551234567"
+                                    data-ngn="₦50,000.00" data-local="450.00 GHS" data-rate="₦1 = 0.0090 GHS"
+                                    data-date="Nov 02, 2024 - 12:30" data-status="approved">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="fw-bold text-primary">ABR-52029</span></td>
+                            <td>
+                                <p class="mb-0 small fw-bold">Sarah Adams</p>
+                                <small class="text-muted">sarah.a@gmail.com</small>
+                            </td>
+                            <td>&#127472;&#127466; Kenya &middot; MoMo</td>
+                            <td class="fw-800">₦75,000.00</td>
+                            <td class="fw-bold">6,375.00 KES</td>
+                            <td class="small text-muted">Oct 28, 2024</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td>
+                                <button class="btn btn-light btn-sm rounded-pill px-4 border abroad-review-btn"
+                                    data-bs-toggle="modal" data-bs-target="#abroadAuditModal" data-ref="ABR-52029"
+                                    data-user-name="Sarah Adams" data-user-email="sarah.a@gmail.com"
+                                    data-recipient="Wanjiru Njoroge" data-country="Kenya &#127472;&#127466;"
+                                    data-method="Mobile Money" data-method-detail="M-Pesa &middot; 0712345678"
+                                    data-ngn="₦75,000.00" data-local="6,375.00 KES" data-rate="₦1 = 0.0850 KES"
+                                    data-date="Oct 28, 2024 - 18:10" data-status="approved">View</button>
+                            </td>
+                        </tr>
+                        <tr class="table-warning-subtle">
+                            <td><i class="fas fa-exclamation-circle text-warning me-1"></i><span
+                                    class="fw-bold text-primary">ABR-52044</span></td>
+                            <td>
+                                <p class="mb-0 small fw-bold">Michael Kelvin</p>
+                                <small class="text-muted">m.kelvin@gmail.com</small>
+                            </td>
+                            <td>&#127481;&#127487; Tanzania &middot; Bank</td>
+                            <td class="fw-800">₦100,000.00</td>
+                            <td class="fw-bold">168,000.00 TZS</td>
+                            <td class="small text-muted">Oct 25, 2024</td>
+                            <td><span class="badge-status status-pending">Pending</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-sm rounded-pill px-4 abroad-review-btn"
+                                    data-bs-toggle="modal" data-bs-target="#abroadAuditModal" data-ref="ABR-52044"
+                                    data-user-name="Michael Kelvin" data-user-email="m.kelvin@gmail.com"
+                                    data-recipient="Amani Juma" data-country="Tanzania &#127481;&#127487;"
+                                    data-method="Bank Transfer" data-method-detail="CRDB Bank &middot; 0150123456789"
+                                    data-ngn="₦100,000.00" data-local="168,000.00 TZS" data-rate="₦1 = 1.6800 TZS"
+                                    data-date="Oct 25, 2024 - 09:55" data-status="pending">Review</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="fw-bold text-primary">ABR-52061</span></td>
+                            <td>
+                                <p class="mb-0 small fw-bold">John Doe</p>
+                                <small class="text-muted">john.doe@example.com</small>
+                            </td>
+                            <td>&#127482;&#127468; Uganda &middot; MoMo</td>
+                            <td class="fw-800">₦40,000.00</td>
+                            <td class="fw-bold">98,000.00 UGX</td>
+                            <td class="small text-muted">Oct 20, 2024</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td>
+                                <button class="btn btn-light btn-sm rounded-pill px-4 border abroad-review-btn"
+                                    data-bs-toggle="modal" data-bs-target="#abroadAuditModal" data-ref="ABR-52061"
+                                    data-user-name="John Doe" data-user-email="john.doe@example.com"
+                                    data-recipient="Grace Nakato" data-country="Uganda &#127482;&#127468;"
+                                    data-method="Mobile Money" data-method-detail="MTN Uganda &middot; 0771234567"
+                                    data-ngn="₦40,000.00" data-local="98,000.00 UGX" data-rate="₦1 = 2.4500 UGX"
+                                    data-date="Oct 20, 2024 - 15:40" data-status="approved">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="fw-bold text-primary">ABR-52078</span></td>
+                            <td>
+                                <p class="mb-0 small fw-bold">Blessing O.</p>
+                                <small class="text-muted">blessing.o@example.com</small>
+                            </td>
+                            <td>&#127468;&#127469; Ghana &middot; Bank</td>
+                            <td class="fw-800">₦30,000.00</td>
+                            <td class="fw-bold">270.00 GHS</td>
+                            <td class="small text-muted">Oct 15, 2024</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td>
+                                <button class="btn btn-light btn-sm rounded-pill px-4 border abroad-review-btn"
+                                    data-bs-toggle="modal" data-bs-target="#abroadAuditModal" data-ref="ABR-52078"
+                                    data-user-name="Blessing O." data-user-email="blessing.o@example.com"
+                                    data-recipient="Kofi Boateng" data-country="Ghana &#127468;&#127469;"
+                                    data-method="Bank Transfer" data-method-detail="GCB Bank &middot; 1234567890123"
+                                    data-ngn="₦30,000.00" data-local="270.00 GHS" data-rate="₦1 = 0.0090 GHS"
+                                    data-date="Oct 15, 2024 - 11:20" data-status="approved">View</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Abroad Audit Modal -->
+    <div class="modal fade" id="abroadAuditModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-sm-down">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-bottom p-4">
+                    <h5 class="modal-title fw-bold">Send Abroad Audit &mdash; <span id="modRef">-</span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="p-4 bg-light rounded-4 h-100">
+                                <h6 class="fw-bold mb-3 text-primary">Requested By</h6>
+                                <p class="fw-bold mb-1" id="modUserName">-</p>
+                                <p class="small text-muted mb-4" id="modUserEmail">-</p>
+
+                                <h6 class="fw-bold mb-3 text-primary">Amount</h6>
+                                <div class="summary-rows mb-2">
+                                    <div class="summary-row">
+                                        <span class="sr-label">NGN Sent</span>
+                                        <span class="sr-value" id="modNgn">-</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span class="sr-label">Recipient Gets</span>
+                                        <span class="sr-value" id="modLocal">-</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span class="sr-label">Rate Applied</span>
+                                        <span class="sr-value" id="modRate">-</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span class="sr-label">Date</span>
+                                        <span class="sr-value" id="modDate">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold mb-3 text-primary">Recipient Details</h6>
+                            <div class="summary-rows mb-4">
+                                <div class="summary-row">
+                                    <span class="sr-label">Recipient</span>
+                                    <span class="sr-value" id="modRecipient">-</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="sr-label">Destination</span>
+                                    <span class="sr-value" id="modCountry">-</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="sr-label">Method</span>
+                                    <span class="sr-value" id="modMethod">-</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="sr-label">Details</span>
+                                    <span class="sr-value" id="modMethodDetail">-</span>
+                                </div>
+                            </div>
+
+                            <!-- Actionable state: upload + approve/reject -->
+                            <div id="modActionable">
+                                <h6 class="fw-bold mb-3 text-primary">Proof of Payment</h6>
+                                <div id="modUploadArea" class="receipt-upload-area">
+                                    <i class="fas fa-cloud-arrow-up upload-icon"></i>
+                                    <p class="mb-1 fw-bold small">Click to upload receipt</p>
+                                    <p class="mb-0 text-muted smaller">Image or PDF of the payout confirmation</p>
+                                    <input type="file" id="modFileInput" class="d-none" accept="image/*,.pdf">
+                                </div>
+                                <div id="modPreviewCard" class="receipt-preview-card d-none mt-3">
+                                    <div class="rpc-icon"><i class="fas fa-file-invoice"></i></div>
+                                    <div class="rpc-text">
+                                        <p id="modFileName">-</p>
+                                        <small>Ready to attach</small>
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-light text-danger"
+                                        id="modRemoveFile"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="alert alert-warning small mt-3 mb-0">
+                                    <i class="fas fa-exclamation-triangle me-1"></i> A receipt must be attached before
+                                    this request can be approved.
+                                </div>
+                            </div>
+
+                            <!-- Read-only state: already resolved -->
+                            <div id="modResolved" class="d-none">
+                                <div class="alert small mb-0" id="modResolvedAlert">
+                                    <i class="fas fa-info-circle me-1"></i> <span id="modResolvedText">This request has
+                                        already been processed.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 p-4 pt-0 gap-2" id="modActionFooter">
+                    <button type="button" class="btn btn-outline-danger flex-grow-1 rounded-pill py-2"
+                        id="modRejectBtn">Reject</button>
+                    <button type="button" class="btn btn-primary flex-grow-1 rounded-pill py-2 shadow" id="modApproveBtn"
+                        disabled>Approve &amp; Complete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        $(document).ready(function () {
+            const table = $('#abroadTable').DataTable({ responsive: true });
+
+            function rowDate(rowNode) {
+                const dateStr = $(rowNode).find('.abroad-review-btn').data('date') || '';
+                return new Date(dateStr.split(' - ')[0]);
+            }
+
+            let filterStart = null, filterEnd = null;
+
+            $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+                if (settings.nTable.id !== 'abroadTable') return true;
+                if (!filterStart && !filterEnd) return true;
+                const d = rowDate(table.row(dataIndex).node());
+                if (filterStart && d < filterStart) return false;
+                if (filterEnd && d > filterEnd) return false;
+                return true;
+            });
+
+            function refreshStats() {
+                const rows = table.rows({ search: 'applied' }).nodes();
+                let total = 0, pending = 0, approved = 0, rejected = 0, volume = 0;
+                $(rows).each(function () {
+                    const btn = $(this).find('.abroad-review-btn');
+                    const status = btn.data('status');
+                    const ngn = parseFloat(String(btn.data('ngn')).replace(/[^0-9.]/g, '')) || 0;
+                    total++;
+                    volume += ngn;
+                    if (status === 'pending') pending++;
+                    else if (status === 'approved') approved++;
+                    else if (status === 'rejected') rejected++;
+                });
+                $('#statTotal').text(total.toLocaleString());
+                $('#statVolume').text('₦' + volume.toLocaleString(undefined, { maximumFractionDigits: 0 }));
+                $('#statPending').text(pending.toLocaleString());
+                $('#statApproved').text(approved.toLocaleString());
+                $('#statRejected').text(rejected.toLocaleString());
+            }
+            refreshStats();
+
+            $('#abrFilter').click(function () {
+                const start = $('#abrStartDate').val();
+                const end = $('#abrEndDate').val();
+                filterStart = start ? new Date(start) : null;
+                filterEnd = end ? new Date(end) : null;
+                if (filterEnd) filterEnd.setHours(23, 59, 59, 999);
+                table.draw();
+                refreshStats();
+            });
+
+            $('#abrReset').click(function () {
+                $('#abrStartDate, #abrEndDate').val('');
+                filterStart = null;
+                filterEnd = null;
+                table.draw();
+                refreshStats();
+            });
+
+            let currentRef = null;
+            let uploadedDataUrl = null;
+            let uploadedFileName = null;
+
+            function resetModalUpload() {
+                uploadedDataUrl = null;
+                uploadedFileName = null;
+                $('#modFileInput').val('');
+                $('#modPreviewCard').addClass('d-none');
+                $('#modUploadArea').removeClass('d-none');
+                $('#modApproveBtn').prop('disabled', true);
+            }
+
+            $('#abroadAuditModal').on('show.bs.modal', function (event) {
+                const btn = event.relatedTarget;
+                if (!btn) return;
+                const d = btn.dataset;
+
+                currentRef = d.ref;
+                resetModalUpload();
+
+                $('#modRef').text(d.ref);
+                $('#modUserName').text(d.userName);
+                $('#modUserEmail').text(d.userEmail);
+                $('#modRecipient').text(d.recipient);
+                $('#modCountry').text(d.country);
+                $('#modMethod').text(d.method);
+                $('#modMethodDetail').text(d.methodDetail);
+                $('#modNgn').text(d.ngn);
+                $('#modLocal').text(d.local);
+                $('#modRate').text(d.rate);
+                $('#modDate').text(d.date);
+
+                if (d.status === 'pending') {
+                    $('#modActionable').removeClass('d-none');
+                    $('#modResolved').addClass('d-none');
+                    $('#modActionFooter').removeClass('d-none');
+                } else {
+                    $('#modActionable').addClass('d-none');
+                    $('#modActionFooter').addClass('d-none');
+                    $('#modResolved').removeClass('d-none');
+                    const alertBox = $('#modResolvedAlert');
+                    alertBox.removeClass('alert-success alert-danger alert-info');
+                    if (d.status === 'approved') {
+                        alertBox.addClass('alert-success');
+                        $('#modResolvedText').text('This payout has already been approved and completed.');
+                    } else {
+                        alertBox.addClass('alert-danger');
+                        $('#modResolvedText').text('This request was rejected.');
+                    }
+                }
+            });
+
+            $('#modUploadArea').on('click', function () {
+                $('#modFileInput').trigger('click');
+            });
+
+            $('#modFileInput').on('change', function () {
+                const file = this.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    uploadedDataUrl = e.target.result;
+                    uploadedFileName = file.name;
+                    $('#modFileName').text(file.name);
+                    $('#modUploadArea').addClass('d-none');
+                    $('#modPreviewCard').removeClass('d-none');
+                    $('#modApproveBtn').prop('disabled', false);
+                };
+                reader.readAsDataURL(file);
+            });
+
+            $('#modRemoveFile').on('click', function () {
+                resetModalUpload();
+            });
+
+            $('#modApproveBtn').on('click', function () {
+                if (!uploadedDataUrl || !currentRef) return;
+
+                const record = {
+                    fileName: uploadedFileName,
+                    dataUrl: uploadedDataUrl,
+                    approvedBy: 'Admin User',
+                    approvedAt: new Date().toLocaleString()
+                };
+                localStorage.setItem('cn-receipt-' + currentRef, JSON.stringify(record));
+
+                const rowBtn = $('.abroad-review-btn[data-ref="' + currentRef + '"]');
+                rowBtn.data('status', 'approved').attr('data-status', 'approved').text('View')
+                    .removeClass('btn-primary').addClass('btn-light border');
+                rowBtn.closest('tr').removeClass('table-warning-subtle')
+                    .find('td').eq(0).find('i.text-warning').remove();
+                rowBtn.closest('tr').find('.badge-status')
+                    .removeClass('status-pending').addClass('status-approved').text('Approved');
+
+                bootstrap.Modal.getInstance(document.getElementById('abroadAuditModal')).hide();
+                refreshStats();
+                alert('Payout approved. Receipt attached to ' + currentRef + '.');
+            });
+
+            $('#modRejectBtn').on('click', function () {
+                bootstrap.Modal.getInstance(document.getElementById('abroadAuditModal')).hide();
+                alert('Request ' + currentRef + ' rejected.');
+            });
+        });
+    </script>
+</body>
+
+</html>

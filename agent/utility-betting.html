@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
+    <title>Utility &amp; Betting | CheapNaria Agent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <div class="d-flex flex-column justify-content-center">
+                    <span class="lh-1"><span>CheapNaria</span></span>
+                    <span class="badge bg-secondary mt-1 align-self-start"
+                        style="font-size: 0.5rem; letter-spacing: 1px;">AGENT</span>
+                </div>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">13</span></a>
+            <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+            <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+            <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+            <a href="utility-betting.html" class="nav-link active"><i class="fas fa-bolt"></i> Utility &amp;
+                Betting</a>
+            <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+            <a href="other-services.html" class="nav-link"><i class="fas fa-wallet"></i> Other Services</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+            <hr class="my-3 opacity-10">
+            <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <div class="d-flex flex-column justify-content-center">
+                    <span class="lh-1"><span>CheapNaria</span></span>
+                    <span class="badge bg-secondary mt-1 align-self-start"
+                        style="font-size: 0.5rem; letter-spacing: 1px;">AGENT</span>
+                </div>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">13</span></a>
+                <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+                <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+                <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+                <a href="utility-betting.html" class="nav-link active"><i class="fas fa-bolt"></i> Utility &amp;
+                    Betting</a>
+                <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+                <a href="other-services.html" class="nav-link"><i class="fas fa-wallet"></i> Other Services</a>
+                <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+                <hr class="my-3 opacity-10">
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="menu-toggle d-lg-none me-3" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars-staggered"></i>
+                </button>
+                <h4 class="m-0 fw-bold">Utility &amp; Betting</h4>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="dropdown">
+                    <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=James+Bond&background=0dcaf0&color=fff" alt="Profile"
+                            class="rounded-circle" width="40">
+                        <div class="d-none d-sm-block">
+                            <p class="mb-0 small fw-bold">James Bond</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Support Agent</p>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-user-circle me-2"></i>
+                                Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i
+                                    class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats -->
+        <div class="row g-3 g-md-4 mb-4 text-center text-md-start">
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-primary-subtle text-primary mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-sack-dollar"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Total Volume</p>
+                    <h4 class="fw-800 mb-0" id="statVolume">₦0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-secondary-subtle text-secondary mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-list-ol"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Total Transactions</p>
+                    <h4 class="fw-800 mb-0" id="statCount">0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-success-subtle text-success mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-circle-check"></i>
+                    </div>
+                    <p class="text-success smaller fw-bold mb-1 text-uppercase">Successful</p>
+                    <h4 class="fw-800 mb-0" id="statSuccess">0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-danger-subtle text-danger mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-circle-xmark"></i>
+                    </div>
+                    <p class="text-danger smaller fw-bold mb-1 text-uppercase">Failed</p>
+                    <h4 class="fw-800 mb-0" id="statFailed">0</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-light border small mb-4"><i class="fas fa-circle-info me-1"></i> These transactions
+            settle instantly via the provider API &mdash; no approval action is required. This page is a read-only
+            log.</div>
+
+        <div class="card p-4 border-0 shadow-sm">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="mb-0 fw-bold" id="tableTitle">Betting</h5>
+                <select class="form-select w-auto fw-bold text-secondary border-0 bg-light" id="typeSelector">
+                    <option value="betting">Betting</option>
+                    <option value="airtime">Airtime</option>
+                    <option value="data">Data</option>
+                    <option value="electricity">Electricity</option>
+                </select>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="pane-betting">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle w-100 vas-table" data-type="betting">
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>User</th>
+                                    <th>Provider</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pane-airtime">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle w-100 vas-table" data-type="airtime">
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>User</th>
+                                    <th>Network</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pane-data">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle w-100 vas-table" data-type="data">
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>User</th>
+                                    <th>Network</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pane-electricity">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle w-100 vas-table" data-type="electricity">
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>User</th>
+                                    <th>DISCO</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- View Modal -->
+    <div class="modal fade" id="viewModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-bottom p-4">
+                    <h5 class="modal-title fw-bold" id="modTitle">Transaction</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row g-3 text-start mb-3">
+                        <div class="col-12">
+                            <p class="text-muted small mb-1" id="modUserLine">-</p>
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-1 d-block">Amount</label>
+                            <p class="fw-bold mb-0" id="modAmount">-</p>
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-1 d-block">Date</label>
+                            <p class="fw-bold mb-0" id="modDate">-</p>
+                        </div>
+                        <div class="col-12">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-1 d-block"
+                                id="modProviderLabel">Provider</label>
+                            <p class="fw-bold mb-0" id="modProvider">-</p>
+                        </div>
+                        <div class="col-12">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-1 d-block"
+                                id="modDetailLabel">Detail</label>
+                            <p class="fw-bold mb-0" id="modDetail">-</p>
+                        </div>
+                    </div>
+                    <div id="modStatusAlert" class="alert small mb-0"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/vas-providers.js"></script>
+    <script>
+        $(document).ready(function () {
+            const TYPE_LABELS = {
+                betting: { title: 'Betting', providerLabel: 'Betting Provider', detailLabel: 'Betting ID' },
+                airtime: { title: 'Airtime', providerLabel: 'Network', detailLabel: 'Phone Number' },
+                data: { title: 'Data', providerLabel: 'Network', detailLabel: 'Phone Number' },
+                electricity: { title: 'Electricity', providerLabel: 'Disco', detailLabel: 'Meter Number' }
+            };
+
+            function statusBadge(status) {
+                return status === 'success'
+                    ? '<span class="badge-status status-approved">Success</span>'
+                    : '<span class="badge-status status-rejected">Failed</span>';
+            }
+
+            // --- Stat cards (across betting/airtime/data/electricity) ---
+            const ALL_VAS = [].concat(
+                CN_VAS.VAS_RECORDS.betting,
+                CN_VAS.VAS_RECORDS.airtime,
+                CN_VAS.VAS_RECORDS.data,
+                CN_VAS.VAS_RECORDS.electricity
+            );
+            const vasSuccess = ALL_VAS.filter(function (r) { return r.status === 'success'; });
+            const vasFailed = ALL_VAS.filter(function (r) { return r.status === 'failed'; });
+            $('#statVolume').text('₦' + ALL_VAS.reduce(function (s, r) { return s + r.amountNgn; }, 0).toLocaleString());
+            $('#statCount').text(ALL_VAS.length.toLocaleString());
+            $('#statSuccess').text(vasSuccess.length.toLocaleString());
+            $('#statFailed').text(vasFailed.length.toLocaleString());
+
+            Object.keys(CN_VAS.VAS_RECORDS).forEach(function (type) {
+                const $tbody = $('.vas-table[data-type="' + type + '"] tbody');
+                CN_VAS.VAS_RECORDS[type].forEach(function (r, i) {
+                    $tbody.append(
+                        '<tr><td><span class="fw-bold text-primary">' + r.ref + '</span></td>' +
+                        '<td><p class="mb-0 small fw-bold">' + r.user.name + '</p><small class="text-muted">' + r.user.email + '</small></td>' +
+                        '<td>' + r.provider + '</td>' +
+                        '<td class="fw-800">₦' + r.amountNgn.toLocaleString() + '</td>' +
+                        '<td class="small text-muted">' + r.date + '</td>' +
+                        '<td>' + statusBadge(r.status) + '</td>' +
+                        '<td><button class="btn btn-light btn-sm rounded-pill px-4 border view-btn" data-bs-toggle="modal" data-bs-target="#viewModal" data-type="' + type + '" data-idx="' + i + '">View</button></td></tr>'
+                    );
+                });
+                $('.vas-table[data-type="' + type + '"]').DataTable({ responsive: true, pageLength: 10 });
+            });
+
+            $('#typeSelector').on('change', function () {
+                const val = $(this).val();
+                $('.tab-pane').removeClass('show active');
+                $('#pane-' + val).addClass('show active');
+                $('#tableTitle').text(TYPE_LABELS[val].title);
+            });
+
+            $(document).on('click', '.view-btn', function () {
+                const type = $(this).data('type');
+                const idx = $(this).data('idx');
+                const r = CN_VAS.VAS_RECORDS[type][idx];
+                const labels = TYPE_LABELS[type];
+
+                $('#modTitle').text(labels.title + ' — ' + r.ref);
+                $('#modUserLine').text(r.user.name + ' · ' + r.user.email);
+                $('#modAmount').text('₦' + r.amountNgn.toLocaleString());
+                $('#modDate').text(r.date);
+                $('#modProviderLabel').text(labels.providerLabel);
+                $('#modProvider').text(r.provider);
+                $('#modDetailLabel').text(labels.detailLabel);
+                $('#modDetail').text(r.detail);
+
+                const alertBox = $('#modStatusAlert').removeClass('alert-success alert-danger');
+                if (r.status === 'success') {
+                    alertBox.addClass('alert-success').html('<i class="fas fa-check-circle me-1"></i> Settled instantly via provider API.');
+                } else {
+                    alertBox.addClass('alert-danger').html('<i class="fas fa-times-circle me-1"></i> Provider API failed — amount was automatically refunded to the user\'s wallet.');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

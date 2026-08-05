@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Identity | CheapNaria</title>
+    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="auth-container">
+
+    <div class="auth-card auth-card-wide animate-up">
+        <div class="auth-header">
+            <a href="index.html" class="logo" style="justify-content: center; margin-bottom: 2rem;">
+                <img src="images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+        </div>
+
+        <div class="verify-progress">
+            <div class="verify-progress-step active"><div class="verify-progress-dot">1</div></div>
+            <div class="verify-progress-line"></div>
+            <div class="verify-progress-step"><div class="verify-progress-dot">2</div></div>
+            <div class="verify-progress-line"></div>
+            <div class="verify-progress-step"><div class="verify-progress-dot">3</div></div>
+            <div class="verify-progress-line"></div>
+            <div class="verify-progress-step"><div class="verify-progress-dot">4</div></div>
+        </div>
+
+        <div class="auth-header" style="margin-bottom: 2rem;">
+            <h2 style="font-size: 1.8rem; color: var(--secondary); letter-spacing: -1px;">Verify your identity</h2>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">Choose NIN or BVN to confirm who you are. This
+                unlocks Tier 1 access.</p>
+        </div>
+
+        <div id="idFormStep">
+            <div class="id-type-row">
+                <div class="id-type-card selected" data-type="nin" id="ninCard">
+                    <i class="fas fa-id-card"></i>
+                    <strong>NIN</strong>
+                    <small>National ID Number</small>
+                </div>
+                <div class="id-type-card" data-type="bvn" id="bvnCard">
+                    <i class="fas fa-building-columns"></i>
+                    <strong>BVN</strong>
+                    <small>Bank Verification No.</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label id="idNumberLabel">National ID Number (NIN)</label>
+                <input type="text" id="idNumber" inputmode="numeric" maxlength="11" placeholder="Enter 11-digit number" required>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="verifyIdBtn"
+                style="width: 100%; border-radius: 12px; padding: 1rem;">
+                Verify <i class="fas fa-shield-check ms-2"></i>
+            </button>
+        </div>
+
+        <div id="loadingStep" style="display: none;">
+            <div class="sim-loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Looking up your record&hellip;</p>
+            </div>
+        </div>
+
+        <div id="resultStep" style="display: none;">
+            <div class="sim-result-card">
+                <div class="sim-result-header"><i class="fas fa-circle-check"></i> Record Found</div>
+                <div class="sim-result-grid">
+                    <div class="full">
+                        <label>Full Name</label>
+                        <span id="resName">-</span>
+                    </div>
+                    <div>
+                        <label>Age</label>
+                        <span id="resAge">-</span>
+                    </div>
+                    <div>
+                        <label>Gender</label>
+                        <span id="resGender">-</span>
+                    </div>
+                    <div>
+                        <label>State</label>
+                        <span id="resState">-</span>
+                    </div>
+                    <div>
+                        <label>LGA</label>
+                        <span id="resLga">-</span>
+                    </div>
+                    <div class="full">
+                        <label>Address</label>
+                        <span id="resAddress">-</span>
+                    </div>
+                </div>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">
+                <i class="fas fa-circle-info"></i> Is this you? Confirming grants Tier 1 access to your account.
+            </p>
+            <button type="button" class="btn btn-primary" id="confirmIdBtn"
+                style="width: 100%; border-radius: 12px; padding: 1rem;">
+                Confirm & Continue <i class="fas fa-arrow-right ms-2"></i>
+            </button>
+            <a href="#" id="tryAgainLink" class="verify-skip-link">This isn't me — try a different number</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/verification.js"></script>
+    <script>
+        $(document).ready(function () {
+            let selectedType = 'nin';
+
+            $('.id-type-card').on('click', function () {
+                $('.id-type-card').removeClass('selected');
+                $(this).addClass('selected');
+                selectedType = $(this).data('type');
+                $('#idNumberLabel').text(selectedType === 'nin' ? 'National ID Number (NIN)' : 'Bank Verification Number (BVN)');
+                $('#idNumber').attr('placeholder', 'Enter 11-digit number').val('');
+            });
+
+            $('#verifyIdBtn').on('click', function () {
+                const idNumber = $('#idNumber').val().trim();
+                if (idNumber.length < 10) {
+                    alert('Please enter a valid ' + selectedType.toUpperCase() + ' number.');
+                    return;
+                }
+
+                $('#idFormStep').hide();
+                $('#loadingStep').show();
+
+                setTimeout(function () {
+                    $('#loadingStep').hide();
+                    const profile = CN_VERIFY.simulateIdentityLookup(idNumber);
+                    $('#resName').text(profile.name);
+                    $('#resAge').text(profile.age);
+                    $('#resGender').text(profile.gender);
+                    $('#resState').text(profile.state);
+                    $('#resLga').text(profile.lga);
+                    $('#resAddress').text(profile.address);
+                    $('#resultStep').data('profile', profile).data('idNumber', idNumber).data('idType', selectedType).show();
+                }, 1200);
+            });
+
+            $('#confirmIdBtn').on('click', function () {
+                const profile = $('#resultStep').data('profile');
+                const idNumber = $('#resultStep').data('idNumber');
+                const idType = $('#resultStep').data('idType');
+                CN_VERIFY.saveIdentity(idType, idNumber, profile);
+                window.location.href = 'verify-document.html';
+            });
+
+            $('#tryAgainLink').on('click', function (e) {
+                e.preventDefault();
+                $('#resultStep').hide();
+                $('#idFormStep').show();
+                $('#idNumber').val('').focus();
+            });
+        });
+    </script>
+</body>
+
+</html>

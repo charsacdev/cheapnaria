@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Bank Account | CheapNaria</title>
+    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="auth-container">
+
+    <div class="auth-card auth-card-wide animate-up">
+        <div class="auth-header">
+            <a href="index.html" class="logo" style="justify-content: center; margin-bottom: 2rem;">
+                <img src="images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+        </div>
+
+        <div class="verify-progress">
+            <div class="verify-progress-step done"><div class="verify-progress-dot"><i class="fas fa-check"></i></div></div>
+            <div class="verify-progress-line"></div>
+            <div class="verify-progress-step done"><div class="verify-progress-dot"><i class="fas fa-check"></i></div></div>
+            <div class="verify-progress-line"></div>
+            <div class="verify-progress-step done"><div class="verify-progress-dot"><i class="fas fa-check"></i></div></div>
+            <div class="verify-progress-line"></div>
+            <div class="verify-progress-step active"><div class="verify-progress-dot">4</div></div>
+        </div>
+
+        <div class="auth-header" style="margin-bottom: 2rem;">
+            <h2 style="font-size: 1.8rem; color: var(--secondary); letter-spacing: -1px;">Verify bank account</h2>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">Link the account you'll use to withdraw funds.
+                We'll confirm it's really yours.</p>
+        </div>
+
+        <div id="bankFormStep">
+            <div class="form-group">
+                <label>Select Bank</label>
+                <select class="verify-select" id="bankSelect"></select>
+            </div>
+            <div class="form-group">
+                <label>Account Number</label>
+                <input type="text" id="acctNumber" inputmode="numeric" maxlength="10" placeholder="0123456789" required>
+            </div>
+            <button type="button" class="btn btn-primary" id="verifyBankBtn"
+                style="width: 100%; border-radius: 12px; padding: 1rem;">
+                Verify Account <i class="fas fa-shield-check ms-2"></i>
+            </button>
+        </div>
+
+        <div id="loadingStep" style="display: none;">
+            <div class="sim-loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Confirming account details&hellip;</p>
+            </div>
+        </div>
+
+        <div id="resultStep" style="display: none;">
+            <div class="sim-result-card">
+                <div class="sim-result-header"><i class="fas fa-circle-check"></i> Account Verified</div>
+                <div class="sim-result-grid">
+                    <div class="full">
+                        <label>Account Name</label>
+                        <span id="resAcctName">-</span>
+                    </div>
+                    <div>
+                        <label>Bank</label>
+                        <span id="resBank">-</span>
+                    </div>
+                    <div>
+                        <label>Account Number</label>
+                        <span id="resAcctNumber">-</span>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" id="finishBtn"
+                style="width: 100%; border-radius: 12px; padding: 1rem;">
+                Confirm & Finish <i class="fas fa-arrow-right ms-2"></i>
+            </button>
+        </div>
+
+        <a href="dashboard/index.html" class="verify-skip-link">Skip for now &mdash; I'll add this later</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/verification.js"></script>
+    <script>
+        $(document).ready(function () {
+            CN_VERIFY.BANKS.forEach(function (b) {
+                $('#bankSelect').append('<option value="' + b + '">' + b + '</option>');
+            });
+
+            $('#verifyBankBtn').on('click', function () {
+                const acct = $('#acctNumber').val().trim();
+                const bank = $('#bankSelect').val();
+                if (acct.length !== 10) {
+                    alert('Please enter a valid 10-digit account number.');
+                    return;
+                }
+
+                $('#bankFormStep').hide();
+                $('#loadingStep').show();
+
+                setTimeout(function () {
+                    $('#loadingStep').hide();
+                    const identity = CN_VERIFY.getIdentity();
+                    const accountName = identity && identity.profile ? identity.profile.name.toUpperCase()
+                        : CN_VERIFY.simulateBankLookup(acct, bank);
+                    $('#resAcctName').text(accountName);
+                    $('#resBank').text(bank);
+                    $('#resAcctNumber').text(acct);
+                    $('#resultStep').data('bank', bank).data('acct', acct).data('name', accountName).show();
+                }, 1200);
+            });
+
+            $('#finishBtn').on('click', function () {
+                const r = $('#resultStep');
+                CN_VERIFY.saveBankAccount(r.data('bank'), r.data('acct'), r.data('name'));
+                window.location.href = 'dashboard/index.html';
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
+    <title>Users | CheapNaria Agent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <div class="d-flex flex-column justify-content-center">
+                    <span class="lh-1"><span>CheapNaria</span></span>
+                    <span class="badge bg-secondary mt-1 align-self-start"
+                        style="font-size: 0.5rem; letter-spacing: 1px;">AGENT</span>
+                </div>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="users.html" class="nav-link active"><i class="fas fa-users"></i> Users</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">13</span></a>
+            <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+            <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+            <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+            <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+            <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+            <a href="other-services.html" class="nav-link"><i class="fas fa-wallet"></i> Other Services</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+            <hr class="my-3 opacity-10">
+            <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <div class="d-flex flex-column justify-content-center">
+                    <span class="lh-1"><span>CheapNaria</span></span>
+                    <span class="badge bg-secondary mt-1 align-self-start"
+                        style="font-size: 0.5rem; letter-spacing: 1px;">AGENT</span>
+                </div>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="users.html" class="nav-link active"><i class="fas fa-users"></i> Users</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">13</span></a>
+                <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+                <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+                <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+                <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+                <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+                <a href="other-services.html" class="nav-link"><i class="fas fa-wallet"></i> Other Services</a>
+                <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+                <hr class="my-3 opacity-10">
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="menu-toggle d-lg-none me-3" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars-staggered"></i>
+                </button>
+                <h4 class="m-0 fw-bold">Users</h4>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="dropdown">
+                    <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=James+Bond&background=0dcaf0&color=fff" alt="Profile"
+                            class="rounded-circle" width="40">
+                        <div class="d-none d-sm-block">
+                            <p class="mb-0 small fw-bold">James Bond</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Support Agent</p>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-user-circle me-2"></i>
+                                Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i
+                                    class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="row g-3 g-md-4 mb-4 text-center text-md-start">
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-primary-subtle text-primary mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Total Users</p>
+                    <h4 class="fw-800 mb-0" id="statTotalUsers">0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-success-subtle text-success mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Active Users</p>
+                    <h4 class="fw-800 mb-0" id="statActiveUsers">0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-danger-subtle text-danger mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-user-slash"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Blocked Users</p>
+                    <h4 class="fw-800 mb-0" id="statBlockedUsers">0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-info-subtle text-info mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Registered Today</p>
+                    <h4 class="fw-800 mb-0" id="statNewToday">0</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="card p-4 border-0 shadow-sm">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" id="usersTable">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Country</th>
+                            <th>Tier</th>
+                            <th>KYC</th>
+                            <th>Status</th>
+                            <th>Date Joined</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/mock-data.js"></script>
+    <script src="../js/agent-block.js"></script>
+    <script src="../js/user-overrides.js"></script>
+    <script src="../js/verification.js"></script>
+    <script>
+        $(document).ready(function () {
+            const tbody = $('#usersTable tbody');
+            let activeCount = 0, blockedCount = 0;
+
+            CN_DATA.USERS.forEach(function (rawUser) {
+                const u = CN_OVERRIDES.apply(rawUser);
+                const blocked = CN_BLOCK.isBlocked(u);
+                if (blocked) { blockedCount++; } else { activeCount++; }
+
+                const kycBadge = u.kyc === 'verified'
+                    ? '<span class="badge bg-success-subtle text-success border px-2">Verified</span>'
+                    : '<span class="badge bg-danger-subtle text-danger border px-2">Unverified</span>';
+                const statusBadge = blocked
+                    ? '<span class="badge-status status-rejected">Blocked</span>'
+                    : '<span class="badge-status status-approved">Active</span>';
+                const tier = typeof u.tier === 'number' ? u.tier : 0;
+                const tierBadge = '<span class="tier-badge tier-badge-' + tier + '">' + CN_VERIFY.TIER_LABELS[tier] + '</span>';
+
+                tbody.append(
+                    '<tr>' +
+                    '<td><div class="d-flex align-items-center gap-3">' +
+                    '<img src="https://ui-avatars.com/api/?name=' + encodeURIComponent(u.name) + '&background=' + u.avatarBg + '&color=fff" class="rounded-circle" width="35">' +
+                    '<div><p class="mb-0 fw-bold">' + u.name + '</p><small class="text-muted">' + u.email + '</small></div>' +
+                    '</div></td>' +
+                    '<td>' + u.country + '</td>' +
+                    '<td>' + tierBadge + '</td>' +
+                    '<td>' + kycBadge + '</td>' +
+                    '<td>' + statusBadge + '</td>' +
+                    '<td><span class="smaller text-muted">' + u.joined + '</span></td>' +
+                    '<td><a href="user-details.html?id=' + u.id + '" class="btn btn-outline-primary btn-sm rounded-pill px-3">View Profile</a></td>' +
+                    '</tr>'
+                );
+            });
+
+            const newTodayCount = CN_DATA.USERS.filter(function (u) { return u.joinedDaysAgo === 0; }).length;
+
+            $('#statTotalUsers').text(CN_DATA.USERS.length.toLocaleString());
+            $('#statActiveUsers').text(activeCount.toLocaleString());
+            $('#statBlockedUsers').text(blockedCount.toLocaleString());
+            $('#statNewToday').text(newTodayCount.toLocaleString());
+
+            $('#usersTable').DataTable({
+                pageLength: 10,
+                responsive: true,
+                language: { search: '', searchPlaceholder: 'Search users...' }
+            });
+        });
+    </script>
+</body>
+
+</html>

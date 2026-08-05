@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
+    <title>Reports | CheapNaria</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+            <a href="tiers.html" class="nav-link"><i class="fas fa-layer-group"></i> Tiers</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">13</span></a>
+            <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+            <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+            <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+            <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+            <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+            <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+            <a href="reports.html" class="nav-link active"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
+            <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+            <a href="ads.html" class="nav-link"><i class="fas fa-rectangle-ad"></i> Ads / Promotions</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+            <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
+            <hr class="my-3 opacity-10">
+            <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+                <a href="tiers.html" class="nav-link"><i class="fas fa-layer-group"></i> Tiers</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">13</span></a>
+                <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+                <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+                <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+                <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+                <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+                <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+                <a href="reports.html" class="nav-link active"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
+                <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+                <a href="ads.html" class="nav-link"><i class="fas fa-rectangle-ad"></i> Ads / Promotions</a>
+                <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+                <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
+                <hr class="my-3 opacity-10">
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="menu-toggle d-lg-none me-3" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars-staggered"></i>
+                </button>
+                <h4 class="m-0 fw-bold">Transaction Reports</h4>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+
+                <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <div class="dropdown">
+                    <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=10b981&color=fff" alt="Profile"
+                            class="rounded-circle" width="40">
+                        <div class="d-none d-sm-block">
+                            <p class="mb-0 small fw-bold">Admin User</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Super Admin</p>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-user-circle me-2"></i>
+                                Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i
+                                    class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Filter Card -->
+        <div class="card p-4 border-0 shadow-sm mb-4">
+            <div class="row g-3 align-items-end">
+                <div class="col-6 col-md-3">
+                    <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Start Date</label>
+                    <input type="date" class="form-control bg-light border-0 fw-bold" id="repStartDate">
+                </div>
+                <div class="col-6 col-md-3">
+                    <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">End Date</label>
+                    <input type="date" class="form-control bg-light border-0 fw-bold" id="repEndDate">
+                </div>
+                <div class="col-12 col-md-3">
+                    <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Type</label>
+                    <select class="form-select bg-light border-0 fw-bold" id="repType">
+                        <option value="all" selected>All Types</option>
+                        <option value="crypto">Crypto</option>
+                        <option value="deriv">Deriv</option>
+                        <option value="abroad">Send Abroad</option>
+                        <option value="china">Pay Supplier (China)</option>
+                        <option value="vouchery">Vouchery</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-3">
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-primary rounded-pill px-4 shadow-sm flex-grow-1"
+                            id="repGenerate"><i class="fas fa-magnifying-glass-chart me-2"></i>Generate</button>
+                        <button type="button" class="btn btn-outline-secondary rounded-pill px-3" id="repExportPdf"
+                            title="Export PDF"><i class="fas fa-file-pdf"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Stat Cards -->
+        <div class="row g-3 g-md-4 mb-4 text-center text-md-start">
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-primary-subtle text-primary mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Total Volume</p>
+                    <h4 class="fw-800 mb-0" id="repTotalVolume">&#8358;0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-success-subtle text-success mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-sack-dollar"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Total Profit</p>
+                    <h4 class="fw-800 mb-0" id="repTotalProfit">&#8358;0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-info-subtle text-info mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Transactions</p>
+                    <h4 class="fw-800 mb-0" id="repTotalCount">0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-warning-subtle text-warning mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-scale-balanced"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Avg. Transaction</p>
+                    <h4 class="fw-800 mb-0" id="repAvgTx">&#8358;0</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Breakdown Table -->
+        <div class="card p-4 border-0 shadow-sm">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <h5 class="fw-bold mb-0">Breakdown by Type</h5>
+                <span class="small text-muted" id="repRangeLabel">&mdash;</span>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Volume</th>
+                            <th>Fee / Margin</th>
+                            <th>Profit</th>
+                            <th>Transactions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="repBreakdownBody">
+                    </tbody>
+                </table>
+            </div>
+            <p class="small text-muted mb-0 mt-3"><i class="fas fa-circle-info me-1"></i> Crypto and Deriv profit use
+                the transaction fee set on the <a href="rates.html">Rates</a> page. Send Abroad and Pay Supplier use
+                an assumed corridor margin.</p>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+    <script src="../js/mock-data.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        $(document).ready(function () {
+            function fmtNaira(n) {
+                return '₦' + Math.round(n).toLocaleString();
+            }
+
+            function isoDate(d) {
+                const y = d.getFullYear();
+                const m = String(d.getMonth() + 1).padStart(2, '0');
+                const day = String(d.getDate()).padStart(2, '0');
+                return y + '-' + m + '-' + day;
+            }
+
+            // Default range: full 180-day mock window ending on the app's fixed "today"
+            const refDate = CN_DATA.REPORT_REF_DATE;
+            const defaultStart = new Date(refDate);
+            defaultStart.setDate(defaultStart.getDate() - 180);
+            $('#repStartDate').val(isoDate(defaultStart));
+            $('#repEndDate').val(isoDate(refDate));
+
+            let lastResult = null;
+            let lastMeta = null;
+
+            function generateReport() {
+                const startVal = $('#repStartDate').val();
+                const endVal = $('#repEndDate').val();
+                const type = $('#repType').val();
+
+                if (!startVal || !endVal) {
+                    alert('Please select both a start and end date.');
+                    return;
+                }
+
+                const from = new Date(startVal + 'T00:00:00');
+                const to = new Date(endVal + 'T23:59:59');
+
+                if (from > to) {
+                    alert('Start date must be before the end date.');
+                    return;
+                }
+
+                const result = CN_DATA.reportSummary(type, from, to);
+                lastResult = result;
+                lastMeta = {
+                    typeLabel: $('#repType option:selected').text(),
+                    from: startVal,
+                    to: endVal
+                };
+
+                $('#repTotalVolume').text(fmtNaira(result.totalVolume));
+                $('#repTotalProfit').text(fmtNaira(result.totalProfit));
+                $('#repTotalCount').text(result.totalCount.toLocaleString());
+                $('#repAvgTx').text(fmtNaira(result.totalCount ? result.totalVolume / result.totalCount : 0));
+                $('#repRangeLabel').text(startVal + ' → ' + endVal);
+
+                const $body = $('#repBreakdownBody').empty();
+                Object.keys(result.byType).forEach(function (k) {
+                    const row = result.byType[k];
+                    $body.append(
+                        '<tr>' +
+                        '<td class="fw-bold">' + row.label + '</td>' +
+                        '<td>' + fmtNaira(row.volume) + '</td>' +
+                        '<td>' + row.feePct.toFixed(1) + '%</td>' +
+                        '<td class="text-success fw-bold">' + fmtNaira(row.profit) + '</td>' +
+                        '<td>' + row.count + '</td>' +
+                        '</tr>'
+                    );
+                });
+                if ($body.children().length === 0) {
+                    $body.append('<tr><td colspan="5" class="text-center text-muted py-4">No transactions in this range.</td></tr>');
+                }
+            }
+
+            $('#repGenerate').on('click', generateReport);
+            generateReport();
+
+            $('#repExportPdf').on('click', function () {
+                if (!lastResult) return;
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+
+                doc.setFontSize(16);
+                doc.text('CheapNaria Transaction Report', 14, 18);
+                doc.setFontSize(10);
+                doc.setTextColor(100);
+                doc.text('Type: ' + lastMeta.typeLabel, 14, 26);
+                doc.text('Range: ' + lastMeta.from + '  to  ' + lastMeta.to, 14, 32);
+                doc.text('Generated: ' + new Date().toLocaleString(), 14, 38);
+
+                doc.setTextColor(0);
+                doc.setFontSize(12);
+                doc.text('Total Volume: ' + fmtNaira(lastResult.totalVolume), 14, 50);
+                doc.text('Total Profit: ' + fmtNaira(lastResult.totalProfit), 14, 57);
+                doc.text('Total Transactions: ' + lastResult.totalCount, 14, 64);
+
+                const rows = Object.keys(lastResult.byType).map(function (k) {
+                    const r = lastResult.byType[k];
+                    return [r.label, fmtNaira(r.volume), r.feePct.toFixed(1) + '%', fmtNaira(r.profit), r.count];
+                });
+
+                doc.autoTable({
+                    startY: 72,
+                    head: [['Type', 'Volume', 'Fee/Margin', 'Profit', 'Transactions']],
+                    body: rows,
+                    theme: 'striped',
+                    headStyles: { fillColor: [16, 185, 129] }
+                });
+
+                doc.save('cheapnaria-report-' + lastMeta.from + '-to-' + lastMeta.to + '.pdf');
+            });
+        });
+    </script>
+</body>
+
+</html>

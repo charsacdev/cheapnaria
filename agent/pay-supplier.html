@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Supplier Requests | CheapNaria Agent</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <div class="d-flex flex-column justify-content-center">
+                    <span class="lh-1"><span>CheapNaria</span></span>
+                    <span class="badge bg-secondary mt-1 align-self-start"
+                        style="font-size: 0.5rem; letter-spacing: 1px;">AGENT</span>
+                </div>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">13</span></a>
+            <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+            <a href="pay-supplier.html" class="nav-link active"><i class="fas fa-ship"></i> Pay Supplier</a>
+            <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+            <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+            <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+            <a href="other-services.html" class="nav-link"><i class="fas fa-wallet"></i> Other Services</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+            <hr class="my-3 opacity-10">
+            <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo text-decoration-none text-dark">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span class="fw-bold">CheapNaria</span>
+                <span class="badge bg-secondary ms-2 align-middle">AGENT</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">13</span></a>
+                <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+                <a href="pay-supplier.html" class="nav-link active"><i class="fas fa-ship"></i> Pay Supplier</a>
+                <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+                <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+                <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+                <a href="other-services.html" class="nav-link"><i class="fas fa-wallet"></i> Other Services</a>
+                <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+                <hr class="my-3 opacity-10">
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="menu-toggle d-lg-none me-3" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars-staggered"></i>
+                </button>
+                <h4 class="m-0 fw-bold">Pay Supplier Requests</h4>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+                <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="dropdown">
+                    <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=James+Bond&background=0dcaf0&color=fff" alt="Profile"
+                            class="rounded-circle" width="40">
+                        <div class="d-none d-sm-block">
+                            <p class="mb-0 small fw-bold">James Bond</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Support Agent</p>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-user-circle me-2"></i>
+                                Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i
+                                    class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Date Range Filter -->
+        <div class="card p-4 border-0 shadow-sm mb-4">
+            <div class="row g-3 align-items-end">
+                <div class="col-6 col-md-3">
+                    <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Start Date</label>
+                    <input type="date" class="form-control bg-light border-0 fw-bold" id="supStartDate">
+                </div>
+                <div class="col-6 col-md-3">
+                    <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">End Date</label>
+                    <input type="date" class="form-control bg-light border-0 fw-bold" id="supEndDate">
+                </div>
+                <div class="col-12 col-md-3">
+                    <button type="button" class="btn btn-primary w-100 fw-bold" id="supFilter">
+                        <i class="fas fa-magnifying-glass-chart me-2"></i>Filter
+                    </button>
+                </div>
+                <div class="col-12 col-md-3">
+                    <button type="button" class="btn btn-light w-100 fw-bold border" id="supReset">Reset</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="row g-3 g-md-4 mb-4 text-center text-md-start">
+            <div class="col-6 col-lg">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-secondary-subtle text-secondary mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Total Requests</p>
+                    <h4 class="fw-800 mb-0" id="statTotal">0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-primary-subtle text-primary mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-sack-dollar"></i>
+                    </div>
+                    <p class="text-muted smaller fw-bold mb-1 text-uppercase">Total Volume (NGN)</p>
+                    <h4 class="fw-800 mb-0 stat-volume-compact" id="statVolume">₦0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-warning-subtle text-warning mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-clock-rotate-left"></i>
+                    </div>
+                    <p class="text-warning smaller fw-bold mb-1 text-uppercase">Pending</p>
+                    <h4 class="fw-800 mb-0" id="statPending">0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-success-subtle text-success mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <p class="text-success smaller fw-bold mb-1 text-uppercase">Approved</p>
+                    <h4 class="fw-800 mb-0" id="statApproved">0</h4>
+                </div>
+            </div>
+            <div class="col-6 col-lg">
+                <div class="card stat-card h-100 border-0 shadow-sm">
+                    <div class="stat-icon bg-danger-subtle text-danger mx-auto mx-md-0 mb-3">
+                        <i class="fas fa-triangle-exclamation"></i>
+                    </div>
+                    <p class="text-danger smaller fw-bold mb-1 text-uppercase">Rejected</p>
+                    <h4 class="fw-800 mb-0" id="statRejected">0</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Queue Table -->
+        <div class="card p-4 border-0 shadow-sm">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" id="supplierTable">
+                    <thead>
+                        <tr>
+                            <th>Reference</th>
+                            <th>Requested By</th>
+                            <th>Supplier</th>
+                            <th>Amount (CNY)</th>
+                            <th>NGN to Pay</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="fw-bold text-primary">SUP-40122</span></td>
+                            <td>
+                                <p class="mb-0 small fw-bold">John Doe</p>
+                                <small class="text-muted">john.doe@example.com</small>
+                            </td>
+                            <td>Guangzhou Textiles Co.</td>
+                            <td class="fw-bold">&yen;10,000.00</td>
+                            <td class="fw-800">₦2,085,000.00</td>
+                            <td class="small text-muted">Nov 01, 2024</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td>
+                                <button class="btn btn-light btn-sm rounded-pill px-4 border supplier-review-btn"
+                                    data-bs-toggle="modal" data-bs-target="#supplierAuditModal" data-ref="SUP-40122"
+                                    data-user-name="John Doe" data-user-email="john.doe@example.com"
+                                    data-supplier="Guangzhou Textiles Co." data-bank-name="Bank of China"
+                                    data-account-number="6225 8888 1234 5678" data-account-name="Guangzhou Textiles Co Ltd"
+                                    data-cny="&yen;10,000.00" data-ngn="₦2,085,000.00" data-rate="&yen;1 = ₦208.50"
+                                    data-date="Nov 01, 2024 - 10:20" data-status="approved">View</button>
+                            </td>
+                        </tr>
+                        <tr class="table-warning-subtle">
+                            <td><i class="fas fa-exclamation-circle text-warning me-1"></i><span
+                                    class="fw-bold text-primary">SUP-40145</span></td>
+                            <td>
+                                <p class="mb-0 small fw-bold">Sarah Adams</p>
+                                <small class="text-muted">sarah.a@gmail.com</small>
+                            </td>
+                            <td>Shenzhen Electronics Ltd</td>
+                            <td class="fw-bold">&yen;2,000.00</td>
+                            <td class="fw-800">₦417,000.00</td>
+                            <td class="small text-muted">Oct 29, 2024</td>
+                            <td><span class="badge-status status-pending">Pending</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-sm rounded-pill px-4 supplier-review-btn"
+                                    data-bs-toggle="modal" data-bs-target="#supplierAuditModal" data-ref="SUP-40145"
+                                    data-user-name="Sarah Adams" data-user-email="sarah.a@gmail.com"
+                                    data-supplier="Shenzhen Electronics Ltd" data-bank-name="China Merchants Bank"
+                                    data-account-number="6214 8800 2222 3333" data-account-name="Shenzhen Electronics Ltd"
+                                    data-cny="&yen;2,000.00" data-ngn="₦417,000.00" data-rate="&yen;1 = ₦208.50"
+                                    data-date="Oct 29, 2024 - 16:00" data-status="pending">Review</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="fw-bold text-primary">SUP-40162</span></td>
+                            <td>
+                                <p class="mb-0 small fw-bold">Michael Kelvin</p>
+                                <small class="text-muted">m.kelvin@gmail.com</small>
+                            </td>
+                            <td>Yiwu Trading Group</td>
+                            <td class="fw-bold">&yen;5,000.00</td>
+                            <td class="fw-800">₦1,042,500.00</td>
+                            <td class="small text-muted">Oct 24, 2024</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td>
+                                <button class="btn btn-light btn-sm rounded-pill px-4 border supplier-review-btn"
+                                    data-bs-toggle="modal" data-bs-target="#supplierAuditModal" data-ref="SUP-40162"
+                                    data-user-name="Michael Kelvin" data-user-email="m.kelvin@gmail.com"
+                                    data-supplier="Yiwu Trading Group" data-bank-name="ICBC"
+                                    data-account-number="6222 0212 0000 1111" data-account-name="Yiwu Trading Group Co."
+                                    data-cny="&yen;5,000.00" data-ngn="₦1,042,500.00" data-rate="&yen;1 = ₦208.50"
+                                    data-date="Oct 24, 2024 - 08:40" data-status="approved">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="fw-bold text-primary">SUP-40180</span></td>
+                            <td>
+                                <p class="mb-0 small fw-bold">John Doe</p>
+                                <small class="text-muted">john.doe@example.com</small>
+                            </td>
+                            <td>Foshan Furniture Co.</td>
+                            <td class="fw-bold">&yen;3,000.00</td>
+                            <td class="fw-800">₦625,500.00</td>
+                            <td class="small text-muted">Oct 18, 2024</td>
+                            <td><span class="badge-status status-approved">Approved</span></td>
+                            <td>
+                                <button class="btn btn-light btn-sm rounded-pill px-4 border supplier-review-btn"
+                                    data-bs-toggle="modal" data-bs-target="#supplierAuditModal" data-ref="SUP-40180"
+                                    data-user-name="John Doe" data-user-email="john.doe@example.com"
+                                    data-supplier="Foshan Furniture Co." data-bank-name="Agricultural Bank of China"
+                                    data-account-number="6228 4800 5555 6666" data-account-name="Foshan Furniture Co Ltd"
+                                    data-cny="&yen;3,000.00" data-ngn="₦625,500.00" data-rate="&yen;1 = ₦208.50"
+                                    data-date="Oct 18, 2024 - 13:15" data-status="approved">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="fw-bold text-primary">SUP-40199</span></td>
+                            <td>
+                                <p class="mb-0 small fw-bold">Blessing O.</p>
+                                <small class="text-muted">blessing.o@example.com</small>
+                            </td>
+                            <td>Ningbo Import Export</td>
+                            <td class="fw-bold">&yen;1,000.00</td>
+                            <td class="fw-800">₦208,500.00</td>
+                            <td class="small text-muted">Oct 13, 2024</td>
+                            <td><span class="badge-status status-rejected">Rejected</span></td>
+                            <td>
+                                <button class="btn btn-light btn-sm rounded-pill px-4 border supplier-review-btn"
+                                    data-bs-toggle="modal" data-bs-target="#supplierAuditModal" data-ref="SUP-40199"
+                                    data-user-name="Blessing O." data-user-email="blessing.o@example.com"
+                                    data-supplier="Ningbo Import Export" data-bank-name="Bank of Communications"
+                                    data-account-number="6217 0000 7777 8888"
+                                    data-account-name="Ningbo Import Export Trading" data-cny="&yen;1,000.00"
+                                    data-ngn="₦208,500.00" data-rate="&yen;1 = ₦208.50" data-date="Oct 13, 2024 - 07:50"
+                                    data-status="rejected">View</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Supplier Audit Modal -->
+    <div class="modal fade" id="supplierAuditModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-sm-down">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-bottom p-4">
+                    <h5 class="modal-title fw-bold">Supplier Payment Audit &mdash; <span id="modRef">-</span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="p-4 bg-light rounded-4 h-100">
+                                <h6 class="fw-bold mb-3 text-primary">Requested By</h6>
+                                <p class="fw-bold mb-1" id="modUserName">-</p>
+                                <p class="small text-muted mb-4" id="modUserEmail">-</p>
+
+                                <h6 class="fw-bold mb-3 text-primary">Amount</h6>
+                                <div class="summary-rows mb-2">
+                                    <div class="summary-row">
+                                        <span class="sr-label">CNY Amount</span>
+                                        <span class="sr-value" id="modCny">-</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span class="sr-label">NGN to Pay</span>
+                                        <span class="sr-value" id="modNgn">-</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span class="sr-label">Rate Applied</span>
+                                        <span class="sr-value" id="modRate">-</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span class="sr-label">Date</span>
+                                        <span class="sr-value" id="modDate">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold mb-3 text-primary">Supplier Bank Details (China)</h6>
+                            <div class="summary-rows mb-4">
+                                <div class="summary-row">
+                                    <span class="sr-label">Supplier</span>
+                                    <span class="sr-value" id="modSupplier">-</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="sr-label">Bank Name</span>
+                                    <span class="sr-value" id="modBankName">-</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="sr-label">Account Number</span>
+                                    <span class="sr-value" id="modAccountNumber">-</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="sr-label">Account Name</span>
+                                    <span class="sr-value" id="modAccountName">-</span>
+                                </div>
+                            </div>
+
+                            <!-- Actionable state: upload + approve/reject -->
+                            <div id="modActionable">
+                                <h6 class="fw-bold mb-3 text-primary">Proof of Payment</h6>
+                                <div id="modUploadArea" class="receipt-upload-area">
+                                    <i class="fas fa-cloud-arrow-up upload-icon"></i>
+                                    <p class="mb-1 fw-bold small">Click to upload receipt</p>
+                                    <p class="mb-0 text-muted smaller">Image or PDF of the CNY payment confirmation</p>
+                                    <input type="file" id="modFileInput" class="d-none" accept="image/*,.pdf">
+                                </div>
+                                <div id="modPreviewCard" class="receipt-preview-card d-none mt-3">
+                                    <div class="rpc-icon"><i class="fas fa-file-invoice"></i></div>
+                                    <div class="rpc-text">
+                                        <p id="modFileName">-</p>
+                                        <small>Ready to attach</small>
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-light text-danger"
+                                        id="modRemoveFile"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="alert alert-warning small mt-3 mb-0">
+                                    <i class="fas fa-exclamation-triangle me-1"></i> A receipt must be attached before
+                                    this request can be approved.
+                                </div>
+                            </div>
+
+                            <!-- Read-only state: already resolved -->
+                            <div id="modResolved" class="d-none">
+                                <div class="alert small mb-0" id="modResolvedAlert">
+                                    <i class="fas fa-info-circle me-1"></i> <span id="modResolvedText">This request has
+                                        already been processed.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 p-4 pt-0 gap-2" id="modActionFooter">
+                    <button type="button" class="btn btn-outline-danger flex-grow-1 rounded-pill py-2"
+                        id="modRejectBtn">Reject</button>
+                    <button type="button" class="btn btn-primary flex-grow-1 rounded-pill py-2 shadow" id="modApproveBtn"
+                        disabled>Approve &amp; Complete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/shift.js"></script>
+    <script>
+        $(document).ready(function () {
+            const table = $('#supplierTable').DataTable({ responsive: true });
+
+            function rowDate(rowNode) {
+                const dateStr = $(rowNode).find('.supplier-review-btn').data('date') || '';
+                return new Date(dateStr.split(' - ')[0]);
+            }
+
+            let filterStart = null, filterEnd = null;
+
+            $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+                if (settings.nTable.id !== 'supplierTable') return true;
+                if (!filterStart && !filterEnd) return true;
+                const d = rowDate(table.row(dataIndex).node());
+                if (filterStart && d < filterStart) return false;
+                if (filterEnd && d > filterEnd) return false;
+                return true;
+            });
+
+            function refreshStats() {
+                const rows = table.rows({ search: 'applied' }).nodes();
+                let total = 0, pending = 0, approved = 0, rejected = 0, volume = 0;
+                $(rows).each(function () {
+                    const btn = $(this).find('.supplier-review-btn');
+                    const status = btn.data('status');
+                    const ngn = parseFloat(String(btn.data('ngn')).replace(/[^0-9.]/g, '')) || 0;
+                    total++;
+                    volume += ngn;
+                    if (status === 'pending') pending++;
+                    else if (status === 'approved') approved++;
+                    else if (status === 'rejected') rejected++;
+                });
+                $('#statTotal').text(total.toLocaleString());
+                $('#statVolume').text('₦' + volume.toLocaleString(undefined, { maximumFractionDigits: 0 }));
+                $('#statPending').text(pending.toLocaleString());
+                $('#statApproved').text(approved.toLocaleString());
+                $('#statRejected').text(rejected.toLocaleString());
+            }
+            refreshStats();
+
+            $('#supFilter').click(function () {
+                const start = $('#supStartDate').val();
+                const end = $('#supEndDate').val();
+                filterStart = start ? new Date(start) : null;
+                filterEnd = end ? new Date(end) : null;
+                if (filterEnd) filterEnd.setHours(23, 59, 59, 999);
+                table.draw();
+                refreshStats();
+            });
+
+            $('#supReset').click(function () {
+                $('#supStartDate, #supEndDate').val('');
+                filterStart = null;
+                filterEnd = null;
+                table.draw();
+                refreshStats();
+            });
+
+            let currentRef = null;
+            let uploadedDataUrl = null;
+            let uploadedFileName = null;
+
+            function resetModalUpload() {
+                uploadedDataUrl = null;
+                uploadedFileName = null;
+                $('#modFileInput').val('');
+                $('#modPreviewCard').addClass('d-none');
+                $('#modUploadArea').removeClass('d-none');
+                $('#modApproveBtn').prop('disabled', true);
+            }
+
+            $('#supplierAuditModal').on('show.bs.modal', function (event) {
+                const btn = event.relatedTarget;
+                if (!btn) return;
+                const d = btn.dataset;
+
+                currentRef = d.ref;
+                resetModalUpload();
+
+                $('#modRef').text(d.ref);
+                $('#modUserName').text(d.userName);
+                $('#modUserEmail').text(d.userEmail);
+                $('#modSupplier').text(d.supplier);
+                $('#modBankName').text(d.bankName);
+                $('#modAccountNumber').text(d.accountNumber);
+                $('#modAccountName').text(d.accountName);
+                $('#modCny').text(d.cny);
+                $('#modNgn').text(d.ngn);
+                $('#modRate').text(d.rate);
+                $('#modDate').text(d.date);
+
+                if (d.status === 'pending') {
+                    $('#modActionable').removeClass('d-none');
+                    $('#modResolved').addClass('d-none');
+                    $('#modActionFooter').removeClass('d-none');
+                } else {
+                    $('#modActionable').addClass('d-none');
+                    $('#modActionFooter').addClass('d-none');
+                    $('#modResolved').removeClass('d-none');
+                    const alertBox = $('#modResolvedAlert');
+                    alertBox.removeClass('alert-success alert-danger alert-info');
+                    if (d.status === 'approved') {
+                        alertBox.addClass('alert-success');
+                        $('#modResolvedText').text('This payment has already been approved and completed.');
+                    } else {
+                        alertBox.addClass('alert-danger');
+                        $('#modResolvedText').text('This request was rejected.');
+                    }
+                }
+            });
+
+            $('#modUploadArea').on('click', function () {
+                $('#modFileInput').trigger('click');
+            });
+
+            $('#modFileInput').on('change', function () {
+                const file = this.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    uploadedDataUrl = e.target.result;
+                    uploadedFileName = file.name;
+                    $('#modFileName').text(file.name);
+                    $('#modUploadArea').addClass('d-none');
+                    $('#modPreviewCard').removeClass('d-none');
+                    $('#modApproveBtn').prop('disabled', false);
+                };
+                reader.readAsDataURL(file);
+            });
+
+            $('#modRemoveFile').on('click', function () {
+                resetModalUpload();
+            });
+
+            $('#modApproveBtn').on('click', function () {
+                if (!uploadedDataUrl || !currentRef) return;
+
+                const record = {
+                    fileName: uploadedFileName,
+                    dataUrl: uploadedDataUrl,
+                    approvedBy: 'James Bond (Agent)',
+                    approvedAt: new Date().toLocaleString()
+                };
+                localStorage.setItem('cn-receipt-' + currentRef, JSON.stringify(record));
+
+                const rowBtn = $('.supplier-review-btn[data-ref="' + currentRef + '"]');
+                rowBtn.data('status', 'approved').attr('data-status', 'approved').text('View')
+                    .removeClass('btn-primary').addClass('btn-light border');
+                rowBtn.closest('tr').removeClass('table-warning-subtle')
+                    .find('td').eq(0).find('i.text-warning').remove();
+                rowBtn.closest('tr').find('.badge-status')
+                    .removeClass('status-pending').addClass('status-approved').text('Approved');
+
+                bootstrap.Modal.getInstance(document.getElementById('supplierAuditModal')).hide();
+                refreshStats();
+                alert('Payment approved. Receipt attached to ' + currentRef + '.');
+            });
+
+            $('#modRejectBtn').on('click', function () {
+                bootstrap.Modal.getInstance(document.getElementById('supplierAuditModal')).hide();
+                alert('Request ' + currentRef + ' rejected.');
+            });
+        });
+    </script>
+</body>
+
+</html>

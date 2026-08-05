@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
+    <title>Support | CheapNaria</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+            <a href="tiers.html" class="nav-link"><i class="fas fa-layer-group"></i> Tiers</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">13</span></a>
+            <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+            <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+            <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+            <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+            <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+            <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+            <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
+            <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+            <a href="ads.html" class="nav-link"><i class="fas fa-rectangle-ad"></i> Ads / Promotions</a>
+            <a href="support.html" class="nav-link active"><i class="fas fa-headset"></i> Support</a>
+            <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
+            <hr class="my-3 opacity-10">
+            <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+                <a href="tiers.html" class="nav-link"><i class="fas fa-layer-group"></i> Tiers</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">13</span></a>
+                <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+                <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+                <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+                <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+                <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+                <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+                <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
+                <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+                <a href="ads.html" class="nav-link"><i class="fas fa-rectangle-ad"></i> Ads / Promotions</a>
+                <a href="support.html" class="nav-link active"><i class="fas fa-headset"></i> Support</a>
+                <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
+                <hr class="my-3 opacity-10">
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="menu-toggle d-lg-none me-3" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars-staggered"></i>
+                </button>
+                <h4 class="m-0 d-none d-md-block">Support</h4>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+                <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <div class="dropdown">
+                    <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=10b981&color=fff" alt="Profile"
+                            class="rounded-circle" width="40">
+                        <div class="d-none d-sm-block">
+                            <p class="mb-0 small fw-bold">Admin User</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Super Admin</p>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-user-circle me-2"></i>
+                                Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i
+                                    class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="mb-4">
+            <h2 class="mb-1 fw-bold">Support</h2>
+            <p class="text-muted mb-0">All conversations between agents and customers, in one place.</p>
+        </div>
+
+        <div class="support-shell">
+            <div class="support-toolbar">
+                <button type="button" class="btn btn-light border rounded-pill px-3 fw-bold" data-bs-toggle="offcanvas"
+                    data-bs-target="#conversationsPanel">
+                    <i class="fas fa-bars me-2"></i>Conversations
+                </button>
+            </div>
+
+            <!-- Thread -->
+            <div class="card p-4 support-thread-pane">
+                <div id="threadEmptyState" class="empty-thread-state">
+                    <i class="fas fa-comments fs-1 mb-3 opacity-50"></i>
+                    <p class="mb-0">Select a conversation to view the full thread.</p>
+                </div>
+                <div id="threadContent" style="display:none; flex:1; min-height:0; flex-direction:column;">
+                    <div class="thread-header">
+                        <div class="d-flex align-items-center gap-3">
+                            <span class="conversation-avatar" id="threadAvatar">?</span>
+                            <div>
+                                <p class="mb-0 fw-bold" id="threadCustomerName">-</p>
+                                <small class="text-muted" id="threadCustomerMeta">-</small>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <span class="badge-status" id="threadStatusBadge">-</span>
+                            <p class="mb-0 small text-muted mt-1"><i class="fas fa-user-tie me-1"></i>Handled by
+                                <span class="fw-bold" id="threadAgentName">-</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="thread-scroll" id="threadMessages"></div>
+                    <div class="chat-input-row">
+                        <input type="file" id="threadFileInput" class="d-none"
+                            accept="image/*,.pdf,.doc,.docx,.xls,.xlsx" multiple>
+                        <button type="button" class="attach-btn" id="threadAttachBtn" title="Attach a file"><i
+                                class="fas fa-paperclip"></i></button>
+                        <textarea class="form-control" id="threadReply" rows="1" placeholder="Reply as admin..."></textarea>
+                        <button type="button" class="btn btn-primary rounded-circle flex-shrink-0"
+                            id="threadSend" style="width:44px;height:44px;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conversations slide-in panel -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="conversationsPanel">
+            <div class="offcanvas-header border-bottom">
+                <h5 class="offcanvas-title fw-bold">Conversations</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body p-3">
+                <ul class="nav support-tabs gap-2 mb-3" id="supportTabs">
+                    <li class="nav-item"><button type="button" class="nav-link active" data-filter="all">All</button>
+                    </li>
+                    <li class="nav-item"><button type="button" class="nav-link" data-filter="inbox">Inbox
+                            <span class="badge rounded-pill bg-white text-success ms-1" id="countInbox"></span></button>
+                    </li>
+                    <li class="nav-item"><button type="button" class="nav-link" data-filter="unassigned">Unassigned
+                            <span class="badge rounded-pill bg-secondary-subtle text-secondary ms-1" id="countUnassigned"></span></button>
+                    </li>
+                    <li class="nav-item"><button type="button" class="nav-link" data-filter="resolved">Resolved</button>
+                    </li>
+                </ul>
+                <input type="text" class="form-control support-search mb-3" id="supportSearch"
+                    placeholder="Search by customer, agent or message...">
+                <div class="support-list-scroll" id="conversationList"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/mock-data.js"></script>
+
+    <script>
+        let currentFilter = 'all';
+        let selectedId = null;
+
+        function initials(name) {
+            return name.split(' ').map(function (p) { return p[0]; }).slice(0, 2).join('').toUpperCase();
+        }
+
+        function statusBadgeClass(status) {
+            if (status === 'resolved') return 'status-approved';
+            if (status === 'unassigned') return 'status-rejected';
+            return 'status-pending'; // inbox
+        }
+
+        const MAX_FILE_BYTES = 8 * 1024 * 1024;
+
+        function fileIcon(type) {
+            if (type.indexOf('pdf') !== -1) return 'fa-file-pdf';
+            if (type.indexOf('word') !== -1) return 'fa-file-word';
+            if (type.indexOf('sheet') !== -1 || type.indexOf('excel') !== -1) return 'fa-file-excel';
+            return 'fa-file';
+        }
+
+        function formatBytes(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        function bubbleHtml(m, senderLabel) {
+            let inner = '';
+            if (m.attachment) {
+                if (m.attachment.type.indexOf('image/') === 0) {
+                    inner += '<a href="' + m.attachment.dataUrl + '" target="_blank"><img src="' + m.attachment.dataUrl + '" class="chat-attachment-image"></a>';
+                } else {
+                    inner += '<a href="' + m.attachment.dataUrl + '" download="' + m.attachment.name + '" class="chat-attachment-file">' +
+                        '<i class="fas ' + fileIcon(m.attachment.type) + '"></i>' +
+                        '<span><span class="d-block fw-bold">' + m.attachment.name + '</span><small>' + formatBytes(m.attachment.size) + '</small></span>' +
+                        '</a>';
+                }
+            }
+            if (m.text) { inner += '<div' + (m.attachment ? ' class="mt-2"' : '') + '>' + m.text + '</div>'; }
+            const isImageOnly = m.attachment && !m.text && m.attachment.type.indexOf('image/') === 0;
+            return '<div class="chat-bubble-row from-' + m.from + '">' +
+                '<div class="thread-chat-bubble' + (isImageOnly ? ' chat-bubble-media' : '') + '">' +
+                '<span class="chat-bubble-sender">' + senderLabel + '</span>' + inner +
+                '</div></div>';
+        }
+
+        function renderConversations() {
+            const term = $('#supportSearch').val().trim().toLowerCase();
+            const list = $('#conversationList').empty();
+            const items = CN_DATA.SUPPORT_CONVERSATIONS
+                .filter(function (c) { return currentFilter === 'all' || c.status === currentFilter; })
+                .filter(function (c) {
+                    if (!term) return true;
+                    return c.user.name.toLowerCase().indexOf(term) !== -1 ||
+                        c.agent.toLowerCase().indexOf(term) !== -1 ||
+                        c.message.toLowerCase().indexOf(term) !== -1;
+                });
+
+            if (!items.length) {
+                list.html('<p class="text-muted small text-center mt-4">No conversations match.</p>');
+                return;
+            }
+
+            items.forEach(function (c) {
+                list.append(
+                    '<div class="conversation-item' + (c.id === selectedId ? ' selected' : '') + '" data-id="' + c.id + '">' +
+                    '<span class="conversation-avatar" style="background:#' + c.user.avatarBg + ';">' + initials(c.user.name) + '</span>' +
+                    '<div class="conversation-body">' +
+                    '<p>' + c.user.name + '</p>' +
+                    '<small class="conversation-preview">' + c.message + '</small>' +
+                    '<small class="text-muted d-block" style="font-size:0.68rem;"><i class="fas fa-user-tie me-1"></i>' + c.agent + '</small>' +
+                    '</div>' +
+                    '<div class="conversation-meta">' +
+                    '<small>' + c.time + '</small>' +
+                    (c.unread > 0 ? '<span class="unread-badge">' + c.unread + '</span>' : '') +
+                    '</div>' +
+                    '</div>'
+                );
+            });
+        }
+
+        function refreshCounts() {
+            $('#countInbox').text(CN_DATA.countBy(CN_DATA.SUPPORT_CONVERSATIONS, 'inbox'));
+            $('#countUnassigned').text(CN_DATA.countBy(CN_DATA.SUPPORT_CONVERSATIONS, 'unassigned'));
+        }
+
+        function openConversation(id) {
+            const c = CN_DATA.SUPPORT_CONVERSATIONS.find(function (x) { return x.id === id; });
+            if (!c) return;
+            selectedId = id;
+            renderConversations();
+
+            $('#threadEmptyState').hide();
+            $('#threadContent').css('display', 'flex');
+            $('#threadAvatar').text(initials(c.user.name)).css('background', '#' + c.user.avatarBg);
+            $('#threadCustomerName').text(c.user.name);
+            $('#threadCustomerMeta').text(c.user.email + ' · ' + c.user.country);
+            $('#threadAgentName').text(c.agent);
+            $('#threadStatusBadge').attr('class', 'badge-status ' + statusBadgeClass(c.status)).text(c.status.charAt(0).toUpperCase() + c.status.slice(1));
+
+            const $messages = $('#threadMessages').empty();
+            c.thread.forEach(function (m) {
+                $messages.append(bubbleHtml(m, m.from === 'agent' ? c.agent : c.user.name));
+            });
+            $messages.scrollTop($messages[0].scrollHeight);
+            $('#threadReply').val('').trigger('input').focus();
+            closeConversationsPanel();
+        }
+
+        function closeConversationsPanel() {
+            const el = document.getElementById('conversationsPanel');
+            const instance = bootstrap.Offcanvas.getInstance(el);
+            if (instance) instance.hide();
+        }
+
+        $(document).ready(function () {
+            refreshCounts();
+            renderConversations();
+
+            // Default view: show the most recent conversation's chat instead of
+            // an empty placeholder. The list itself now lives in the slide-in panel.
+            if (CN_DATA.SUPPORT_CONVERSATIONS.length) {
+                openConversation(CN_DATA.SUPPORT_CONVERSATIONS[0].id);
+            }
+
+            $('#supportTabs').on('click', '.nav-link', function () {
+                $('#supportTabs .nav-link').removeClass('active');
+                $(this).addClass('active');
+                currentFilter = $(this).data('filter');
+                renderConversations();
+            });
+
+            $('#supportSearch').on('input', renderConversations);
+
+            $(document).on('click', '.conversation-item', function () {
+                openConversation($(this).data('id'));
+            });
+
+            $('#threadSend').on('click', function () {
+                const text = $('#threadReply').val().trim();
+                if (!text || !selectedId) return;
+                const c = CN_DATA.SUPPORT_CONVERSATIONS.find(function (x) { return x.id === selectedId; });
+                if (!c) return;
+                const m = { from: 'agent', text: text };
+                c.thread.push(m);
+                const $messages = $('#threadMessages');
+                $messages.append(bubbleHtml(m, c.agent + ' (Admin)'));
+                $messages.scrollTop($messages[0].scrollHeight);
+                $('#threadReply').val('').trigger('input').focus();
+            });
+
+            $('#threadReply').on('keydown', function (e) {
+                if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); $('#threadSend').click(); }
+            });
+
+            // Auto-grow the textarea
+            $('#threadReply').on('input', function () {
+                this.style.height = 'auto';
+                this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+            });
+
+            $('#threadAttachBtn').on('click', function () {
+                if (!selectedId) { alert('Select a conversation first.'); return; }
+                $('#threadFileInput').click();
+            });
+
+            $('#threadFileInput').on('change', function (e) {
+                const files = Array.from(e.target.files || []);
+                const c = CN_DATA.SUPPORT_CONVERSATIONS.find(function (x) { return x.id === selectedId; });
+                if (!c) { $(this).val(''); return; }
+                files.forEach(function (file) {
+                    if (file.size > MAX_FILE_BYTES) { alert(file.name + ' is larger than 8MB and was skipped.'); return; }
+                    const reader = new FileReader();
+                    reader.onload = function () {
+                        const m = { from: 'agent', text: '', attachment: { name: file.name, type: file.type, size: file.size, dataUrl: reader.result } };
+                        c.thread.push(m);
+                        const $messages = $('#threadMessages');
+                        $messages.append(bubbleHtml(m, c.agent + ' (Admin)'));
+                        $messages.scrollTop($messages[0].scrollHeight);
+                    };
+                    reader.readAsDataURL(file);
+                });
+                $(this).val('');
+            });
+        });
+    </script>
+</body>
+
+</html>

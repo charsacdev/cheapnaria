@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
+    <title>User Detail Audit | CheapNaria</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="users.html" class="nav-link active"><i class="fas fa-users"></i> Users</a>
+            <a href="tiers.html" class="nav-link"><i class="fas fa-layer-group"></i> Tiers</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">13</span></a>
+            <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+            <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+            <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+            <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+            <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+            <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+            <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
+            <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+            <a href="ads.html" class="nav-link"><i class="fas fa-rectangle-ad"></i> Ads / Promotions</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+            <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
+            <hr class="my-3 opacity-10">
+            <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="users.html" class="nav-link active"><i class="fas fa-users"></i> Users</a>
+                <a href="tiers.html" class="nav-link"><i class="fas fa-layer-group"></i> Tiers</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">13</span></a>
+                <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+                <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+                <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+                <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+                <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+                <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+                <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
+                <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+                <a href="ads.html" class="nav-link"><i class="fas fa-rectangle-ad"></i> Ads / Promotions</a>
+                <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+                <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
+                <hr class="my-3 opacity-10">
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="d-flex align-items-center gap-2 gap-md-3">
+                    <a href="users.html" class="btn btn-light btn-sm rounded-pill"><i class="fas fa-arrow-left"></i></a>
+                    <h4 class="m-0 d-none d-md-block" id="pageTitle">Audit</h4>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+
+                <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <div class="dropdown">
+                    <button class="btn btn-light position-relative" data-bs-toggle="dropdown">
+                        <i class="fas fa-bell"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            style="font-size: 0.6rem;">1</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 300px;">
+                        <h6 class="dropdown-header">Notifications</h6>
+                        <a class="dropdown-item py-3 border-bottom" href="#">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-primary-subtle text-primary p-2 rounded-circle me-3"><i
+                                        class="fas fa-user-check"></i></div>
+                                <div>
+                                    <p class="mb-0 small fw-bold">New KYC Submission</p>
+                                    <small class="text-muted">John Doe submitted his ID</small>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item text-center small text-primary" href="#">View all</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=10b981&color=fff" alt="Profile"
+                            class="rounded-circle" width="40">
+                        <div class="d-none d-sm-block">
+                            <p class="mb-0 small fw-bold">Admin User</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Super Admin</p>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-user-circle me-2"></i>
+                                Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i
+                                    class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="row g-4">
+            <!-- Profile Information Card -->
+            <div class="col-12 col-xl-4">
+                <div class="card p-4 border-0 shadow-sm">
+                    <div class="text-center mb-4">
+                        <img id="pUserAvatar" src="" class="rounded-circle border border-4 border-white shadow-sm mb-3" width="100">
+                        <h5 class="fw-bold mb-1" id="pUserName">-</h5>
+                        <div class="d-flex align-items-center justify-content-center gap-2">
+                            <span class="badge-status status-approved" id="pUserStatus">Active Account</span>
+                            <span class="tier-badge tier-badge-0" id="pUserTier">Unverified</span>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-light border small mb-3" id="blockedNotice" style="display:none;">
+                        <i class="fas fa-shield-halved text-danger me-1"></i> This account is blocked.
+                    </div>
+
+                    <div class="d-grid gap-2 mb-4">
+                        <button type="button" class="btn btn-outline-danger rounded-pill py-2 fw-bold" id="blockUserBtn"><i
+                                class="fas fa-user-slash me-2"></i> Block User</button>
+                    </div>
+
+                    <h6 class="fw-bold mb-3 smaller text-muted text-uppercase letter-spacing-1">Tier Override</h6>
+                    <div class="btn-group w-100 mb-4" role="group">
+                        <button type="button" class="btn btn-outline-secondary tier-override-btn" data-tier="0">Unverified</button>
+                        <button type="button" class="btn btn-outline-secondary tier-override-btn" data-tier="1">1</button>
+                        <button type="button" class="btn btn-outline-secondary tier-override-btn" data-tier="2">2</button>
+                        <button type="button" class="btn btn-outline-secondary tier-override-btn" data-tier="3">3</button>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <h6 class="fw-bold mb-0 smaller text-muted text-uppercase letter-spacing-1">Basic Information</h6>
+                        <button type="button" class="btn btn-link btn-sm p-0 fw-bold text-decoration-none" id="saveProfileBtn">Save Changes</button>
+                    </div>
+                    <div class="mb-3">
+                        <label class="text-muted smaller fw-bold d-block mb-1">Email Address</label>
+                        <input type="email" class="form-control form-control-sm" id="pUserEmail">
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-6">
+                            <label class="text-muted smaller fw-bold d-block mb-1">Country</label>
+                            <input type="text" class="form-control form-control-sm" id="pUserCountry">
+                        </div>
+                        <div class="col-6">
+                            <label class="text-muted smaller fw-bold d-block mb-1">State</label>
+                            <input type="text" class="form-control form-control-sm" id="pUserState">
+                        </div>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-6">
+                            <label class="text-muted smaller fw-bold d-block mb-1">Age</label>
+                            <input type="number" class="form-control form-control-sm" id="pUserAge">
+                        </div>
+                        <div class="col-6">
+                            <label class="text-muted smaller fw-bold d-block mb-1">Gender</label>
+                            <select class="form-select form-select-sm" id="pUserGender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <h6 class="fw-bold mb-3 smaller text-muted text-uppercase letter-spacing-1">Security Information
+                    </h6>
+                    <div class="row g-3 g-xl-0">
+                        <div class="col-6 col-xl-12 mb-3">
+                            <label class="text-muted smaller fw-bold d-block mb-1">Recent IP</label>
+                            <p class="small fw-bold mb-0 text-primary">102.89.43.210</p>
+                        </div>
+                        <div class="col-6 col-xl-12 mb-3">
+                            <label class="text-muted smaller fw-bold d-block mb-1">Device</label>
+                            <p class="small fw-bold mb-0 text-truncate">iPhone 15 Pro</p>
+                        </div>
+                        <div class="col-12 col-xl-12 mb-0">
+                            <label class="text-muted smaller fw-bold d-block mb-1">Location</label>
+                            <p class="small fw-bold mb-0">Abuja, FCT (Nigeria)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KYC Docs & Statistics -->
+            <div class="col-12 col-xl-8">
+                <!-- Wallet & Statistics Section -->
+                <div class="card p-4 border-0 shadow-sm mb-4">
+                    <h6 class="fw-bold mb-4 text-primary uppercase letter-spacing-1">Wallet & Statistics</h6>
+                    <div class="row g-3">
+                        <div class="col-6 col-md-4">
+                            <div class="bg-light p-3 rounded-4 h-100">
+                                <p class="text-muted smaller mb-1 text-uppercase fw-bold">Deposit</p>
+                                <p class="fw-bold mb-0 text-success small">₦4.2M</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="bg-light p-3 rounded-4 h-100">
+                                <p class="text-muted smaller mb-1 text-uppercase fw-bold">Withdraw</p>
+                                <p class="fw-bold mb-0 text-danger small">₦1.5M</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="bg-light p-3 rounded-4 h-100">
+                                <p class="text-muted smaller mb-1 text-uppercase fw-bold">Orders</p>
+                                <p class="fw-bold mb-0 text-dark small">142 Total</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="bg-light p-3 rounded-4 h-100">
+                                <p class="text-muted smaller mb-1 text-uppercase fw-bold">Deriv Funding</p>
+                                <p class="fw-bold mb-0 text-dark small" id="statDerivFunding">0</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="bg-light p-3 rounded-4 h-100">
+                                <p class="text-muted smaller mb-1 text-uppercase fw-bold">Deriv Withdrawal</p>
+                                <p class="fw-bold mb-0 text-dark small" id="statDerivWithdrawal">0</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="bg-light p-3 rounded-4 h-100">
+                                <p class="text-muted smaller mb-1 text-uppercase fw-bold">Cross Border / Suppliers</p>
+                                <p class="fw-bold mb-0 text-dark small" id="statAbroadSupplier">0 / 0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KYC Documentation Preview -->
+                <div class="card p-4 border-0 shadow-sm">
+                    <h6 class="fw-bold mb-4 text-primary uppercase letter-spacing-1">Verified Documentation</h6>
+                    <div class="row g-3">
+                        <div class="col-6 col-md-6">
+                            <label class="smaller fw-bold text-muted mb-2">ID Front</label>
+                            <div class="doc-preview-container bg-light d-flex flex-column align-items-center justify-content-center p-3 cursor-pointer"
+                                data-bs-toggle="modal" data-bs-target="#imageModal" style="height: 120px;">
+                                <i class="far fa-image fs-4 text-muted opacity-50 mb-1"></i>
+                                <span class="smaller fw-bold text-muted">Preview</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-6">
+                            <label class="smaller fw-bold text-muted mb-2">ID Back</label>
+                            <div class="doc-preview-container bg-light d-flex flex-column align-items-center justify-content-center p-3 cursor-pointer"
+                                style="height: 120px;">
+                                <i class="far fa-image fs-4 text-muted opacity-50 mb-1"></i>
+                                <span class="smaller fw-bold text-muted">Preview</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-6">
+                            <label class="smaller fw-bold text-muted mb-2">Selfie</label>
+                            <div class="doc-preview-container bg-light d-flex flex-column align-items-center justify-content-center p-3 cursor-pointer"
+                                style="height: 120px;">
+                                <i class="far fa-user-circle fs-4 text-muted opacity-50 mb-1"></i>
+                                <span class="smaller fw-bold text-muted">View</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-6">
+                            <label class="smaller fw-bold text-muted mb-2">Address</label>
+                            <div class="doc-preview-container bg-light d-flex flex-column align-items-center justify-content-center p-3 cursor-pointer"
+                                style="height: 120px;">
+                                <i class="far fa-file-alt fs-4 text-muted opacity-50 mb-1"></i>
+                                <span class="smaller fw-bold text-muted">View bill</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    </div>
+
+    <!-- Image Preview Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow-lg p-2">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold small">Identity Document Audit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <img src="../images/kyc-document-sample.jpg"
+                        class="img-fluid rounded-4 shadow" alt="Document">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/mock-data.js"></script>
+    <script src="../js/agent-block.js"></script>
+    <script src="../js/user-overrides.js"></script>
+    <script src="../js/verification.js"></script>
+    <script>
+        $(document).ready(function () {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            const baseUser = (id && CN_DATA.USERS.find(function (u) { return u.id === id; }))
+                || CN_DATA.USERS.find(function (u) { return u.name === 'Michael Kelvin'; }) || CN_DATA.USERS[2];
+            const user = CN_OVERRIDES.apply(baseUser);
+
+            $('#pageTitle').text('Audit: ' + user.name);
+            $('#pUserAvatar').attr('src', 'https://ui-avatars.com/api/?name=' + encodeURIComponent(user.name) + '&background=' + user.avatarBg + '&color=fff&size=128');
+            $('#pUserName').text(user.name);
+            $('#pUserEmail').val(user.email);
+            $('#pUserCountry').val(user.country);
+            $('#pUserState').val(user.state);
+            $('#pUserAge').val(user.age);
+            $('#pUserGender').val(user.gender);
+
+            function refreshTierUi() {
+                const tier = typeof CN_OVERRIDES.apply(baseUser).tier === 'number' ? CN_OVERRIDES.apply(baseUser).tier : 0;
+                $('#pUserTier').removeClass('tier-badge-0 tier-badge-1 tier-badge-2 tier-badge-3')
+                    .addClass('tier-badge-' + tier).text(CN_VERIFY.TIER_LABELS[tier]);
+                $('.tier-override-btn').removeClass('active btn-primary').addClass('btn-outline-secondary');
+                $('.tier-override-btn[data-tier="' + tier + '"]').addClass('active btn-primary').removeClass('btn-outline-secondary');
+            }
+            refreshTierUi();
+
+            $('.tier-override-btn').click(function () {
+                const tier = parseInt($(this).data('tier'));
+                CN_OVERRIDES.save(user.id, { tier: tier });
+                refreshTierUi();
+            });
+
+            $('#saveProfileBtn').click(function () {
+                CN_OVERRIDES.save(user.id, {
+                    email: $('#pUserEmail').val(),
+                    country: $('#pUserCountry').val(),
+                    state: $('#pUserState').val(),
+                    age: parseInt($('#pUserAge').val()) || user.age,
+                    gender: $('#pUserGender').val()
+                });
+                alert('Profile updated.');
+            });
+
+            function refreshBlockUi() {
+                const blocked = CN_BLOCK.isBlocked(user);
+                const statusEl = $('#pUserStatus');
+                if (blocked) {
+                    statusEl.removeClass('status-approved').addClass('status-rejected').text('Blocked Account');
+                    $('#blockedNotice').show();
+                    $('#blockUserBtn').html('<i class="fas fa-user-check me-2"></i> Unblock User');
+                } else {
+                    statusEl.removeClass('status-rejected').addClass('status-approved').text('Active Account');
+                    $('#blockedNotice').hide();
+                    $('#blockUserBtn').html('<i class="fas fa-user-slash me-2"></i> Block User');
+                }
+            }
+            refreshBlockUi();
+
+            $('#blockUserBtn').click(function () {
+                if (CN_BLOCK.isBlocked(user)) {
+                    if (!confirm('Unblock ' + user.name + '?')) return;
+                    CN_BLOCK.unblockUser(user.id);
+                } else {
+                    if (!confirm('Block ' + user.name + '?')) return;
+                    CN_BLOCK.blockUser(user.id);
+                }
+                refreshBlockUi();
+            });
+
+            const stats = CN_DATA.statsForUser(user.id);
+            $('#statDerivFunding').text(stats.derivFunding);
+            $('#statDerivWithdrawal').text(stats.derivWithdrawal);
+            $('#statAbroadSupplier').text('0 / 0');
+        });
+    </script>
+</body>
+
+</html>

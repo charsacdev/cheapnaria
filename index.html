@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheapNaria | Institutional Deriv Funding & Payouts</title>
+    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="offcanvas-overlay"></div>
+    <div class="offcanvas-menu">
+        <div class="offcanvas-header">
+            <a href="index.html" class="logo">
+                <img src="images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+            <i class="fas fa-times close-menu"></i>
+        </div>
+        <div class="offcanvas-links">
+            <a href="#services">Services</a>
+            <a href="#rates">Rates</a>
+            <a href="about.html">Our Mission</a>
+            <a href="#testimonials">Community</a>
+            <hr style="border: none; border-top: 1px solid #f1f5f9; margin: 1rem 0;">
+            <a href="login.html">Sign In</a>
+            <a href="register.html" style="color: var(--primary);">Open Account</a>
+        </div>
+        <div class="offcanvas-footer">
+            <p style="font-size: 0.85rem; color: var(--text-muted);">&copy; 2026 CheapNaria Infrastructure.</p>
+        </div>
+    </div>
+
+    <!-- Site Header: trust bar + navigation -->
+    <header class="site-header" id="siteHeader">
+        <div class="trust-bar">
+            <div class="container trust-bar-inner">
+                <div class="trust-bar-left">
+                    <span><i class="fas fa-shield-halved"></i> Regulated &amp; Compliant</span>
+                    <span><i class="fas fa-lock"></i> Bank-grade Security</span>
+                </div>
+                <div class="trust-bar-right">
+                    <span><i class="fas fa-headset"></i> 24/7 Customer Support</span>
+                    <span class="trust-bar-country"><i class="fas fa-earth-africa"></i> Nigeria <i
+                            class="fas fa-chevron-down"></i></span>
+                </div>
+            </div>
+        </div>
+
+        <nav id="navbar">
+            <div class="container nav-content">
+                <a href="index.html" class="logo">
+                    <img src="images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                    <span>CheapNaria</span>
+                </a>
+
+                <div class="nav-links">
+                    <a href="#services">Services</a>
+                    <a href="#rates">Rates</a>
+                    <a href="about.html">About</a>
+                    <a href="#testimonials">Community</a>
+                </div>
+
+                <div class="nav-auth">
+                    <a href="login.html" class="btn btn-outline" style="border:none; padding: 0.5rem 1.5rem;">Sign
+                        In</a>
+                    <a href="register.html" class="btn btn-primary" style="padding: 0.8rem 2rem;">Get Started</a>
+                </div>
+
+                <div class="menu-trigger">
+                    <i class="fas fa-bars-staggered"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-inner">
+            <div class="hero-grid">
+                <div class="hero-content animate-up">
+                    <span class="section-tag">Deriv &bull; Global Payouts</span>
+                    <h1>Move Money <span>Across Africa.</span> Fund <span>Deriv.</span> Pay Anyone.</h1>
+                    <p>CheapNaria is your all-in-one payment platform for Deriv funding, cross-border
+                        transfers, supplier payments, and everyday bills. Fast, reliable and built for African
+                        traders.</p>
+                    <div class="hero-ctas">
+                        <a href="register.html" class="btn btn-primary">Create Account <i
+                                class="fas fa-arrow-right"></i></a>
+                        <a href="#rates" class="btn btn-outline">See Live Rates <i class="fas fa-chart-line"></i></a>
+                    </div>
+
+                    <div class="hero-badges">
+                        <div class="hero-badge">
+                            <i class="fas fa-bolt"></i>
+                            <span>Instant Transactions</span>
+                        </div>
+                        <div class="hero-badge">
+                            <i class="fas fa-tags"></i>
+                            <span>Best Rates</span>
+                        </div>
+                        <div class="hero-badge">
+                            <i class="fas fa-shield-halved"></i>
+                            <span>Bank-level Security</span>
+                        </div>
+                        <div class="hero-badge">
+                            <i class="fas fa-headset"></i>
+                            <span>24/7 Support</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-phone animate-up" style="animation-delay: 0.15s;">
+                    <div class="hero-phone-notch"></div>
+                    <div class="hero-phone-screen">
+                        <div class="hero-phone-statusbar">
+                            <span>9:41</span>
+                            <span><i class="fas fa-signal"></i> <i class="fas fa-wifi"></i> <i
+                                    class="fas fa-battery-full"></i></span>
+                        </div>
+                        <div class="hac-header">
+                            <span><i class="fas fa-wallet"></i> Total Balance</span>
+                            <button type="button" class="hac-eye" id="heroBalanceEye" aria-label="Toggle balance
+                                visibility"><i class="fas fa-eye"></i></button>
+                        </div>
+                        <div class="hac-balance-row">
+                            <div class="hac-balance" id="heroBalance" data-value="245680.00">&#8358;245,680.00</div>
+                            <span class="hac-currency-badge">NGN</span>
+                        </div>
+                        <div class="hac-sub">Available Balance</div>
+
+                        <div class="hac-actions">
+                            <div class="hac-action">
+                                <div class="hac-icon qa-green"><i class="fas fa-arrow-down"></i></div>
+                                <span>Deposit</span>
+                            </div>
+                            <div class="hac-action">
+                                <div class="hac-icon qa-red"><i class="fas fa-arrow-up"></i></div>
+                                <span>Withdraw</span>
+                            </div>
+                            <div class="hac-action">
+                                <div class="hac-icon qa-amber"><i class="fas fa-exchange-alt"></i></div>
+                                <span>Transfer</span>
+                            </div>
+                            <div class="hac-action">
+                                <div class="hac-icon qa-purple"><i class="fas fa-chart-line"></i></div>
+                                <span>Deriv</span>
+                            </div>
+                        </div>
+
+                        <div class="hac-tx-header">
+                            <span>Recent Transactions</span>
+                            <a href="register.html">View All <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="hac-tx-list">
+                            <div class="hac-tx-row">
+                                <div class="hac-tx-icon tx-in"><i class="fas fa-arrow-down"></i></div>
+                                <div class="hac-tx-text">
+                                    <p>Deriv Funding</p>
+                                    <small>Bank Transfer &middot; Today, 10:45 AM</small>
+                                </div>
+                                <span class="hac-tx-amount positive">+ &#8358;40,500</span>
+                            </div>
+                            <div class="hac-tx-row">
+                                <div class="hac-tx-icon tx-transfer"><i class="fas fa-paper-plane"></i></div>
+                                <div class="hac-tx-text">
+                                    <p>Transfer to John Trader</p>
+                                    <small>Internal &middot; Today, 09:30 AM</small>
+                                </div>
+                                <span class="hac-tx-amount negative">- &#8358;25,000</span>
+                            </div>
+                            <div class="hac-tx-row">
+                                <div class="hac-tx-icon tx-out"><i class="fas fa-arrow-up"></i></div>
+                                <div class="hac-tx-text">
+                                    <p>Withdrawal to Bank</p>
+                                    <small>Bank Transfer &middot; Yesterday, 08:15 PM</small>
+                                </div>
+                                <span class="hac-tx-amount negative">- &#8358;80,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-head-row">
+                <div>
+                    <span class="section-tag">Our Services</span>
+                    <h2>Everything You Need. One Platform.</h2>
+                </div>
+                <a href="register.html" class="section-head-link">View All Services <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon svc-green"><i class="fas fa-arrow-down"></i></div>
+                    <h3>Deriv Funding</h3>
+                    <p>Fund your Deriv account instantly</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon svc-red"><i class="fas fa-arrow-up"></i></div>
+                    <h3>Deriv Withdrawal</h3>
+                    <p>Withdraw your Deriv earnings</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon svc-blue"><i class="fas fa-earth-africa"></i></div>
+                    <h3>Cross-border Payments</h3>
+                    <p>Send money to multiple African countries</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon svc-cyan"><i class="fas fa-ship"></i></div>
+                    <h3>China Supplier Payments</h3>
+                    <p>Pay your suppliers in CNY, securely and reliably</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon svc-green"><i class="fas fa-mobile-screen"></i></div>
+                    <h3>Airtime</h3>
+                    <p>Top up airtime on all networks</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon svc-blue"><i class="fas fa-wifi"></i></div>
+                    <h3>Data</h3>
+                    <p>Buy data on all major networks</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon svc-orange"><i class="fas fa-bolt"></i></div>
+                    <h3>Electricity</h3>
+                    <p>Pay electricity bills instantly, nationwide</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon svc-pink"><i class="fas fa-futbol"></i></div>
+                    <h3>Betting</h3>
+                    <p>Fund your betting wallet instantly</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon svc-indigo"><i class="fas fa-wallet"></i></div>
+                    <h3>E-Wallet Services</h3>
+                    <p>Buy or sell Airtm, Skrill, Neteller, vouchers and more</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon svc-purple"><i class="fas fa-ticket"></i></div>
+                    <h3>Vouchery</h3>
+                    <p>Buy or sell Vouchery instantly at great rates</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Rates Section -->
+    <section id="rates" class="rates-section">
+        <div class="container">
+            <div class="section-head-row">
+                <div>
+                    <span class="section-tag">Transparent Pricing</span>
+                    <h2 style="color: white;">Live Market Rates</h2>
+                    <p class="rates-live-label"><span class="chart-live-dot"></span>Real-time &middot; Updated every
+                        30s</p>
+                </div>
+                <a href="register.html" class="section-head-link">View All Rates <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="rate-board">
+                <div class="rate-board-item">
+                    <div class="rate-board-icon"><i class="fas fa-chart-line"></i></div>
+                    <h4>Deriv Funding</h4>
+                    <div class="price">&#8358;1,535/$</div>
+                    <span class="rate-board-delta"><i class="fas fa-arrow-trend-up"></i> Stable today</span>
+                </div>
+                <div class="rate-board-item">
+                    <div class="rate-board-icon"><i class="fas fa-chart-line"></i></div>
+                    <h4>Deriv Payout</h4>
+                    <div class="price">&#8358;1,490/$</div>
+                    <span class="rate-board-delta"><i class="fas fa-arrow-trend-up"></i> Stable today</span>
+                </div>
+                <div class="rate-board-item">
+                    <div class="rate-board-icon"><i class="fas fa-earth-africa"></i></div>
+                    <h4>Ghana Payout</h4>
+                    <div class="price">GHS 16.20</div>
+                    <span class="rate-board-delta"><i class="fas fa-arrow-trend-up"></i> Stable today</span>
+                </div>
+                <div class="rate-board-item">
+                    <div class="rate-board-icon"><i class="fas fa-earth-africa"></i></div>
+                    <h4>Kenya Payout</h4>
+                    <div class="price">KES 145.50</div>
+                    <span class="rate-board-delta"><i class="fas fa-arrow-trend-up"></i> Stable today</span>
+                </div>
+                <div class="rate-board-item">
+                    <div class="rate-board-icon"><i class="fas fa-ship"></i></div>
+                    <h4>China Supplier</h4>
+                    <div class="price">&yen;7.35</div>
+                    <span class="rate-board-delta"><i class="fas fa-arrow-trend-up"></i> Stable today</span>
+                </div>
+                <a href="register.html" class="rate-board-item rate-board-more">
+                    <div class="rate-board-icon"><i class="fas fa-globe"></i></div>
+                    <h4>More Corridors</h4>
+                    <div class="price">20+</div>
+                    <span class="rate-board-delta">View all &rarr;</span>
+                </a>
+            </div>
+
+            <div class="rate-calc-cta">
+                <p><i class="fas fa-calculator"></i> Not sure what you'll get? Work it out before you transact.</p>
+                <button type="button" class="btn btn-primary" id="openCalcBtn">Calculate Your Rate <i
+                        class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rate Calculator Modal -->
+    <div class="rc-modal-overlay" id="rcOverlay">
+        <div class="rc-modal">
+            <div class="rc-modal-header">
+                <h3><i class="fas fa-calculator"></i> Rate Calculator</h3>
+                <button type="button" class="rc-modal-close" id="rcCloseBtn" aria-label="Close"><i
+                        class="fas fa-times"></i></button>
+            </div>
+            <div class="rc-modal-body">
+                <label class="rc-label">Service</label>
+                <select class="rc-select" id="rcService">
+                    <option value="derivFunding">Deriv Funding</option>
+                    <option value="derivPayout">Deriv Withdrawal (Payout)</option>
+                    <option value="ghana">Send to Ghana</option>
+                    <option value="kenya">Send to Kenya</option>
+                    <option value="supplier">Pay China Supplier</option>
+                </select>
+
+                <label class="rc-label" id="rcAmountLabel">Amount to Fund (USD)</label>
+                <div class="rc-input-group">
+                    <span class="rc-input-prefix" id="rcAmountPrefix">$</span>
+                    <input type="number" class="rc-input" id="rcAmount" placeholder="0.00" min="0">
+                </div>
+
+                <div class="rc-result-box">
+                    <div class="rc-result-row">
+                        <span>Rate Applied</span>
+                        <strong id="rcRate">&mdash;</strong>
+                    </div>
+                    <div class="rc-result-row">
+                        <span id="rcFeeLabel">Fee</span>
+                        <strong id="rcFee">&mdash;</strong>
+                    </div>
+                    <div class="rc-result-row rc-result-final">
+                        <span id="rcFinalLabel">You Pay</span>
+                        <strong id="rcFinal">&#8358;0.00</strong>
+                    </div>
+                </div>
+
+                <p class="rc-disclaimer"><i class="fas fa-circle-info"></i> The amount shown is an estimate based on
+                    the current exchange rate. Network fees and service charges are not included and may apply.</p>
+
+                <a href="register.html" class="btn btn-primary rc-cta">Create Account to Transact <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mission Teaser - links out to the full About page -->
+    <section id="about" class="mission-teaser">
+        <div class="container mission-teaser-inner animate-up">
+            <span class="section-tag">Our Mission</span>
+            <h2>Built By Traders, For Traders.</h2>
+            <p>CheapNaria was established to build the payment infrastructure African traders deserve—fast, secure,
+                and transparent. Our technology ensures money moves quickly and reliably, every time.</p>
+
+            <div class="mission-stats">
+                <div class="hero-trust-item">
+                    <div class="mission-stat-icon"><i class="fas fa-calendar"></i></div>
+                    <strong>2018</strong>
+                    <span>Founded</span>
+                </div>
+                <div class="hero-trust-item">
+                    <div class="mission-stat-icon"><i class="fas fa-users"></i></div>
+                    <strong>10K+</strong>
+                    <span>Traders Served</span>
+                </div>
+                <div class="hero-trust-item">
+                    <div class="mission-stat-icon"><i class="fas fa-earth-africa"></i></div>
+                    <strong>4+</strong>
+                    <span>Countries Supported</span>
+                </div>
+            </div>
+
+            <a href="about.html" class="btn btn-outline">Read Our Full Story <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- How It Works - Create Account / Verify / Transact Cycle -->
+    <section class="story-section" style="background: #f8fafc;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">How It Works</span>
+                <h2>Three Steps. That's It.</h2>
+                <p>Every trader moves through the same simple cycle, and after the first pass, only the last step
+                    ever repeats.</p>
+            </div>
+            <div class="cycle-row">
+                <div class="process-card animate-up">
+                    <div class="process-step-number">Step 1</div>
+                    <div class="feature-icon"><i class="fas fa-user-plus"></i></div>
+                    <h3>Create Account</h3>
+                    <p>Sign up and add your details in under two minutes. No paperwork, no branch visits.</p>
+                </div>
+                <div class="cycle-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="process-card animate-up" style="animation-delay: 0.15s;">
+                    <div class="process-step-number">Step 2</div>
+                    <div class="feature-icon"><i class="fas fa-id-card"></i></div>
+                    <h3>Verify</h3>
+                    <p>Upload your ID and our compliance team takes over. KYC is not automated here — a real agent
+                        manually reviews it, 24/7, because your data deserves a careful human check, not a script.</p>
+                </div>
+                <div class="cycle-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="process-card animate-up" style="animation-delay: 0.3s;">
+                    <div class="process-step-number">Step 3</div>
+                    <div class="feature-icon"><i class="fas fa-arrow-right-arrow-left"></i></div>
+                    <h3>Transact</h3>
+                    <p>Fund Deriv, pay suppliers, or send cross-border payments—fast, secure, and reliable.</p>
+                </div>
+            </div>
+            <div class="cycle-note"><i class="fas fa-rotate"></i> Verification happens once, reviewed by a real
+                person. After that, it's just Step 3, on repeat.</div>
+        </div>
+    </section>
+
+    <!-- Engineering / "Automated" Section with Image -->
+    <section class="engineering-section">
+        <div class="container engineering-grid">
+            <div class="engineering-img animate-up">
+                <img src="images/team-collaboration.png" alt="Happy team working together in the office">
+            </div>
+            <div class="engineering-content animate-up" style="animation-delay: 0.2s;">
+                <span class="section-tag">No More Waiting Games</span>
+                <h2>Your Money Shouldn't Feel Like a Favor.</h2>
+                <p>We've all been there — messaging an agent, waiting for a "sent" screenshot, refreshing your bank
+                    app every five minutes hoping it clears. CheapNaria replaces all of that. Our system checks your
+                    balance directly through the Deriv API and pays out straight to your bank, with
+                    no human standing in the middle.</p>
+                <ul style="margin-top: 2rem; color: var(--text-muted);">
+                    <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle text-primary me-2"></i> Real-time
+                        balance verification, no manual back-and-forth</li>
+                    <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle text-primary me-2"></i> Fast,
+                        straight-to-bank settlement</li>
+                    <li style="margin-bottom: 1rem;"><i class="fas fa-check-circle text-primary me-2"></i> Always on,
+                        even at 3am on a Sunday</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Slider -->
+    <section id="testimonials" class="testimonials-section" style="background: #f8fafc;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Community Proof</span>
+                <h2>Trusted by 10,000+ Traders.</h2>
+            </div>
+
+            <div class="slider-container animate-up">
+                <div class="slider-track">
+                    <div class="slide-item">
+                        <blockquote>"Fast, reliable, and easy to use. Funding my Deriv account takes just a few
+                            minutes, and the rates are always competitive."</blockquote>
+                        <div class="user-info">
+                            <img src="images/avatar-a1.jpg" alt="User Avatar">
+                            <div class="user-text">
+                                <h4>Samuel Ibrahim</h4>
+                                <p>CheapNaria User</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-item">
+                        <blockquote>"I've been using CheapNaria for my Deriv funding, and the experience has been
+                            fast, secure, and reliable."</blockquote>
+                        <div class="user-info">
+                            <img src="images/avatar-mercy24.jpg" alt="User Avatar">
+                            <div class="user-text">
+                                <h4>Aisha Bello</h4>
+                                <p>CheapNaria User</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-item">
+                        <blockquote>"The verification process was simple, and every transaction has been smooth. A
+                            platform I can rely on."</blockquote>
+                        <div class="user-info">
+                            <img src="images/avatar-b2.jpg" alt="User Avatar">
+                            <div class="user-text">
+                                <h4>Daniel Okafor</h4>
+                                <p>CheapNaria User</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-item">
+                        <blockquote>"CheapNaria has made my deposits and withdrawals much easier. Transactions are
+                            fast, secure, and hassle-free."</blockquote>
+                        <div class="user-info">
+                            <img src="images/avatar-blessingfx.jpg" alt="User Avatar">
+                            <div class="user-text">
+                                <h4>Precious Udo</h4>
+                                <p>CheapNaria User</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-item">
+                        <blockquote>"Cross-border payments are now much easier. I can pay suppliers and receive
+                            updates every step of the way."</blockquote>
+                        <div class="user-info">
+                            <img src="images/avatar-c3.jpg" alt="User Avatar">
+                            <div class="user-text">
+                                <h4>David Mensah</h4>
+                                <p>CheapNaria User</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-item">
+                        <blockquote>"Reliable rates, secure transactions, and an excellent user experience. Highly
+                            recommended."</blockquote>
+                        <div class="user-info">
+                            <img src="images/avatar-john.jpg" alt="User Avatar">
+                            <div class="user-text">
+                                <h4>Emmanuel Adeyemi</h4>
+                                <p>CheapNaria User</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-item">
+                        <blockquote>"The fastest Deriv funding service I've used. Deposits are processed quickly, and
+                            withdrawals are always reliable."</blockquote>
+                        <div class="user-info">
+                            <img src="images/avatar-johntrader.jpg" alt="User Avatar">
+                            <div class="user-text">
+                                <h4>Faith Williams</h4>
+                                <p>CheapNaria User</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing Trust CTA -->
+    <section class="security-cta-banner">
+        <div class="container security-cta-inner">
+            <div class="security-cta-icon"><i class="fas fa-shield-halved"></i></div>
+            <div class="security-cta-text">
+                <h2>Built for Security. Designed for Speed.</h2>
+                <p>Your funds. Your data. Always protected.</p>
+            </div>
+            <a href="register.html" class="btn btn-primary">Get Started Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Black Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-side">
+                    <div class="footer-brand"><span>CheapNaria</span></div>
+                    <p style="color: #9ca3af; max-width: 320px;">Securing the future of funding for African traders.
+                        Instant, reliable, and transparent.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#rates">Market Rates</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="register.html">Get Started</a></li>
+                        <li><a href="login.html">Sign In</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="aml.html">AML Compliance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="https://t.me/cheapnaria1" target="_blank" rel="noopener">Telegram Group</a></li>
+                        <li><a href="help-center.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CheapNaria Infrastructure. All rights reserved.</p>
+                <div style="display: flex; gap: 2rem;">
+                    <a href="https://wa.me/2348026757683" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://t.me/cheapnaria1" target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
+                    <a href="mailto:support@cheapnaria.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Off-canvas Logic
+            $('.menu-trigger, .close-menu, .offcanvas-overlay, .offcanvas-links a').on('click', function () {
+                $('.offcanvas-menu, .offcanvas-overlay').toggleClass('active');
+                if ($('.offcanvas-menu').hasClass('active')) {
+                    $('body').css('overflow', 'hidden');
+                } else {
+                    $('body').css('overflow', 'auto');
+                }
+            });
+
+            // Header Scroll: collapse trust bar, compact the nav
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    $('#siteHeader, #navbar').addClass('scrolled');
+                } else {
+                    $('#siteHeader, #navbar').removeClass('scrolled');
+                }
+            });
+
+            // Hero balance show/hide toggle
+            let heroBalanceVisible = true;
+            const heroRawValue = parseFloat($('#heroBalance').data('value'));
+            const heroFormatted = '₦' + heroRawValue.toLocaleString(undefined, { minimumFractionDigits: 2 });
+
+            $('#heroBalanceEye').on('click', function () {
+                heroBalanceVisible = !heroBalanceVisible;
+                if (heroBalanceVisible) {
+                    $('#heroBalance').text(heroFormatted);
+                    $(this).find('i').removeClass('fa-eye-slash').addClass('fa-eye');
+                } else {
+                    $('#heroBalance').text('₦ • • • • • •');
+                    $(this).find('i').removeClass('fa-eye').addClass('fa-eye-slash');
+                }
+            });
+
+            let currentTestimony = 0;
+            function updateTestimony() {
+                const slideCount = $('.slide-item').length;
+                $('.slider-track').css('transform', `translateX(-${currentTestimony * 100}%)`);
+                currentTestimony = (currentTestimony + 1) % slideCount;
+            }
+            setInterval(updateTestimony, 5000);
+
+            // Animate on scroll simple implementation
+            function checkScroll() {
+                $('.animate-up').each(function () {
+                    const pos = $(this).offset().top;
+                    const winTop = $(window).scrollTop();
+                    if (pos < winTop + $(window).height() - 100) {
+                        $(this).addClass('fadeInUp');
+                        $(this).css('opacity', '1');
+                    }
+                });
+            }
+
+            $(window).scroll(checkScroll);
+            checkScroll(); // Initial check
+
+            // Rate Calculator
+            const RC_SERVICES = {
+                derivFunding: {
+                    amountLabel: 'Amount to Fund (USD)', prefix: '$',
+                    rate: 1535, rateLabel: '&#8358;1,535 / $1', feePct: 0,
+                    feeLabel: 'Fee', finalLabel: 'You Pay (NGN)',
+                    calc: function (amt) {
+                        const ngn = amt * 1535;
+                        return { fee: 'Free', final: '&#8358;' + ngn.toLocaleString(undefined, { maximumFractionDigits: 2 }) };
+                    }
+                },
+                derivPayout: {
+                    amountLabel: 'Amount to Withdraw (USD)', prefix: '$',
+                    rate: 1490, rateLabel: '&#8358;1,490 / $1',
+                    feeLabel: 'Service Fee (1.5%)', finalLabel: 'You Receive (NGN)',
+                    calc: function (amt) {
+                        const gross = amt * 1490;
+                        const fee = gross * 0.015;
+                        const net = gross - fee;
+                        return { fee: '&#8358;' + fee.toLocaleString(undefined, { maximumFractionDigits: 2 }), final: '&#8358;' + net.toLocaleString(undefined, { maximumFractionDigits: 2 }) };
+                    }
+                },
+                ghana: {
+                    amountLabel: 'Amount to Send (NGN)', prefix: '&#8358;',
+                    rate: 16.20 / 1535, rateLabel: 'GHS 16.20 / $1',
+                    feeLabel: 'Service Fee', finalLabel: 'Recipient Gets (GHS)',
+                    calc: function (amt) {
+                        const afterFee = Math.max(amt - 2000, 0);
+                        const ghs = afterFee * (16.20 / 1535);
+                        return { fee: '&#8358;2,000.00', final: 'GHS ' + ghs.toLocaleString(undefined, { maximumFractionDigits: 2 }) };
+                    }
+                },
+                kenya: {
+                    amountLabel: 'Amount to Send (NGN)', prefix: '&#8358;',
+                    rate: 145.50 / 1535, rateLabel: 'KES 145.50 / $1',
+                    feeLabel: 'Service Fee', finalLabel: 'Recipient Gets (KES)',
+                    calc: function (amt) {
+                        const afterFee = Math.max(amt - 2000, 0);
+                        const kes = afterFee * (145.50 / 1535);
+                        return { fee: '&#8358;2,000.00', final: 'KES ' + kes.toLocaleString(undefined, { maximumFractionDigits: 2 }) };
+                    }
+                },
+                supplier: {
+                    amountLabel: 'Amount to Pay Supplier (CNY)', prefix: '&yen;',
+                    rate: 7.35 / 1535, rateLabel: '&yen;7.35 / $1',
+                    feeLabel: 'Bank Charge + Processing Fee', finalLabel: 'Total Debited (NGN)',
+                    calc: function (amt) {
+                        const ngnCost = amt / (7.35 / 1535);
+                        const charges = 8000 + 2000;
+                        const total = ngnCost + charges;
+                        return { fee: '&#8358;10,000.00', final: '&#8358;' + total.toLocaleString(undefined, { maximumFractionDigits: 2 }) };
+                    }
+                }
+            };
+
+            function rcUpdate() {
+                const svc = RC_SERVICES[$('#rcService').val()];
+                $('#rcAmountLabel').text(svc.amountLabel);
+                $('#rcAmountPrefix').html(svc.prefix);
+                $('#rcRate').html(svc.rateLabel);
+                $('#rcFeeLabel').text(svc.feeLabel);
+                $('#rcFinalLabel').text(svc.finalLabel);
+
+                const amt = parseFloat($('#rcAmount').val());
+                if (!amt || amt <= 0) {
+                    $('#rcFee').html('&mdash;');
+                    $('#rcFinal').html(svc.prefix === '&#8358;' ? '&#8358;0.00' : '0.00');
+                    return;
+                }
+                const result = svc.calc(amt);
+                $('#rcFee').html(result.fee);
+                $('#rcFinal').html(result.final);
+            }
+
+            $('#rcService, #rcAmount').on('input change', rcUpdate);
+
+            $('#openCalcBtn').on('click', function () {
+                $('#rcOverlay').addClass('active');
+                $('body').css('overflow', 'hidden');
+                rcUpdate();
+            });
+            $('#rcCloseBtn, #rcOverlay').on('click', function (e) {
+                if (e.target !== this) return;
+                $('#rcOverlay').removeClass('active');
+                $('body').css('overflow', 'auto');
+            });
+        });
+    </script>
+</body>
+
+</html>

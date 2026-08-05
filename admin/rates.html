@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
+    <title>Rates Control | CheapNaria</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+            <a href="tiers.html" class="nav-link"><i class="fas fa-layer-group"></i> Tiers</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">13</span></a>
+            <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+            <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+            <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+            <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+            <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+            <a href="rates.html" class="nav-link active"><i class="fas fa-chart-line"></i> Rates</a>
+            <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
+            <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+            <a href="ads.html" class="nav-link"><i class="fas fa-rectangle-ad"></i> Ads / Promotions</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+            <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
+            <hr class="my-3 opacity-10">
+            <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+                <a href="tiers.html" class="nav-link"><i class="fas fa-layer-group"></i> Tiers</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">13</span></a>
+                <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+                <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+                <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+                <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+                <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+                <a href="rates.html" class="nav-link active"><i class="fas fa-chart-line"></i> Rates</a>
+                <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
+                <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+                <a href="ads.html" class="nav-link"><i class="fas fa-rectangle-ad"></i> Ads / Promotions</a>
+                <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+                <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
+                <hr class="my-3 opacity-10">
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="menu-toggle d-lg-none me-3" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars-staggered"></i>
+                </button>
+                <h4 class="m-0 d-none d-md-block">Rates Control</h4>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+
+                <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <div class="dropdown">
+                    <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=10b981&color=fff" alt="Profile"
+                            class="rounded-circle" width="40">
+                        <div class="d-none d-sm-block">
+                            <p class="mb-0 small fw-bold">Admin User</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Super Admin</p>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-user-circle me-2"></i>
+                                Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i
+                                    class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="row g-4">
+            <!-- Nigeria / Deriv -->
+            <div class="col-12 col-xl-6">
+                <div class="card p-4 border-0 shadow-sm">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h5 class="fw-bold mb-0">🇳🇬 Nigeria (NGN) &mdash; Deriv</h5>
+                        <button type="button" class="btn btn-link btn-sm p-0 fw-bold text-decoration-none"
+                            id="saveNigeriaRates">Save Changes</button>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Buy
+                                Rate</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-0">₦</span>
+                                <input type="number" class="form-control bg-light border-0 fw-bold" value="1410">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Sell
+                                Rate</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-0">₦</span>
+                                <input type="number" class="form-control bg-light border-0 fw-bold" value="1390">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <hr class="my-0 opacity-10">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv
+                                Transaction Fee (%)</label>
+                            <div class="input-group">
+                                <input type="number" step="0.1" class="form-control bg-light border-0 fw-bold"
+                                    id="feeDeriv" value="1.2">
+                                <span class="input-group-text bg-light border-0">%</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Min Buy
+                                ($)</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="5">
+                        </div>
+                        <div class="col-6">
+                            <label class="smaller fw-bold text-muted text-uppercase mb-2 d-block">Deriv Min Sell
+                                ($)</label>
+                            <input type="number" class="form-control bg-light border-0 fw-bold" value="5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
+            <div>
+                <h5 class="fw-bold mb-1">Crypto Asset Rates &amp; Fees</h5>
+                <p class="text-muted small mb-0">Set the Naira rate, processing fee, network fee and minimum
+                    deposit for each supported crypto asset. These apply to both user deposits and withdrawals.</p>
+            </div>
+        </div>
+
+        <div class="row g-3" id="cryptoAssetRow">
+            <!-- Crypto asset cards injected by JS from ASSET_DEFS -->
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
+            <div>
+                <h5 class="fw-bold mb-1">Vouchery Rate</h5>
+                <p class="text-muted small mb-0">Set the Naira buy and sell rate for Vouchery. This is the rate
+                    applied instantly on the user's Buy/Sell Vouchery page.</p>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card simple-rate-card border-0 shadow-sm">
+                    <div class="src-head">
+                        <span class="fw-bold small"><i class="fas fa-ticket me-1"></i>Vouchery</span>
+                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Buy Rate</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;</span>
+                        <input type="number" class="form-control bg-light border-0 fw-bold" id="voucheryBuyRate"
+                            value="1400">
+                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Sell Rate</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;</span>
+                        <input type="number" class="form-control bg-light border-0 fw-bold" id="voucherySellRate"
+                            value="1370">
+                    </div>
+                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none" id="voucherySaveBtn">Save</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between mt-5 mb-3">
+            <div>
+                <h5 class="fw-bold mb-1">Send Abroad &amp; Supplier Corridors</h5>
+                <p class="text-muted small mb-0">Simple rate against the Naira, plus a flat processing fee in Naira
+                    charged per transaction. Only these corridors are available to users &mdash; all others are
+                    disabled.</p>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <!-- Ghana -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card simple-rate-card border-0 shadow-sm">
+                    <div class="src-head">
+                        <span class="fw-bold small"><span class="src-flag">&#127468;&#127469;</span>Ghana</span>
+                        <span class="src-currency">GHS</span>
+                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Rate</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
+                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
+                            id="corrRate-GH" value="0.0090">
+                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Processing Fee</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;</span>
+                        <input type="number" class="form-control bg-light border-0 fw-bold" id="corrFee-GH"
+                            value="2000">
+                    </div>
+                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none corridor-save-btn"
+                        data-code="GH">Save</button>
+                </div>
+            </div>
+            <!-- Kenya -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card simple-rate-card border-0 shadow-sm">
+                    <div class="src-head">
+                        <span class="fw-bold small"><span class="src-flag">&#127472;&#127466;</span>Kenya</span>
+                        <span class="src-currency">KES</span>
+                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Rate</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
+                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
+                            id="corrRate-KE" value="0.0850">
+                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Processing Fee</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;</span>
+                        <input type="number" class="form-control bg-light border-0 fw-bold" id="corrFee-KE"
+                            value="2000">
+                    </div>
+                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none corridor-save-btn"
+                        data-code="KE">Save</button>
+                </div>
+            </div>
+            <!-- Tanzania -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card simple-rate-card border-0 shadow-sm">
+                    <div class="src-head">
+                        <span class="fw-bold small"><span class="src-flag">&#127481;&#127487;</span>Tanzania</span>
+                        <span class="src-currency">TZS</span>
+                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Rate</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
+                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
+                            id="corrRate-TZ" value="1.6800">
+                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Processing Fee</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;</span>
+                        <input type="number" class="form-control bg-light border-0 fw-bold" id="corrFee-TZ"
+                            value="2000">
+                    </div>
+                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none corridor-save-btn"
+                        data-code="TZ">Save</button>
+                </div>
+            </div>
+            <!-- South Africa -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card simple-rate-card border-0 shadow-sm">
+                    <div class="src-head">
+                        <span class="fw-bold small"><span class="src-flag">&#127487;&#127462;</span>South
+                            Africa</span>
+                        <span class="src-currency">ZAR</span>
+                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Rate</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
+                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
+                            id="corrRate-ZA" value="0.0120">
+                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Processing Fee</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;</span>
+                        <input type="number" class="form-control bg-light border-0 fw-bold" id="corrFee-ZA"
+                            value="2000">
+                    </div>
+                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none corridor-save-btn"
+                        data-code="ZA">Save</button>
+                </div>
+            </div>
+            <!-- Cameroon -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card simple-rate-card border-0 shadow-sm">
+                    <div class="src-head">
+                        <span class="fw-bold small"><span class="src-flag">&#127464;&#127474;</span>Cameroon</span>
+                        <span class="src-currency">XAF</span>
+                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Rate</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
+                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
+                            id="corrRate-CM" value="0.4200">
+                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Processing Fee</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;</span>
+                        <input type="number" class="form-control bg-light border-0 fw-bold" id="corrFee-CM"
+                            value="2000">
+                    </div>
+                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none corridor-save-btn"
+                        data-code="CM">Save</button>
+                </div>
+            </div>
+            <!-- China (Pay Supplier corridor) -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card simple-rate-card border-0 shadow-sm">
+                    <div class="src-head">
+                        <span class="fw-bold small"><span class="src-flag">&#127464;&#127475;</span>China</span>
+                        <span class="src-currency">CNY</span>
+                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Rate</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;1 =</span>
+                        <input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold"
+                            id="corrRate-CN" value="0.0047">
+                    </div>
+                    <label class="smaller text-muted mb-1 d-block">Processing Fee</label>
+                    <div class="input-group input-group-sm mb-2">
+                        <span class="input-group-text bg-light border-0">&#8358;</span>
+                        <input type="number" class="form-control bg-light border-0 fw-bold" id="corrFee-CN"
+                            value="2000">
+                    </div>
+                    <button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none corridor-save-btn"
+                        data-code="CN">Save</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        $(document).ready(function () {
+            const savedDeriv = localStorage.getItem('cn-fee-deriv');
+            if (savedDeriv !== null) $('#feeDeriv').val(savedDeriv);
+
+            $('#saveNigeriaRates').on('click', function () {
+                localStorage.setItem('cn-fee-deriv', $('#feeDeriv').val());
+                alert('Deriv rates & transaction fee saved.');
+            });
+
+            // --- Vouchery rate ---
+            const savedVoucheryBuy = localStorage.getItem('cn-vouchery-buy-rate');
+            const savedVoucherySell = localStorage.getItem('cn-vouchery-sell-rate');
+            if (savedVoucheryBuy !== null) $('#voucheryBuyRate').val(savedVoucheryBuy);
+            if (savedVoucherySell !== null) $('#voucherySellRate').val(savedVoucherySell);
+
+            $('#voucherySaveBtn').on('click', function () {
+                const buy = parseFloat($('#voucheryBuyRate').val());
+                const sell = parseFloat($('#voucherySellRate').val());
+                if (!buy || !sell || buy <= 0 || sell <= 0) { alert('Please enter valid buy and sell rates.'); return; }
+                if (sell >= buy) { alert('Sell rate should be lower than the buy rate.'); return; }
+                localStorage.setItem('cn-vouchery-buy-rate', buy);
+                localStorage.setItem('cn-vouchery-sell-rate', sell);
+                alert('Vouchery buy and sell rates saved.');
+            });
+
+            // --- Crypto asset rate/fee cards ---
+            const ASSET_DEFS = [
+                { code: 'USDT', network: 'TRC20 (Tron)', buy: 1450, sell: 1420, processingFee: 1000, networkFee: 1.00, minDeposit: 10 },
+                { code: 'USDC', network: 'Solana', buy: 1445, sell: 1415, processingFee: 1000, networkFee: 0.50, minDeposit: 10 },
+                { code: 'BTC', network: 'Bitcoin', buy: 1450, sell: 1420, processingFee: 1000, networkFee: 0.0001, minDeposit: 10 },
+                { code: 'BNB', network: 'BNB Smart Chain', buy: 1450, sell: 1420, processingFee: 1000, networkFee: 0.001, minDeposit: 10 },
+                { code: 'ETH', network: 'Ethereum', buy: 1450, sell: 1420, processingFee: 1000, networkFee: 0.002, minDeposit: 10 }
+            ];
+
+            const $row = $('#cryptoAssetRow');
+            ASSET_DEFS.forEach(function (a) {
+                const savedBuy = localStorage.getItem('cn-rate-buy-' + a.code);
+                const savedSell = localStorage.getItem('cn-rate-sell-' + a.code);
+                const savedProcFee = localStorage.getItem('cn-fee-processing-' + a.code);
+                const savedNetFee = localStorage.getItem('cn-fee-network-' + a.code);
+                const savedMinDeposit = localStorage.getItem('cn-min-deposit-' + a.code);
+
+                $row.append(
+                    '<div class="col-6 col-md-4 col-lg">' +
+                    '<div class="card simple-rate-card border-0 shadow-sm">' +
+                    '<div class="src-head"><span class="fw-bold small">' + a.code + '</span>' +
+                    '<span class="src-currency">' + a.network + '</span></div>' +
+                    '<label class="smaller text-muted mb-1 d-block">Buy Rate</label>' +
+                    '<div class="input-group input-group-sm mb-2"><span class="input-group-text bg-light border-0">&#8358;</span>' +
+                    '<input type="number" class="form-control bg-light border-0 fw-bold asset-buy" value="' + (savedBuy !== null ? savedBuy : a.buy) + '"></div>' +
+                    '<label class="smaller text-muted mb-1 d-block">Sell Rate</label>' +
+                    '<div class="input-group input-group-sm mb-2"><span class="input-group-text bg-light border-0">&#8358;</span>' +
+                    '<input type="number" class="form-control bg-light border-0 fw-bold asset-sell" value="' + (savedSell !== null ? savedSell : a.sell) + '"></div>' +
+                    '<label class="smaller text-muted mb-1 d-block">Processing Fee</label>' +
+                    '<div class="input-group input-group-sm mb-2"><span class="input-group-text bg-light border-0">&#8358;</span>' +
+                    '<input type="number" class="form-control bg-light border-0 fw-bold asset-proc-fee" value="' + (savedProcFee !== null ? savedProcFee : a.processingFee) + '"></div>' +
+                    '<label class="smaller text-muted mb-1 d-block">Network Fee (' + a.code + ')</label>' +
+                    '<div class="input-group input-group-sm mb-2">' +
+                    '<input type="number" step="0.0001" class="form-control bg-light border-0 fw-bold asset-net-fee" value="' + (savedNetFee !== null ? savedNetFee : a.networkFee) + '">' +
+                    '<span class="input-group-text bg-light border-0">' + a.code + '</span></div>' +
+                    '<label class="smaller text-muted mb-1 d-block">Minimum Deposit</label>' +
+                    '<div class="input-group input-group-sm mb-2">' +
+                    '<span class="input-group-text bg-light border-0">$</span>' +
+                    '<input type="number" class="form-control bg-light border-0 fw-bold asset-min-deposit" value="' + (savedMinDeposit !== null ? savedMinDeposit : a.minDeposit) + '"></div>' +
+                    '<button class="btn btn-link btn-sm p-0 fw-bold text-decoration-none asset-save-btn" data-code="' + a.code + '">Save</button>' +
+                    '</div></div>'
+                );
+            });
+
+            $(document).on('click', '.asset-save-btn', function () {
+                const code = $(this).data('code');
+                const card = $(this).closest('.simple-rate-card');
+                localStorage.setItem('cn-rate-buy-' + code, card.find('.asset-buy').val());
+                localStorage.setItem('cn-rate-sell-' + code, card.find('.asset-sell').val());
+                localStorage.setItem('cn-fee-processing-' + code, card.find('.asset-proc-fee').val());
+                localStorage.setItem('cn-fee-network-' + code, card.find('.asset-net-fee').val());
+                localStorage.setItem('cn-min-deposit-' + code, card.find('.asset-min-deposit').val());
+                alert(code + ' rate and fees saved.');
+            });
+
+            // --- Send Abroad & Supplier corridor rate/fee ---
+            const CORRIDOR_CODES = ['GH', 'KE', 'TZ', 'ZA', 'CM', 'CN'];
+            CORRIDOR_CODES.forEach(function (code) {
+                const savedRate = localStorage.getItem('cn-corridor-rate-' + code);
+                const savedFee = localStorage.getItem('cn-corridor-fee-' + code);
+                if (savedRate !== null) $('#corrRate-' + code).val(savedRate);
+                if (savedFee !== null) $('#corrFee-' + code).val(savedFee);
+            });
+
+            $(document).on('click', '.corridor-save-btn', function () {
+                const code = $(this).data('code');
+                localStorage.setItem('cn-corridor-rate-' + code, $('#corrRate-' + code).val());
+                localStorage.setItem('cn-corridor-fee-' + code, $('#corrFee-' + code).val());
+                alert(code + ' corridor rate and processing fee saved.');
+            });
+        });
+    </script>
+</body>
+
+</html>

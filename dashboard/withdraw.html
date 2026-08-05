@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
+    <title>Withdraw Funds | CheapNaria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block">
+        <div class="brand mb-5 px-3">
+            <a href="index.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdraw.html" class="nav-link active"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
+            <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+            <a href="rates.html" class="nav-link"><i class="fas fa-percent"></i> Rates</a>
+            <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> More Services</a>
+            <a href="referrals.html" class="nav-link"><i class="fas fa-user-plus"></i> Referrals</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+            <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+            <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="index.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="deposit.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdraw.html" class="nav-link active"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="transfer.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transfer</a>
+                <a href="index.html#deriv" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+                <a href="rates.html" class="nav-link"><i class="fas fa-percent"></i> Rates</a>
+                <a href="services.html" class="nav-link"><i class="fas fa-layer-group"></i> More Services</a>
+                <a href="referrals.html" class="nav-link"><i class="fas fa-user-plus"></i> Referrals</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Verification</a>
+                <a href="transactions.html" class="nav-link"><i class="fas fa-history"></i> Transactions</a>
+                <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+                <a href="profile.html" class="nav-link"><i class="fas fa-user-cog"></i> Profile Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-light d-lg-none me-2" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <button type="button" class="btn btn-light btn-sm rounded-pill me-2" id="backBtn"><i
+                        class="fas fa-arrow-left"></i></button>
+                <div>
+                    <h4 class="m-0" id="pageTitle">Withdraw Funds</h4>
+                    <p class="rc-step-label d-none" id="pageStepLabel"></p>
+                </div>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <div class="rc-rate-badge d-none" id="headerRateBadge">
+                    <i class="fas fa-chart-simple"></i> <span id="headerRateText">Rate: —</span>
+                </div>
+                <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card p-4">
+
+                    <!-- STEP 0: Method Choice -->
+                    <div id="methodStep">
+                        <h5 class="mb-1">Choose your preferred withdrawal method</h5>
+                        <p class="text-muted small mb-4">Withdraw from your CheapNaria NGN wallet.</p>
+                        <div class="balance-hint mb-4">
+                            <span><i class="fas fa-wallet me-1"></i> Available Balance</span>
+                            <strong class="text-success">₦245,680.00</strong>
+                        </div>
+                        <div class="rc-caution-banner d-none" id="panicBanner">
+                            <i class="fas fa-triangle-exclamation rc-caution-icon"></i>
+                            <div>
+                                <p>Withdrawals are temporarily paused.</p>
+                                <small>We're running a routine security check. Please try again shortly, or
+                                    contact <a href="support.html">Support</a> if this continues.</small>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-3" id="methodChoices">
+                            <div class="select-method-card" id="chooseBank">
+                                <div class="smc-icon"><i class="fas fa-university"></i></div>
+                                <div class="smc-text">
+                                    <p>Bank Transfer</p>
+                                    <small class="text-muted">Withdraw NGN to your local bank account</small>
+                                </div>
+                                <span class="smc-tag">1 - 30 mins</span>
+                            </div>
+                            <div class="select-method-card" id="chooseCrypto" style="display:none;">
+                                <div class="smc-icon"><i class="fas fa-dollar-sign"></i></div>
+                                <div class="smc-text">
+                                    <p>Withdraw via USD</p>
+                                    <small class="text-muted">Withdraw your funds in USD</small>
+                                </div>
+                                <span class="smc-tag">5 - 60 mins</span>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning small mt-4 mb-0">
+                            <i class="fas fa-triangle-exclamation me-1"></i> Verify your withdrawal details
+                            carefully. Withdrawals are processed instantly, and we are not liable for funds sent
+                            to an incorrect account.
+                        </div>
+                    </div>
+
+                    <!-- BANK WITHDRAW STEP -->
+                    <div id="bankStep" class="d-none">
+                        <h5 class="mb-4">Withdraw to Bank</h5>
+                        <div class="balance-hint mb-3">
+                            <span><i class="fas fa-wallet me-1"></i> Available Balance</span>
+                            <strong>₦245,680.00</strong>
+                        </div>
+
+                        <div class="btn-group w-100 mb-3" role="group">
+                            <button type="button" class="btn btn-primary" id="tabSavedBtn">
+                                <i class="fas fa-user me-1"></i> Saved Beneficiary
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" id="tabNewBtn">
+                                <i class="fas fa-landmark me-1"></i> New Bank Account
+                            </button>
+                        </div>
+
+                        <div id="savedBeneficiaryPanel">
+                            <label class="form-label small fw-bold">Select Beneficiary</label>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text bg-white"><i class="fas fa-search text-muted"></i></span>
+                                <input type="text" class="form-control" id="beneficiarySearch" placeholder="Search by name, bank or account number">
+                            </div>
+                            <div class="d-flex flex-column gap-2 mb-2" id="beneficiaryList" style="max-height: 260px; overflow-y: auto;">
+                                <div class="p-3 border rounded-4 d-flex align-items-center justify-content-between beneficiary-item" data-id="1" data-bank="Wema Bank" data-account="0123456789" data-name="John David" style="cursor:pointer;">
+                                    <div>
+                                        <p class="fw-bold mb-1">John David</p>
+                                        <p class="text-muted small mb-0">Wema Bank &middot; 0123456789</p>
+                                    </div>
+                                    <span class="badge-status status-approved"><i class="fas fa-circle-check me-1"></i>Verified</span>
+                                </div>
+                                <div class="p-3 border rounded-4 d-flex align-items-center justify-content-between beneficiary-item" data-id="2" data-bank="GTBank" data-account="0987654321" data-name="Adaeze Mary" style="cursor:pointer;">
+                                    <div>
+                                        <p class="fw-bold mb-1">Adaeze Mary</p>
+                                        <p class="text-muted small mb-0">GTBank &middot; 0987654321</p>
+                                    </div>
+                                    <span class="badge-status status-approved"><i class="fas fa-circle-check me-1"></i>Verified</span>
+                                </div>
+                                <div class="p-3 border rounded-4 d-flex align-items-center justify-content-between beneficiary-item" data-id="3" data-bank="Access Bank" data-account="0192837465" data-name="Ibrahim Okeke" style="cursor:pointer;">
+                                    <div>
+                                        <p class="fw-bold mb-1">Ibrahim Okeke</p>
+                                        <p class="text-muted small mb-0">Access Bank &middot; 0192837465</p>
+                                    </div>
+                                    <span class="badge-status status-approved"><i class="fas fa-circle-check me-1"></i>Verified</span>
+                                </div>
+                                <p class="text-muted small mb-0 d-none" id="noBeneficiariesMsg">No beneficiaries match your search.</p>
+                            </div>
+                            <small class="text-danger d-none" id="beneficiaryError">Please select a beneficiary.</small>
+                            <div class="d-flex justify-content-between mt-2">
+                                <a href="profile.html#payout" class="small text-primary text-decoration-none">Manage Beneficiaries</a>
+                                <a href="#" class="small text-primary text-decoration-none" id="addNewBeneficiaryLink">+ Add New Beneficiary</a>
+                            </div>
+                        </div>
+
+                        <div id="newBankPanel" class="d-none">
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">Bank</label>
+                                <select class="form-select" id="newBankSelect">
+                                    <option selected disabled value="">Choose bank</option>
+                                    <option>Access Bank</option>
+                                    <option>GTBank</option>
+                                    <option>Zenith Bank</option>
+                                    <option>UBA</option>
+                                    <option>First Bank</option>
+                                    <option>Wema Bank</option>
+                                    <option>Kuda MFB</option>
+                                    <option>Opay</option>
+                                    <option>Moniepoint MFB</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">Account Number</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="newAccountNumber" maxlength="10" placeholder="0123456789">
+                                    <button type="button" class="btn btn-outline-primary" id="verifyAccountBtn">Verify</button>
+                                </div>
+                                <small class="text-danger d-none" id="verifyError">Enter a bank and a valid 10-digit account number.</small>
+                            </div>
+                            <div class="alert alert-success py-2 px-3 small mb-3 d-none" id="verifiedNameBox">
+                                <i class="fas fa-circle-check me-1"></i> <span id="verifiedNameText"></span>
+                            </div>
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" id="saveBeneficiaryCheck">
+                                <label class="form-check-label small" for="saveBeneficiaryCheck">Save this beneficiary for future withdrawals</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-600">Amount (NGN)</label>
+                            <input type="number" class="form-control" id="bankAmount" placeholder="e.g 50000">
+                            <small class="text-muted">Minimum withdrawal: ₦500.00</small>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-600">Narration <span class="text-muted fw-normal">(Optional)</span></label>
+                            <input type="text" class="form-control" id="bankNarration" maxlength="50" placeholder="e.g Payment for services">
+                        </div>
+
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm" id="bankContinueBtn">
+                            Continue
+                        </button>
+                    </div>
+
+                    <!-- CRYPTO STEP 1 of 3: Select Asset -->
+                    <div id="assetStep" class="d-none">
+                        <div class="step-indicator-row">
+                            <div class="step-dot active"></div>
+                            <div class="step-dot"></div>
+                            <div class="step-dot"></div>
+                        </div>
+                        <p class="text-muted small mb-1">Step 1 of 3</p>
+                        <h5 class="mb-4">Select USD Option</h5>
+                        <p class="text-muted small mb-3">Choose how you'd like to receive USD</p>
+                        <div class="d-grid gap-1">
+                            <div class="asset-list-item" data-asset="USDT" data-network="TRC20 (Tron)"
+                                data-rate="1403.37">
+                                <div class="ali-icon" style="background:#26a17b;"><i class="fas fa-dollar-sign"></i></div>
+                                <div class="ali-text">
+                                    <p>USDT</p>
+                                    <small>Tether USD</small>
+                                </div>
+                                <i class="fas fa-chevron-right text-muted"></i>
+                            </div>
+                            <div class="asset-list-item" data-asset="USDC" data-network="Solana" data-rate="1398.50">
+                                <div class="ali-icon" style="background:#2775ca;"><i
+                                        class="fas fa-circle-dollar-to-slot"></i></div>
+                                <div class="ali-text">
+                                    <p>USDC</p>
+                                    <small>USD Coin</small>
+                                </div>
+                                <i class="fas fa-chevron-right text-muted"></i>
+                            </div>
+                            <div class="asset-list-item" data-asset="BTC" data-network="Bitcoin" data-rate="1403.37">
+                                <div class="ali-icon" style="background:#f7931a;"><i class="fab fa-bitcoin"></i></div>
+                                <div class="ali-text">
+                                    <p>BTC</p>
+                                    <small>Bitcoin</small>
+                                </div>
+                                <i class="fas fa-chevron-right text-muted"></i>
+                            </div>
+                            <div class="asset-list-item" data-asset="BNB" data-network="BNB Smart Chain"
+                                data-rate="1403.37">
+                                <div class="ali-icon" style="background:#f0b90b;"><i class="fas fa-coins"></i></div>
+                                <div class="ali-text">
+                                    <p>BNB</p>
+                                    <small>BNB Smart Chain</small>
+                                </div>
+                                <i class="fas fa-chevron-right text-muted"></i>
+                            </div>
+                            <div class="asset-list-item" data-asset="ETH" data-network="Ethereum" data-rate="1403.37">
+                                <div class="ali-icon" style="background:#627eea;"><i class="fab fa-ethereum"></i></div>
+                                <div class="ali-text">
+                                    <p>ETH</p>
+                                    <small>Ethereum</small>
+                                </div>
+                                <i class="fas fa-chevron-right text-muted"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CRYPTO STEP 2 of 3: Withdrawal Details -->
+                    <div id="detailsStep" class="d-none">
+                        <div class="step-indicator-row">
+                            <div class="step-dot done"></div>
+                            <div class="step-dot active"></div>
+                            <div class="step-dot"></div>
+                        </div>
+                        <p class="text-muted small mb-1">Step 2 of 3</p>
+                        <h5 class="mb-4">Enter Withdrawal Details</h5>
+
+                        <div class="balance-hint">
+                            <span><i class="fas fa-wallet me-1"></i> Available Balance</span>
+                            <strong>₦245,680.00</strong>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-600">Amount in NGN</label>
+                            <input type="number" class="form-control" id="ngnAmount" placeholder="e.g 100000">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-600">You will receive (est.)</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control fw-bold" id="cryptoEstimate" readonly
+                                    value="0.00">
+                                <span class="input-group-text bg-light" id="estimateAssetLabel">USDT</span>
+                            </div>
+                            <small class="text-muted">Rate: <span id="rateDisplay">₦1,403.37 per USDT</span></small>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-600">Network</label>
+                            <div class="bg-light border rounded-3 p-2 fw-bold small" id="withdrawNetworkDisplay">TRC20
+                                (Tron)</div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-600">Wallet Address</label>
+                            <input type="text" class="form-control" id="withdrawWalletAddress"
+                                placeholder="Paste destination wallet address">
+                            <small class="text-muted">Or <a href="profile.html#payout">select from saved wallets</a></small>
+                        </div>
+
+                        <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm" id="continueToReview">
+                            Continue
+                        </button>
+                    </div>
+
+                    <!-- Review & Confirm (bank + crypto share this step) -->
+                    <div id="reviewStep" class="d-none">
+                        <div class="rc-caution-banner">
+                            <i class="fas fa-shield-halved rc-caution-icon"></i>
+                            <div>
+                                <p>Please review your withdrawal details carefully.</p>
+                                <small>Transactions cannot be reversed once confirmed.</small>
+                            </div>
+                        </div>
+
+                        <div class="rc-detail-rows">
+                            <div class="rc-detail-row d-none" id="revBankRow">
+                                <div class="rc-detail-icon"><i class="fas fa-university"></i></div>
+                                <div class="rc-detail-label">Bank Account</div>
+                                <div class="rc-detail-value" id="revBankName">—</div>
+                            </div>
+                            <div class="rc-detail-row d-none" id="revRecipientRow">
+                                <div class="rc-detail-icon"><i class="fas fa-user"></i></div>
+                                <div class="rc-detail-label">Recipient</div>
+                                <div class="rc-detail-value" id="revRecipient">—</div>
+                            </div>
+                            <div class="rc-detail-row d-none" id="revAddressRow">
+                                <div class="rc-detail-icon"><i class="fas fa-wallet"></i></div>
+                                <div class="rc-detail-label">Wallet Address</div>
+                                <div class="rc-detail-value text-truncate" id="revAddress"
+                                    style="max-width:180px;">—</div>
+                            </div>
+                            <div class="rc-detail-row d-none" id="revAssetRow">
+                                <div class="rc-detail-icon"><i class="fab fa-bitcoin"></i></div>
+                                <div class="rc-detail-label">Asset</div>
+                                <div class="rc-detail-value" id="revAsset">—</div>
+                            </div>
+                            <div class="rc-detail-row d-none" id="revNetworkRow">
+                                <div class="rc-detail-icon"><i class="fas fa-diagram-project"></i></div>
+                                <div class="rc-detail-label">Network</div>
+                                <div class="rc-detail-value" id="revNetwork">—</div>
+                            </div>
+                            <div class="rc-detail-row" id="revNgnRow">
+                                <div class="rc-detail-icon"><i class="fas fa-sack-dollar"></i></div>
+                                <div class="rc-detail-label">Amount in NGN</div>
+                                <div class="rc-detail-value" id="revNgn">₦0.00</div>
+                            </div>
+                        </div>
+
+                        <div class="rc-highlight-row d-none" id="revEstimateRow">
+                            <div class="rc-detail-icon"><i class="fas fa-download"></i></div>
+                            <div class="rc-detail-label">Estimated Amount to Receive</div>
+                            <div class="rc-detail-value" id="revEstimate">0.00</div>
+                        </div>
+
+                        <div class="rc-section-title" id="chargesSectionTitle">Charges Breakdown</div>
+                        <div class="mb-2">
+                            <div class="rc-charge-row d-none" id="revAmountRow">
+                                <div class="rc-detail-icon"><i class="fas fa-sack-dollar"></i></div>
+                                <div class="rc-charge-label"><p>Amount</p></div>
+                                <div class="rc-charge-amount" id="revAmountOnly">₦0.00</div>
+                            </div>
+                            <div class="rc-charge-row d-none" id="revBankFeeRow">
+                                <div class="rc-detail-icon"><i class="fas fa-gear"></i></div>
+                                <div class="rc-charge-label"><p>Withdrawal Fee</p><small>Will be added to amount you pay</small></div>
+                                <div class="rc-charge-amount" id="revBankFee">₦0.00</div>
+                            </div>
+                            <div class="rc-charge-row d-none" id="revReceiveRow">
+                                <div class="rc-detail-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+                                <div class="rc-charge-label"><p>You Will Receive</p><small>Amount credited to the recipient account</small></div>
+                                <div class="rc-charge-amount text-success fw-bold" id="revReceive">₦0.00</div>
+                            </div>
+                            <div class="rc-charge-row d-none" id="revArrivalRow">
+                                <div class="rc-detail-icon"><i class="fas fa-clock"></i></div>
+                                <div class="rc-charge-label"><p>Estimated Arrival</p></div>
+                                <div class="rc-charge-amount">Within 5 - 30 minutes</div>
+                            </div>
+                            <div class="rc-charge-row d-none" id="revNetworkFeeRow">
+                                <div class="rc-detail-icon"><i class="fas fa-diagram-project"></i></div>
+                                <div class="rc-charge-label">
+                                    <p>Network Fee <i class="fas fa-circle-info"
+                                            title="Deducted from the amount received"></i></p>
+                                    <small>Will be deducted from amount received</small>
+                                </div>
+                                <div class="rc-charge-amount" id="revNetworkFee">$0.00</div>
+                            </div>
+                            <div class="rc-charge-row d-none" id="revProcessingFeeRow">
+                                <div class="rc-detail-icon"><i class="fas fa-gear"></i></div>
+                                <div class="rc-charge-label">
+                                    <p>Processing Fee <i class="fas fa-circle-info"
+                                            title="Added to the amount you pay"></i></p>
+                                    <small>Will be added to amount you pay</small>
+                                </div>
+                                <div class="rc-charge-amount" id="revServiceFee">₦0.00</div>
+                            </div>
+                        </div>
+
+                        <div class="rc-total-box">
+                            <div class="rc-total-header" id="revTotalToggle" role="button" aria-expanded="false">
+                                <div class="rc-detail-icon"><i class="fas fa-file-invoice"></i></div>
+                                <div class="rc-total-label">
+                                    <p id="revTotalLabel">Total Amount to be Paid</p>
+                                    <small id="revTotalSubLabel">Amount in NGN + Processing Fee</small>
+                                </div>
+                                <div class="rc-total-amount" id="revTotal">₦0.00</div>
+                                <i class="fas fa-chevron-down rc-total-chevron"></i>
+                            </div>
+                            <div class="rc-total-detail d-none" id="revTotalDetail">
+                                <div class="rc-total-detail-row">
+                                    <span>Amount in NGN</span>
+                                    <span id="revTotalDetailAmount">₦0.00</span>
+                                </div>
+                                <div class="rc-total-detail-row">
+                                    <span id="revTotalDetailFeeLabel">Processing Fee</span>
+                                    <span id="revTotalDetailFee">₦0.00</span>
+                                </div>
+                                <div class="rc-total-detail-row rc-total-final">
+                                    <span>Total</span>
+                                    <span id="revTotalDetailFinal">₦0.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rc-warning-box" id="revCautionBox">
+                            <i class="fas fa-triangle-exclamation rc-warning-icon"></i>
+                            <div>
+                                <p id="revCautionTitle">Network Caution</p>
+                                <small id="revCautionText">Please ensure the selected network is correct. Funds
+                                    sent to the wrong network cannot be recovered and the transaction cannot be
+                                    reversed.</small>
+                            </div>
+                        </div>
+
+                        <div id="pinRequiredNotice" class="rc-warning-box d-none">
+                            <i class="fas fa-lock rc-warning-icon"></i>
+                            <div>
+                                <p>Set a Transaction PIN first</p>
+                                <small>You need a 4-digit PIN before you can withdraw. <a href="profile.html#security">Set
+                                        it now</a>.</small>
+                            </div>
+                        </div>
+
+                        <div id="pinEntryArea">
+                            <label class="form-label fw-600 text-center w-100">Enter PIN to confirm</label>
+                            <div class="pin-dots-wrapper">
+                                <div class="pin-dot" data-i="0"></div>
+                                <div class="pin-dot" data-i="1"></div>
+                                <div class="pin-dot" data-i="2"></div>
+                                <div class="pin-dot" data-i="3"></div>
+                                <input type="password" inputmode="numeric" maxlength="4" class="pin-hidden-input"
+                                    id="pinInput">
+                            </div>
+                            <p id="pinErrorMsg" class="text-danger small text-center d-none">Incorrect PIN. Please
+                                try again.</p>
+
+                            <button type="button" class="btn btn-primary w-100 py-3 fw-bold shadow-sm rc-confirm-btn"
+                                id="confirmWithdrawBtn">
+                                <i class="fas fa-lock"></i> Confirm Withdrawal
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mobile Bottom Tab Bar -->
+    <nav class="bottom-tab-bar d-lg-none">
+        <a href="index.html" class="btb-item"><i class="fas fa-house"></i><span>Home</span></a>
+        <button type="button" class="btb-item" data-bs-toggle="modal" data-bs-target="#derivActionsModal"><i class="fas fa-chart-line"></i><span>Deriv</span></button>
+        <div class="btb-item btb-fab-wrap">
+            <button type="button" class="btb-fab" data-bs-toggle="modal" data-bs-target="#quickActionsModal"><i
+                    class="fas fa-plus"></i></button>
+            <span>Quick</span>
+        </div>
+        <a href="rates.html" class="btb-item"><i class="fas fa-percent"></i><span>Rates</span></a>
+        <button type="button" class="btb-item" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"><i
+                class="fas fa-bars"></i><span>More</span></button>
+    </nav>
+
+    <!-- Quick Actions Modal -->
+    <div class="modal fade" id="quickActionsModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="fw-bold">Quick Actions</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 pt-2">
+                    <div class="d-grid gap-3">
+                        <a href="deposit.html" class="select-method-card text-decoration-none">
+                            <div class="smc-icon"><i class="fas fa-arrow-down"></i></div>
+                            <div class="smc-text">
+                                <p>Deposit</p>
+                                <small class="text-muted">Top up your wallet</small>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="withdraw.html" class="select-method-card text-decoration-none">
+                            <div class="smc-icon"><i class="fas fa-arrow-up"></i></div>
+                            <div class="smc-text">
+                                <p>Withdraw</p>
+                                <small class="text-muted">Withdraw via bank or USD</small>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="transfer.html" class="select-method-card text-decoration-none">
+                            <div class="smc-icon"><i class="fas fa-paper-plane"></i></div>
+                            <div class="smc-text">
+                                <p>Transfer</p>
+                                <small class="text-muted">Send to a CheapNaria user</small>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="request-money.html" class="select-method-card text-decoration-none">
+                            <div class="smc-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+                            <div class="smc-text">
+                                <p>Request Money</p>
+                                <small class="text-muted">Ask another user to pay you</small>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="profile.html#payout" class="select-method-card text-decoration-none">
+                            <div class="smc-icon"><i class="fas fa-landmark"></i></div>
+                            <div class="smc-text">
+                                <p>Manage Account</p>
+                                <small class="text-muted">Manage your bank accounts and wallets</small>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="transactions.html" class="select-method-card text-decoration-none">
+                            <div class="smc-icon"><i class="fas fa-file-invoice"></i></div>
+                            <div class="smc-text">
+                                <p>Statement</p>
+                                <small class="text-muted">View and download your transaction history</small>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow text-center p-5">
+                <div class="mb-4">
+                    <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center"
+                        style="width: 80px; height: 80px;">
+                        <i class="fas fa-check fs-1"></i>
+                    </div>
+                </div>
+                <h3 class="fw-bold mb-3">Withdrawal Submitted!</h3>
+                <p class="text-muted mb-4">Your request has been queued for processing. You'll be notified once it's
+                    complete.</p>
+                <div class="d-grid gap-2">
+                    <a href="index.html" class="btn btn-primary py-3 fw-bold">Back to Dashboard</a>
+                    <a href="transactions.html" class="btn btn-light py-2">View Receipt</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Deriv Actions Modal -->
+    <div class="modal fade" id="derivActionsModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="fw-bold">Deriv</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="text-muted small mb-4">Choose whether you want to fund or withdraw using your Deriv nickname.</p>
+                    <div class="d-grid gap-3">
+                        <a href="deriv-deposit.html" class="select-method-card text-decoration-none">
+                            <div class="smc-icon"><i class="fas fa-arrow-down"></i></div>
+                            <div class="smc-text">
+                                <p>Fund Deriv Account</p>
+                                <small class="text-muted">Deposit using your Deriv nickname</small>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                        <a href="deriv-withdraw.html" class="select-method-card text-decoration-none">
+                            <div class="smc-icon"><i class="fas fa-arrow-up"></i></div>
+                            <div class="smc-text">
+                                <p>Withdraw from Deriv</p>
+                                <small class="text-muted">Payout using your Deriv nickname</small>
+                            </div>
+                            <i class="fas fa-chevron-right text-muted"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/panic-mode.js"></script>
+    <script src="../js/transaction-pin.js"></script>
+    <script src="../js/verification.js"></script>
+    <script>
+        $(document).ready(function () {
+            if (CN_PANIC.isActive()) {
+                $('#panicBanner').removeClass('d-none');
+                $('#methodChoices').css({ opacity: 0.5, pointerEvents: 'none' });
+            }
+
+            if (!CN_PIN.isSet()) {
+                $('#pinRequiredNotice').removeClass('d-none');
+                $('#pinEntryArea').addClass('d-none');
+            }
+
+            let selectedAsset = null;
+            let reviewFrom = 'bank'; // tracks which flow led to reviewStep, for the back button
+            const NETWORK_FEE_UNITS = 1.00; // flat, in asset units (mirrors reference design)
+            const CRYPTO_PROCESSING_FEE = 1000; // flat NGN
+            const BANK_PROCESSING_FEE = 500; // flat NGN
+            const MIN_BANK_WITHDRAWAL = 500; // flat NGN
+            const steps = ['#methodStep', '#bankStep', '#assetStep', '#detailsStep', '#reviewStep'];
+
+            // ---- Bank recipient state: either a saved beneficiary or a freshly-verified new account ----
+            let recipientMode = 'saved'; // saved | new
+            let selectedBeneficiary = null; // { id, bank, account, name }
+            let newAccountVerified = false;
+            let newAccountResolvedName = '';
+
+            function setRecipientMode(mode) {
+                recipientMode = mode;
+                $('#tabSavedBtn').toggleClass('btn-primary', mode === 'saved').toggleClass('btn-outline-secondary', mode !== 'saved');
+                $('#tabNewBtn').toggleClass('btn-primary', mode === 'new').toggleClass('btn-outline-secondary', mode !== 'new');
+                $('#savedBeneficiaryPanel').toggleClass('d-none', mode !== 'saved');
+                $('#newBankPanel').toggleClass('d-none', mode !== 'new');
+                $('#beneficiaryError, #verifyError').addClass('d-none');
+            }
+
+            $('#tabSavedBtn').click(function () { setRecipientMode('saved'); });
+            $('#tabNewBtn').click(function () { setRecipientMode('new'); });
+            $('#addNewBeneficiaryLink').click(function (e) { e.preventDefault(); setRecipientMode('new'); });
+
+            $('#beneficiaryList').on('click', '.beneficiary-item', function () {
+                $('.beneficiary-item').removeClass('border-primary bg-light');
+                $(this).addClass('border-primary bg-light');
+                selectedBeneficiary = {
+                    id: $(this).data('id'),
+                    bank: $(this).data('bank'),
+                    account: String($(this).data('account')),
+                    name: $(this).data('name')
+                };
+                $('#beneficiaryError').addClass('d-none');
+            });
+
+            $('#beneficiarySearch').on('input', function () {
+                const q = $(this).val().toLowerCase().trim();
+                let visible = 0;
+                $('.beneficiary-item').each(function () {
+                    const hay = ($(this).data('name') + ' ' + $(this).data('bank') + ' ' + $(this).data('account')).toLowerCase();
+                    const match = hay.indexOf(q) !== -1;
+                    $(this).toggleClass('d-none', !match);
+                    if (match) visible++;
+                });
+                $('#noBeneficiariesMsg').toggleClass('d-none', visible !== 0);
+            });
+
+            $('#newBankSelect, #newAccountNumber').on('change input', function () {
+                newAccountVerified = false;
+                newAccountResolvedName = '';
+                $('#verifiedNameBox').addClass('d-none');
+            });
+
+            $('#verifyAccountBtn').click(function () {
+                const bank = $('#newBankSelect').val();
+                const acct = $('#newAccountNumber').val().trim();
+                if (!bank || acct.length !== 10) {
+                    $('#verifyError').removeClass('d-none');
+                    return;
+                }
+                $('#verifyError').addClass('d-none');
+                newAccountResolvedName = window.CN_VERIFY ? window.CN_VERIFY.simulateBankLookup(acct, bank) : 'VERIFIED ACCOUNT';
+                newAccountVerified = true;
+                $('#verifiedNameText').text(newAccountResolvedName);
+                $('#verifiedNameBox').removeClass('d-none');
+            });
+
+            // ---- Refresh persistence: keep the current step + entered data across a page reload ----
+            const FLOW_KEY = 'cn-withdraw-flow';
+
+            function persistFlow(stepId) {
+                const state = {
+                    step: stepId,
+                    selectedAsset: selectedAsset,
+                    reviewFrom: reviewFrom,
+                    bankAmount: $('#bankAmount').val(),
+                    bankNarration: $('#bankNarration').val(),
+                    recipientMode: recipientMode,
+                    selectedBeneficiary: selectedBeneficiary,
+                    newBank: $('#newBankSelect').val(),
+                    newAccountNumber: $('#newAccountNumber').val(),
+                    newAccountVerified: newAccountVerified,
+                    newAccountResolvedName: newAccountResolvedName,
+                    saveBeneficiaryChecked: $('#saveBeneficiaryCheck').is(':checked'),
+                    ngnAmount: $('#ngnAmount').val(),
+                    walletAddress: $('#withdrawWalletAddress').val()
+                };
+                try { sessionStorage.setItem(FLOW_KEY, JSON.stringify(state)); } catch (e) { }
+                try { history.replaceState(null, '', '#' + stepId); } catch (e) { }
+            }
+
+            function clearFlow() {
+                try { sessionStorage.removeItem(FLOW_KEY); } catch (e) { }
+                try { history.replaceState(null, '', location.pathname); } catch (e) { }
+            }
+
+            function showStep(id, title, stepLabel) {
+                steps.forEach(s => $(s).addClass('d-none'));
+                $(id).removeClass('d-none').hide().fadeIn(200);
+                $('#pageTitle').text(title);
+                if (stepLabel) {
+                    $('#pageStepLabel').text(stepLabel).removeClass('d-none');
+                } else {
+                    $('#pageStepLabel').addClass('d-none');
+                }
+                persistFlow(id.replace('#', ''));
+            }
+
+            function currentRecipient() {
+                if (recipientMode === 'saved' && selectedBeneficiary) {
+                    return { bank: selectedBeneficiary.bank, account: selectedBeneficiary.account, name: selectedBeneficiary.name };
+                }
+                if (recipientMode === 'new' && newAccountVerified) {
+                    return { bank: $('#newBankSelect').val(), account: $('#newAccountNumber').val().trim(), name: newAccountResolvedName };
+                }
+                return null;
+            }
+
+            function renderBankReview(amt) {
+                reviewFrom = 'bank';
+                toggleReviewRows(false);
+                const fee = BANK_PROCESSING_FEE;
+                const total = amt + fee;
+                const recipient = currentRecipient();
+
+                $('#revBankName').text(recipient ? recipient.bank : '—');
+                $('#revRecipient').text(recipient ? (recipient.name + ' · ' + recipient.account) : '—');
+                $('#revAmountOnly, #revNgn').text('₦' + amt.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#revBankFee').text('₦' + fee.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#revReceive').text('₦' + amt.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#revTotal, #revTotalDetailFinal').text('₦' + total.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#revTotalDetailAmount').text('₦' + amt.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#revTotalDetailFee').text('₦' + fee.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+            }
+
+            function renderCryptoReview(ngn, address) {
+                reviewFrom = 'crypto';
+                toggleReviewRows(true);
+                const gross = ngn / selectedAsset.rate;
+                const netReceive = gross - NETWORK_FEE_UNITS;
+                const networkFeeNgn = NETWORK_FEE_UNITS * selectedAsset.rate;
+                const processingFee = CRYPTO_PROCESSING_FEE;
+                const total = ngn + processingFee;
+                const shortAddr = address.length > 14 ? address.slice(0, 6) + '...' + address.slice(-6) : address;
+
+                $('#revAddress').text(shortAddr);
+                $('#revAsset').text(selectedAsset.name + ' (' + selectedAsset.network + ')');
+                $('#revNetwork').text(selectedAsset.network);
+                $('#revNgn').text('₦' + ngn.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#revEstimate').html(netReceive.toFixed(2) + ' ' + selectedAsset.name +
+                    '<br><small class="text-muted fw-normal">(' + gross.toFixed(2) + ' ' + selectedAsset.name + ' - ' + NETWORK_FEE_UNITS.toFixed(2) + ')</small>');
+                $('#revNetworkFee').html('$' + NETWORK_FEE_UNITS.toFixed(2) +
+                    '<br><small class="text-muted fw-normal">(&asymp; ₦' + networkFeeNgn.toLocaleString(undefined, { minimumFractionDigits: 2 }) + ')</small>');
+                $('#revServiceFee').text('₦' + processingFee.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#revTotal, #revTotalDetailFinal').text('₦' + total.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#revTotalDetailAmount').text('₦' + ngn.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+                $('#revTotalDetailFee').text('₦' + processingFee.toLocaleString(undefined, { minimumFractionDigits: 2 }));
+            }
+
+            $('#backBtn').click(function () {
+                if (!$('#bankStep').hasClass('d-none') || !$('#assetStep').hasClass('d-none')) {
+                    showStep('#methodStep', 'Withdraw Funds');
+                    $('#headerRateBadge').addClass('d-none');
+                } else if (!$('#detailsStep').hasClass('d-none')) {
+                    showStep('#assetStep', 'Withdraw via USD', 'Step 1 of 3');
+                    $('#headerRateBadge').addClass('d-none');
+                } else if (!$('#reviewStep').hasClass('d-none')) {
+                    if (reviewFrom === 'crypto') {
+                        showStep('#detailsStep', 'Withdraw via USD', 'Step 2 of 3');
+                    } else {
+                        showStep('#bankStep', 'Withdraw to Bank');
+                        $('#headerRateBadge').addClass('d-none');
+                    }
+                } else {
+                    window.location.href = 'index.html';
+                }
+            });
+
+            $('#chooseBank').click(function () {
+                showStep('#bankStep', 'Withdraw to Bank');
+            });
+            $('#chooseCrypto').click(function () {
+                showStep('#assetStep', 'Withdraw via USD', 'Step 1 of 3');
+            });
+
+            function toggleReviewRows(isCrypto) {
+                $('#revBankRow, #revRecipientRow, #revNgnRow, #revAmountRow, #revBankFeeRow, #revReceiveRow, #revArrivalRow')
+                    .toggleClass('d-none', isCrypto);
+                $('#revAddressRow, #revAssetRow, #revNetworkRow, #revEstimateRow, #revNetworkFeeRow, #revProcessingFeeRow')
+                    .toggleClass('d-none', !isCrypto);
+                $('#chargesSectionTitle').text(isCrypto ? 'Charges Breakdown' : 'Transaction Summary');
+                $('#revTotalLabel').text(isCrypto ? 'Total Amount to be Paid' : 'Total Debit');
+                $('#revTotalSubLabel').text(isCrypto ? 'Amount in NGN + Processing Fee' : 'Amount + Withdrawal Fee');
+                $('#revTotalDetailFeeLabel').text(isCrypto ? 'Processing Fee' : 'Withdrawal Fee');
+                $('#revCautionTitle').text(isCrypto ? 'Network Caution' : 'Please Confirm');
+                $('#revCautionText').text(isCrypto
+                    ? 'Please ensure the selected network is correct. Funds sent to the wrong network cannot be recovered and the transaction cannot be reversed.'
+                    : 'Please ensure your bank details are correct. Withdrawals to the wrong account cannot be recovered.');
+            }
+
+            $('#bankContinueBtn').click(function () {
+                const amt = parseFloat($('#bankAmount').val());
+                if (!amt || amt < MIN_BANK_WITHDRAWAL) { alert('Minimum withdrawal is ₦' + MIN_BANK_WITHDRAWAL.toLocaleString() + '.'); return; }
+
+                if (recipientMode === 'saved') {
+                    if (!selectedBeneficiary) { $('#beneficiaryError').removeClass('d-none'); return; }
+                } else {
+                    if (!newAccountVerified) { $('#verifyError').removeClass('d-none').text('Please verify the account before continuing.'); return; }
+                }
+
+                renderBankReview(amt);
+                showStep('#reviewStep', 'Review & Confirm', 'Step 2 of 2');
+            });
+
+            // Asset selection
+            $('.asset-list-item').click(function () {
+                selectedAsset = {
+                    name: $(this).data('asset'),
+                    network: $(this).data('network'),
+                    rate: parseFloat($(this).data('rate'))
+                };
+                $('#estimateAssetLabel').text(selectedAsset.name);
+                $('#rateDisplay').text('₦' + selectedAsset.rate.toLocaleString() + ' per ' + selectedAsset.name);
+                $('#withdrawNetworkDisplay').text(selectedAsset.network);
+                $('#ngnAmount').val('');
+                $('#cryptoEstimate').val('0.00');
+                $('#withdrawWalletAddress').val('');
+                $('#headerRateText').text('Rate: $1 = ₦' + selectedAsset.rate.toLocaleString());
+                $('#headerRateBadge').removeClass('d-none');
+                showStep('#detailsStep', 'Withdraw via USD', 'Step 2 of 3');
+            });
+
+            $('#ngnAmount').on('input', function () {
+                const ngn = parseFloat($(this).val()) || 0;
+                const est = selectedAsset ? ngn / selectedAsset.rate : 0;
+                $('#cryptoEstimate').val(est.toFixed(4));
+            });
+
+            $('#continueToReview').click(function () {
+                const ngn = parseFloat($('#ngnAmount').val());
+                const address = $('#withdrawWalletAddress').val();
+                if (!ngn || ngn <= 0) { alert('Please enter an amount'); return; }
+                if (!address) { alert('Please enter a destination wallet address'); return; }
+
+                renderCryptoReview(ngn, address);
+                showStep('#reviewStep', 'Review & Confirm', 'Step 3 of 3');
+            });
+
+            // Expandable total box
+            $('#revTotalToggle').click(function () {
+                const expanded = $(this).attr('aria-expanded') === 'true';
+                $(this).attr('aria-expanded', String(!expanded));
+                $('#revTotalDetail').toggleClass('d-none', expanded);
+            });
+
+            // PIN dots
+            $('.pin-dots-wrapper').click(function () {
+                $('#pinInput').trigger('focus');
+            });
+            $('#pinInput').on('input', function () {
+                const val = $(this).val().replace(/\D/g, '').slice(0, 4);
+                $(this).val(val);
+                $('.pin-dot').each(function (i) {
+                    $(this).toggleClass('filled', i < val.length);
+                });
+            });
+
+            $('#confirmWithdrawBtn').click(function () {
+                const pin = $('#pinInput').val();
+                if (pin.length < 4) { alert('Please enter your 4-digit PIN'); return; }
+                if (!CN_PIN.verify(pin)) {
+                    $('#pinErrorMsg').removeClass('d-none');
+                    $('#pinInput').val('');
+                    $('.pin-dot').removeClass('filled');
+                    return;
+                }
+                $('#pinErrorMsg').addClass('d-none');
+                clearFlow();
+                new bootstrap.Modal(document.getElementById('successModal')).show();
+            });
+
+            // Restore step + entered data after a page refresh
+            (function restoreFlow() {
+                let saved = null;
+                try { saved = JSON.parse(sessionStorage.getItem(FLOW_KEY) || 'null'); } catch (e) { }
+                if (!saved || steps.indexOf('#' + saved.step) === -1 || saved.step === 'methodStep') return;
+
+                if (saved.bankAmount) $('#bankAmount').val(saved.bankAmount);
+                if (saved.bankNarration) $('#bankNarration').val(saved.bankNarration);
+                if (saved.walletAddress) $('#withdrawWalletAddress').val(saved.walletAddress);
+                if (saved.ngnAmount) $('#ngnAmount').val(saved.ngnAmount);
+
+                if (saved.recipientMode) setRecipientMode(saved.recipientMode);
+                if (saved.selectedBeneficiary) {
+                    selectedBeneficiary = saved.selectedBeneficiary;
+                    $('.beneficiary-item[data-id="' + selectedBeneficiary.id + '"]').addClass('border-primary bg-light');
+                }
+                if (saved.newBank) $('#newBankSelect').val(saved.newBank);
+                if (saved.newAccountNumber) $('#newAccountNumber').val(saved.newAccountNumber);
+                if (saved.newAccountVerified) {
+                    newAccountVerified = true;
+                    newAccountResolvedName = saved.newAccountResolvedName || '';
+                    $('#verifiedNameText').text(newAccountResolvedName);
+                    $('#verifiedNameBox').removeClass('d-none');
+                }
+                if (saved.saveBeneficiaryChecked) $('#saveBeneficiaryCheck').prop('checked', true);
+
+                if (saved.selectedAsset) {
+                    selectedAsset = saved.selectedAsset;
+                    $('#estimateAssetLabel').text(selectedAsset.name);
+                    $('#rateDisplay').text('₦' + selectedAsset.rate.toLocaleString() + ' per ' + selectedAsset.name);
+                    $('#withdrawNetworkDisplay').text(selectedAsset.network);
+                    $('#headerRateText').text('Rate: $1 = ₦' + selectedAsset.rate.toLocaleString());
+                    if (saved.step === 'detailsStep' || saved.step === 'reviewStep') {
+                        $('#headerRateBadge').toggleClass('d-none', saved.reviewFrom === 'bank');
+                    }
+                    if (saved.ngnAmount) {
+                        const ngn = parseFloat(saved.ngnAmount) || 0;
+                        $('#cryptoEstimate').val((ngn / selectedAsset.rate).toFixed(4));
+                    }
+                }
+
+                const titles = {
+                    bankStep: ['Withdraw to Bank', null],
+                    assetStep: ['Withdraw via USD', 'Step 1 of 3'],
+                    detailsStep: ['Withdraw via USD', 'Step 2 of 3'],
+                    reviewStep: ['Review & Confirm', saved.reviewFrom === 'crypto' ? 'Step 3 of 3' : 'Step 2 of 2']
+                };
+
+                if (saved.step === 'reviewStep') {
+                    if (saved.reviewFrom === 'crypto' && selectedAsset && saved.ngnAmount && saved.walletAddress) {
+                        renderCryptoReview(parseFloat(saved.ngnAmount) || 0, saved.walletAddress);
+                    } else if (saved.reviewFrom === 'bank' && saved.bankAmount) {
+                        renderBankReview(parseFloat(saved.bankAmount) || 0);
+                    } else {
+                        return; // not enough saved data to rebuild the review — stay on default step
+                    }
+                }
+
+                const t = titles[saved.step];
+                steps.forEach(s => $(s).addClass('d-none'));
+                $('#' + saved.step).removeClass('d-none');
+                $('#pageTitle').text(t[0]);
+                if (t[1]) { $('#pageStepLabel').text(t[1]).removeClass('d-none'); } else { $('#pageStepLabel').addClass('d-none'); }
+            })();
+        });
+    </script>
+</body>
+
+</html>

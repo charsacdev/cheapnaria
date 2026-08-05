@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center | CheapNaria</title>
+    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .faq-category {
+            margin-bottom: 3rem;
+        }
+
+        .faq-category h3 {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 1.2rem;
+        }
+
+        .faq-item {
+            background: #f8fafc;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: var(--radius-md);
+            margin-bottom: 0.9rem;
+            overflow: hidden;
+        }
+
+        .faq-item summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 1.2rem 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary .faq-icon {
+            flex-shrink: 0;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .faq-item[open] summary .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-item .faq-answer {
+            padding: 0 1.5rem 1.2rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .contact-channel {
+            display: block;
+            padding: 2rem 1.5rem;
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-channel:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .contact-channel i {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-channel h4 {
+            color: var(--secondary);
+            margin-bottom: 0.4rem;
+        }
+
+        .contact-channel p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .insight-card {
+            margin-top: 2.5rem;
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .insight-card h3 {
+            margin-bottom: 0.4rem;
+        }
+
+        .insight-card p {
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 560px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="offcanvas-overlay"></div>
+    <div class="offcanvas-menu">
+        <div class="offcanvas-header">
+            <a href="index.html" class="logo">
+                <img src="images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+            <i class="fas fa-times close-menu"></i>
+        </div>
+        <div class="offcanvas-links">
+            <a href="index.html#services">Services</a>
+            <a href="index.html#rates">Market Rates</a>
+            <a href="about.html">Our Mission</a>
+            <a href="help-center.html">Help Center</a>
+            <hr style="border: none; border-top: 1px solid #f1f5f9; margin: 1rem 0;">
+            <a href="login.html">Sign In</a>
+            <a href="register.html" style="color: var(--primary);">Open Account</a>
+        </div>
+        <div class="offcanvas-footer">
+            <p style="font-size: 0.85rem; color: var(--text-muted);">&copy; 2026 CheapNaria Infrastructure.</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="scrolled">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <img src="images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html#services">Services</a>
+                <a href="index.html#rates">Rates</a>
+                <a href="about.html">About</a>
+                <a href="help-center.html">Help Center</a>
+            </div>
+
+            <div class="nav-auth">
+                <a href="login.html" class="btn btn-outline" style="border:none; padding: 0.5rem 1.5rem;">Sign In</a>
+                <a href="register.html" class="btn btn-primary" style="padding: 0.8rem 2rem;">Get Started</a>
+            </div>
+
+            <div class="menu-trigger">
+                <i class="fas fa-bars-staggered"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section style="padding: 160px 0 100px; background: white;">
+        <div class="container" style="max-width: 900px;">
+            <span class="section-tag">Support</span>
+            <h1 style="font-size: 3.2rem; margin-bottom: 1.5rem; color: var(--secondary);">Help Center.</h1>
+            <p style="font-size: 1.2rem; color: var(--text-muted);">Find answers to common questions, guides, and
+                troubleshooting tips.</p>
+        </div>
+    </section>
+
+    <!-- FAQs -->
+    <section style="padding: 0 0 100px; background: white;">
+        <div class="container" style="max-width: 900px;">
+            <div class="section-header" style="text-align: left; margin-bottom: 2.5rem;">
+                <span class="section-tag">Help Center</span>
+                <h2>Frequently Asked Questions (FAQs).</h2>
+            </div>
+
+            <div class="faq-category">
+                <h3>General</h3>
+                <details class="faq-item">
+                    <summary>What is CheapNaria?<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>CheapNaria is a digital payment platform that enables users to deposit, withdraw,
+                            transfer funds, fund Deriv accounts, send money across Africa, and access other
+                            financial services securely.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>How do I create an account?<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>Download the app or sign up on our website using your email address and phone number.
+                            Verify your email to activate your account.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>Why should I verify my account?<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>Verification increases your transaction limits, improves account security, and unlocks
+                            additional services.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-category">
+                <h3>Deposits</h3>
+                <details class="faq-item">
+                    <summary>How do I deposit money?<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>Tap Deposit, choose your preferred bank account, transfer the funds, and your wallet
+                            will be credited automatically once payment is confirmed.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>How long does a deposit take?<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>Most deposits are processed instantly. In rare cases, it may take a few minutes
+                            depending on the banking network.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>Can someone else fund my wallet?<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>No. Deposits must come from a bank account registered in your name. Third-party
+                            transfers may be rejected or reversed.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-category">
+                <h3>Withdrawals</h3>
+                <details class="faq-item">
+                    <summary>How do I withdraw money?<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>Tap Withdraw, enter your bank details (or choose a saved beneficiary), enter the
+                            amount, and confirm the transaction.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>How long do withdrawals take?<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>Most withdrawals are completed within a few minutes.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-category">
+                <h3>Transfers</h3>
+                <details class="faq-item">
+                    <summary>Can I transfer to any Nigerian bank?<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>Yes. CheapNaria supports transfers to over 250 Nigerian banks and financial
+                            institutions.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>Can I save beneficiaries?<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>Yes. You can save frequently used bank accounts for faster future transfers.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-category">
+                <h3>Deriv</h3>
+                <details class="faq-item">
+                    <summary>How do I fund my Deriv account?<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>Select Deriv Deposit, enter your Deriv nickname, enter the amount, and complete
+                            payment.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>How do I withdraw from Deriv?<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>Select Deriv Withdrawal, enter your Deriv nickname, specify the amount, and submit
+                            your request.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-category">
+                <h3>Security & Account</h3>
+                <details class="faq-item">
+                    <summary>Is my money safe?<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>We use bank-grade security, encrypted transactions, and identity verification to help
+                            protect customer funds.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>I forgot my password.<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>Use the Forgot Password option on the login page to reset your password securely.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>My account is restricted.<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>Contact our support team for assistance. Restrictions may occur due to verification
+                            requirements or security reviews.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-category">
+                <h3>Fees & Transactions</h3>
+                <details class="faq-item">
+                    <summary>Are there transaction fees?<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>Some services may attract processing or network fees. Any applicable fee is displayed
+                            before you confirm a transaction.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>My transaction is pending.<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>Please allow a few minutes. If the transaction remains pending, contact support with
+                            your transaction reference.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>I sent money to the wrong account.<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>Contact support immediately. Recovery depends on the status of the transaction.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>How do I report an issue?<i class="fas fa-chevron-down faq-icon"></i></summary>
+                    <div class="faq-answer">
+                        <p>Tap Contact Support within the app and provide your transaction ID along with a brief
+                            description of the issue.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us -->
+    <section id="contact" style="padding: 0 0 100px; background: #f8fafc;">
+        <div class="container" style="max-width: 900px;">
+            <div class="section-header" style="text-align: left;">
+                <span class="section-tag">Contact Us</span>
+                <h2>Get In Touch.</h2>
+                <p>Get in touch with us for support, business enquiries, partnerships, or general assistance.</p>
+            </div>
+            <div class="contact-grid">
+                <a href="login.html" class="contact-channel">
+                    <i class="fas fa-comments"></i>
+                    <h4>Live Chat</h4>
+                    <p>Sign in to chat with our support team.</p>
+                </a>
+                <a href="mailto:support@cheapnaria.com" class="contact-channel">
+                    <i class="fas fa-envelope"></i>
+                    <h4>Email</h4>
+                    <p>support@cheapnaria.com</p>
+                </a>
+                <a href="https://wa.me/2348026757683" target="_blank" rel="noopener" class="contact-channel">
+                    <i class="fab fa-whatsapp"></i>
+                    <h4>WhatsApp</h4>
+                    <p>08026757683</p>
+                </a>
+                <a href="https://t.me/cheapnaria1" target="_blank" rel="noopener" class="contact-channel">
+                    <i class="fab fa-telegram"></i>
+                    <h4>Telegram</h4>
+                    <p>t.me/cheapnaria1</p>
+                </a>
+            </div>
+
+            <div class="insight-card">
+                <div>
+                    <h3><i class="fas fa-chart-line"></i> Market Insights</h3>
+                    <p>SMC chart analysis, delivered straight to our Telegram channel.</p>
+                </div>
+                <a href="https://t.me/cheapnairachart" target="_blank" rel="noopener" class="btn"
+                    style="background: white; color: var(--primary-dark); padding: 0.8rem 2rem; border-radius: 50px; font-weight: 700; text-decoration: none;">
+                    Join Channel <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Black Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand-side">
+                    <div class="footer-brand"><span>CheapNaria</span></div>
+                    <p style="color: #9ca3af; max-width: 320px;">Securing the future of funding for African traders.
+                        Instant, reliable, and transparent.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#rates">Market Rates</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="register.html">Get Started</a></li>
+                        <li><a href="login.html">Sign In</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="aml.html">AML Compliance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="https://t.me/cheapnaria1" target="_blank" rel="noopener">Telegram Group</a></li>
+                        <li><a href="help-center.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CheapNaria Infrastructure. All rights reserved.</p>
+                <div style="display: flex; gap: 2rem;">
+                    <a href="https://wa.me/2348026757683" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://t.me/cheapnaria1" target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
+                    <a href="mailto:support@cheapnaria.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Off-canvas Logic
+            $('.menu-trigger, .close-menu, .offcanvas-overlay, .offcanvas-links a').on('click', function () {
+                $('.offcanvas-menu, .offcanvas-overlay').toggleClass('active');
+                if ($('.offcanvas-menu').hasClass('active')) {
+                    $('body').css('overflow', 'hidden');
+                } else {
+                    $('body').css('overflow', 'auto');
+                }
+            });
+
+            // Navbar Scroll
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    $('#navbar').addClass('scrolled');
+                } else {
+                    $('#navbar').removeClass('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

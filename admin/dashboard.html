@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function () { var t = localStorage.getItem('cn-theme') || 'light'; document.documentElement.setAttribute('data-bs-theme', t); })();</script>
+    <title>Admin Dashboard | CheapNaria</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body id="adminDashboardPage">
+
+    <!-- Sidebar for Desktop -->
+    <aside class="sidebar d-none d-lg-block" id="adminSidebar">
+        <div class="brand mb-5 px-3">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+        </div>
+
+        <nav class="nav flex-column">
+            <a href="dashboard.html" class="nav-link active"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+            <a href="tiers.html" class="nav-link"><i class="fas fa-layer-group"></i> Tiers</a>
+            <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                    class="badge bg-danger rounded-pill ms-auto">13</span></a>
+            <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+            <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+            <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+            <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+            <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+            <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+            <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+            <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+            <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
+            <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+            <a href="ads.html" class="nav-link"><i class="fas fa-rectangle-ad"></i> Ads / Promotions</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+            <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
+            <hr class="my-3 opacity-10">
+            <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto px-3">
+            <hr>
+            <a href="../login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </aside>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start offcanvas-sidebar d-lg-none" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <a href="dashboard.html" class="brand-logo">
+                <img src="../images/logo-icon.png" class="logo-icon-img" alt="CheapNaria">
+                <span>CheapNaria</span>
+            </a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="nav flex-column">
+                <a href="dashboard.html" class="nav-link active"><i class="fas fa-th-large"></i> Dashboard</a>
+                <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Users</a>
+                <a href="tiers.html" class="nav-link"><i class="fas fa-layer-group"></i> Tiers</a>
+                <a href="kyc.html" class="nav-link"><i class="fas fa-user-shield"></i> KYC Management <span
+                        class="badge bg-danger rounded-pill ms-auto">13</span></a>
+                <a href="deposits.html" class="nav-link"><i class="fas fa-arrow-down"></i> Deposits</a>
+                <a href="withdrawals.html" class="nav-link"><i class="fas fa-arrow-up"></i> Withdrawals</a>
+                <a href="deriv-funding.html" class="nav-link"><i class="fas fa-chart-line"></i> Deriv</a>
+                <a href="pay-supplier.html" class="nav-link"><i class="fas fa-ship"></i> Pay Supplier</a>
+                <a href="send-abroad.html" class="nav-link"><i class="fas fa-earth-africa"></i> Send Abroad</a>
+                <a href="utility-betting.html" class="nav-link"><i class="fas fa-bolt"></i> Utility & Betting</a>
+                <a href="vouchery.html" class="nav-link"><i class="fas fa-ticket"></i> Vouchery</a>
+                <a href="rates.html" class="nav-link"><i class="fas fa-chart-line"></i> Rates</a>
+                <a href="reports.html" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Reports</a>
+                <a href="broadcast.html" class="nav-link"><i class="fas fa-bullhorn"></i> Broadcast</a>
+                <a href="ads.html" class="nav-link"><i class="fas fa-rectangle-ad"></i> Ads / Promotions</a>
+                <a href="support.html" class="nav-link"><i class="fas fa-headset"></i> Support</a>
+                <a href="agents.html" class="nav-link"><i class="fas fa-user-tie"></i> Agents</a>
+                <hr class="my-3 opacity-10">
+                <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="../login.html" class="nav-link text-danger mt-4"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar d-flex align-items-center justify-content-between mb-4 mt-0">
+            <div class="d-flex align-items-center">
+                <button class="menu-toggle d-lg-none me-3" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                    <i class="fas fa-bars-staggered"></i>
+                </button>
+                <h4 class="m-0 d-none d-md-block">Overview</h4>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+
+                <button type="button" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <div class="dropdown">
+                    <div class="d-flex align-items-center gap-2 cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=10b981&color=fff" alt="Profile"
+                            class="rounded-circle" width="40">
+                        <div class="d-none d-sm-block">
+                            <p class="mb-0 small fw-bold">Admin User</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.7rem;">Super Admin</p>
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li><a class="dropdown-item" href="settings.html"><i class="fas fa-user-circle me-2"></i>
+                                Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i
+                                    class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Header -->
+        <div class="d-flex flex-wrap align-items-start justify-content-between gap-3 mb-4">
+            <div>
+                <h2 class="mb-1 fw-bold">Dashboard</h2>
+                <p class="text-muted mb-0">Real-time overview of platform performance and key metrics.</p>
+            </div>
+            <div class="d-flex flex-wrap align-items-center gap-2">
+                <div class="date-pill date-range-pill">
+                    <i class="fas fa-calendar-days me-1"></i>
+                    <input type="date" class="date-range-input" id="statsFromDate">
+                    <span class="text-muted mx-1">&rarr;</span>
+                    <input type="date" class="date-range-input" id="statsToDate">
+                </div>
+                <button type="button" id="statsRequestBtn" class="btn btn-outline-primary rounded-3">
+                    <i class="fas fa-magnifying-glass me-1"></i> Request
+                </button>
+                <button type="button" id="exportReportBtn" class="btn btn-primary rounded-3">
+                    <i class="fas fa-download me-1"></i> Export Report
+                </button>
+            </div>
+        </div>
+        <p class="text-muted small mb-4 mt-n3" id="statsRangeLabel"></p>
+
+        <!-- Stats Grid -->
+        <div class="row g-4 mb-4">
+            <div class="col-6 col-md-4 col-xl-3">
+                <div class="card stat-card h-100">
+                    <div class="stat-icon bg-primary-subtle text-primary">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <p class="text-muted mb-1 small">Total Volume</p>
+                    <h3 class="mb-1" id="statVolume">₦0</h3>
+                    <p class="mb-0 stat-delta" id="statVolumeDelta"></p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-xl-3">
+                <div class="card stat-card h-100">
+                    <div class="stat-icon bg-warning-subtle text-warning">
+                        <i class="fas fa-sack-dollar"></i>
+                    </div>
+                    <p class="text-muted mb-1 small">Total Profit</p>
+                    <h3 class="mb-1" id="statProfit">₦0</h3>
+                    <p class="mb-0 stat-delta" id="statProfitDelta"></p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-xl-3">
+                <div class="card stat-card h-100">
+                    <div class="stat-icon bg-info-subtle text-info">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <p class="text-muted mb-1 small">Transactions</p>
+                    <h3 class="mb-1" id="statTransactions">0</h3>
+                    <p class="mb-0 stat-delta" id="statTransactionsDelta"></p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-xl-3">
+                <div class="card stat-card h-100">
+                    <div class="stat-icon" style="background:#ede9fe;color:#6d28d9;">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <p class="text-muted mb-1 small">Success Rate</p>
+                    <h3 class="mb-1" id="statSuccessRate">0%</h3>
+                    <p class="mb-0 stat-delta" id="statSuccessRateDelta"></p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-xl-3">
+                <div class="card stat-card h-100">
+                    <div class="stat-icon bg-warning-subtle text-warning">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <p class="text-muted mb-1 small">Active Users</p>
+                    <h3 class="mb-1" id="statActiveUsers">0</h3>
+                    <p class="mb-0 stat-delta text-muted" id="statActiveUsersSub"></p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-xl-3">
+                <div class="card stat-card h-100">
+                    <div class="stat-icon bg-info-subtle text-info">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <p class="text-muted mb-1 small">Liquidity</p>
+                    <h3 class="mb-1" id="statLiquidity">₦0</h3>
+                    <p class="mb-0 stat-delta text-muted">Across all wallets</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-xl-3">
+                <div class="card stat-card h-100">
+                    <div class="stat-icon bg-success-subtle text-success">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <p class="text-muted mb-1 small">New Users Today</p>
+                    <h3 class="mb-1" id="statNewUsersToday">0</h3>
+                    <p class="mb-0 stat-delta text-muted">Registered today</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card p-4 mb-4">
+            <h5 class="mb-4">Quick Actions</h5>
+            <div class="row g-3">
+                <div class="col-6 col-md-4 col-xl-2">
+                    <a href="rates.html" class="btn btn-light text-start p-3 rounded-4 border w-100 h-100">
+                        <div class="stat-icon bg-primary-subtle text-primary mb-2"
+                            style="width: 40px; height: 40px; font-size: 1.1rem;">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <p class="mb-0 fw-bold text-dark small">Update Rates</p>
+                        <p class="mb-0 text-muted" style="font-size: 0.75rem;">Adjust buy/sell margins</p>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 col-xl-2">
+                    <a href="broadcast.html" class="btn btn-light text-start p-3 rounded-4 border w-100 h-100">
+                        <div class="stat-icon bg-info-subtle text-info mb-2"
+                            style="width: 40px; height: 40px; font-size: 1.1rem;">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <p class="mb-0 fw-bold text-dark small">Send Broadcast</p>
+                        <p class="mb-0 text-muted" style="font-size: 0.75rem;">Notify all users via email</p>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 col-xl-2">
+                    <a href="kyc.html" class="btn btn-light text-start p-3 rounded-4 border w-100 h-100">
+                        <div class="stat-icon bg-warning-subtle text-warning mb-2"
+                            style="width: 40px; height: 40px; font-size: 1.1rem;">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <p class="mb-0 fw-bold text-dark small">Verify KYC</p>
+                        <p class="mb-0 text-muted" style="font-size: 0.75rem;">Review pending documents</p>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 col-xl-2">
+                    <a href="pay-supplier.html" class="btn btn-light text-start p-3 rounded-4 border w-100 h-100">
+                        <div class="stat-icon bg-secondary-subtle text-secondary mb-2"
+                            style="width: 40px; height: 40px; font-size: 1.1rem;">
+                            <i class="fas fa-ship"></i>
+                        </div>
+                        <p class="mb-0 fw-bold text-dark small">Pay Supplier Requests</p>
+                        <p class="mb-0 text-muted" style="font-size: 0.75rem;">Review pending requests</p>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 col-xl-2">
+                    <a href="send-abroad.html" class="btn btn-light text-start p-3 rounded-4 border w-100 h-100">
+                        <div class="stat-icon bg-success-subtle text-success mb-2"
+                            style="width: 40px; height: 40px; font-size: 1.1rem;">
+                            <i class="fas fa-earth-africa"></i>
+                        </div>
+                        <p class="mb-0 fw-bold text-dark small">Send Abroad Requests</p>
+                        <p class="mb-0 text-muted" style="font-size: 0.75rem;">Review pending payouts</p>
+                    </a>
+                </div>
+                <div class="col-6 col-md-4 col-xl-2">
+                    <a href="ads.html" class="btn btn-light text-start p-3 rounded-4 border w-100 h-100">
+                        <div class="stat-icon mb-2" style="width: 40px; height: 40px; font-size: 1.1rem; background:#ede9fe;color:#6d28d9;">
+                            <i class="fas fa-rectangle-ad"></i>
+                        </div>
+                        <p class="mb-0 fw-bold text-dark small">Manage Ads</p>
+                        <p class="mb-0 text-muted" style="font-size: 0.75rem;">Promotions on user dashboard</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="row g-4 mb-4">
+            <div class="col-12 col-lg-6 col-xl-4">
+                <div class="card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Transaction Overview</h5>
+                        <span class="badge bg-light text-muted border">This Week</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chartTransactionOverview"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xl-4">
+                <div class="card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Transactions by Type</h5>
+                        <span class="badge bg-light text-muted border">This Week</span>
+                    </div>
+                    <div class="donut-wrap chart-container-sm mb-3">
+                        <canvas id="chartTransactionsByType"></canvas>
+                        <div class="donut-center-label">
+                            <span class="val" id="typeBreakdownTotal">0</span>
+                            <span class="lbl">Total</span>
+                        </div>
+                    </div>
+                    <div id="typeBreakdownLegend"></div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xl-4">
+                <div class="card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Profit Trend</h5>
+                        <span class="badge bg-light text-muted border">This Week</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chartProfitTrend"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Operational Row -->
+        <div class="row g-4 mb-4">
+            <div class="col-12 col-xl-5">
+                <div class="card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Recent Transactions</h5>
+                        <a href="deposits.html" class="btn btn-light btn-sm">View All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table tx-table mb-0 w-100" id="recentTransactions">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Reference</th>
+                                    <th>User</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <a href="deposits.html"
+                        class="small fw-bold text-decoration-none mt-3 d-inline-block">View All Transactions <i
+                            class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+            <div class="col-12 col-xl-4">
+                <div class="card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">KYC Queue</h5>
+                        <a href="kyc.html" class="btn btn-light btn-sm">View All</a>
+                    </div>
+                    <div id="kycQueueList"></div>
+                    <a href="kyc.html" class="small fw-bold text-decoration-none mt-2 d-inline-block">View All KYC
+                        Submissions <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+            <div class="col-12 col-xl-3">
+                <div class="card p-4 h-100">
+                    <h5 class="mb-3">System Status</h5>
+                    <div id="systemStatusList">
+                        <div class="system-status-item"><span><i
+                                    class="fas fa-circle-check text-success me-2"></i>API Connection</span><span
+                                class="text-success fw-bold">Active</span></div>
+                        <div class="system-status-item"><span><i
+                                    class="fas fa-circle-check text-success me-2"></i>Deriv API</span><span
+                                class="text-success fw-bold">Active</span></div>
+                        <div class="system-status-item"><span><i
+                                    class="fas fa-circle-check text-success me-2"></i>Payment Gateway</span><span
+                                class="text-success fw-bold">Active</span></div>
+                        <div class="system-status-item"><span><i
+                                    class="fas fa-circle-check text-success me-2"></i>Database</span><span
+                                class="text-success fw-bold">Active</span></div>
+                        <div class="system-status-item"><span><i
+                                    class="fas fa-circle-check text-success me-2"></i>KYC Service</span><span
+                                class="text-success fw-bold">Active</span></div>
+                        <div class="system-status-item"><span><i
+                                    class="fas fa-circle-check text-success me-2"></i>Email Service</span><span
+                                class="text-success fw-bold">Active</span></div>
+                        <div class="system-status-item"><span><i
+                                    class="fas fa-circle-check text-success me-2"></i>Rate Feed</span><span
+                                class="text-success fw-bold">Active</span></div>
+                        <div class="system-status-item"><span><i
+                                    class="fas fa-circle-check text-success me-2"></i>WebSocket</span><span
+                                class="text-success fw-bold">Active</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Row -->
+        <div class="row g-4 mb-4">
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="card p-4 h-100">
+                    <h5 class="mb-3">Volume by Channel</h5>
+                    <div class="donut-wrap chart-container-sm mb-3">
+                        <canvas id="chartChannelBreakdown"></canvas>
+                    </div>
+                    <div id="channelBreakdownLegend"></div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0">Top Countries</h5>
+                        <span class="badge bg-light text-muted border">This Week</span>
+                    </div>
+                    <div id="topCountriesList"></div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="card p-4 h-100">
+                    <h5 class="mb-4">Top Services (By Volume)</h5>
+                    <div id="topServicesList"></div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="card p-4 h-100">
+                    <h5 class="mb-3">Transaction Success Rate</h5>
+                    <div class="gauge-wrap">
+                        <canvas id="chartSuccessGauge"></canvas>
+                        <div class="gauge-center-label">
+                            <span class="val" id="gaugeValue">0%</span>
+                            <span class="lbl">Successful</span>
+                        </div>
+                    </div>
+                    <p class="text-center mb-0 stat-delta" id="gaugeDelta"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-footer">
+            <span>&copy; 2026 CheapNaria. All rights reserved.</span>
+            <div class="trust-badges">
+                <span><i class="fas fa-building-shield me-1"></i>Bank-grade Security</span>
+                <span><i class="fas fa-lock me-1"></i>256-bit Encrypted</span>
+                <span><i class="fas fa-award me-1"></i>ISO 27001 Compliant</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/mock-data.js"></script>
+
+    <script>
+        const FLAGS = { Nigeria: '🇳🇬', Ghana: '🇬🇭', Kenya: '🇰🇪', Tanzania: '🇹🇿', Uganda: '🇺🇬' };
+        const CATEGORY_COLORS = {
+            'Deposits': '#059669',
+            'Withdrawals': '#dc2626',
+            'Deriv Funding': '#6d28d9',
+            'Cross Border': '#1d4ed8'
+        };
+        const CHANNEL_COLORS = { 'Bank Transfer': '#10b981', 'Crypto (USDT)': '#6d28d9', 'Card Payment': '#1d4ed8', 'Other': '#b45309' };
+
+        function fmtNgn(n) { return '₦' + Math.round(n).toLocaleString(); }
+        function fmtDelta(pct) {
+            const up = pct >= 0;
+            return '<i class="fas fa-arrow-' + (up ? 'up' : 'down') + '"></i> ' + Math.abs(pct).toFixed(1) + '% vs yesterday';
+        }
+        function applyDelta(elId, pct) {
+            const $el = $('#' + elId);
+            $el.html(fmtDelta(pct)).toggleClass('text-success', pct >= 0).toggleClass('text-danger', pct < 0);
+        }
+
+        // Formats using local date components (not toISOString(), which converts to
+        // UTC and can shift the date back a day depending on the browser's timezone).
+        function toDateInputValue(d) {
+            const y = d.getFullYear();
+            const m = String(d.getMonth() + 1).padStart(2, '0');
+            const day = String(d.getDate()).padStart(2, '0');
+            return y + '-' + m + '-' + day;
+        }
+
+        function fmtRangeLabel(d) {
+            return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        function renderStatCards() {
+            const s = CN_DATA.dashboardStats();
+            $('#statVolume').text(fmtNgn(s.totalVolume));
+            $('#statProfit').text(fmtNgn(s.totalProfit));
+            $('#statTransactions').text(s.totalTransactions.toLocaleString());
+            $('#statSuccessRate').text(s.successRatePct.toFixed(2) + '%');
+            $('#statActiveUsers').text(s.activeUsers.toLocaleString());
+            $('#statActiveUsersSub').text(s.verifiedPct.toFixed(1) + '% KYC verified');
+            $('#statLiquidity').text(fmtNgn(s.liquidityAvailable));
+            $('#statNewUsersToday').text(s.newUsersToday.toLocaleString());
+            applyDelta('statVolumeDelta', s.volumeDeltaPct);
+            applyDelta('statProfitDelta', s.profitDeltaPct);
+            applyDelta('statTransactionsDelta', s.transactionsDeltaPct);
+            applyDelta('statSuccessRateDelta', s.successRateDeltaPct);
+
+            const today = CN_DATA.REPORT_REF_DATE;
+            const weekAgo = new Date(today); weekAgo.setDate(weekAgo.getDate() - 6);
+            $('#statsFromDate').val(toDateInputValue(weekAgo));
+            $('#statsToDate').val(toDateInputValue(today));
+            $('#statsRangeLabel').text('Showing ' + fmtRangeLabel(weekAgo) + ' – ' + fmtRangeLabel(today) + ' (this week)');
+        }
+
+        function applyDateRange() {
+            const fromVal = $('#statsFromDate').val();
+            const toVal = $('#statsToDate').val();
+            if (!fromVal || !toVal) { alert('Please choose both a from and to date.'); return; }
+            const from = new Date(fromVal + 'T00:00:00');
+            const to = new Date(toVal + 'T00:00:00');
+            if (to < from) { alert('The "to" date must be on or after the "from" date.'); return; }
+
+            const s = CN_DATA.statsForDateRange(from, to);
+            $('#statVolume').text(fmtNgn(s.totalVolume));
+            $('#statProfit').text(fmtNgn(s.totalProfit));
+            $('#statTransactions').text(s.totalTransactions.toLocaleString());
+            $('#statSuccessRate').text(s.successRatePct.toFixed(2) + '%');
+            $('#statLiquidity').text(fmtNgn(s.liquidityAvailable));
+            // A day-over-day delta doesn't mean anything for an arbitrary picked
+            // range, so clear those lines instead of showing a stale comparison.
+            $('#statVolumeDelta, #statProfitDelta, #statTransactionsDelta, #statSuccessRateDelta').empty();
+            $('#statsRangeLabel').text('Showing ' + fmtRangeLabel(from) + ' – ' + fmtRangeLabel(to) + ' (custom range)');
+        }
+
+        function renderRecentTransactions() {
+            const rows = CN_DATA.recentTransactions(8);
+            const tbody = $('#recentTransactions tbody');
+            rows.forEach(function (r) {
+                tbody.append(
+                    '<tr>' +
+                    '<td><div class="tx-row"><div class="tx-type-icon ' + r.iconClass + '"><i class="fas ' + r.icon + '"></i></div>' +
+                    '<div class="tx-text"><p>' + r.category + '</p></div></div></td>' +
+                    '<td class="text-muted small">' + r.ref + '</td>' +
+                    '<td><span class="small fw-bold">' + r.user.name + '</span></td>' +
+                    '<td class="fw-bold ' + (r.sign === '+' ? 'text-success' : 'text-danger') + '">' + r.sign + ' ' + r.currency + Number(r.amount).toLocaleString() + '</td>' +
+                    '<td><span class="badge-status status-' + r.status + '">' + r.status.charAt(0).toUpperCase() + r.status.slice(1) + '</span></td>' +
+                    '</tr>'
+                );
+            });
+            $('#recentTransactions').DataTable({
+                pageLength: 8, lengthChange: false, searching: false, info: false, responsive: true, autoWidth: false
+            });
+        }
+
+        function renderKycQueue() {
+            const avatarColors = ['10b981', '6366f1', 'f59e0b', 'ef4444', '0dcaf0'];
+            const items = CN_DATA.pendingKyc(5);
+            const html = items.map(function (r, i) {
+                const initials = r.name.split(' ').map(function (p) { return p[0]; }).slice(0, 2).join('').toUpperCase();
+                return '<div class="d-flex align-items-center gap-2 py-2' + (i < items.length - 1 ? ' border-bottom' : '') + '">' +
+                    '<div class="kyc-avatar-chip" style="background:#' + avatarColors[i % avatarColors.length] + ';">' + initials + '</div>' +
+                    '<div class="flex-grow-1">' +
+                    '<p class="mb-0 small fw-bold">' + r.name + ' <span class="text-muted fw-normal">' + r.ref + '</span></p>' +
+                    '<p class="mb-0 text-muted" style="font-size:0.72rem;">' + r.country + ' &middot; ' + r.submitted + '</p>' +
+                    '</div>' +
+                    '<span class="badge-status status-pending">Pending</span>' +
+                    '</div>';
+            }).join('');
+            $('#kycQueueList').html(html || '<p class="text-muted small mb-0">No pending KYC submissions.</p>');
+        }
+
+        function renderTransactionOverviewChart() {
+            const series = CN_DATA.dailyActivitySeries();
+            new Chart(document.getElementById('chartTransactionOverview').getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: series.labels,
+                    datasets: [
+                        { label: 'Deposits', data: series.deposits, borderColor: CATEGORY_COLORS.Deposits, backgroundColor: 'transparent', tension: 0.4, pointRadius: 3 },
+                        { label: 'Withdrawals', data: series.withdrawals, borderColor: CATEGORY_COLORS.Withdrawals, backgroundColor: 'transparent', tension: 0.4, pointRadius: 3 },
+                        { label: 'Deriv Funding', data: series.derivFunding, borderColor: CATEGORY_COLORS['Deriv Funding'], backgroundColor: 'transparent', tension: 0.4, pointRadius: 3 },
+                        { label: 'Cross Border', data: series.crossBorder, borderColor: CATEGORY_COLORS['Cross Border'], backgroundColor: 'transparent', tension: 0.4, pointRadius: 3 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { boxWidth: 8, usePointStyle: true, font: { size: 10 } } } },
+                    scales: {
+                        y: { beginAtZero: true, grid: { borderDash: [5, 5] }, ticks: { callback: v => '₦' + (v / 1000000).toFixed(1) + 'M' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        }
+
+        function renderTypeBreakdownChart() {
+            const bd = CN_DATA.typeBreakdown();
+            $('#typeBreakdownTotal').text(bd.total.toLocaleString());
+            new Chart(document.getElementById('chartTransactionsByType').getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: bd.items.map(i => i.label),
+                    datasets: [{ data: bd.items.map(i => i.count), backgroundColor: bd.items.map(i => CATEGORY_COLORS[i.label]), borderWidth: 0 }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, cutout: '72%', plugins: { legend: { display: false } } }
+            });
+            $('#typeBreakdownLegend').html(bd.items.map(function (i) {
+                return '<div class="legend-row"><span><span class="legend-dot" style="background:' + CATEGORY_COLORS[i.label] + ';"></span>' + i.label + '</span><span class="fw-bold">' + i.count.toLocaleString() + ' (' + i.pct + '%)</span></div>';
+            }).join(''));
+        }
+
+        function renderProfitTrendChart() {
+            const series = CN_DATA.dailyActivitySeries();
+            const profit = series.labels.map(function (_, idx) {
+                const vol = series.deposits[idx] + series.withdrawals[idx] + series.derivFunding[idx] + series.crossBorder[idx];
+                return Math.round(vol * 0.015);
+            });
+            new Chart(document.getElementById('chartProfitTrend').getContext('2d'), {
+                type: 'bar',
+                data: { labels: series.labels, datasets: [{ label: 'Profit (₦)', data: profit, backgroundColor: '#10b981', borderRadius: 6, maxBarThickness: 28 }] },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, grid: { borderDash: [5, 5] }, ticks: { callback: v => '₦' + (v / 1000).toFixed(0) + 'k' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        }
+
+        function renderChannelBreakdownChart() {
+            const cb = CN_DATA.channelBreakdown();
+            new Chart(document.getElementById('chartChannelBreakdown').getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: cb.items.map(i => i.label),
+                    datasets: [{ data: cb.items.map(i => i.count), backgroundColor: cb.items.map(i => CHANNEL_COLORS[i.label]), borderWidth: 0 }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, cutout: '65%', plugins: { legend: { display: false } } }
+            });
+            $('#channelBreakdownLegend').html(cb.items.map(function (i) {
+                return '<div class="legend-row"><span><span class="legend-dot" style="background:' + CHANNEL_COLORS[i.label] + ';"></span>' + i.label + '</span><span class="fw-bold">' + i.pct + '%</span></div>';
+            }).join(''));
+        }
+
+        function renderTopCountries() {
+            const list = CN_DATA.topCountriesByVolume();
+            $('#topCountriesList').html(list.map(function (c) {
+                return '<div class="country-row">' +
+                    '<div class="d-flex justify-content-between small mb-1">' +
+                    '<span>' + (FLAGS[c.country] || '') + ' ' + c.country + '</span>' +
+                    '<span class="fw-bold">' + fmtNgn(c.volume) + ' &middot; ' + c.pct + '%</span>' +
+                    '</div>' +
+                    '<div class="progress"><div class="progress-bar bg-primary" style="width:' + c.pct + '%"></div></div>' +
+                    '</div>';
+            }).join(''));
+        }
+
+        function renderTopServices() {
+            const list = CN_DATA.topServicesByVolume();
+            const max = Math.max.apply(null, list.map(i => i.volume)) || 1;
+            $('#topServicesList').html(list.map(function (s) {
+                const w = Math.round((s.volume / max) * 100);
+                return '<div class="service-bar-row">' +
+                    '<div class="d-flex justify-content-between small mb-1"><span>' + s.label + '</span><span class="fw-bold">' + fmtNgn(s.volume) + '</span></div>' +
+                    '<div class="progress"><div class="progress-bar" style="width:' + w + '%;background:#10b981;"></div></div>' +
+                    '</div>';
+            }).join(''));
+        }
+
+        function renderSuccessGauge() {
+            const rate = CN_DATA.successRate(6);
+            const prevRate = CN_DATA.successRate(13);
+            $('#gaugeValue').text(rate.toFixed(2) + '%');
+            $('#gaugeDelta').html(fmtDelta(Math.round((rate - prevRate) * 10) / 10)).toggleClass('text-success', rate >= prevRate).toggleClass('text-danger', rate < prevRate);
+            new Chart(document.getElementById('chartSuccessGauge').getContext('2d'), {
+                type: 'doughnut',
+                data: { datasets: [{ data: [rate, 100 - rate], backgroundColor: ['#10b981', '#e2e8f0'], borderWidth: 0 }] },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    circumference: 180, rotation: -90, cutout: '75%',
+                    plugins: { legend: { display: false }, tooltip: { enabled: false } }
+                }
+            });
+        }
+
+        function wireExportButton() {
+            $('#exportReportBtn').on('click', function () {
+                const rows = [['Type', 'Reference', 'User', 'Amount', 'Status']];
+                $('#recentTransactions tbody tr').each(function () {
+                    const cells = $(this).find('td');
+                    rows.push([
+                        $(cells[0]).find('.tx-text p').text().trim(),
+                        $(cells[1]).text().trim(),
+                        $(cells[2]).text().trim(),
+                        $(cells[3]).text().trim(),
+                        $(cells[4]).text().trim()
+                    ]);
+                });
+                const csv = rows.map(r => r.map(v => '"' + String(v).replace(/"/g, '""') + '"').join(',')).join('\n');
+                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'cheapnaria-report-' + toDateInputValue(CN_DATA.REPORT_REF_DATE) + '.csv';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+        }
+
+        $(document).ready(function () {
+            renderStatCards();
+            renderRecentTransactions();
+            renderKycQueue();
+            renderTransactionOverviewChart();
+            renderTypeBreakdownChart();
+            renderProfitTrendChart();
+            renderChannelBreakdownChart();
+            renderTopCountries();
+            renderTopServices();
+            renderSuccessGauge();
+            wireExportButton();
+            $('#statsRequestBtn').on('click', applyDateRange);
+        });
+    </script>
+</body>
+
+</html>
